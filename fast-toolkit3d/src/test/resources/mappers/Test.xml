@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db.mysql.mapper.TestMapper">
+
+	<resultMap type="Test" id="test">
+	</resultMap>
+	
+	<insert id="save" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+		insert into test(`value`) values (#{value})
+	</insert>
+	
+	<select id="select" resultMap="test">
+		select * from test where value = #{value}
+	</select>
+</mapper>
+
