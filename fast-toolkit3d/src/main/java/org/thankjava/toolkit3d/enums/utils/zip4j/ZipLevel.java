@@ -1,8 +1,8 @@
 package org.thankjava.toolkit3d.enums.utils.zip4j;
 
 /**
- * 压缩方式
-* <p>Function: Zip4jType</p>
+ * 压缩等级
+* <p>Function: ZipLevel</p>
 * <p>Description: </p>
 * @author zhaoxy@thankjava.com
 * @date 2016年8月16日 上午10:18:32
