@@ -170,6 +170,31 @@ public final class ReflectHelper {
 		return null;
 	}
 	
+	
+	/**
+	 * 获取obj中 自己的全部方法
+	* <p>Function: getAllMethod</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年8月17日 下午5:49:53
+	* @version 1.0
+	* @param obj
+	* @return
+	 */
+	public static Method[] getAllMethod(Object obj){
+		if(obj == null){
+			return null;
+		}
+		Class<?> clazz = obj.getClass();
+		try {
+			return clazz.getDeclaredMethods();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} 
+		return null;
+	}
+	
+	
 	/**
 	 * 执行指定方法
 	* <p>Function: invokeMethod</p>
