@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.db.mongodb.datasource;
+package org.thankjava.toolkit3d.utils.db.mongodb.datasource;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -9,7 +9,7 @@ import java.util.Properties;
 
 import org.bson.Document;
 import org.thankjava.toolkit.resource.SourceLoader;
-import org.thankjava.toolkit3d.db.mongodb.MongoDBManager;
+import org.thankjava.toolkit3d.utils.db.mongodb.MongoDBManager;
 import org.thankjava.toolkit3d.utils.fastjson.FastJson;
 
 import com.mongodb.MongoClient;

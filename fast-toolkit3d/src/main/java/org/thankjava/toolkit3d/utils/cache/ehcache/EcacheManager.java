@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.cache.ehcache;
+package org.thankjava.toolkit3d.utils.cache.ehcache;
 
 import org.thankjava.toolkit.resource.SourceLoader;
 

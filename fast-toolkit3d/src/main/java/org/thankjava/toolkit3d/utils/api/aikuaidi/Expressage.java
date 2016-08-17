@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.api.aikuaidi;
+package org.thankjava.toolkit3d.utils.api.aikuaidi;
 
 import org.thankjava.toolkit.httpclient.DefaultHttpClient;
 import org.thankjava.toolkit3d.enums.api.aikuaidi.ExpreService;

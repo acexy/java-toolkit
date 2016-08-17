@@ -1,6 +1,6 @@
 package tuling;
 
-import org.thankjava.toolkit3d.api.tuling.ChatRobot;
+import org.thankjava.toolkit3d.utils.api.tuling.ChatRobot;
 import org.thankjava.toolkit3d.utils.fastjson.FastJson;
 
 public class ChatRobotTest {

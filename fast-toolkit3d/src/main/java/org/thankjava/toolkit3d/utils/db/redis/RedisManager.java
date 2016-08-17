@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.db.redis;
+package org.thankjava.toolkit3d.utils.db.redis;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.api.baidu.apistore.shortlink;
+package org.thankjava.toolkit3d.utils.api.baidu.apistore.shortlink;
 
 import java.util.HashMap;
 import java.util.Map;

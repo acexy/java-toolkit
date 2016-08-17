@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.api.baidu.translation;
+package org.thankjava.toolkit3d.utils.api.baidu.translation;
 
 import java.util.Random;
 

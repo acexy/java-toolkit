@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.security;
+package org.thankjava.toolkit3d.utils.security;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.db.mysql.datasource;
+package org.thankjava.toolkit3d.utils.db.mysql.datasource;
 
 import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
 

@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.db.mysql.datasource;
+package org.thankjava.toolkit3d.utils.db.mysql.datasource;
 
 import java.io.Reader;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.thankjava.toolkit.resource.SourceLoader;
-import org.thankjava.toolkit3d.db.mysql.MyBatisManager;
+import org.thankjava.toolkit3d.utils.db.mysql.MyBatisManager;
 
 public class MySQLManager implements MyBatisManager{
 

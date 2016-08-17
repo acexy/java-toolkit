@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.db.mongodb;
+package org.thankjava.toolkit3d.utils.db.mongodb;
 
 
 import java.util.List;

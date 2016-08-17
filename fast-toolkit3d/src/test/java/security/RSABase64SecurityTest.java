@@ -1,6 +1,6 @@
 package security;
 
-import org.thankjava.toolkit3d.security.RSABase64Security;
+import org.thankjava.toolkit3d.utils.security.RSABase64Security;
 
 public class RSABase64SecurityTest {
 

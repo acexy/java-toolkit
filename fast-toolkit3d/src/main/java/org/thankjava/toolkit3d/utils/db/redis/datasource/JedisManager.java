@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.db.redis.datasource;
+package org.thankjava.toolkit3d.utils.db.redis.datasource;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.thankjava.toolkit.resource.SourceLoader;
-import org.thankjava.toolkit3d.db.redis.RedisManager;
+import org.thankjava.toolkit3d.utils.db.redis.RedisManager;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

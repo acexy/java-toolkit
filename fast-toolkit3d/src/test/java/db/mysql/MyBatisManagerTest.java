@@ -4,8 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.thankjava.toolkit.radom.Sequence;
 import org.thankjava.toolkit.thread.ThreadPool;
-import org.thankjava.toolkit3d.db.mysql.MyBatisManager;
-import org.thankjava.toolkit3d.db.mysql.datasource.MySQLManager;
+import org.thankjava.toolkit3d.utils.db.mysql.MyBatisManager;
+import org.thankjava.toolkit3d.utils.db.mysql.datasource.MySQLManager;
 
 import db.mysql.mapper.TestMapper;
 import db.mysql.po.Test;

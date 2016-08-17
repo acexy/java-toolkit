@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.db.mysql;
+package org.thankjava.toolkit3d.utils.db.mysql;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
