@@ -1,8 +1,8 @@
-package org.thankjava.toolkit.reflect.bean;
+package org.thankjava.toolkit.utils.reflect.bean;
 
 import java.lang.reflect.Field;
 
-import org.thankjava.toolkit.reflect.BeanCopier;
+import org.thankjava.toolkit.utils.reflect.BeanCopier;
 
 public class ValueCast {
 

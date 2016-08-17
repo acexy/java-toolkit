@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.thread;
+package org.thankjava.toolkit.utils.thread;
 
 /**
  * 线程相关工具

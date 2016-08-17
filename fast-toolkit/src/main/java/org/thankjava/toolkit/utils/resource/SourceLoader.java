@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.resource;
+package org.thankjava.toolkit.utils.resource;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;

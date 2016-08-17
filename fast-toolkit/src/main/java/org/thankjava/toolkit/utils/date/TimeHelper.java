@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.date;
+package org.thankjava.toolkit.utils.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

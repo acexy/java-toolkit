@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.reflect;
+package org.thankjava.toolkit.utils.reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

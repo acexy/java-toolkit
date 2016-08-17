@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.reflect.bean;
+package org.thankjava.toolkit.utils.reflect.bean;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.thankjava.toolkit.reflect.ReflectHelper;
+import org.thankjava.toolkit.utils.reflect.ReflectHelper;
 
 class ValueFactory {
 

@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.httpclient;
+package org.thankjava.toolkit.utils.httpclient;
 
 import java.io.BufferedReader;
 import java.io.IOException;

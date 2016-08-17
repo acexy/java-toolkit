@@ -1,9 +1,6 @@
 package httpclient;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.thankjava.toolkit.httpclient.DefaultHttpClient;
+import org.thankjava.toolkit.utils.httpclient.DefaultHttpClient;
 
 public class HttpClientTest {
 

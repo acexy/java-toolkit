@@ -9,7 +9,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SignatureException;
 
-import org.thankjava.toolkit.security.RSASecurity;
+import org.thankjava.toolkit.utils.security.RSASecurity;
 
 public class RSASecurityTest {
 

@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.radom;
+package org.thankjava.toolkit.utils.radom;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

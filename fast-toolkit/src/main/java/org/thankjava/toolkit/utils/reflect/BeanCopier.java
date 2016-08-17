@@ -1,11 +1,11 @@
-package org.thankjava.toolkit.reflect;
+package org.thankjava.toolkit.utils.reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.thankjava.toolkit.reflect.bean.ValueCast;
+import org.thankjava.toolkit.utils.reflect.bean.ValueCast;
 
 /**
  * BeanCopier 属性对等复制

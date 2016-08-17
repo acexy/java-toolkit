@@ -1,11 +1,11 @@
-package org.thankjava.toolkit.reflect.bean;
+package org.thankjava.toolkit.utils.reflect.bean;
 
 import java.util.AbstractCollection;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 
-import org.thankjava.toolkit.reflect.ReflectHelper;
+import org.thankjava.toolkit.utils.reflect.ReflectHelper;
 
 
 

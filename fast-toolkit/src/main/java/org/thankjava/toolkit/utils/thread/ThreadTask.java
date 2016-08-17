@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.thread;
+package org.thankjava.toolkit.utils.thread;
 
 import java.util.ArrayList;
 import java.util.List;

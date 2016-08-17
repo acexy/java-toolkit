@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.security;
+package org.thankjava.toolkit.utils.security;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;

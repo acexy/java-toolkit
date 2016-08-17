@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.reflect.bean;
+package org.thankjava.toolkit.utils.reflect.bean;
 
 enum ClassType {
 

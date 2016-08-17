@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.security;
+package org.thankjava.toolkit.utils.security;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
