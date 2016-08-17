@@ -4,9 +4,9 @@
 
 fast-tookit
 ---
--基于jdk开发 不依赖第三方代码(jdk1.7)
+- 基于jdk开发 不依赖第三方代码(jdk1.7)
 
 fast-tookit3d
 ---
--依赖fast-tookit
--将其他第三方优秀lib组件化,整理并提供更简洁的api处理方案
+- 依赖fast-tookit
+- 将其他第三方优秀lib组件化,整理并提供更简洁的api处理方案
