@@ -33,28 +33,24 @@ class AopConfigResolve {
 			Annotation[] anns = method.getAnnotations();
 			if(anns == null || anns.length == 0){
 				//没有配置注解内容，肯定没有使用Aop
-				config.setEmpty(true);
+				config.setUsedAop(false);
 			}else{
-				for (Annotation anno : anns) {
-					if(Before.class.equals(anno.annotationType())){
-						config.setBefore(method.getAnnotation(Before.class));
-					}else if(After.class.equals(anno.annotationType())){
-						config.setAfter(method.getAnnotation(After.class));
-					}
-				}
-				
+				config.setBefore(method.getAnnotation(Before.class));
+				config.setAfter(method.getAnnotation(After.class));
+		
 				if(config.getBefore() == null && config.getAfter() == null){
 					//并没有Aop对应的注解配置
-					config.setEmpty(true);
+					config.setUsedAop(false);
+				}else{
+					config.setUsedAop(true);
 				}
 			}
 			
 			Cache.put(config);
-			if(config.isEmpty()){
+			if(!config.isUsedAop()){
 				return null;
 			}
-		}
-		else if(config.isEmpty()){
+		} else if(!config.isUsedAop()){
 			return null;
 		}
 		return config;

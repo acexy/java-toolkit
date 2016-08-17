@@ -22,10 +22,7 @@ public class AopConfig {
 	private Before before = null;
 	private After after = null;
 	
-	/**
-	 * 用于定义处理没有配置AopConfig的对象缓存
-	 */
-	private boolean empty = false;
+	private boolean isUsedAop = false;
 	
 	public String getClassPath() {
 		return classPath;
@@ -51,12 +48,13 @@ public class AopConfig {
 	public void setAfter(After after) {
 		this.after = after;
 	}
-	public boolean isEmpty() {
-		return empty;
+	public boolean isUsedAop() {
+		return isUsedAop;
 	}
-	public void setEmpty(boolean empty) {
-		this.empty = empty;
+	public void setUsedAop(boolean isUsedAop) {
+		this.isUsedAop = isUsedAop;
 	}
+	
 	
 	
 }
