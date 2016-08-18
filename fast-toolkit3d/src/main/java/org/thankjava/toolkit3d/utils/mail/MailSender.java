@@ -52,7 +52,12 @@ public final class MailSender {
 		}
 	}
 	
-	
+	/**
+	 * 发送基本HTML邮件
+	 * @param mailEntity
+	 * @return
+	 * @throws MessagingException
+	 */
 	public static boolean sendMail(MailEntity mailEntity) throws MessagingException {
 		// 判断是否需要身份认证
 		AuthEntity authEntity = null;
@@ -92,7 +97,14 @@ public final class MailSender {
 	}
 	
 	
-	
+	/**
+	 * 发送可带附件的邮件
+	 * @param mailEntity
+	 * @param attachment	目标附件File
+	 * @return
+	 * @throws MessagingException
+	 * @throws UnsupportedEncodingException
+	 */
 	public static boolean sendMail(MailEntity mailEntity,File attachment) throws MessagingException, UnsupportedEncodingException {
 		// 判断是否需要身份认证
 		AuthEntity authEntity = null;
