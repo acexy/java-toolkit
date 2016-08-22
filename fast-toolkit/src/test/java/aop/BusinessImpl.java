@@ -10,4 +10,9 @@ public class BusinessImpl implements IBusiness{
 	public String exe(String str){
 		return str;
 	}
+
+	@Override
+	public String exe(int num) {
+		return "num";
+	}
 }

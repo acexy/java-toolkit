@@ -48,13 +48,20 @@ public class InvokeInterceptor implements InvocationHandler{
 			AopConfig config = null;
 			Before before = null;
 			After after = null;
-			
+			Class<?>[] argsType; 
+					
 			for (Method method : methods) {
+				
+				config = new AopConfig();
+				argsType = method.getParameterTypes();
+				for (Class<?> clazz : argsType) {
+					config.setArgs(clazz.getName());
+				}
 				
 				before = method.getAnnotation(Before.class);
 				after = method.getAnnotation(After.class);
 				
-				config = new AopConfig();
+				
 				config.setMethodName(method.getName());
 				config.setClassPath(implementObject.getClass().getName());
 				
@@ -76,10 +83,33 @@ public class InvokeInterceptor implements InvocationHandler{
 	}
 	
 	
+	/**
+	 * 创建Key
+	* <p>Function: getAopConfgKey</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年8月22日 下午3:52:36
+	* @version 1.0
+	* @param proxy
+	* @param method
+	* @param args
+	* @return
+	 */
+	private String getAopConfgKey(Object proxy, Method method){
+		StringBuffer sb = new StringBuffer();
+		sb.append(implementObject.getClass().getName());
+		sb.append(method.getName());
+		Class<?>[] argsType = method.getParameterTypes();
+		for (Class<?> clazz : argsType) {
+			sb.append(clazz.getName());
+		}
+		return sb.toString();
+	}
+	
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		
-		AopConfig aopConfig = Cache.getAop(implementObject.getClass().getName() + method.getName());
+		AopConfig aopConfig = Cache.getAop(getAopConfgKey(proxy, method));
 		if(!aopConfig.isUsedAop()){
 			return method.invoke(implementObject, args);
 		}
