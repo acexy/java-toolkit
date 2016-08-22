@@ -19,16 +19,21 @@ import org.thankjava.toolkit3d.utils.aop.entity.AopConfig;
  */
 class AopConfigResolve {
 	
+	
 	AopConfig config(Object obj, Method method){
 		
-		String key = obj.getClass().getName() + method.getName();
-		AopConfig config = Cache.getAop(key);
+		AopConfig config = Cache.getAop(getAopConfgKey(obj, method));
 		
 		//缓存的Aop切片配置信息不存在，则该方法是第一次被扫描
+		Class<?>[] argsType;
 		if(config == null){
 			config = new AopConfig();
 			config.setMethodName(method.getName());
 			config.setClassPath(obj.getClass().getName());
+			argsType = method.getParameterTypes();
+			for (Class<?> clazz : argsType) {
+				config.setArgs(clazz.getName());
+			}
 			
 			Annotation[] anns = method.getAnnotations();
 			if(anns == null || anns.length == 0){
@@ -54,6 +59,29 @@ class AopConfigResolve {
 			return null;
 		}
 		return config;
+	}
+	
+	/**
+	 * 创建Key
+	* <p>Function: getAopConfgKey</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年8月22日 下午3:52:36
+	* @version 1.0
+	* @param proxy
+	* @param method
+	* @param args
+	* @return
+	 */
+	private String getAopConfgKey(Object proxy, Method method){
+		StringBuffer sb = new StringBuffer();
+		sb.append(proxy.getClass().getName());
+		sb.append(method.getName());
+		Class<?>[] argsType = method.getParameterTypes();
+		for (Class<?> clazz : argsType) {
+			sb.append(clazz.getName());
+		}
+		return sb.toString();
 	}
 	
 }

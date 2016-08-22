@@ -10,4 +10,8 @@ public class Business {
 	public String exe(String str){
 		return str;
 	}
+	
+	public String exe(int num) {
+		return "num";
+	}
 }

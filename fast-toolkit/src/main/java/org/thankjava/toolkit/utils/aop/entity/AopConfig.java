@@ -16,6 +16,11 @@ public class AopConfig {
 	private String methodName;
 	
 	/**
+	 * 传入的参数类型拼接
+	 */
+	private String args = "";
+	
+	/**
 	 * 扫描注解注入的事件配置
 	 */
 	
@@ -53,6 +58,12 @@ public class AopConfig {
 	}
 	public void setUsedAop(boolean isUsedAop) {
 		this.isUsedAop = isUsedAop;
+	}
+	public String getArgs() {
+		return args;
+	}
+	public void setArgs(String args) {
+		this.args = this.args + args;
 	}
 	
 	

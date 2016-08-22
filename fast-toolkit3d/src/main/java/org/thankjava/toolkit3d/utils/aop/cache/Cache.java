@@ -25,7 +25,7 @@ public class Cache {
 	}
 	
 	public static void put(AopConfig aopConfig){
-		aopConfigs.put(aopConfig.getClassPath() + aopConfig.getMethodName(), aopConfig);
+		aopConfigs.put(aopConfig.getClassPath() + aopConfig.getMethodName() + aopConfig.getArgs(), aopConfig);
 	}
 	
 	public static AopConfig getAop(String key){
