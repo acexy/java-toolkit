@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.thankjava.toolkit.utils.aop.entity.AopConfig;
-import org.thankjava.toolkit.utils.aop.entity.CutPointConfig;
 
 
 /**
@@ -25,11 +24,9 @@ public class Cache {
 	private static ArrayList<Class<?>> scannedClass = new ArrayList<Class<?>>();
 	
 	private static Map<String, AopConfig> aopConfigs;
-	private static Map<String, CutPointConfig> cutPointClass;
 	
 	static {
 		aopConfigs = new HashMap<String, AopConfig>();
-		cutPointClass = new HashMap<String, CutPointConfig>();
 	}
 	
 	
