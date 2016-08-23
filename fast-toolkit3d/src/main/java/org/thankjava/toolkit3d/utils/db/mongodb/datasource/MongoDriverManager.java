@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.bson.Document;
-import org.thankjava.toolkit.resource.SourceLoader;
+import org.thankjava.toolkit.utils.resource.SourceLoader;
 import org.thankjava.toolkit3d.utils.db.mongodb.MongoDBManager;
 import org.thankjava.toolkit3d.utils.fastjson.FastJson;
 

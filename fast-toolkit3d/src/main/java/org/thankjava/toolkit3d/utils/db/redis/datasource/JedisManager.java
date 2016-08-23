@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.thankjava.toolkit.resource.SourceLoader;
+import org.thankjava.toolkit.utils.resource.SourceLoader;
 import org.thankjava.toolkit3d.utils.db.redis.RedisManager;
 
 import redis.clients.jedis.Jedis;

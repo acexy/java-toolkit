@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.enums.mail;
+package org.thankjava.toolkit3d.enums.utils.mail;
 
 /**
  * 邮箱供应服务商

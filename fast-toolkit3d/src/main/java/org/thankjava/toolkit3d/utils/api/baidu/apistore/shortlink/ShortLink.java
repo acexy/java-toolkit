@@ -3,7 +3,7 @@ package org.thankjava.toolkit3d.utils.api.baidu.apistore.shortlink;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.thankjava.toolkit.httpclient.DefaultHttpClient;
+import org.thankjava.toolkit.utils.httpclient.DefaultHttpClient;
 import org.thankjava.toolkit3d.enums.api.baidu.apistore.shortlink.ShortLinkType;
 import org.thankjava.toolkit3d.utils.fastjson.FastJson;
 import org.thankjava.toolkit3d.vo.api.baidu.apistore.shortlink.ShortLinkData;

@@ -1,7 +1,7 @@
 package org.thankjava.toolkit3d.utils.api.tuling;
 
 
-import org.thankjava.toolkit.httpclient.DefaultHttpClient;
+import org.thankjava.toolkit.utils.httpclient.DefaultHttpClient;
 import org.thankjava.toolkit3d.utils.fastjson.FastJson;
 import org.thankjava.toolkit3d.vo.api.tuling.ChatData;
 

@@ -1,6 +1,6 @@
 package org.thankjava.toolkit3d.utils.api.aikuaidi;
 
-import org.thankjava.toolkit.httpclient.DefaultHttpClient;
+import org.thankjava.toolkit.utils.httpclient.DefaultHttpClient;
 import org.thankjava.toolkit3d.enums.api.aikuaidi.ExpreService;
 import org.thankjava.toolkit3d.utils.fastjson.FastJson;
 import org.thankjava.toolkit3d.vo.api.aikuaidi.ExpreData;

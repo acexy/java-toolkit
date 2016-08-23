@@ -2,7 +2,7 @@ package org.thankjava.toolkit3d.vo.utils.mail;
 
 import java.util.Properties;
 
-import org.thankjava.toolkit.enums.mail.MailService;
+import org.thankjava.toolkit3d.enums.utils.mail.MailService;
 
 /**
  * 邮件请求体
@@ -38,6 +38,18 @@ public class MailEntity {
 	// 邮件附件的文件名
 	private String[] attachFileNames;
 
+	/**
+	 * 邮件发送参数限定
+	* <p>Title: </p>
+	* <p>Description: </p>
+	* @param serverHost 邮件供应商地址
+	* @param serverPort 邮件供应商端口
+	* @param toAddr 收件人地址
+	* @param uName 发件人邮箱地址
+	* @param uPwd 发件人密码
+	* @param subject 邮件标题
+	* @param content 邮件内容(支持标准邮件HTML结构)
+	 */
 	public MailEntity(String serverHost,String serverPort,String toAddr,String uName,String uPwd,String subject,String content){
 		this.mailServerHost = serverHost;
 		this.mailServerPort = serverPort;
@@ -49,6 +61,17 @@ public class MailEntity {
 		this.content = content;
 	}
 	
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p>
+	* @param mailService 内置已有的邮件服务商
+	* @param toAddr 收件人地址
+	* @param uName 发件人邮箱地址
+	* @param uPwd 发件人密码
+	* @param subject 邮件标题
+	* @param content 邮件内容(支持标准邮件HTML结构)
+	 */
 	public MailEntity(MailService mailService,String toAddr,String uName,String uPwd,String subject,String content){
 		this.mailServerHost = mailService.getService();
 		this.mailServerPort = mailService.getPort();
@@ -59,6 +82,7 @@ public class MailEntity {
 		this.subject = subject;
 		this.content = content;
 	}
+	
 	
 	/**
 	 * 获得邮件会话属性
@@ -71,6 +95,7 @@ public class MailEntity {
 		return properties;
 	}
 
+	
 	public String getMailServerHost() {
 		return mailServerHost;
 	}

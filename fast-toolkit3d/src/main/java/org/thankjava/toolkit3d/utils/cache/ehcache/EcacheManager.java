@@ -1,6 +1,6 @@
 package org.thankjava.toolkit3d.utils.cache.ehcache;
 
-import org.thankjava.toolkit.resource.SourceLoader;
+import org.thankjava.toolkit.utils.resource.SourceLoader;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;

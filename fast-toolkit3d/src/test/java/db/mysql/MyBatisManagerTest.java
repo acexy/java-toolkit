@@ -2,8 +2,8 @@ package db.mysql;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.thankjava.toolkit.radom.Sequence;
-import org.thankjava.toolkit.thread.ThreadPool;
+import org.thankjava.toolkit.utils.radom.Sequence;
+import org.thankjava.toolkit.utils.thread.ThreadPool;
 import org.thankjava.toolkit3d.utils.db.mysql.MyBatisManager;
 import org.thankjava.toolkit3d.utils.db.mysql.datasource.MySQLManager;
 
