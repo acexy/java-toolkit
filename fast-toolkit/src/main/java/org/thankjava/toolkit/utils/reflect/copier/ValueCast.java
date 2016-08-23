@@ -1,4 +1,4 @@
-package org.thankjava.toolkit.utils.reflect.bean;
+package org.thankjava.toolkit.utils.reflect.copier;
 
 import java.lang.reflect.Field;
 
