@@ -2,8 +2,8 @@ package org.thankjava.toolkit3d.utils.api.baidu.translation;
 
 import java.util.Random;
 
-import org.thankjava.toolkit.httpclient.DefaultHttpClient;
-import org.thankjava.toolkit.security.MD5Security;
+import org.thankjava.toolkit.utils.httpclient.DefaultHttpClient;
+import org.thankjava.toolkit.utils.security.MD5Security;
 import org.thankjava.toolkit3d.enums.api.baidu.translation.Language;
 import org.thankjava.toolkit3d.utils.fastjson.FastJson;
 import org.thankjava.toolkit3d.vo.api.baidu.translation.TransData;

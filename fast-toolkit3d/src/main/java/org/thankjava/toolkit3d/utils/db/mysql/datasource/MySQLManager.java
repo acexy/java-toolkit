@@ -5,7 +5,7 @@ import java.io.Reader;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.thankjava.toolkit.resource.SourceLoader;
+import org.thankjava.toolkit.utils.resource.SourceLoader;
 import org.thankjava.toolkit3d.utils.db.mysql.MyBatisManager;
 
 public class MySQLManager implements MyBatisManager{
