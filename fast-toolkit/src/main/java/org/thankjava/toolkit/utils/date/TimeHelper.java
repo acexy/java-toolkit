@@ -20,7 +20,7 @@ public final class TimeHelper {
 	public enum TimeType {
 		DEFAULT("yyyy-MM-dd|HH:mm:ss"),
 		yyyyMMddHH("yyyyMMddHH"),
-		yyyyMMddHHmmss("yyyyMMddHHmmss"),
+		yyyyMMddHHmmssSSS("yyyyMMddHHmmssSSS"),
 		yyyyMMdd("yyyyMMdd"),
 		HHmmss("HHmmss"),
 		;
