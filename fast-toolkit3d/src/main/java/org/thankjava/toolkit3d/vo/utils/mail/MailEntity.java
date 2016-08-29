@@ -35,9 +35,6 @@ public class MailEntity {
 	// 邮件的文本内容
 	private String content;
 
-	// 邮件附件的文件名
-	private String[] attachFileNames;
-
 	/**
 	 * 邮件发送参数限定
 	* <p>Title: </p>
@@ -130,9 +127,5 @@ public class MailEntity {
 
 	public String getContent() {
 		return content;
-	}
-
-	public String[] getAttachFileNames() {
-		return attachFileNames;
 	}
 }

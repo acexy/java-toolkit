@@ -7,7 +7,7 @@ import java.net.URL;
 class ClassLoaderWrapper {
 	
 	
-	ClassLoader defaultClassLoader;
+	final ClassLoader defaultClassLoader = null;
 	ClassLoader systemClassLoader;
 
 	ClassLoaderWrapper() {
