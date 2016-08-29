@@ -48,10 +48,10 @@ public class MongoDriverManager implements MongoDBManager{
 			String uname = props.getProperty("mongo.uname");
 			String pwd = props.getProperty("mongo.pwd");
 			
-			MongoCredential credentia = MongoCredential.createCredential(uname, databaseName, pwd.toCharArray());
 			if(uname == null || uname.length() == 0 || pwd == null || pwd.length() == 0){
 				mongoClient = new MongoClient(new ServerAddress(props.getProperty("mongo.host"), Integer.valueOf(props.getProperty("mongo.port"))), myOptions);
 			}else{
+				MongoCredential credentia = MongoCredential.createCredential(uname, databaseName, pwd.toCharArray());
 				mongoClient = new MongoClient(new ServerAddress(props.getProperty("mongo.host"), Integer.valueOf(props.getProperty("mongo.port"))),Arrays.asList(credentia), myOptions);
 			}
 			mongoDatabase = mongoClient.getDatabase(databaseName);

@@ -20,6 +20,8 @@ public class Translation {
 
 	private String URL = "http://api.fanyi.baidu.com/api/trans/vip/translate";
 	
+	private Random r = new Random();
+	
 	/**
 	 * 百度授权的appID
 	 */
@@ -50,7 +52,7 @@ public class Translation {
 		if(keyWord == null || keyWord.trim().length() == 0){
 			return null;
 		}
-		String salt = String.valueOf(Math.abs(new Random().nextLong()));
+		String salt = String.valueOf(Math.abs(r.nextLong()));
 		String from = fromLang == null ? "auto" : fromLang.name();
 		String to = toLang == null ? "auto" : toLang.name();
 		StringBuffer stringBuffer = new StringBuffer();

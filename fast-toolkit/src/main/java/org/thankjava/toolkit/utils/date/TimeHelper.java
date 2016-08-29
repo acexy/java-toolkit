@@ -20,7 +20,7 @@ public final class TimeHelper {
 	public enum TimeType {
 		DEFAULT("yyyy-MM-dd|HH:mm:ss"),
 		yyyyMMddHH("yyyyMMddHH"),
-		yyyyMMddHHmmss("yyyyMMddHHmmss"),
+		yyyyMMddHHmmssSSS("yyyyMMddHHmmssSSS"),
 		yyyyMMdd("yyyyMMdd"),
 		HHmmss("HHmmss"),
 		;
@@ -109,36 +109,5 @@ public final class TimeHelper {
 		ca.add(calendarUnit, dateOffset);
 		
 		return ca.getTime();
-	}
-	
-	/**
-	 * 
-	* <p>Function: dateOffset</p>
-	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
-	* @date 2016年1月14日 下午7:18:48
-	* @version 1.0
-	* @param dateEarly
-	* @param dateDfter
-	* @return
-	 */
-	public static Long dateOffset(Date dateEarly,Date dateDfter){
-		return dateDfter.getTime() - dateEarly.getTime();
-	}
-	
-	/**
-	 * 
-	* <p>Function: dateOffsetSecond</p>
-	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
-	* @date 2016年1月14日 下午7:21:01
-	* @version 1.0
-	* @param dateEarly
-	* @param dateDfter
-	* @return
-	 */
-	public static Integer dateOffsetSecond(Date dateEarly,Date dateDfter){
-		Long ms = dateOffset(dateEarly, dateDfter);
-		return (int) (ms / 1000);
 	}
 }

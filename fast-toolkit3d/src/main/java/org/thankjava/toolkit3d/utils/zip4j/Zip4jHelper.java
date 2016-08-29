@@ -168,6 +168,10 @@ public class Zip4jHelper {
 			zipFile = new ZipFile(zipPath);
 			if(isSrcDirectory){
 				File[] files = srcFile.listFiles();
+				if(files == null || files.length == 0){
+					new ZipException("Invalid resource specified").printStackTrace();
+					return false;
+				}
 				ArrayList<File> fileList= new ArrayList<File>();  
 				Collections.addAll(fileList, files);
 				zipFile.addFiles(fileList, zipParameters);

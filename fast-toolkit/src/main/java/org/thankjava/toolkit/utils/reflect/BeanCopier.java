@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.thankjava.toolkit.utils.reflect.bean.ValueCast;
+import org.thankjava.toolkit.utils.reflect.copier.ValueCast;
 
 /**
  * BeanCopier 属性对等复制
