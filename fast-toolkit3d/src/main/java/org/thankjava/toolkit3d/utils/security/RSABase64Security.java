@@ -49,7 +49,9 @@ public class RSABase64Security {
 			keysStr[0] = publicKey;
 			keysStr[1] = privateKey;
 			return keysStr;
-		} catch (NoSuchAlgorithmException | IOException e) {
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -71,7 +73,9 @@ public class RSABase64Security {
 			KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
 			PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec((Base64.decodeBase64(privateKeyStr)));
 			return keyFactory.generatePrivate(keySpec);
-		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -92,7 +96,9 @@ public class RSABase64Security {
 			KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
 			X509EncodedKeySpec keySpec = new X509EncodedKeySpec((Base64.decodeBase64(publicKeyStr)));
 			return keyFactory.generatePublic(keySpec);
-		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -114,7 +120,13 @@ public class RSABase64Security {
 		PrivateKey privateKey = decryptPrivateKeyForBase64KeyStr(privateKeyStr);
 		try {
 			return new String(Base64.encodeBase64(RSASecurity.encrypt(originalText, privateKey)));
-		} catch (InvalidKeyException | NoSuchAlgorithmException | SignatureException | UnsupportedEncodingException e) {
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (SignatureException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -136,7 +148,13 @@ public class RSABase64Security {
 		PublicKey publicKey = decryptPublicKeyForBasee64KeyStr(publicKeyStr);
 		try {
 			return RSASecurity.verify(originalText, Base64.decodeBase64(ciphertext), publicKey);
-		} catch (InvalidKeyException | NoSuchAlgorithmException | SignatureException | UnsupportedEncodingException e) {
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (SignatureException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		return false;
