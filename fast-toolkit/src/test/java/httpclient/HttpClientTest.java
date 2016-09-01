@@ -27,7 +27,11 @@ public class HttpClientTest {
 //		System.out.println(html.substring(0,html.indexOf("<div class=\"foot\">")));
 //		System.out.println('\u0000');
 //		while(true)
-		System.out.println(DefaultHttpClient.post("http://www.baidu.com", null,null,"{\"appKey\":\"9f8b1480a82011e4a5ed90b11c4a15da\",\"version\":\"1.0.1\",\"type\":\"21\"}"));
+//		System.out.println(DefaultHttpClient.post("http://www.baidu.com", null,null,"{\"appKey\":\"9f8b1480a82011e4a5ed90b11c4a15da\",\"version\":\"1.0.1\",\"type\":\"21\"}"));
+		
+		
+		String url = "http://localhost:6004/area/selectCity";
+		System.out.println(DefaultHttpClient.get(url));
 	}
 	
 }

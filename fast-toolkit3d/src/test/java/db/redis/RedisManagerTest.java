@@ -1,5 +1,7 @@
 package db.redis;
 
+import org.thankjava.toolkit.utils.radom.Sequence;
+import org.thankjava.toolkit.utils.thread.ThreadPool;
 import org.thankjava.toolkit3d.utils.db.redis.RedisManager;
 import org.thankjava.toolkit3d.utils.db.redis.datasource.JedisManager;
 
@@ -7,20 +9,20 @@ public class RedisManagerTest {
 
 	public static void main(String[] args) {
 		final RedisManager redis = JedisManager.getInstance();
-		
+
 //		System.out.println(redis.lpush("test", new String[]{"aa","cc","bb"}));
-		System.out.println(redis.rpop("test"));
-//		redis.setStr("str", "测试数据");
+//		System.out.println(redis.rpop("test"));
 		
-//		ThreadPool pool = new ThreadPool(50, 100, 600000, 1000000);
-//		for (int i = 0; i < 1000000L; i ++) {
-//			pool.execute(new Runnable() {
-//				@Override
-//				public void run() {
-//					System.out.println(redis.setStr(Sequence.generateUnique().toString(),Sequence.uuid()[0]));
-//				}
-//			});
-//		}
+		ThreadPool pool = new ThreadPool(50, 100, 600000, 1000000);
+		for (int i = 0; i < 10000L; i ++) {
+			pool.execute(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println(redis.set("str", "测试数据"));
+					System.out.println(redis.get("str"));
+				}
+			});
+		}
 		
 //		System.out.println(redis.isKeyExists("str"));
 //		System.out.println(redis.setKeyExpiration("str", 10));
@@ -36,3 +38,4 @@ public class RedisManagerTest {
 	}
 	
 }
+
