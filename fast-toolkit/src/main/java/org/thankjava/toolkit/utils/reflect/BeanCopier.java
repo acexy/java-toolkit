@@ -42,7 +42,9 @@ public final class BeanCopier {
 		
 		try {
 			targetObject = targetClass.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException e) {
+			throw new ClassCastException("targetClass can't be instance");
+		} catch (IllegalAccessException e) {
 			throw new ClassCastException("targetClass can't be instance");
 		}
 		
@@ -66,7 +68,7 @@ public final class BeanCopier {
 		if (originObjects == null || targetClass == null) { 
 			throw new IllegalArgumentException("originaObject and targetClass can't be null");
 		}
-		List<TargetObject> targetObjects = new ArrayList<>();
+		List<TargetObject> targetObjects = new ArrayList<TargetObject>();
 		for (OriginObject originObject : originObjects) {
 			targetObjects.add(copy(originObject, targetClass));
 		}
@@ -119,7 +121,9 @@ public final class BeanCopier {
 			if(targetValue != null){
 				try {
 					targetField.set(targetObject, targetValue);
-				} catch (IllegalArgumentException | IllegalAccessException e) {//为目标属性赋值失败
+				} catch (IllegalArgumentException e){
+					throw new RuntimeException("fail to targetObject attribute assignment");
+				} catch (IllegalAccessException e) {//为目标属性赋值失败
 					throw new RuntimeException("fail to targetObject attribute assignment");
 				}
 			}

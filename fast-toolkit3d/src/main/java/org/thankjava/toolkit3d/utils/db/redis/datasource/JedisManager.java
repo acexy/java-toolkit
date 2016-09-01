@@ -88,51 +88,78 @@ public class JedisManager implements RedisManager{
 	
 	static void returnJedis(Jedis jedis) {
 		if (jedis != null) {
-			jedisPool.returnResource(jedis);
+			jedis.close();
 		} 
 	}
 
 	@Override
 	public boolean set(String key, String value) {
-		Jedis jedis = getJedis();
-		boolean flag = jedis.set(key, value) .equals(SUCCESS_CODE_STR);
-		returnJedis(jedis);
-		return flag;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.set(key, value) .equals(SUCCESS_CODE_STR);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 
 	@Override
 	public String get(String key) {
-		Jedis jedis = getJedis();
-		String str = jedis.get(key);
-		returnJedis(jedis);
-		return str;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.get(key);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 
 	@Override
 	public boolean exists(String key) {
-		Jedis jedis = getJedis();
-		boolean flag = jedis.exists(key);
-		returnJedis(jedis);
-		return flag;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.exists(key);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 
 	@Override
 	public boolean expire(String key, int expirationTime) {
-		Jedis jedis = getJedis();
-		boolean flag = jedis.expire(key, expirationTime) > 0 ? true : false;
-		returnJedis(jedis);
-		return flag;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.expire(key, expirationTime) > 0 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 
 	@Override
 	public boolean sadd(String key, String[] setValue) {
-		if(setValue == null || setValue.length == 0){
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.sadd(key, setValue) > 0 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
+		} finally {
+			returnJedis(jedis);
 		}
-		Jedis jedis = getJedis();
-		boolean flag = jedis.sadd(key, setValue) > 0 ? true : false;
-		returnJedis(jedis);
-		return flag;
 	}
 
 	@Override
@@ -140,54 +167,91 @@ public class JedisManager implements RedisManager{
 		if(hashValue == null || hashValue.size() == 0){
 			return false;
 		}
-		Jedis jedis = getJedis();
-		long influenceCount = 0;
-		for (Map.Entry<String, String> entry : hashValue.entrySet()) {
-			influenceCount += jedis.hset(key, entry.getKey(), entry.getValue());
+		
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			long influenceCount = 0;
+			for (Map.Entry<String, String> entry : hashValue.entrySet()) {
+				influenceCount += jedis.hset(key, entry.getKey(), entry.getValue());
+			}
+			return influenceCount > 0 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
 		}
-		returnJedis(jedis);
-		boolean flag = influenceCount > 0 ? true : false;
-		return flag;
 	}
 
 	@Override
 	public boolean del(String key) {
-		Jedis jedis = getJedis();
-		boolean flag = jedis.del(key) > 0 ? true : false;
-		returnJedis(jedis);
-		return flag;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.del(key) > 0 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 
 	@Override
 	public boolean lpush(String key, String[] listValue) {
-		Jedis jedis = getJedis();
-		long influenceCount = jedis.lpush(key, listValue);
-		returnJedis(jedis);
-		boolean flag = influenceCount > 0 ? true : false;
-		return flag;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			long influenceCount = jedis.lpush(key, listValue);
+			return influenceCount > 0 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 
 	@Override
 	public String rpop(String key) {
-		Jedis jedis = getJedis();
-		String str = jedis.rpop(key);
-		returnJedis(jedis);
-		return str;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.rpop(key);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 
 	@Override
 	public Set<String> smembers(String key) {
-		Jedis jedis = getJedis();
-		Set<String> set = jedis.smembers(key);
-		returnJedis(jedis);
-		return set;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.smembers(key);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 	
 	@Override
 	public Map<String, String> hgetall(String key) {
-		Jedis jedis = getJedis();
-		Map<String, String> map = jedis.hgetAll(key);
-		returnJedis(jedis);
-		return map;
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.hgetAll(key);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			returnJedis(jedis);
+		}
 	}
 }

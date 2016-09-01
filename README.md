@@ -4,7 +4,7 @@
 
 fast-tookit
 ---
-- 基于jdk开发 不依赖第三方代码 (基于jdk1.7)
+- 基于jdk开发 不依赖第三方代码 (基于jdk1.6)
 
 fast-tookit3d
 ---

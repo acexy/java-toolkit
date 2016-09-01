@@ -32,7 +32,7 @@ public class BeanCopyerTest {
 			Entity1 e1 = new Entity1();
 			e1.setBol(false);
 			
-			List<String> listStr = new ArrayList<>();
+			List<String> listStr = new ArrayList<String>();
 			listStr.add("1");
 //			e1.setListStr(listStr);
 			
@@ -53,7 +53,7 @@ public class BeanCopyerTest {
 			long st = System.currentTimeMillis();
 			Entity1 e1 = new Entity1();
 			e1.setBol(false);
-			List<String> listStr = new ArrayList<>();
+			List<String> listStr = new ArrayList<String>();
 			listStr.add("你好");
 //			e1.setListStr(listStr);
 			String[] strArr = new String[]{"aa","bb","cc"};

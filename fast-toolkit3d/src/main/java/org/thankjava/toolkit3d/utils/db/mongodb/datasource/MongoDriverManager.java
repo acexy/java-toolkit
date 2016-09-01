@@ -190,7 +190,7 @@ public class MongoDriverManager implements MongoDBManager{
 	
 	@Override
 	public List<Document> findMany(String docName, Document docFilter) {
-		List<Document> docs = new ArrayList<>();
+		List<Document> docs = new ArrayList<Document>();
 		MongoCursor<Document> cursor = baseFind(docName, docFilter);
 		while(cursor.hasNext()){
 			docs.add(cursor.next());

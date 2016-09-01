@@ -134,7 +134,7 @@ public final class ThreadTask {
 	* @param isInterrupt
 	 */
 	public void clearAllTasks(boolean isInterrupt){
-		List<String> taskIds = new ArrayList<>();
+		List<String> taskIds = new ArrayList<String>();
 		for (Map.Entry<String, ScheduledFuture<?>> tasks : runningTask.entrySet()) {
 			ScheduledFuture<?> future = runningTask.get(tasks.getKey());
 			boolean flag = future.cancel(isInterrupt);
