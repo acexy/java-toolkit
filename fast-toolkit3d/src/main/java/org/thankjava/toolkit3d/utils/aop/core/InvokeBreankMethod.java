@@ -31,7 +31,9 @@ class InvokeBreankMethod {
 			AopParam param = new AopParam(args);
 			param = (AopParam) ReflectHelper.invokeMethod(cutObj, cutMethod, param);
 			return param;
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -53,7 +55,9 @@ class InvokeBreankMethod {
 			AopParam param = new AopParam(invokeResult);
 			ReflectHelper.invokeMethod(cutObj, cutMethod, param);
 			return param.getResult();
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		return null;

@@ -109,6 +109,7 @@ public final class DefaultHttpClient {
 				OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
 				osw.write(param);
 				osw.flush();
+				osw.close();
 			}
 			
 			//String流传输数据
