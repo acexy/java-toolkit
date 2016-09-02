@@ -191,8 +191,36 @@ public interface MongoDBManager {
 	 */
 	public boolean updateMany(String docName,Document doc,Document docFilter);
 	
+	
+	/**
+	 * 找到符合条件的第一条数据(即使有多条也只认为符合的只有一条),并执行更新,当更新的数据!=1返回false
+	* 更新的文档将置于$set属性值中,用于部分节点更新
+	* <p>Function: updateOne</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年9月2日 下午5:31:08
+	* @version 1.0
+	* @param docName
+	* @param t
+	* @param tFilter
+	* @return
+	 */
 	public boolean updateOne(String docName,Object t,Object tFilter);
 	
+	
+	/**
+	 * 更新多条数据,当找到符合更新条件的数据n条,更新数据y条,当n=0||y=0(或者没有更新任何一条数据)返回false
+	* 更新的文档将置于$set属性值中,用于部分节点更新
+	* <p>Function: updateMany</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年9月2日 下午5:32:24
+	* @version 1.0
+	* @param docName
+	* @param t
+	* @param tFilter
+	* @return
+	 */
 	public boolean updateMany(String docName,Object t,Object tFilter);
 	
 }

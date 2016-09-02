@@ -25,13 +25,13 @@ import com.mongodb.client.result.UpdateResult;
 
 public class MongoDriverManager implements MongoDBManager{
 
-	private static MongoClient mongoClient = null;
 	private static MongoDatabase mongoDatabase = null;
 	
 	final String OPERATOR$SET = "$set";
 	
 	static {
 		Reader reader = null;
+		MongoClient mongoClient = null;
 		try {
 			Properties props = new Properties();
 			reader = SourceLoader.getResourceAsReader("mongodb.properties");

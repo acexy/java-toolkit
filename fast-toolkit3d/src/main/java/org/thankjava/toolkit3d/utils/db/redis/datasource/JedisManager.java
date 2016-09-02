@@ -35,7 +35,6 @@ public class JedisManager implements RedisManager{
 	}
 	
 	private void init() {
-		
 		Reader reader = null;
 		try {
 			Properties props = new Properties();
@@ -54,6 +53,7 @@ public class JedisManager implements RedisManager{
 
 			String pwd = props.getProperty("redis.pwd");
 			if(pwd == null || pwd.trim().length() == 0){
+				//无密码的redis
 				jedisPool = new JedisPool(
 						readConfig,
 						props.getProperty("redis.ip"),
@@ -97,7 +97,7 @@ public class JedisManager implements RedisManager{
 		Jedis jedis = null;
 		try {
 			jedis = getJedis();
-			return jedis.set(key, value) .equals(SUCCESS_CODE_STR);
+			return jedis.set(key, value).equals(SUCCESS_CODE_STR);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
