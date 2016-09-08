@@ -5,9 +5,9 @@ import java.io.UnsupportedEncodingException;
 
 import javax.mail.MessagingException;
 
-import org.thankjava.toolkit3d.enums.utils.mail.MailService;
-import org.thankjava.toolkit3d.utils.mail.MailSender;
-import org.thankjava.toolkit3d.vo.utils.mail.MailEntity;
+import org.thankjava.toolkit3d.enums.mail.MailService;
+import org.thankjava.toolkit3d.mail.MailSender;
+import org.thankjava.toolkit3d.vo.mail.MailEntity;
 
 public class MailTest {
 

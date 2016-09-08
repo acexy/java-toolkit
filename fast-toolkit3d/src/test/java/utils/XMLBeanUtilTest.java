@@ -1,7 +1,7 @@
 package utils;
 
 
-import org.thankjava.toolkit3d.utils.xml.XMLBeanUtil;
+import org.thankjava.toolkit3d.xml.XMLBeanUtil;
 
 public class XMLBeanUtilTest {
 	

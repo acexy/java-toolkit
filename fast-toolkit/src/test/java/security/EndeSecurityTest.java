@@ -1,6 +1,6 @@
 package security;
 
-import org.thankjava.toolkit.utils.security.ThreeEndeSecurity;
+import org.thankjava.toolkit.security.ThreeEndeSecurity;
 
 public class EndeSecurityTest {
 

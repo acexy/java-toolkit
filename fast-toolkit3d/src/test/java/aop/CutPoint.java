@@ -1,6 +1,6 @@
 package aop;
 
-import org.thankjava.toolkit3d.utils.aop.entity.AopParam;
+import org.thankjava.toolkit3d.aop.entity.AopParam;
 
 
 /**
