@@ -1,6 +1,6 @@
 package aop;
 
-import org.thankjava.toolkit.utils.aop.core.AopProxyFactory;
+import org.thankjava.toolkit.aop.core.AopProxyFactory;
 
 public class ProxyTest {
 

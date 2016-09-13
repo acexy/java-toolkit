@@ -1,6 +1,6 @@
 package httpclient;
 
-import org.thankjava.toolkit.utils.httpclient.DefaultHttpClient;
+import org.thankjava.toolkit.httpclient.DefaultHttpClient;
 
 public class HttpClientTest {
 

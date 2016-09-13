@@ -1,8 +1,8 @@
 package zip4j;
 
-import org.thankjava.toolkit3d.enums.utils.zip4j.ZipLevel;
-import org.thankjava.toolkit3d.enums.utils.zip4j.ZipType;
-import org.thankjava.toolkit3d.utils.zip4j.Zip4jHelper;
+import org.thankjava.toolkit3d.enums.zip4j.ZipLevel;
+import org.thankjava.toolkit3d.enums.zip4j.ZipType;
+import org.thankjava.toolkit3d.zip4j.Zip4jHelper;
 
 public class Zip4jHelperTest {
 

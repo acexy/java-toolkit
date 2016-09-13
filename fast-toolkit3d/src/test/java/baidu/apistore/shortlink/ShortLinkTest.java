@@ -1,8 +1,8 @@
 package baidu.apistore.shortlink;
 
 import org.thankjava.toolkit3d.enums.api.baidu.apistore.shortlink.ShortLinkType;
-import org.thankjava.toolkit3d.utils.api.baidu.apistore.shortlink.ShortLink;
-import org.thankjava.toolkit3d.utils.fastjson.FastJson;
+import org.thankjava.toolkit3d.api.baidu.apistore.shortlink.ShortLink;
+import org.thankjava.toolkit3d.fastjson.FastJson;
 import org.thankjava.toolkit3d.vo.api.baidu.apistore.shortlink.ShortLinkData;
 
 public class ShortLinkTest {

@@ -3,8 +3,8 @@ package baidu.translation;
 import java.io.UnsupportedEncodingException;
 
 import org.thankjava.toolkit3d.enums.api.baidu.translation.Language;
-import org.thankjava.toolkit3d.utils.api.baidu.translation.Translation;
-import org.thankjava.toolkit3d.utils.fastjson.FastJson;
+import org.thankjava.toolkit3d.api.baidu.translation.Translation;
+import org.thankjava.toolkit3d.fastjson.FastJson;
 
 public class TranslationTest {
 
