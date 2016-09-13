@@ -2,7 +2,7 @@ package thread;
 
 import java.io.IOException;
 
-import org.thankjava.toolkit.utils.thread.ThreadUtil;
+import org.thankjava.toolkit.thread.ThreadUtil;
 import org.thankjava.toolkit.vo.thread.TaskEntity;
 
 public class ThreadTest {

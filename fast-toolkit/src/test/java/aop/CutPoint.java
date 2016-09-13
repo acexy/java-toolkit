@@ -1,6 +1,6 @@
 package aop;
 
-import org.thankjava.toolkit.utils.aop.entity.AopParam;
+import org.thankjava.toolkit.aop.entity.AopParam;
 
 public class CutPoint {
 

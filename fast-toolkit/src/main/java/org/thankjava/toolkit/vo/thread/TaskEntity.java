@@ -1,6 +1,6 @@
 package org.thankjava.toolkit.vo.thread;
 
-import org.thankjava.toolkit.utils.radom.Sequence;
+import org.thankjava.toolkit.radom.Sequence;
 
 public class TaskEntity {
 
