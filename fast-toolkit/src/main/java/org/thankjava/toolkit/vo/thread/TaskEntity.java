@@ -47,6 +47,13 @@ public class TaskEntity {
 	 * @param runnable 执行体
 	 */
 	public TaskEntity(int startDelayTime, int timeInterval, Runnable runnable){
+		if(startDelayTime < 0){
+			throw new IllegalArgumentException("timeInterval must greater than -1");
+		}
+		if (timeInterval <= 0){
+			throw new IllegalArgumentException("timeInterval must greater than 0");
+		}
+		
 		this.taskId = Sequence.generateChar(6);
 		this.timeInterval = timeInterval;
 		this.runnable = runnable;
