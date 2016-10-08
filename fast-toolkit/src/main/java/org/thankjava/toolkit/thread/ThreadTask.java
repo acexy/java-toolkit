@@ -28,15 +28,19 @@ public final class ThreadTask {
 	}
 	
 	/**
-	 * 添加任务
+	 * 添加任务 该任务将在指定首次延迟时间之后周期循环
 	* <p>Function: addTask</p>
-	* <p>Description: </p>
+	* <p>
+	* Description: 如果任务的任何执行遇到异常,则抑制后续的执行,否则,任务只会通过执行器的取消或终止而终止
+	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后将立刻执行
+	* 2.下一个任务的执行时间并不是上一个任务完成后才计算指定的周期延时时间,而是上一个任务一开始,下一个任务的延迟时间就开始计算
+	* </p>
 	* @author zhaoxy@thankjava.com
 	* @date 2016年1月12日 上午11:39:12
 	* @version 1.0
 	* @param taskEntity
 	 */
-	public void addTask(TaskEntity taskEntity){
+	public void addTaskAtFixedRate(TaskEntity taskEntity){
 		ScheduledFuture<?> future = scheduledExecutorService.scheduleAtFixedRate(
 				taskEntity.getRunnable(), 
 				taskEntity.getStartDelayTime(), 
@@ -47,15 +51,19 @@ public final class ThreadTask {
 	}
 	
 	/**
-	 * 添加批量任务
+	 * 添加批量任务 该任务将在指定首次延迟时间之后周期循环
 	* <p>Function: addTask</p>
-	* <p>Description: </p>
+	* <p>
+	* Description: 如果任务的任何执行遇到异常,则抑制后续的执行,否则,任务只会通过执行器的取消或终止而终止
+	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后将立刻执行
+	* 2.下一个任务的执行时间并不是上一个任务完成后才计算指定的周期延时时间,而是上一个任务一开始,下一个任务的延迟时间就开始计算
+	* </p>
 	* @author zhaoxy@thankjava.com
-	* @date 2016年1月12日 上午11:39:53
+	* @date 2016年1月12日 上午11:39:12
 	* @version 1.0
-	* @param taskEntitys
+	* @param taskEntity
 	 */
-	public void addTask(List<TaskEntity> taskEntitys){
+	public void addTaskAtFixedRate(List<TaskEntity> taskEntitys){
 		for (TaskEntity taskEntity : taskEntitys) {
 			ScheduledFuture<?> future = scheduledExecutorService.scheduleAtFixedRate(
 					taskEntity.getRunnable(), 
@@ -68,28 +76,64 @@ public final class ThreadTask {
 	}
 	
 	/**
-	 * 只执行一次
-	 * @param runnable
+	 * 添加任务 该任务将在指定首次延迟时间之后按照指定频率固定周期循环
+	* <p>Function: addTaskWithFixedDelay</p>
+	* <p>
+	* Description: 如果任务的任何执行遇到异常,则抑制后续的执行,否则,任务只会通过执行器的取消或终止而终止
+	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后才计算周期延迟时间
+	* </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年10月8日 下午3:24:48
+	* @version 1.0
+	* @param taskEntity
 	 */
-	public void addTaskRunOnce(Runnable runnable){
-		TaskEntity taskEntity = new TaskEntity(0, Integer.MAX_VALUE, runnable);
-		scheduledExecutorService.scheduleAtFixedRate(
+	public void addTaskWithFixedDelay(TaskEntity taskEntity){
+		ScheduledFuture<?> future = scheduledExecutorService.scheduleWithFixedDelay(
 				taskEntity.getRunnable(), 
 				taskEntity.getStartDelayTime(), 
 				taskEntity.getTimeInterval(), 
 				TimeUnit.SECONDS
 				);
+		runningTask.put(taskEntity.getTaskId(), future);
 	}
 	
-	public void addTaskRunOnce(int startDelayTime,Runnable runnable){
-		TaskEntity taskEntity = new TaskEntity(startDelayTime, Integer.MAX_VALUE, runnable);
-		scheduledExecutorService.scheduleAtFixedRate(
-				taskEntity.getRunnable(), 
-				taskEntity.getStartDelayTime(), 
-				taskEntity.getTimeInterval(), 
-				TimeUnit.SECONDS
-				);
-		
+	/**
+	 * 添加批量任务 该任务将在指定首次延迟时间之后周期循环
+	* <p>Function: addTask</p>
+	* <p>
+	* Description: 如果任务的任何执行遇到异常,则抑制后续的执行,否则,任务只会通过执行器的取消或终止而终止
+	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后才计算周期延迟时间
+	* </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年1月12日 上午11:39:12
+	* @version 1.0
+	* @param taskEntity
+	 */
+	public void addTaskWithFixedDelay(List<TaskEntity> taskEntitys){
+		for (TaskEntity taskEntity : taskEntitys) {
+			ScheduledFuture<?> future = scheduledExecutorService.scheduleWithFixedDelay(
+					taskEntity.getRunnable(), 
+					taskEntity.getStartDelayTime(), 
+					taskEntity.getTimeInterval(), 
+					TimeUnit.SECONDS
+					);
+			runningTask.put(taskEntity.getTaskId(), future);
+		}
+	}
+	
+	
+	/**
+	 * 运行一次的指定任务
+	* <p>Function: addTaskRunOnce</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年10月8日 下午3:00:51
+	* @version 1.0
+	* @param startDelayTime 延迟时间(s)
+	* @param runnable
+	 */
+	public void addTaskRunOnce(int startDelayTime, Runnable runnable){
+		scheduledExecutorService.schedule(runnable, startDelayTime, TimeUnit.SECONDS);
 	}
 	
 	/**

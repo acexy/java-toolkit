@@ -24,19 +24,6 @@ public class TaskEntity {
 	 */
 	private Runnable runnable;
 
-	/**
-	 * 初始化对象
-	 * @param startDelayTime
-	 * @param timeInterval 间隔时间不能小于0 （秒）
-	 * @param runnable
-	 */
-	public TaskEntity(int startDelayTime, int timeInterval, Runnable runnable){
-		this.taskId = Sequence.generateChar(6);
-		this.timeInterval = timeInterval;
-		this.runnable = runnable;
-		this.startDelayTime = startDelayTime;
-	}
-	
 	public String getTaskId() {
 		return taskId;
 	}
@@ -53,6 +40,17 @@ public class TaskEntity {
 		return runnable;
 	}
 	
-	
+	/**
+	 * 初始化对象
+	 * @param startDelayTime(s)
+	 * @param timeInterval 任务周期性启动的间隔,时间不能小于0(s)
+	 * @param runnable 执行体
+	 */
+	public TaskEntity(int startDelayTime, int timeInterval, Runnable runnable){
+		this.taskId = Sequence.generateChar(6);
+		this.timeInterval = timeInterval;
+		this.runnable = runnable;
+		this.startDelayTime = startDelayTime;
+	}
 
 }
