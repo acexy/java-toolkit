@@ -1,7 +1,11 @@
 package thread;
 
 import java.io.IOException;
+import java.util.Date;
 
+import org.thankjava.toolkit.date.TimeHelper;
+import org.thankjava.toolkit.date.TimeHelper.TimeType;
+import org.thankjava.toolkit.thread.ThreadTask;
 import org.thankjava.toolkit.thread.ThreadUtil;
 import org.thankjava.toolkit.vo.thread.TaskEntity;
 
@@ -16,11 +20,10 @@ public class ThreadTest {
 			}
 		});
 
-//		ThreadTask threadTask = new ThreadTask(10);
-//		TaskEntity task1 = task1();
-//		threadTask.addTask(task1);
-//		System.out.println("加入任务1");
-//		System.out.println("运行中的任务数量: " + threadTask.getRunningTaskCount());
+		ThreadTask threadTask = new ThreadTask(10);
+		TaskEntity task1 = task1();
+//		threadTask.addTaskAtFixedRate(task1);
+		threadTask.addTaskWithFixedDelay(task1);
 //
 //		Thread.sleep(3000);
 //		System.out.println("线程休息3秒后 加入任务2");
@@ -90,25 +93,27 @@ public class ThreadTest {
 	}
 
 	private static TaskEntity task1() {
-		return new TaskEntity(0, 0, new Runnable() {
-
+		return new TaskEntity(0, 1, new Runnable() {
 			@Override
 			public void run() {
-				for (int i = 0; i < 10; i++) {
+				System.out.println("============================");
+				for (int i = 0; i < 5; i ++) {
 					try {
+						System.out.println("task 1 running " + i + " " + TimeHelper.formatDate(TimeType.DEFAULT, new Date()));
 						Thread.sleep(1000);
-						System.out.println("task 1 running" + i);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					if(i == 4){
+						break;
+					}
 				}
-//				System.out.println("task 1 running");
 			}
 		});
 	}
 
 	private static TaskEntity task2() {
-		return new TaskEntity(1, 1, new Runnable() {
+		return new TaskEntity(0, 1, new Runnable() {
 			@Override
 			public void run() {
 				System.out.println("task 2 running");
