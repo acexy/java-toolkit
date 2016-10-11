@@ -21,6 +21,7 @@ public final class TimeHelper {
 		DEFAULT("yyyy-MM-dd|HH:mm:ss"),
 		yyyyMMddHH("yyyyMMddHH"),
 		yyyyMMddHHmmssSSS("yyyyMMddHHmmssSSS"),
+		yyyyMMddHHmmss("yyyyMMddHHmmss"),
 		yyyyMMdd("yyyyMMdd"),
 		HHmmss("HHmmss"),
 		;
