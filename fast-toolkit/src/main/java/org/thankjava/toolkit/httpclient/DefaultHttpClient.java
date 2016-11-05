@@ -92,16 +92,15 @@ public final class DefaultHttpClient {
 			connection.setRequestProperty("content-type", "application/x-www-form-urlencoded");
 			connection.setRequestProperty("user-agent", USER_AGENT);
 			
+			connection.setDoOutput(true);
+			connection.setDoInput(true);
+			
 			//通过kv传送数据
 			if (props != null && props.size() > 0) {
 				for (Map.Entry<String, String> prop : props.entrySet()) {
 					connection.setRequestProperty(prop.getKey(), prop.getValue());
 				}
 			}
-			
-			connection.setDoOutput(true);
-			connection.setDoInput(true);
-			connection.connect();
 			
 			//post param 传输数据
 			if (param != null) {
@@ -116,6 +115,8 @@ public final class DefaultHttpClient {
 				OutputStream outputStream = connection.getOutputStream();
 				outputStream.write(strStream.getBytes(CHARSET));
 			}
+			
+			connection.connect();
 			
 			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			

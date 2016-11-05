@@ -1,5 +1,8 @@
 package httpclient;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.thankjava.toolkit.httpclient.DefaultHttpClient;
 
 public class HttpClientTest {
@@ -15,12 +18,8 @@ public class HttpClientTest {
 //		System.out.println(DefaultHttpClient.post("http://apis.baidu.com/chazhao/shorturl/shorturl", httpArg,props));
 		
 		
-//		String httpArg = "user=可以&title=路边小吃&price=18";
-//		Map<String, String> props = new HashMap<>();
-//		props.put("price", "16");
-//		props.put("title", "application/json;charset=utf-8");
-//		props.put("user", "你好");
-//		System.out.println(DefaultHttpClient.post("http://elm.f-road.com.cn/add.php", httpArg,props));
+		String httpArg = "user=可以&title=路边小吃&price=18";
+		System.out.println(DefaultHttpClient.post("http://elm.f-road.com.cn/add.php", httpArg,null,null));
 		
 //		String html = DefaultHttpClient.get("http://elm.f-road.com.cn/");
 //		html = html.substring(html.indexOf("<div class=\"peoplelist\">"));
@@ -30,8 +29,12 @@ public class HttpClientTest {
 //		System.out.println(DefaultHttpClient.post("http://www.baidu.com", null,null,"{\"appKey\":\"9f8b1480a82011e4a5ed90b11c4a15da\",\"version\":\"1.0.1\",\"type\":\"21\"}"));
 		
 		
-		String url = "http://localhost:6004/area/selectCity";
-		System.out.println(DefaultHttpClient.get(url));
+//		String url = "http://localhost:6004/area/selectCity";
+//		System.out.println(DefaultHttpClient.get(url));
+		
+		
+//		String html = DefaultHttpClient.get("http://10.24.248.50:60000/code?mobile=13527459070");
+//		System.out.println(html);
 	}
 	
 }
