@@ -1,5 +1,6 @@
 package org.thankjava.toolkit.reflect;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -55,7 +56,7 @@ public final class ReflectHelper {
 	* @param clazz
 	* @return
 	 */
-	public static Field[] getFieldArrayExcludeUID(Class<?> clazz){
+	public static Field[] getFieldArrayIncludeSupClassExcludeUID(Class<?> clazz){
 		Field[] currField = clazz.getDeclaredFields();
 		clazz = clazz.getSuperclass();
 		Field[] supField = clazz.getDeclaredFields();
@@ -76,6 +77,41 @@ public final class ReflectHelper {
 			length ++ ;
 		}
 		Field[] all = new Field[length];
+		for (int i = 0 ; i < all.length ; i ++) {
+			all[i] = temp[i];
+		}
+		return all;
+	}
+	
+	/**
+	 * 获取指定对象的所有属性，不包含父类属性
+	* <p>Function: getFieldArrayExcludeUID</p>
+	* <p>Description: 不抓取serialVersionUID属性</p>
+	* @author zhaoxy@thankjava.com
+	* @date 2014-12-16 上午11:27:44
+	* @version 1.0
+	* @param clazz
+	* @return
+	 */
+	public static Field[] getFieldArrayExcludeUID(Class<?> clazz){
+		Field[] currField = clazz.getDeclaredFields();
+		
+		Field[] temp = new Field[currField.length];
+		boolean getUid = false;
+		
+		int index = 0;
+		for (Field curr : currField) {
+			if("serialVersionUID".equals(curr.getName())){
+				getUid = true;
+				continue;
+			}
+			temp[index] = curr;
+			index ++ ;
+		}
+		if(!getUid){
+			return currField;
+		}
+		Field[] all = new Field[index];
 		for (int i = 0 ; i < all.length ; i ++) {
 			all[i] = temp[i];
 		}
