@@ -18,8 +18,8 @@ public class HttpClientTest {
 //		System.out.println(DefaultHttpClient.post("http://apis.baidu.com/chazhao/shorturl/shorturl", httpArg,props));
 		
 		
-		String httpArg = "user=可以&title=路边小吃&price=18";
-		System.out.println(DefaultHttpClient.post("http://elm.f-road.com.cn/add.php", httpArg,null,null));
+//		String httpArg = "user=可以&title=路边小吃&price=18";
+//		System.out.println(DefaultHttpClient.post("http://localhost:7788/koa/test/index", httpArg,null,null));
 		
 //		String html = DefaultHttpClient.get("http://elm.f-road.com.cn/");
 //		html = html.substring(html.indexOf("<div class=\"peoplelist\">"));
@@ -35,6 +35,7 @@ public class HttpClientTest {
 		
 //		String html = DefaultHttpClient.get("http://10.24.248.50:60000/code?mobile=13527459070");
 //		System.out.println(html);
+		System.out.println(DefaultHttpClient.post("http://localhost:11548/funpay/merchant/add", null, null, "{\"a\":1}"));
 	}
 	
 }

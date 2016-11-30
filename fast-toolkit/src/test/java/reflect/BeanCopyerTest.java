@@ -1,4 +1,4 @@
-package reflect.bean;
+package reflect;
 
 import java.util.ArrayList;
 import java.util.List;

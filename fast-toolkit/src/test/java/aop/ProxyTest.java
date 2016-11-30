@@ -11,11 +11,11 @@ public class ProxyTest {
 		 */
 		IBusiness iBusiness = AopProxyFactory.createProxyObject(IBusiness.class, new BusinessImpl());
 		
-		long st = System.currentTimeMillis();
-		for (int i = 0 ; i < 100000 ; i ++) {
-			System.out.println("最终函数获得的返回值: " + iBusiness.exe(1));
+//		long st = System.currentTimeMillis();
+//		for (int i = 0 ; i < 100000 ; i ++) {
+//			System.out.println("最终函数获得的返回值: " + iBusiness.exe(1));
 			System.out.println("最终函数获得的返回值: " + iBusiness.exe("1"));
-		}
-		System.out.println("total time : " + (System.currentTimeMillis() - st));
+//		}
+//		System.out.println("total time : " + (System.currentTimeMillis() - st));
 	}
 }
