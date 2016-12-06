@@ -1,16 +1,20 @@
 package utils;
 
+import java.util.List;
+
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
 public class EntityB {
 
-	private double dou;
+	private String[] dou;
 
-	public double getDou() {
+	public String[] getDou() {
 		return dou;
 	}
 
-	public void setDou(double dou) {
+	public void setDou(String[] dou) {
 		this.dou = dou;
 	}
-	
+
 	
 }

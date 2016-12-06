@@ -1,5 +1,6 @@
 package org.thankjava.toolkit3d.xml;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.thoughtworks.xstream.XStream;
@@ -18,6 +19,8 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class XMLBeanUtil {
 
 	private static final String ENCODING = "utf-8";
+	private static XStream xStream = new XStream(new DomDriver(ENCODING));
+	private static Map<Class<?>, XStream> xStreamInstance = new HashMap<Class<?>, XStream>();
 	
 	/**
 	 * 将xml转java对象
@@ -33,23 +36,29 @@ public class XMLBeanUtil {
 	* @return
 	 */
 	public static <T> T xml2Bean(String xmlRoot, String xml,Class<T> clazz,boolean isIgnoreUnkonwnEles) {
-		XStream xStream = new XStream(new DomDriver(ENCODING));
-		if(isIgnoreUnkonwnEles){
-			xStream.ignoreUnknownElements();
+		XStream xStream = xStreamInstance.get(clazz);
+		if(xStream == null){
+			xStream = new XStream(new DomDriver(ENCODING));
+			xStream.alias(xmlRoot, clazz);
+			if(isIgnoreUnkonwnEles){
+				xStream.ignoreUnknownElements();
+			}
 		}
-		xStream.alias(xmlRoot, clazz);
 		@SuppressWarnings("unchecked")
 		T t = (T) xStream.fromXML(xml);
 		return t;
 	}
 	
 	public static <T> T xml2Bean(Map<String, Class<?>> classMap, String xmlStr,Class<T> clazz,boolean isIgnoreUnkonwnEles) {
-		XStream xStream = new XStream(new DomDriver(ENCODING));
-		if(isIgnoreUnkonwnEles){
-			xStream.ignoreUnknownElements();
-		}
-		for (String key : classMap.keySet()) {
-			xStream.alias(key, classMap.get(key));
+		XStream xStream = xStreamInstance.get(clazz);
+		if(xStream == null){
+			xStream = new XStream(new DomDriver(ENCODING));
+			for (String key : classMap.keySet()) {
+				xStream.alias(key, classMap.get(key));
+			}
+			if(isIgnoreUnkonwnEles){
+				xStream.ignoreUnknownElements();
+			}
 		}
 		@SuppressWarnings("unchecked")
 		T t = (T) xStream.fromXML(xmlStr);
@@ -57,7 +66,6 @@ public class XMLBeanUtil {
 	}
 
 	public static String bean2Xml(Object obj) {
-		XStream xStream = new XStream(new DomDriver(ENCODING));
 		String xml = xStream.toXML(obj);
 		return xml;
 	}
