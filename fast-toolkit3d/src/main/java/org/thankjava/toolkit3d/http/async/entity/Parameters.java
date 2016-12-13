@@ -7,16 +7,16 @@ import java.util.Map;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-public class Parameter {
+public class Parameters {
 
 	private List<NameValuePair> nameValuePairs = null;
 	
-	public Parameter(String name,String value){
+	public Parameters(String name,String value){
 		nameValuePairs = new ArrayList<NameValuePair>();
 		nameValuePairs.add(new BasicNameValuePair(name, value));
 	}
 	
-	public Parameter(Map<String, String> parameters) {
+	public Parameters(Map<String, String> parameters) {
 		if (parameters == null || parameters.size() == 0) {
 			return;
 		}
@@ -41,11 +41,10 @@ public class Parameter {
 		StringBuffer sb = new StringBuffer();
 		sb.append("?");
 		for (NameValuePair nameValuePair : nameValuePairs) {
-			sb.append(nameValuePair.getName());
-			sb.append("=");
-			sb.append(nameValuePair.getValue());
+			sb.append(nameValuePair.toString());
 			sb.append("&");
 		}
+		sb.deleteCharAt(sb.length() - 1);
 		return sb.toString();
 	}
 }

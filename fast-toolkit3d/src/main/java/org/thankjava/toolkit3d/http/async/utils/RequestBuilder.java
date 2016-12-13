@@ -6,8 +6,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.thankjava.toolkit3d.http.async.consts.HttpMethod;
-import org.thankjava.toolkit3d.http.async.entity.Header;
-import org.thankjava.toolkit3d.http.async.entity.Parameter;
+import org.thankjava.toolkit3d.http.async.entity.Headers;
+import org.thankjava.toolkit3d.http.async.entity.Parameters;
 import org.thankjava.toolkit3d.http.async.entity.RequestParams;
 
 
@@ -53,9 +53,9 @@ public class RequestBuilder {
 	private static Object builderRequest(RequestParams requestParams){
 		Object request = null;
 		
-		if(HttpMethod.POST.equals(requestParams.getHttpMethod())){
+		if(HttpMethod.post.equals(requestParams.getHttpMethod())){
 			request = addParamsPost(requestParams);
-		} else if(HttpMethod.GET.equals(requestParams.getHttpMethod())){
+		} else if(HttpMethod.get.equals(requestParams.getHttpMethod())){
 			request = addParamsGet(requestParams);
 		}
 		return request;
@@ -63,12 +63,12 @@ public class RequestBuilder {
 	
 	private static Object addParamsPost(RequestParams requestParams){
 		HttpPost post = new HttpPost(requestParams.getUrl());
-		Header header = requestParams.getHeader();
+		Headers header = requestParams.getHeader();
 		if(header != null){
 			post.setHeaders(header.toArray());
 		}
 		
-		Parameter parameter = requestParams.getParameter();
+		Parameters parameter = requestParams.getParameter();
 		if(parameter != null){
 			try {
 				post.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), requestParams.getCharset().charset));
@@ -83,14 +83,14 @@ public class RequestBuilder {
 	private static Object addParamsGet(RequestParams requestParams){
 		
 		HttpGet get;
-		Parameter parameter = requestParams.getParameter();
+		Parameters parameter = requestParams.getParameter();
 		if(parameter != null){
 			get = new HttpGet(requestParams.getUrl() + parameter.toUrlParams());
 		}else{
 			get = new HttpGet(requestParams.getUrl());
 		}
 		
-		Header header = requestParams.getHeader();
+		Headers header = requestParams.getHeader();
 		if(header != null){
 			get.setHeaders(header.toArray());
 		}

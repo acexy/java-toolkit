@@ -18,12 +18,12 @@ public class RequestParams {
 	/**
 	 * 携带的头部信息
 	 */
-	private Header header;
+	private Headers header;
 	
 	/**
 	 * 携带的请求参数
 	 */
-	private Parameter parameter;
+	private Parameters parameter;
 	
 	/**
 	 * 请求方式
@@ -33,27 +33,34 @@ public class RequestParams {
 	/**
 	 * 编码
 	 */
-	private Charset charset = Charset.UTF8;
+	private Charset charset = Charset.utf8;
 	
 	public RequestParams(String url, HttpMethod httpMethod) {
 		this.url = url;
 		this.httpMethod = httpMethod;
 	}
 	
-	public RequestParams(String url, HttpMethod httpMethod, Parameter parameter) {
+	public RequestParams(String url, HttpMethod httpMethod, Parameters parameter) {
 		this.url = url;
 		this.httpMethod = httpMethod;
 		this.parameter = parameter;
 	}
 	
-	public RequestParams(String url, HttpMethod httpMethod, Cookies cookies, Header header) {
+	public RequestParams(String url, HttpMethod httpMethod, Parameters parameter, Headers header) {
+		this.url = url;
+		this.httpMethod = httpMethod;
+		this.parameter = parameter;
+		this.header = header;
+	}
+	
+	public RequestParams(String url, HttpMethod httpMethod, Cookies cookies, Headers header) {
 		this.url = url;
 		this.httpMethod = httpMethod;
 		this.cookies = cookies;
 		this.header = header;
 	}
 
-	public RequestParams(String url, HttpMethod httpMethod, Cookies cookies, Header header, Parameter parameter) {
+	public RequestParams(String url, HttpMethod httpMethod, Cookies cookies, Headers header, Parameters parameter) {
 		this.url = url;
 		this.httpMethod = httpMethod;
 		this.cookies = cookies;
@@ -67,10 +74,10 @@ public class RequestParams {
 	public Cookies getCookies() {
 		return cookies;
 	}
-	public Header getHeader() {
+	public Headers getHeader() {
 		return header;
 	}
-	public Parameter getParameter() {
+	public Parameters getParameter() {
 		return parameter;
 	}
 	public HttpMethod getHttpMethod() {

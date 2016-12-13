@@ -19,6 +19,7 @@ public class AsyncHttpClient {
 	
 	AsyncHttpClient(CloseableHttpAsyncClient closeableHttpAsyncClient){
 		AsyncHttpClient.closeableHttpAsyncClient = closeableHttpAsyncClient;
+		
 		closeableHttpAsyncClient.start();
 		init();
 	}
