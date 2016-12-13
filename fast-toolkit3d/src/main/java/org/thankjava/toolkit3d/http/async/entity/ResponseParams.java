@@ -1,7 +1,5 @@
 package org.thankjava.toolkit3d.http.async.entity;
 
-import java.io.InputStream;
-
 public class ResponseParams {
 
 	private Headers header;

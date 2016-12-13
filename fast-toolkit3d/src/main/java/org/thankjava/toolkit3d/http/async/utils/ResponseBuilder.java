@@ -1,13 +1,8 @@
 package org.thankjava.toolkit3d.http.async.utils;
 
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -17,7 +12,6 @@ import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.util.EntityUtils;
-import org.thankjava.toolkit3d.http.async.consts.HeaderName;
 import org.thankjava.toolkit3d.http.async.consts.HyperTextContentTypeValue;
 import org.thankjava.toolkit3d.http.async.entity.Cookies;
 import org.thankjava.toolkit3d.http.async.entity.Headers;
