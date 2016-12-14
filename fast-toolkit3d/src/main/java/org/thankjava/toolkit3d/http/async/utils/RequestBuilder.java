@@ -50,6 +50,10 @@ public class RequestBuilder {
 		return (HttpPost)builderRequest(requestParams);
 	}
 	
+	
+	
+	// Impl
+	
 	private static Object builderRequest(RequestParams requestParams){
 		Object request = null;
 		
@@ -62,6 +66,7 @@ public class RequestBuilder {
 	}
 	
 	private static Object addParamsPost(RequestParams requestParams){
+		
 		HttpPost post = new HttpPost(requestParams.getUrl());
 		Headers header = requestParams.getHeader();
 		if(header != null){

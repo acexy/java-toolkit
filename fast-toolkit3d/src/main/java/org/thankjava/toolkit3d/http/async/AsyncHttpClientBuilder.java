@@ -30,7 +30,6 @@ public class AsyncHttpClientBuilder {
 	 */
 	public static AsyncHttpClient createCommon(){
 		HttpAsyncClientBuilder httpAsyncClientBuilder = HttpAsyncClients.custom();
-		// 
 		return new AsyncHttpClient(httpAsyncClientBuilder.build());
 	}
 }
