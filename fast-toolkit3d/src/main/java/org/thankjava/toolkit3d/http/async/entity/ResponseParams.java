@@ -2,9 +2,24 @@ package org.thankjava.toolkit3d.http.async.entity;
 
 public class ResponseParams {
 
+	/**
+	 * 返回的头部信息
+	 */
 	private Headers header;
+	
+	/**
+	 * 返回的cookies信息
+	 */
 	private Cookies cookies;
+	
+	/**
+	 * 返回的内容信息
+	 */
 	private String content;
+	
+	/**
+	 * 返回的流 byte数组
+	 */
 	private byte[] bytes;
 	
 	public Headers getHeader() {

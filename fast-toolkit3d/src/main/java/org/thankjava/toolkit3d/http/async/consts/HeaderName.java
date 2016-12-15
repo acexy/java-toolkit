@@ -2,7 +2,8 @@ package org.thankjava.toolkit3d.http.async.consts;
 
 public enum HeaderName {
 
-	content_type("Content-Type")
+	content_type("Content-Type"),
+	refered("Referer"),
 	;
 	
 	public String name;
