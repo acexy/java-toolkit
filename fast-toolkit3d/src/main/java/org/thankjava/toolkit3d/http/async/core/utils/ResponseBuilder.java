@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.http.async.utils;
+package org.thankjava.toolkit3d.http.async.core.utils;
 
 import java.io.IOException;
 import java.util.List;

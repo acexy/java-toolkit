@@ -1,5 +1,6 @@
 package org.thankjava.toolkit3d.http.async.entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,32 +25,13 @@ public class Cookies {
 		return cookies.get(name);
 	}
 	
-//	public Headers(Map<String, String> headers) {
-//		if (headers == null || headers.size() == 0) {
-//			return;
-//		}
-//		this.headers = new ArrayList<org.apache.http.Header>();
-//		for (Map.Entry<String, String> entry : headers.entrySet()) {
-//			this.headers.add(new BasicHeader(entry.getKey(), entry.getValue()));
-//		}
-//	}
-//
-//	public void append(String name, String value) {
-//		headers.add(new BasicHeader(name, value));
-//	}
-//
-//	public org.apache.http.Header[] toArray(){
-//		if(headers == null){
-//			return null;
-//		}
-//		int size = headers.size();
-//		org.apache.http.Header[] headerArray = new org.apache.http.Header[size];
-//		for (int index = 0; index < size; index ++) {
-//			headerArray[index] = headers.get(index);
-//		}
-//		return headerArray;
-//	}
-	
+	public List<Cookie> getAllCookies(){
+		List<Cookie> list = new ArrayList<Cookie>();
+		for (Map.Entry<String, Cookie> cookie : cookies.entrySet()) {
+			list.add(cookie.getValue());
+		}
+		return list;
+	}
 	@Override
 	public String toString() {
 		return cookies.toString();

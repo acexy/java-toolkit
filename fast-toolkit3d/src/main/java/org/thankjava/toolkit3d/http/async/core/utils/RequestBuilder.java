@@ -1,4 +1,4 @@
-package org.thankjava.toolkit3d.http.async.utils;
+package org.thankjava.toolkit3d.http.async.core.utils;
 
 import java.io.UnsupportedEncodingException;
 
@@ -21,7 +21,6 @@ import org.thankjava.toolkit3d.http.async.entity.RequestParams;
  */
 public class RequestBuilder {
 
-	
 	/**
 	 * 创建get请求对象
 	* <p>Function: builderGet</p>
@@ -49,7 +48,6 @@ public class RequestBuilder {
 	public static HttpPost builderPost(RequestParams requestParams){
 		return (HttpPost)builderRequest(requestParams);
 	}
-	
 	
 	
 	// Impl
