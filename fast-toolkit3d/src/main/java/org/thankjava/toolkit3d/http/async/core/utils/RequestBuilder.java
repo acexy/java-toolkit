@@ -1,10 +1,12 @@
 package org.thankjava.toolkit3d.http.async.core.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
 import org.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import org.thankjava.toolkit3d.http.async.entity.Headers;
 import org.thankjava.toolkit3d.http.async.entity.Parameters;
@@ -85,12 +87,14 @@ public class RequestBuilder {
 	
 	private static Object addParamsGet(RequestParams requestParams){
 		
-		HttpGet get;
+		HttpGet get = new HttpGet(requestParams.getUrl());
 		Parameters parameter = requestParams.getParameter();
 		if(parameter != null){
-			get = new HttpGet(requestParams.getUrl() + parameter.toUrlParams());
-		}else{
-			get = new HttpGet(requestParams.getUrl());
+			try {
+				get.setURI(new URIBuilder(get.getURI()).addParameters(parameter.getNameValuePair()).build());
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		Headers header = requestParams.getHeader();

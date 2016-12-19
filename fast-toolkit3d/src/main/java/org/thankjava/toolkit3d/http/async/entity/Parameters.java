@@ -34,17 +34,17 @@ public class Parameters {
 		return nameValuePairs;
 	}
 	
-	public String toUrlParams(){
-		if(nameValuePairs == null){
-			return null;
-		}
-		StringBuffer sb = new StringBuffer();
-		sb.append("?");
-		for (NameValuePair nameValuePair : nameValuePairs) {
-			sb.append(nameValuePair.toString());
-			sb.append("&");
-		}
-		sb.deleteCharAt(sb.length() - 1);
-		return sb.toString();
-	}
+//	public String toUrlParams(){
+//		if(nameValuePairs == null){
+//			return null;
+//		}
+//		StringBuffer sb = new StringBuffer();
+//		sb.append("?");
+//		for (NameValuePair nameValuePair : nameValuePairs) {
+//			sb.append(nameValuePair.toString());
+//			sb.append("&");
+//		}
+//		sb.deleteCharAt(sb.length() - 1);
+//		return sb.toString();
+//	}
 }
