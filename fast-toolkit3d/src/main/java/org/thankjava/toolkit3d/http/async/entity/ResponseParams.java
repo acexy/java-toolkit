@@ -3,6 +3,10 @@ package org.thankjava.toolkit3d.http.async.entity;
 public class ResponseParams {
 
 	/**
+	 * 返回http状态码
+	 */
+	private int httpCode;
+	/**
 	 * 返回的头部信息
 	 */
 	private Headers header;
@@ -46,16 +50,25 @@ public class ResponseParams {
 	public void setBytes(byte[] bytes) {
 		this.bytes = bytes;
 	}
+	public int getHttpCode() {
+		return httpCode;
+	}
+	public void setHttpCode(int httpCode) {
+		this.httpCode = httpCode;
+	}
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("header: [");
+		buffer.append("httpCode: [");
+		buffer.append(String.valueOf(httpCode));
+		buffer.append("] header: [");
 		buffer.append(header == null ? "" : header.toString());
 		buffer.append("] cookies: [");
 		buffer.append(cookies == null ? "" : cookies.toString());
 		buffer.append("] content: [");
 		buffer.append(content == null ? "" : content);
 		buffer.append("]");
+		
 		return buffer.toString();
 	}
 	

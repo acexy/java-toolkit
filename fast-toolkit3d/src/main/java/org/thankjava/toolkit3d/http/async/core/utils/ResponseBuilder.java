@@ -9,6 +9,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.util.EntityUtils;
+import org.thankjava.toolkit3d.http.async.consts.Charset;
 import org.thankjava.toolkit3d.http.async.consts.HyperTextContentTypeValue;
 import org.thankjava.toolkit3d.http.async.entity.Cookies;
 import org.thankjava.toolkit3d.http.async.entity.Headers;
@@ -20,24 +21,10 @@ public class ResponseBuilder {
 	
 	private ResponseBuilder() {}
 
-	public static ResponseParams builder(HttpResponse response) {
+	public static ResponseParams builder(HttpResponse response, Charset charset, List<Cookie> cookies) {
 		ResponseParams responseParams = new ResponseParams();
 		
-		// 处理header
-		Header[] headers = response.getAllHeaders();
-		if (headers != null && headers.length > 0) {
-			responseParams.setHeader(new Headers(headers));
-		}
-		
-		sortResponseEntity(responseParams, response);
-
-		return responseParams;
-	}
-	
-	public static ResponseParams builder(HttpResponse response, List<Cookie> cookies) {
-		
-		ResponseParams responseParams = new ResponseParams();
-		
+		responseParams.setHttpCode(response.getStatusLine().getStatusCode());
 		// 处理header
 		Header[] headers = response.getAllHeaders();
 		if (headers != null && headers.length > 0) {
@@ -48,17 +35,17 @@ public class ResponseBuilder {
 			responseParams.setCookies(new Cookies(cookies));
 		}
 		
-		sortResponseEntity(responseParams, response);
+		sortResponseEntity(responseParams, charset, response);
 		
 		return responseParams;
 	}
 
-	private static void sortResponseEntity(ResponseParams responseParams, HttpResponse response) {
+	private static void sortResponseEntity(ResponseParams responseParams, Charset charset, HttpResponse response) {
 		HttpEntity entity = response.getEntity();
 		Header contentType = entity.getContentType();
 		if(contentType == null){
 			try {
-				responseParams.setContent(EntityUtils.toString(entity));
+				responseParams.setContent(EntityUtils.toString(entity,"gb2312"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -80,7 +67,7 @@ public class ResponseBuilder {
 				}
 			}
 			try {
-				responseParams.setContent(EntityUtils.toString(entity));
+				responseParams.setContent(EntityUtils.toString(entity,"gb2312"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

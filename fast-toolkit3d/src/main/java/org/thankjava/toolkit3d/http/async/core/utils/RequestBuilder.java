@@ -76,7 +76,7 @@ public class RequestBuilder {
 		Parameters parameter = requestParams.getParameter();
 		if(parameter != null){
 			try {
-				post.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), requestParams.getCharset().charset));
+				post.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), requestParams.getReqCharset().charset));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			} 

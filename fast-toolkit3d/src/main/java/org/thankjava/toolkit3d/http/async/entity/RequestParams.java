@@ -31,9 +31,14 @@ public class RequestParams {
 	private HttpMethod httpMethod;
 	
 	/**
-	 * 编码
+	 * 请求编码 默认utf8
 	 */
-	private Charset charset = Charset.utf8;
+	private Charset reqCharset = Charset.utf8;
+	
+	/**
+	 * 响应编码 默认utf8
+	 */
+	private Charset resCharset = Charset.utf8;
 	
 	public RequestParams(String url, HttpMethod httpMethod) {
 		this.url = url;
@@ -83,9 +88,33 @@ public class RequestParams {
 	public HttpMethod getHttpMethod() {
 		return httpMethod;
 	}
-	public Charset getCharset() {
-		return charset;
+	public Charset getReqCharset() {
+		return reqCharset;
 	}
-
+	public void setReqCharset(Charset reqCharset) {
+		this.reqCharset = reqCharset;
+	}
+	public Charset getResCharset() {
+		return resCharset;
+	}
+	public void setResCharset(Charset resCharset) {
+		this.resCharset = resCharset;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public void setCookies(Cookies cookies) {
+		this.cookies = cookies;
+	}
+	public void setHeader(Headers header) {
+		this.header = header;
+	}
+	public void setParameter(Parameters parameter) {
+		this.parameter = parameter;
+	}
+	public void setHttpMethod(HttpMethod httpMethod) {
+		this.httpMethod = httpMethod;
+	}
+	
 	
 }

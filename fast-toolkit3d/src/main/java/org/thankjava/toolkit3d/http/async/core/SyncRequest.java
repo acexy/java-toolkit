@@ -37,7 +37,7 @@ public class SyncRequest extends Request{
 			final HttpPost request = RequestBuilder.builderPost(requestParams);
 			future = closeableHttpAsyncClient.execute(request, syncHttpClientContext, null);
 			try {
-				return ResponseBuilder.builder(future.get(), syncCookieStore.getCookies());
+				return ResponseBuilder.builder(future.get(), requestParams.getResCharset(), syncCookieStore.getCookies());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e) {
@@ -49,7 +49,7 @@ public class SyncRequest extends Request{
 			final HttpGet request = RequestBuilder.builderGet(requestParams);
 			future = closeableHttpAsyncClient.execute(request, syncHttpClientContext, null);
 			try {
-				return ResponseBuilder.builder(future.get(), syncCookieStore.getCookies());
+				return ResponseBuilder.builder(future.get(), requestParams.getResCharset(), syncCookieStore.getCookies());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e) {
