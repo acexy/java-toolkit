@@ -47,6 +47,25 @@ class AopConfigResolve {
 					//并没有Aop对应的注解配置
 					config.setUsedAop(false);
 				}else{
+					config.setProxyInstance(obj);
+					if(config.getBefore() != null){
+						try {
+							config.setAopBeforeInstance(config.getBefore().cutClass().newInstance());
+						} catch (InstantiationException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						}
+					}
+					if(config.getAfter() != null){
+						try {
+							config.setAopAfterInstance(config.getAfter().cutClass().newInstance());
+						} catch (InstantiationException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						}
+					}
 					config.setUsedAop(true);
 				}
 			}

@@ -14,18 +14,18 @@ fast-tookit3d
 --- 
 maven仓库
 - http://maven.thankjava.com/
-- 可用版本1.0.1 tookit & tookit3d 版本号要对应使用
+- tookit & tookit3d 版本号要对应使用
 ```xml
 <dependency>
   <groupId>org.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.1</version>
+  <version>last</version>
 </dependency>
 
 <dependency>
   <groupId>org.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.1</version>
+  <version>last</version>
 </dependency>
 ```
 

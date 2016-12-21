@@ -1,5 +1,8 @@
 package aop;
 
+import java.lang.reflect.Method;
+
+import org.thankjava.toolkit.reflect.ReflectHelper;
 import org.thankjava.toolkit3d.aop.entity.AopParam;
 
 
@@ -39,6 +42,8 @@ public class CutPoint {
 //		param.setInvokeProxyMethod(false);
 		//如果设置被拦截的方法不要执行，并setResult值 则被拦截的方法的执行结果就是 param.result
 //		param.setResult("Result");
+		Method method = ReflectHelper.getMethod(param.getProxyInstance(),"exe",int.class);
+		ReflectHelper.invokeMethod(param.getProxyInstance(), method, 5);
 		return param;
 	}
 	

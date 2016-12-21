@@ -12,6 +12,7 @@ public class Business {
 	}
 	
 	public String exe(int num) {
+		System.out.println(num);
 		return "num";
 	}
 }

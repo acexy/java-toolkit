@@ -61,19 +61,33 @@ public class InvokeInterceptor implements InvocationHandler{
 				before = method.getAnnotation(Before.class);
 				after = method.getAnnotation(After.class);
 				
-				
 				config.setMethodName(method.getName());
 				config.setClassPath(implementObject.getClass().getName());
 				
 				if(before == null && after == null){
 					config.setUsedAop(false);
 				}else{
+					config.setProxyInstance(implementObject);
 					config.setUsedAop(true);
 					if(before != null){
 						config.setBefore(before);
+						try {
+							config.setAopBeforeInstance(before.cutClass().newInstance());
+						} catch (InstantiationException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						}
 					}
 					if(after != null){
 						config.setAfter(after);
+						try {
+							config.setAopAfterInstance(before.cutClass().newInstance());
+						} catch (InstantiationException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 				
@@ -117,14 +131,15 @@ public class InvokeInterceptor implements InvocationHandler{
 		Before before = aopConfig.getBefore();
 		
 		Method aopMethod = null;
-		Object aopObject = null;
+		Object aopInstance = null;
 		AopParam aopParam = null;
 		
 		if(before != null){ //执行before
-			aopObject = before.cutClass().newInstance();
-			aopMethod = ReflectHelper.getMethod(aopObject, before.cutMethod(), AopParam.class);
+			aopInstance = aopConfig.getAopBeforeInstance();
+			aopMethod = ReflectHelper.getMethod(aopInstance, before.cutMethod(), AopParam.class);
 			aopParam = new AopParam(args);
-			aopParam = (AopParam) ReflectHelper.invokeMethod(aopObject, aopMethod, aopParam);
+			aopParam.setProxyInstance(aopConfig.getProxyInstance());
+			aopParam = (AopParam) ReflectHelper.invokeMethod(aopInstance, aopMethod, aopParam);
 		}
 		
 		if(aopParam != null && !aopParam.isInvokeProxyMethod()){
@@ -136,15 +151,17 @@ public class InvokeInterceptor implements InvocationHandler{
 		
 		After after = aopConfig.getAfter();
 		if(after != null){
-			aopObject = after.cutClass().newInstance();
-			aopMethod = ReflectHelper.getMethod(aopObject, after.cutMethod(), AopParam.class);
+			aopInstance = aopConfig.getAopAfterInstance();
+			aopMethod = ReflectHelper.getMethod(aopInstance, after.cutMethod(), AopParam.class);
 			if(aopParam == null){
 				aopParam = new AopParam(args);
+				aopParam.setProxyInstance(aopConfig.getProxyInstance());
 			}else{
 				aopParam = new AopParam(aopParam.getParams());
+				aopParam.setProxyInstance(aopConfig.getProxyInstance());
 			}
 			aopParam.setResult(invokeReturn);
-			aopParam = (AopParam) ReflectHelper.invokeMethod(aopObject, aopMethod, aopParam);
+			aopParam = (AopParam) ReflectHelper.invokeMethod(aopInstance, aopMethod, aopParam);
 			return aopParam.getResult();
 		}
 		
