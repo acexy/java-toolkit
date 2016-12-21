@@ -7,6 +7,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
+import org.thankjava.toolkit3d.fastjson.FastJson;
 import org.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import org.thankjava.toolkit3d.http.async.entity.Headers;
 import org.thankjava.toolkit3d.http.async.entity.Parameters;

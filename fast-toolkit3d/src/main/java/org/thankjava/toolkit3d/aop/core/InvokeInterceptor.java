@@ -27,7 +27,7 @@ class InvokeInterceptor implements MethodInterceptor {
 		}else{
 			Before before = aopConfig.getBefore();
 			if(before != null){
-				AopParam param = breankMethod.before(before, args);
+				AopParam param = breankMethod.before(aopConfig, before, args);
 				if(!param.isInvokeProxyMethod()){
 					return param.getResult();
 				}
@@ -37,7 +37,7 @@ class InvokeInterceptor implements MethodInterceptor {
 			Object invokeObject = proxy.invokeSuper(obj, args);
 			After after = aopConfig.getAfter();
 			if(after != null){
-				return breankMethod.after(after,invokeObject);
+				return breankMethod.after(aopConfig, after,invokeObject);
 			}
 			return invokeObject;
 		}
