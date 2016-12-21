@@ -19,6 +19,11 @@ public class AopParam {
 	 */
 	private boolean isInvokeProxyMethod = true;
 	
+	/**
+	 * 被代理的对象实例
+	 */
+	private Object proxyInstance = null;
+	
 	
 	public AopParam(Object[] params) {
 		this.params = params;
@@ -44,7 +49,12 @@ public class AopParam {
 	public void setInvokeProxyMethod(boolean isInvokeProxyMethod) {
 		this.isInvokeProxyMethod = isInvokeProxyMethod;
 	}
-	
+	public Object getProxyInstance() {
+		return proxyInstance;
+	}
+	public void setProxyInstance(Object proxyInstance) {
+		this.proxyInstance = proxyInstance;
+	}
 	
 	
 }

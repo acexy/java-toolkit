@@ -12,20 +12,17 @@ import org.thankjava.toolkit3d.aop.entity.AopParam;
 class InvokeBreankMethod {
 
 
-	public AopParam before(AopConfig aopConfig, Before before, Object[] args){
+	public AopParam before(AopConfig aopConfig, Before before, AopParam param){
 		Object aopInstance = aopConfig.getAopBeforeInstance();
 		Method cutMethod = ReflectHelper.getMethod(aopInstance, before.cutMethod(), AopParam.class);
-		AopParam param = new AopParam(args);
 		param = (AopParam) ReflectHelper.invokeMethod(aopInstance, cutMethod, param);
 		return param;
 	}
 	
 
-	public Object after(AopConfig aopConfig, After after,Object invokeResult){
+	public AopParam after(AopConfig aopConfig, After after, AopParam param, Object invokeResult){
 		Object aopInstance = aopConfig.getAopAfterInstance();
 		Method cutMethod = ReflectHelper.getMethod(aopInstance, after.cutMethod(), AopParam.class);
-		AopParam param = new AopParam(invokeResult);
-		ReflectHelper.invokeMethod(aopInstance, cutMethod, param);
-		return param.getResult();
+		return (AopParam) ReflectHelper.invokeMethod(aopInstance, cutMethod, param);
 	}
 }

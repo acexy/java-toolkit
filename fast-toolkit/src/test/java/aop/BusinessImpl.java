@@ -13,6 +13,7 @@ public class BusinessImpl implements IBusiness{
 
 	@Override
 	public String exe(int num) {
+		System.out.println(num);
 		return "num";
 	}
 }

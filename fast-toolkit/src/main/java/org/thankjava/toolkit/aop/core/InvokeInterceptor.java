@@ -67,6 +67,7 @@ public class InvokeInterceptor implements InvocationHandler{
 				if(before == null && after == null){
 					config.setUsedAop(false);
 				}else{
+					config.setProxyInstance(implementObject);
 					config.setUsedAop(true);
 					if(before != null){
 						config.setBefore(before);
@@ -137,6 +138,7 @@ public class InvokeInterceptor implements InvocationHandler{
 			aopInstance = aopConfig.getAopBeforeInstance();
 			aopMethod = ReflectHelper.getMethod(aopInstance, before.cutMethod(), AopParam.class);
 			aopParam = new AopParam(args);
+			aopParam.setProxyInstance(aopConfig.getProxyInstance());
 			aopParam = (AopParam) ReflectHelper.invokeMethod(aopInstance, aopMethod, aopParam);
 		}
 		
@@ -153,8 +155,10 @@ public class InvokeInterceptor implements InvocationHandler{
 			aopMethod = ReflectHelper.getMethod(aopInstance, after.cutMethod(), AopParam.class);
 			if(aopParam == null){
 				aopParam = new AopParam(args);
+				aopParam.setProxyInstance(aopConfig.getProxyInstance());
 			}else{
 				aopParam = new AopParam(aopParam.getParams());
+				aopParam.setProxyInstance(aopConfig.getProxyInstance());
 			}
 			aopParam.setResult(invokeReturn);
 			aopParam = (AopParam) ReflectHelper.invokeMethod(aopInstance, aopMethod, aopParam);

@@ -121,6 +121,7 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpasyncclient</artifactId>
 			<version>${httpasyncclient.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

@@ -47,6 +47,7 @@ class AopConfigResolve {
 					//并没有Aop对应的注解配置
 					config.setUsedAop(false);
 				}else{
+					config.setProxyInstance(obj);
 					if(config.getBefore() != null){
 						try {
 							config.setAopBeforeInstance(config.getBefore().cutClass().newInstance());

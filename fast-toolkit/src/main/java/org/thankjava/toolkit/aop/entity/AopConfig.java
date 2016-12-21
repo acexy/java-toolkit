@@ -20,9 +20,20 @@ public class AopConfig {
 	 */
 	private String args = "";
 	
+	/**
+	 * before切片实例
+	 */
 	private Object aopBeforeInstance = null;
 	
+	/**
+	 * after切片实例
+	 */
 	private Object aopAfterInstance = null;
+	
+	/**
+	 * 被代理的对象实例
+	 */
+	private Object proxyInstance = null;
 	
 	/**
 	 * 扫描注解注入的事件配置
@@ -81,4 +92,11 @@ public class AopConfig {
 	public void setAopAfterInstance(Object aopAfterInstance) {
 		this.aopAfterInstance = aopAfterInstance;
 	}
+	public Object getProxyInstance() {
+		return proxyInstance;
+	}
+	public void setProxyInstance(Object proxyInstance) {
+		this.proxyInstance = proxyInstance;
+	}
+	
 }

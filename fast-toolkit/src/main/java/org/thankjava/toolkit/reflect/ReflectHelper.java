@@ -190,13 +190,13 @@ public final class ReflectHelper {
 	* @param parameterTypes
 	* @return
 	 */
-	public static Method getMethod(Object obj,String methodName,Class<?>... parameterTypes){
+	public static Method getMethod(Object obj, String methodName, Class<?>... parameterTypes){
 		if(obj == null){
 			return null;
 		}
 		Class<?> clazz = obj.getClass();
 		try {
-			return clazz.getMethod(methodName, parameterTypes);
+			return clazz.getDeclaredMethod(methodName, parameterTypes);
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
