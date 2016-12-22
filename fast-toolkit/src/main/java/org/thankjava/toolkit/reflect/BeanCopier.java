@@ -52,6 +52,29 @@ public final class BeanCopier {
 	}
 	
 	/**
+	 * 属性对等复制增加
+	* <p>Function: append</p>
+	* <p>Description: 将originObject对象中的属性复制到targetObject中,
+	* 保留targetObject中原来的属性值
+	* </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2016年12月22日 上午10:41:58
+	* @version 1.0
+	* @param originObject
+	* @param targetObject
+	* @return
+	 */
+	public static <OriginObject, TargetObject> TargetObject append(OriginObject originObject,TargetObject targetObject){
+		if(originObject == null || targetObject == null){
+			throw new IllegalArgumentException("originaObject and targetObject can't be null");
+		}
+		@SuppressWarnings("unchecked")
+		Class<TargetObject> targetClass = (Class<TargetObject>) targetObject.getClass();
+		return setValue(originObject,targetObject,targetClass);
+		
+	}
+	
+	/**
 	 * List集合代理类型对等复制
 	* <p>Function: copyList</p>
 	* <p>Description: </p>
@@ -63,7 +86,6 @@ public final class BeanCopier {
 	* @return ArrayList
 	 */
 	public static <OriginObject, TargetObject> List<TargetObject> copyList(List<OriginObject> originObjects,Class<TargetObject> targetClass){
-
 		//参数不合法异常
 		if (originObjects == null || targetClass == null) { 
 			throw new IllegalArgumentException("originaObject and targetClass can't be null");
@@ -72,7 +94,6 @@ public final class BeanCopier {
 		for (OriginObject originObject : originObjects) {
 			targetObjects.add(copy(originObject, targetClass));
 		}
-		
 		return targetObjects;
 	}
 	

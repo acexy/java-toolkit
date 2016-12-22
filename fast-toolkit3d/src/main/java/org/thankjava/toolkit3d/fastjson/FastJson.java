@@ -2,6 +2,8 @@ package org.thankjava.toolkit3d.fastjson;
 
 import java.util.Map;
 
+import org.thankjava.toolkit.reflect.BeanCopier;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 /**
@@ -37,6 +39,13 @@ public class FastJson {
 			throw new RuntimeException(e);
 		}
 		return t;
+	}
+	
+	public static <T> T appendObject(String json, T t){
+		@SuppressWarnings("unchecked")
+		Class<T> clazz = (Class<T>) t.getClass();
+		T tNew = toObject(json, clazz);
+		return BeanCopier.append(tNew, t);
 	}
 	
 	/**
