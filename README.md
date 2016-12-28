@@ -13,7 +13,6 @@ fast-tookit3d
 
 --- 
 maven仓库
-- http://maven.thankjava.com/
 - tookit & tookit3d 版本号要对应使用
 ```xml
 <dependency>
