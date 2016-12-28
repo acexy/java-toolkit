@@ -2,15 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.thankjava.toolkit3d</groupId>
+	<groupId>com.thankjava.toolkit3d</groupId>
 	<artifactId>fast-toolkit3d</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.0</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<org.thankjava.toolkit.version>1.0.2</org.thankjava.toolkit.version>
+		<com.thankjava.toolkit.version>1.0.0</com.thankjava.toolkit.version>
 
 		<com.alibaba.fastjson.version>1.2.8</com.alibaba.fastjson.version>
 		<com.alibaba.druid.version>1.0.18</com.alibaba.druid.version>
@@ -30,9 +29,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.thankjava.toolkit</groupId>
+			<groupId>com.thankjava.toolkit</groupId>
 			<artifactId>fast-toolkit</artifactId>
-			<version>${org.thankjava.toolkit.version}</version>
+			<version>${com.thankjava.toolkit.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

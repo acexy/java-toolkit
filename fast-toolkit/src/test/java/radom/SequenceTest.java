@@ -3,9 +3,9 @@ package radom;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.thankjava.toolkit.radom.Sequence;
-import org.thankjava.toolkit.thread.ThreadPool;
-import org.thankjava.toolkit.thread.ThreadUtil;
+import com.thankjava.toolkit.radom.Sequence;
+import com.thankjava.toolkit.thread.ThreadPool;
+import com.thankjava.toolkit.thread.ThreadUtil;
 
 public class SequenceTest {
 

@@ -3,7 +3,7 @@ package reflect;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.thankjava.toolkit.reflect.BeanCopier;
+import com.thankjava.toolkit.reflect.BeanCopier;
 
 import reflect.bean.entity.Entity1;
 import reflect.bean.vo.Vo1;

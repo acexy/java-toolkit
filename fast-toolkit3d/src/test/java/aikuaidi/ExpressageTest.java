@@ -1,8 +1,8 @@
 package aikuaidi;
 
-import org.thankjava.toolkit3d.enums.api.aikuaidi.ExpreService;
-import org.thankjava.toolkit3d.api.aikuaidi.Expressage;
-import org.thankjava.toolkit3d.fastjson.FastJson;
+import com.thankjava.toolkit3d.enums.api.aikuaidi.ExpreService;
+import com.thankjava.toolkit3d.api.aikuaidi.Expressage;
+import com.thankjava.toolkit3d.fastjson.FastJson;
 
 public class ExpressageTest {
 

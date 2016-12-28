@@ -3,7 +3,7 @@ package httpclient;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.thankjava.toolkit.httpclient.DefaultHttpClient;
+import com.thankjava.toolkit.httpclient.DefaultHttpClient;
 
 public class HttpClientTest {
 

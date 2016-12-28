@@ -3,11 +3,11 @@ package thread;
 import java.io.IOException;
 import java.util.Date;
 
-import org.thankjava.toolkit.date.TimeHelper;
-import org.thankjava.toolkit.date.TimeHelper.TimeType;
-import org.thankjava.toolkit.thread.ThreadTask;
-import org.thankjava.toolkit.thread.ThreadUtil;
-import org.thankjava.toolkit.vo.thread.TaskEntity;
+import com.thankjava.toolkit.date.TimeHelper;
+import com.thankjava.toolkit.date.TimeHelper.TimeType;
+import com.thankjava.toolkit.thread.ThreadTask;
+import com.thankjava.toolkit.thread.ThreadUtil;
+import com.thankjava.toolkit.vo.thread.TaskEntity;
 
 public class ThreadTest {
 
