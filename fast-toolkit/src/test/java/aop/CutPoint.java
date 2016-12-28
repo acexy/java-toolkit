@@ -2,8 +2,8 @@ package aop;
 
 import java.lang.reflect.Method;
 
-import org.thankjava.toolkit.aop.entity.AopParam;
-import org.thankjava.toolkit.reflect.ReflectHelper;
+import com.thankjava.toolkit.aop.entity.AopParam;
+import com.thankjava.toolkit.reflect.ReflectHelper;
 
 public class CutPoint {
 

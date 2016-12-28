@@ -2,7 +2,7 @@ package reflect;
 
 import java.lang.reflect.Field;
 
-import org.thankjava.toolkit.reflect.ReflectHelper;
+import com.thankjava.toolkit.reflect.ReflectHelper;
 
 import reflect.bean.ChiClass;
 

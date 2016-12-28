@@ -1,10 +1,10 @@
 package db.mongodb;
 
 import org.bson.Document;
-import org.thankjava.toolkit.radom.Sequence;
-import org.thankjava.toolkit.thread.ThreadPool;
-import org.thankjava.toolkit3d.db.mongodb.MongoDBManager;
-import org.thankjava.toolkit3d.db.mongodb.datasource.MongoDriverManager;
+import com.thankjava.toolkit.radom.Sequence;
+import com.thankjava.toolkit.thread.ThreadPool;
+import com.thankjava.toolkit3d.db.mongodb.MongoDBManager;
+import com.thankjava.toolkit3d.db.mongodb.datasource.MongoDriverManager;
 
 
 public class MongodbManagerTest {

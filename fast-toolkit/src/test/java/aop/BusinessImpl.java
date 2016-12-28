@@ -1,7 +1,7 @@
 package aop;
 
-import org.thankjava.toolkit.aop.anno.After;
-import org.thankjava.toolkit.aop.anno.Before;
+import com.thankjava.toolkit.aop.anno.After;
+import com.thankjava.toolkit.aop.anno.Before;
 
 public class BusinessImpl implements IBusiness{
 	

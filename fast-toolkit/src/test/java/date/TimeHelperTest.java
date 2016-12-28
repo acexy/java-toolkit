@@ -3,8 +3,8 @@ package date;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.thankjava.toolkit.date.TimeHelper;
-import org.thankjava.toolkit.date.TimeHelper.TimeType;
+import com.thankjava.toolkit.date.TimeHelper;
+import com.thankjava.toolkit.date.TimeHelper.TimeType;
 
 public class TimeHelperTest {
 

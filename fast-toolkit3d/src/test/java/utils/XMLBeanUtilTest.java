@@ -5,9 +5,9 @@ import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.thankjava.toolkit.thread.ThreadPool;
-import org.thankjava.toolkit3d.fastjson.FastJson;
-import org.thankjava.toolkit3d.xml.XMLBeanUtil;
+import com.thankjava.toolkit.thread.ThreadPool;
+import com.thankjava.toolkit3d.fastjson.FastJson;
+import com.thankjava.toolkit3d.xml.XMLBeanUtil;
 
 public class XMLBeanUtilTest {
 	

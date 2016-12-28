@@ -1,6 +1,6 @@
 package cache.ehcache;
 
-import org.thankjava.toolkit3d.cache.ehcache.EcacheManager;
+import com.thankjava.toolkit3d.cache.ehcache.EcacheManager;
 
 public class EcacheManagerTest {
 
