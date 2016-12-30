@@ -13,18 +13,18 @@ fast-tookit3d
 
 --- 
 maven仓库
-- tookit & tookit3d 版本号要对应使用
+- toolkit & toolkit3d 版本号要对应使用
 ```xml
 <dependency>
   <groupId>org.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>last</version>
+  <version>1.0.1</version>
 </dependency>
 
 <dependency>
   <groupId>org.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>last</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
@@ -69,7 +69,8 @@ public class CutPoint {
 		
 		//修改被拦截的方法所能获得的参数 并且在after 切片中也只能获得被修改后的参数
 		param.setParams(new Object[]{"abc"});
-		System.out.println("我将在Business执行exe 方法之前执行 并且 exe原来传递的参数: " +orgiStr+ " 将被我修改为 abc");
+		System.out.println("我将在Business执行exe 方法之前执行 并且 exe原来传递的参数: "
+					+orgiStr+ " 将被我修改为 abc");
 		
 		
 		//可以设置被拦截的方法到底是否需要执行 (该属性只有Before切片有用)
@@ -89,7 +90,8 @@ public class CutPoint {
 		String resutlt = (String) param.getResult();
 		//设置返回值 如果你想修改被拦截的方法的源生返回值
 		param.setResult("result");
-		System.out.println("我将在Business执行exe 方法后执行 并且exe原来返回的参数: " + resutlt + " 将被我修改为 result");
+		System.out.println("我将在Business执行exe 方法后执行 并且exe原来返回的参数: " 
+				+ resutlt + " 将被我修改为 result");
 		return param;
 	}
 	
@@ -109,12 +111,11 @@ public class ProxyTest {
 		System.out.println("最终函数获得的返回值: " + iBusiness.exe("1"));
 	}
 ```
-- 发现输出结果
+## 输出结果
+- 我将在Business执行exe 方法之前执行 并且 exe原来传递的参数: 1 将被我修改为 abc
+- 我将在Business执行exe 方法后执行 并且exe原来返回的参数: 1 将被我修改为 result
+- 最终函数获得的返回值: result
 
-###我将在Business执行exe 方法之前执行 并且 exe原来传递的参数: 1 将被我修改为 abc
-###我将在Business执行exe 方法后执行 并且exe原来返回的参数: 1 将被我修改为 result
-###最终函数获得的返回值: result
- 
 ---
 - 反射模块，封装了一些常用的反射工具函数，值得推荐的是该模块含有一个 **BeanCopier**实现JavaBean的常用属性对等复制
 - Entity
