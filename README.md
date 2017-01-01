@@ -18,13 +18,13 @@ maven仓库
 <dependency>
   <groupId>org.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.0</version>
 </dependency>
 
 <dependency>
   <groupId>org.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
