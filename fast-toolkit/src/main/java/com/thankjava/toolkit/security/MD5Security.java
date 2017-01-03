@@ -4,29 +4,31 @@ import java.security.MessageDigest;
 
 /**
  * Md5加密
-* <p>Function: MD5Security</p>
-* <p>Description: </p>
-* @author zhaoxy@thankjava.com
-* @date 2015年12月30日 上午11:08:43
-* @version 1.0
+ * <p> Function: MD5Security </p>
+ * <p> Description: </p>
+ * @author zhaoxy@thankjava.com
+ * @date 2015年12月30日 上午11:08:43
+ * @version 1.0
  */
 public final class MD5Security {
 
-	private MD5Security(){}
-	
-	private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d","e", "f" };
-
-	public static String generatePassword(String password) {
-		return encodeByMD5(password);
+	private MD5Security() {
 	}
 
-	public static String generatePasswordUpperCase(String password) {
-		String encodeStr = encodeByMD5(password);
+	private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
+			"e", "f" };
+
+	public static String generate(String content) {
+		return encodeByMD5(content);
+	}
+
+	public static String generateUpperCase(String content) {
+		String encodeStr = encodeByMD5(content);
 		return encodeStr == null ? null : encodeStr.toUpperCase();
 	}
 
-	public static boolean validatePassword(String password, String originPwd) {
-		if (password.equals(encodeByMD5(originPwd))) {
+	public static boolean validate(String content, String originContent) {
+		if (content.equals(encodeByMD5(originContent))) {
 			return true;
 		} else {
 			return false;
@@ -34,13 +36,13 @@ public final class MD5Security {
 	}
 
 	/** 对字符串进行MD5加密 */
-	private static String encodeByMD5(String originString) {
-		if (originString != null) {
+	private static String encodeByMD5(String content) {
+		if (content != null) {
 			try {
 				// 创建具有指定算法名称的信息摘要
 				MessageDigest md = MessageDigest.getInstance("MD5");
 				// 使用指定的字节数组对摘要进行最后更新，然后完成摘要计算
-				byte[] results = md.digest(originString.getBytes());
+				byte[] results = md.digest(content.getBytes());
 				// 将得到的字节数组变成字符串返回
 				String resultString = byteArrayToHexString(results);
 				return resultString;
