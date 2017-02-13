@@ -16,13 +16,13 @@ maven仓库
 - toolkit & toolkit3d 版本号要对应使用
 ```xml
 <dependency>
-  <groupId>org.thankjava.toolkit</groupId>
+  <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
   <version>1.0.0</version>
 </dependency>
 
 <dependency>
-  <groupId>org.thankjava.toolkit3d</groupId>
+  <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
   <version>1.0.0</version>
 </dependency>
