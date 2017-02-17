@@ -8,12 +8,15 @@ import com.thankjava.toolkit3d.http.async.entity.RequestParams;
 import com.thankjava.toolkit3d.http.async.entity.ResponseParams;
 
 public class AsyncHttpClient {
+	
+	static{
+		System.setProperty("jsse.enableSNIExtension", "false");
+	}
 
 	/**
 	 * 同步请求的处理
 	 */
 	private static SyncRequest syncRequest;
-	
 	
 	private static CloseableHttpAsyncClient closeableHttpAsyncClient;
 	
