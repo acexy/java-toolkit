@@ -16,11 +16,11 @@ public class MyBatisManagerTest {
 		
 		final MyBatisManager myBatisManager = MySQLManager.getInstance();
 		
-		ThreadPool pool = new ThreadPool(50, 100, 600000, 1000000);
-		for (int i = 0; i < 1000000L; i++) {
-			pool.execute(new Runnable() {
-				@Override
-				public void run() {
+//		ThreadPool pool = new ThreadPool(50, 100, 600000, 1000000);
+//		for (int i = 0; i < 1000000L; i++) {
+//			pool.execute(new Runnable() {
+//				@Override
+//				public void run() {
 					
 					SqlSessionFactory sessionFactory = myBatisManager.getSqlSessionFactory();
 					SqlSession session = sessionFactory.openSession();
@@ -30,9 +30,9 @@ public class MyBatisManagerTest {
 					mapper.save(test);
 					System.out.println(test.getId());
 					myBatisManager.commitAndcloseSqlSession(session);;
-				}
-			});
-		}
+//				}
+//			});
+//		}
 		
 	}
 	

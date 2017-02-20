@@ -62,7 +62,7 @@ public class Translation {
 		stringBuffer.append("&to=" + to);
 		stringBuffer.append("&appid=" + appID);
 		stringBuffer.append("&salt=" + salt);
-		stringBuffer.append("&sign=" + MD5Security.generatePassword(appID + keyWord + salt + secretKey));
+		stringBuffer.append("&sign=" + MD5Security.generate(appID + keyWord + salt + secretKey));
 		return FastJson.toObject(DefaultHttpClient.get(stringBuffer.toString()), TransData.class);
 	}
 }
