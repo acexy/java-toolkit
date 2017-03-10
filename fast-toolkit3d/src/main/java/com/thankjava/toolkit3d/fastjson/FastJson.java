@@ -41,6 +41,18 @@ public class FastJson {
 		return t;
 	}
 	
+	/**
+	 * 将会解析json字符串，并将json中解析的数据
+	 * append到对象t中，原对象t中的属性不会丢失
+	* <p>Function: appendObject</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2017年3月10日 下午3:01:58
+	* @version 1.0
+	* @param json
+	* @param t
+	* @return
+	 */
 	public static <T> T appendObject(String json, T t){
 		@SuppressWarnings("unchecked")
 		Class<T> clazz = (Class<T>) t.getClass();
