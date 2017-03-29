@@ -3,6 +3,7 @@ package com.thankjava.toolkit3d.db.redis.datasource;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -13,6 +14,7 @@ import com.thankjava.toolkit3d.db.redis.RedisManager;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Pipeline;
 
 public class JedisManager implements RedisManager{
 
@@ -254,4 +256,64 @@ public class JedisManager implements RedisManager{
 			returnJedis(jedis);
 		}
 	}
+
+	@Override
+	public List<String> hmget(String key, String... fields) {
+		if(fields == null || fields.length == 0){
+			return null;
+		}
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.hmget(key, fields);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			returnJedis(jedis);
+		}
+	}
+	
+	@Override
+	public List<Object> hgetallPipelined(Set<String> keys) {
+		if(keys == null || keys.size() == 0){
+			return null;
+		}
+		Jedis jedis = null;
+		Pipeline pipeline = null;
+		try {
+			jedis = getJedis();
+			pipeline = jedis.pipelined();
+			for (String key : keys) {
+				pipeline.hgetAll(key);
+			}
+			return pipeline.syncAndReturnAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if(pipeline != null){
+				try {
+					pipeline.close();
+				} catch (IOException e) {
+				}
+			}
+			returnJedis(jedis);
+		}
+	}
+
+	@Override
+	public String hget(String key, String field) {
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.hget(key, field);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			returnJedis(jedis);
+		}
+	}
+
 }
