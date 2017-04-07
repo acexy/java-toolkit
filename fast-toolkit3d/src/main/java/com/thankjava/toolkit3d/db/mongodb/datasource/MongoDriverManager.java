@@ -27,7 +27,7 @@ public class MongoDriverManager implements MongoDBManager{
 
 	private static MongoDatabase mongoDatabase = null;
 	
-	final String OPERATOR$SET = "$set";
+	final String OPERATOR_SET = "$set";
 	
 	static {
 		Reader reader = null;
@@ -238,7 +238,7 @@ public class MongoDriverManager implements MongoDBManager{
 			docFilter = new Document();
 		}
 		MongoCollection<Document> collection = getDBCollection(docName);
-		return collection.updateOne(docFilter, new Document(OPERATOR$SET,doc));
+		return collection.updateOne(docFilter, new Document(OPERATOR_SET,doc));
 	}
 	
 	private UpdateResult baseUpdateMany(String docName, Document doc, Document docFilter){
@@ -249,7 +249,7 @@ public class MongoDriverManager implements MongoDBManager{
 			docFilter = new Document();
 		}
 		MongoCollection<Document> collection = getDBCollection(docName);
-		return collection.updateMany(docFilter, new Document(OPERATOR$SET,doc));
+		return collection.updateMany(docFilter, new Document(OPERATOR_SET,doc));
 	}
 	
 	@Override

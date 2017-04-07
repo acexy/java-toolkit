@@ -189,7 +189,7 @@ public interface MongoDBManager {
 	 * @param docFilter
 	 * @return
 	 */
-	public boolean updateMany(String docName,Document doc,Document docFilter);
+	public boolean updateMany(String docName, Document doc, Document docFilter);
 	
 	
 	/**
