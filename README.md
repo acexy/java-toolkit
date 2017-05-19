@@ -31,6 +31,7 @@ maven仓库
 ---
 ## java-tookit 介绍（基于jdk实现，不需要引入其他组件）
 ---
+- [参考博客](https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec)
 - 基于jdk AOP 实现对接口的AOP处理，可以实现对一个接口调用前，调用后的处理
 - 一个处理业务的接口IBusiness，其exe函数传入一个字符串
 ```java
