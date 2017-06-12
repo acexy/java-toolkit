@@ -13,7 +13,6 @@ import org.apache.http.impl.client.BasicCookieStore;
 * @version 1.0
  */
 class Request {
-
 	
 	/**
 	 * 同步请求的上下文

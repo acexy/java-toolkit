@@ -20,8 +20,7 @@ public class SyncRequest extends Request{
 	private static SyncRequest syncRequest = new SyncRequest();
 	private static CloseableHttpAsyncClient closeableHttpAsyncClient;
 
-	private SyncRequest() {
-	}
+	private SyncRequest() {}
 
 	public static SyncRequest getInterface(CloseableHttpAsyncClient closeableHttpAsyncClient) {
 		SyncRequest.closeableHttpAsyncClient = closeableHttpAsyncClient;
