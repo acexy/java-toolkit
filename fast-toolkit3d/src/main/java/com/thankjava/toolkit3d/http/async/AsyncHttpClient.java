@@ -2,8 +2,10 @@ package com.thankjava.toolkit3d.http.async;
 
 import java.io.IOException;
 
+import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import com.thankjava.toolkit3d.http.async.core.SyncRequest;
+import com.thankjava.toolkit3d.http.async.entity.Cookies;
 import com.thankjava.toolkit3d.http.async.entity.RequestParams;
 import com.thankjava.toolkit3d.http.async.entity.ResponseParams;
 
@@ -22,13 +24,8 @@ public class AsyncHttpClient {
 	
 	AsyncHttpClient(CloseableHttpAsyncClient closeableHttpAsyncClient){
 		AsyncHttpClient.closeableHttpAsyncClient = closeableHttpAsyncClient;
-		
 		closeableHttpAsyncClient.start();
-		init();
-	}
-	
-	private void init(){
-		AsyncHttpClient.syncRequest = SyncRequest.getInterface(closeableHttpAsyncClient);
+		syncRequest = SyncRequest.getInterface(closeableHttpAsyncClient);
 	}
 	
 	/**
@@ -44,6 +41,33 @@ public class AsyncHttpClient {
 	 */
 	public ResponseParams syncRequestWithSession(RequestParams requestParams){
 		return syncRequest.requestWithSession(requestParams);
+	}
+	
+	/**
+	 * 获取历史请求CookieStore
+	* <p>Function: getRequestCookieStore</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2017年6月12日 下午3:31:00
+	* @version 1.0
+	* @return
+	 */
+	public Cookies getAllCookies(){
+		return new Cookies(SyncRequest.getSyncCookieStore().getCookies());
+	}
+	
+	/**
+	 * 获取指定的cookie
+	* <p>Function: getCookie</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2017年6月12日 下午3:41:55
+	* @version 1.0
+	* @param cookieName
+	* @return
+	 */
+	public Cookie getCookie(String cookieName){
+		return getAllCookies().getCookie(cookieName);
 	}
 	
 	/**

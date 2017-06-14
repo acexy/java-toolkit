@@ -13,7 +13,7 @@ public class RedisManagerTest {
 //		System.out.println(redis.lpush("test", new String[]{"aa","cc","bb"}));
 //		System.out.println(redis.rpop("test"));
 		
-		ThreadPool pool = new ThreadPool(50, 100, 600000, 1000000);
+		ThreadPool pool = new ThreadPool(100, 100, 600000, 1000000);
 		for (int i = 0; i < 10000L; i ++) {
 			pool.execute(new Runnable() {
 				@Override

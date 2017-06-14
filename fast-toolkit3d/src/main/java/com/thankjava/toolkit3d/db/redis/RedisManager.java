@@ -1,6 +1,7 @@
 package com.thankjava.toolkit3d.db.redis;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -154,4 +155,31 @@ public interface RedisManager {
 	* @return
 	 */
 	public Map<String, String> hgetall(String key);
+	
+	public String hget(String key,String field);
+	
+	/**
+	 * hmaget
+	* <p>Function: hmget</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2017年3月29日 下午7:15:05
+	* @version 1.0
+	* @param key
+	* @param fields
+	* @return
+	 */
+	public List<String> hmget(String key, String... fields);
+	
+	/**
+	 * 批处理一次性取出一批key值 hgetall
+	* <p>Function: hgetallPipelined</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2017年3月29日 下午6:52:52
+	* @version 1.0
+	* @param keys
+	* @return
+	 */
+	public List<Object> hgetallPipelined(Set<String> keys);
 }

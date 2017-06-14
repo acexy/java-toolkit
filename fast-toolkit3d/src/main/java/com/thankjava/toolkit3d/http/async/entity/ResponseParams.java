@@ -56,6 +56,8 @@ public class ResponseParams {
 	public void setHttpCode(int httpCode) {
 		this.httpCode = httpCode;
 	}
+	
+	
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
@@ -72,4 +74,19 @@ public class ResponseParams {
 		return buffer.toString();
 	}
 	
+	/**
+	 * 返回的content内容是否为空
+	* <p>Function: isEmptyContent</p>
+	* <p>Description: </p>
+	* @author zhaoxy@thankjava.com
+	* @date 2017年6月13日 上午10:49:35
+	* @version 1.0
+	* @return
+	 */
+	public boolean isEmptyContent(){
+		if(content == null || content.length() == 0){
+			return true;
+		}
+		return false;
+	}
 }
