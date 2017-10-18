@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.thankjava.toolkit</groupId>
 	<artifactId>fast-toolkit</artifactId>
-    <version>${curr.projects.version}</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <parent>
         <groupId>com.thankjava.toolkitroot</groupId>
         <artifactId>fast-toolkit-root</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
 </project>

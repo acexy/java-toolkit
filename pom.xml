@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
+    <!--<parent>-->
+        <!--<groupId>org.sonatype.oss</groupId>-->
+        <!--<artifactId>oss-parent</artifactId>-->
+        <!--<version>7</version>-->
+    <!--</parent>-->
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thankjava.toolkitroot</groupId>
     <artifactId>fast-toolkit-root</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -19,11 +19,10 @@
     </modules>
 
     <properties>
-        <curr.projects.version>1.0.2</curr.projects.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <com.thankjava.toolkit.version>1.0.2</com.thankjava.toolkit.version>
+        <com.thankjava.toolkit.version>1.0.3-SNAPSHOT</com.thankjava.toolkit.version>
 
         <com.alibaba.fastjson.version>1.2.24</com.alibaba.fastjson.version>
         <com.alibaba.druid.version>1.0.28</com.alibaba.druid.version>
@@ -156,7 +155,7 @@
                     <encoding>utf-8</encoding>
                 </configuration>
             </plugin>
-            <plugin><!-- 指定 mvn deploy 上传源码 -->
+            <plugin><!-- 指定 mvn install jar源码 -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>2.1.2</version>
@@ -193,4 +192,18 @@
             <organization>Thankjava</organization>
         </developer>
     </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Releases</name>
+            <url>http://maven.thankjava.com/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshots</name>
+            <url>http://maven.thankjava.com/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
