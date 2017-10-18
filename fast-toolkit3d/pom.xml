@@ -2,19 +2,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 
-
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.thankjava.toolkit3d</groupId>
 	<artifactId>fast-toolkit3d</artifactId>
-	<version>1.0.2</version>
+	<version>${curr.projects.version}</version>
 
-    <parent>
-        <groupId>com.thankjava.toolkit</groupId>
+	<parent>
+        <groupId>com.thankjava.toolkitroot</groupId>
         <artifactId>fast-toolkit-root</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.2</version>
     </parent>
-
-
 
 	<dependencies>
 		<dependency>

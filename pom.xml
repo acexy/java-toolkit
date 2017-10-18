@@ -8,10 +8,10 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.thankjava.toolkit</groupId>
+    <groupId>com.thankjava.toolkitroot</groupId>
     <artifactId>fast-toolkit-root</artifactId>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
 
     <modules>
         <module>fast-toolkit</module>
@@ -19,6 +19,8 @@
     </modules>
 
     <properties>
+        <curr.projects.version>1.0.2</curr.projects.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <com.thankjava.toolkit.version>1.0.2</com.thankjava.toolkit.version>
@@ -135,7 +137,6 @@
     </dependencyManagement>
 
     <build>
-        <finalName>fast-toolkit</finalName>
         <plugins>
             <plugin><!-- 跳过测试 -->
                 <groupId>org.apache.maven.plugins</groupId>
