@@ -10,5 +10,5 @@ package com.thankjava.toolkit3d.http.async.consts;
 public enum HyperTextContentTypeValue {
 	
 	// image类型
-	image
+	image,
 }

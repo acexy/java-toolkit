@@ -12,7 +12,7 @@ import com.thankjava.toolkit3d.http.async.entity.ResponseParams;
 public class AsyncHttpClient {
 	
 	static{
-		System.setProperty("jsse.enableSNIExtension", "false");
+//		System.setProperty("jsse.enableSNIExtension", "false");
 	}
 
 	/**
@@ -36,7 +36,6 @@ public class AsyncHttpClient {
 	* @date 2016年12月12日 下午3:54:33
 	* @version 1.0
 	* @param requestParams
-	* @param parameter
 	* @return
 	 */
 	public ResponseParams syncRequestWithSession(RequestParams requestParams){

@@ -45,29 +45,30 @@ public class ResponseBuilder {
 		
 		HttpEntity entity = response.getEntity();
 		Header contentType = entity.getContentType();
-		
-		if(contentType == null){
+//		if(contentType == null){
+//			try {
+//				responseParams.setContent(EntityUtils.toString(entity, charset.charset));
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}else {
+//			String contentTypeValue = contentType.getValue();
+//			for (HyperTextContentTypeValue hyperTextContentTypeValue : types) {
+//				if(contentTypeValue.startsWith(hyperTextContentTypeValue.name())){
+		if (contentType == null) {
 			try {
-				responseParams.setContent(EntityUtils.toString(entity, charset.charset));
-			} catch (ParseException e) {
+				responseParams.setBytes(EntityUtils.toByteArray(entity));
+			} catch (UnsupportedOperationException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else {
-			String contentTypeValue = contentType.getValue();
-			for (HyperTextContentTypeValue hyperTextContentTypeValue : types) {
-				if(contentTypeValue.startsWith(hyperTextContentTypeValue.name())){
-					try {
-						responseParams.setBytes(EntityUtils.toByteArray(entity));
-					} catch (UnsupportedOperationException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
 					return;
-				}
-			}
+//				}
+//			}
+		}
 			try {
 				responseParams.setContent(EntityUtils.toString(entity, charset.charset));
 			} catch (ParseException e) {
@@ -75,7 +76,7 @@ public class ResponseBuilder {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+//		}
 	}
 
 }
