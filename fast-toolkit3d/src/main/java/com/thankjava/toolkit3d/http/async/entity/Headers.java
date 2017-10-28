@@ -55,7 +55,7 @@ public class Headers {
 		return header.getValue();
 	}
 
-	public Header[] toArray() {
+	public Header[] toHeaderArray() {
 		Header[] headerArray = new Header[headers.size()];
 		int index = 0;
 		for (Map.Entry<String, Header> entry : headers.entrySet()) {

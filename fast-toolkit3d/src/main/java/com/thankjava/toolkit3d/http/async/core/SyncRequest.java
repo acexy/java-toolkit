@@ -12,8 +12,8 @@ import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import com.thankjava.toolkit3d.http.async.core.utils.RequestBuilder;
 import com.thankjava.toolkit3d.http.async.core.utils.ResponseBuilder;
-import com.thankjava.toolkit3d.http.async.entity.RequestParams;
-import com.thankjava.toolkit3d.http.async.entity.ResponseParams;
+import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
+import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
 
 public class SyncRequest extends Request{
 
@@ -27,16 +27,16 @@ public class SyncRequest extends Request{
 		return syncRequest;
 	}
 
-	public ResponseParams requestWithSession(RequestParams requestParams) {
+	public AsyncResponse requestWithSession(AsyncRequest asyncRequest) {
 		Future<HttpResponse> future = null;
-		addCookies(requestParams);
+		addCookies(asyncRequest);
 		
 		// POST
-		if (HttpMethod.post.equals(requestParams.getHttpMethod())) {
-			final HttpPost request = RequestBuilder.builderPost(requestParams);
+		if (HttpMethod.post.equals(asyncRequest.getHttpMethod())) {
+			final HttpPost request = RequestBuilder.builderPost(asyncRequest);
 			future = closeableHttpAsyncClient.execute(request, syncHttpClientContext, null);
 			try {
-				return ResponseBuilder.builder(future.get(), requestParams.getResCharset(), syncCookieStore.getCookies());
+				return ResponseBuilder.builder(future.get(), asyncRequest.getResCharset(), syncCookieStore.getCookies());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e) {
@@ -44,11 +44,11 @@ public class SyncRequest extends Request{
 			}
 
 			// GET
-		} else if (HttpMethod.get.equals(requestParams.getHttpMethod())) {
-			final HttpGet request = RequestBuilder.builderGet(requestParams);
+		} else if (HttpMethod.get.equals(asyncRequest.getHttpMethod())) {
+			final HttpGet request = RequestBuilder.builderGet(asyncRequest);
 			future = closeableHttpAsyncClient.execute(request, syncHttpClientContext, null);
 			try {
-				return ResponseBuilder.builder(future.get(), requestParams.getResCharset(), syncCookieStore.getCookies());
+				return ResponseBuilder.builder(future.get(), asyncRequest.getResCharset(), syncCookieStore.getCookies());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e) {
@@ -59,9 +59,9 @@ public class SyncRequest extends Request{
 		return null;
 	}
 	
-	private void addCookies(RequestParams requestParams){
-		if(requestParams.getCookies() != null){
-			List<Cookie> cookies = requestParams.getCookies().getAllCookies();
+	private void addCookies(AsyncRequest asyncRequest){
+		if(asyncRequest.getCookies() != null){
+			List<Cookie> cookies = asyncRequest.getCookies().getAllCookies();
 			for (Cookie cookie : cookies) {
 				syncCookieStore.addCookie(cookie);
 			}
