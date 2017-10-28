@@ -15,11 +15,11 @@ import org.apache.http.impl.client.BasicCookieStore;
 class Request {
 	
 	/**
-	 * 同步请求的上下文
+	 * 请求上下文
 	 */
 	protected static HttpClientContext syncHttpClientContext = HttpClientContext.create();
 	/**
-	 * 同步请求的CookieStore
+	 * 请求的CookieStore
 	 */
 	protected static CookieStore syncCookieStore = new BasicCookieStore();
 	

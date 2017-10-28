@@ -6,11 +6,12 @@ import java.net.URISyntaxException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.utils.URIBuilder;
 import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import com.thankjava.toolkit3d.http.async.entity.Headers;
 import com.thankjava.toolkit3d.http.async.entity.Parameters;
-import com.thankjava.toolkit3d.http.async.entity.RequestParams;
+import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
 
 
 /**
@@ -30,11 +31,11 @@ public class RequestBuilder {
 	* @author zhaoxy@thankjava.com
 	* @date 2016年12月12日 下午4:46:22
 	* @version 1.0
-	* @param requestParams
+	* @param asyncRequest
 	* @return
 	 */
-	public static HttpGet builderGet(RequestParams requestParams){
-		return (HttpGet)builderRequest(requestParams);
+	public static HttpGet builderGet(AsyncRequest asyncRequest){
+		return (HttpGet)builderRequest(asyncRequest);
 	}
 	
 	/**
@@ -44,39 +45,39 @@ public class RequestBuilder {
 	* @author zhaoxy@thankjava.com
 	* @date 2016年12月12日 下午6:27:34
 	* @version 1.0
-	* @param requestParams
+	* @param asyncRequest
 	* @return
 	 */
-	public static HttpPost builderPost(RequestParams requestParams){
-		return (HttpPost)builderRequest(requestParams);
+	public static HttpPost builderPost(AsyncRequest asyncRequest){
+		return (HttpPost)builderRequest(asyncRequest);
 	}
-	
 	
 	// Impl
 	
-	private static Object builderRequest(RequestParams requestParams){
-		Object request = null;
+	private static HttpRequestBase builderRequest(AsyncRequest asyncRequest){
+		HttpRequestBase request = null;
 		
-		if(HttpMethod.post.equals(requestParams.getHttpMethod())){
-			request = addParamsPost(requestParams);
-		} else if(HttpMethod.get.equals(requestParams.getHttpMethod())){
-			request = addParamsGet(requestParams);
+		if(HttpMethod.post.equals(asyncRequest.getHttpMethod())){
+			request = addParamsPost(asyncRequest);
+		} else if(HttpMethod.get.equals(asyncRequest.getHttpMethod())){
+			request = addParamsGet(asyncRequest);
 		}
 		return request;
 	}
 	
-	private static Object addParamsPost(RequestParams requestParams){
+	private static HttpRequestBase addParamsPost(AsyncRequest asyncRequest){
 		
-		HttpPost post = new HttpPost(requestParams.getUrl());
-		Headers header = requestParams.getHeader();
+		HttpPost post = new HttpPost(asyncRequest.getUrl());
+		Headers header = asyncRequest.getHeader();
+
 		if(header != null){
-			post.setHeaders(header.toArray());
+			post.setHeaders(header.toHeaderArray());
 		}
 		
-		Parameters parameter = requestParams.getParameter();
+		Parameters parameter = asyncRequest.getParameter();
 		if(parameter != null){
 			try {
-				post.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), requestParams.getReqCharset().charset));
+				post.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), asyncRequest.getReqCharset().charset));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			} 
@@ -85,10 +86,10 @@ public class RequestBuilder {
 		return post;
 	}
 	
-	private static Object addParamsGet(RequestParams requestParams){
+	private static HttpRequestBase addParamsGet(AsyncRequest asyncRequest){
 		
-		HttpGet get = new HttpGet(requestParams.getUrl());
-		Parameters parameter = requestParams.getParameter();
+		HttpGet get = new HttpGet(asyncRequest.getUrl());
+		Parameters parameter = asyncRequest.getParameter();
 		if(parameter != null){
 			try {
 				get.setURI(new URIBuilder(get.getURI()).addParameters(parameter.getNameValuePair()).build());
@@ -97,9 +98,9 @@ public class RequestBuilder {
 			}
 		}
 		
-		Headers header = requestParams.getHeader();
+		Headers header = asyncRequest.getHeader();
 		if(header != null){
-			get.setHeaders(header.toArray());
+			get.setHeaders(header.toHeaderArray());
 		}
 		
 		return get;

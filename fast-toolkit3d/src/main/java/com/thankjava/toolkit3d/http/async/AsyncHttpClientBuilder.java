@@ -16,7 +16,7 @@ public class AsyncHttpClientBuilder {
 	* @return
 	 */
 	public static AsyncHttpClient createDefault(){
-		return new AsyncHttpClient(HttpAsyncClients.createDefault());
+		return new AsyncHttpClient(HttpAsyncClients.createDefault(),true);
 	}
 	
 	/**
@@ -31,6 +31,6 @@ public class AsyncHttpClientBuilder {
 	public static AsyncHttpClient createCommon(){
 		HttpAsyncClientBuilder httpAsyncClientBuilder = HttpAsyncClients.custom();
 		httpAsyncClientBuilder.setUserAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
-		return new AsyncHttpClient(httpAsyncClientBuilder.build());
+		return new AsyncHttpClient(httpAsyncClientBuilder.build(),true);
 	}
 }

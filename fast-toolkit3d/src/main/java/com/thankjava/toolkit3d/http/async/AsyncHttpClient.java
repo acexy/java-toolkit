@@ -2,19 +2,15 @@ package com.thankjava.toolkit3d.http.async;
 
 import java.io.IOException;
 
+import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import com.thankjava.toolkit3d.http.async.core.SyncRequest;
 import com.thankjava.toolkit3d.http.async.entity.Cookies;
-import com.thankjava.toolkit3d.http.async.entity.RequestParams;
-import com.thankjava.toolkit3d.http.async.entity.ResponseParams;
+import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
 
 public class AsyncHttpClient {
 	
-	static{
-		System.setProperty("jsse.enableSNIExtension", "false");
-	}
-
 	/**
 	 * 同步请求的处理
 	 */
@@ -22,7 +18,10 @@ public class AsyncHttpClient {
 	
 	private static CloseableHttpAsyncClient closeableHttpAsyncClient;
 	
-	AsyncHttpClient(CloseableHttpAsyncClient closeableHttpAsyncClient){
+	AsyncHttpClient(CloseableHttpAsyncClient closeableHttpAsyncClient, boolean enableSNIExtension){
+		if (enableSNIExtension) {
+			System.setProperty("jsse.enableSNIExtension", "true");
+		}
 		AsyncHttpClient.closeableHttpAsyncClient = closeableHttpAsyncClient;
 		closeableHttpAsyncClient.start();
 		syncRequest = SyncRequest.getInterface(closeableHttpAsyncClient);
@@ -35,12 +34,11 @@ public class AsyncHttpClient {
 	* @author zhaoxy@thankjava.com
 	* @date 2016年12月12日 下午3:54:33
 	* @version 1.0
-	* @param requestParams
-	* @param parameter
+	* @param asyncRequest
 	* @return
 	 */
-	public ResponseParams syncRequestWithSession(RequestParams requestParams){
-		return syncRequest.requestWithSession(requestParams);
+	public AsyncResponse syncRequestWithSession(AsyncRequest asyncRequest){
+		return syncRequest.requestWithSession(asyncRequest);
 	}
 	
 	/**
