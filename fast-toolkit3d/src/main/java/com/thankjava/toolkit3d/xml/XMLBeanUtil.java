@@ -44,9 +44,7 @@ public class XMLBeanUtil {
 				xStream.ignoreUnknownElements();
 			}
 		}
-		@SuppressWarnings("unchecked")
-		T t = (T) xStream.fromXML(xml);
-		return t;
+		return (T) xStream.fromXML(xml);
 	}
 	
 	public static <T> T xml2Bean(Map<String, Class<?>> classMap, String xmlStr,Class<T> clazz,boolean isIgnoreUnkonwnEles) {
@@ -60,13 +58,10 @@ public class XMLBeanUtil {
 				xStream.ignoreUnknownElements();
 			}
 		}
-		@SuppressWarnings("unchecked")
-		T t = (T) xStream.fromXML(xmlStr);
-		return t;
+		return (T) xStream.fromXML(xmlStr);
 	}
 
 	public static String bean2Xml(Object obj) {
-		String xml = xStream.toXML(obj);
-		return xml;
+		return xStream.toXML(obj);
 	}
 }
