@@ -1,93 +1,189 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.thankjava.toolkit3d</groupId>
 	<artifactId>fast-toolkit3d</artifactId>
+	<version>1.0.5-SNAPSHOT</version>
 
-	<parent>
-        <groupId>com.thankjava.toolkitroot</groupId>
-        <artifactId>fast-toolkit-root</artifactId>
-        <version>1.0.4-SNAPSHOT</version>
-    </parent>
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <com.thankjava.toolkit.version>1.0.5-SNAPSHOT</com.thankjava.toolkit.version>
+
+        <com.alibaba.fastjson.version>1.2.24</com.alibaba.fastjson.version>
+        <com.alibaba.druid.version>1.0.28</com.alibaba.druid.version>
+        <org.mybatis.version>3.3.1</org.mybatis.version>
+        <mysql.version>5.1.38</mysql.version>
+        <redis.clients.version>2.8.1</redis.clients.version>
+        <org.mongodb.version>3.2.2</org.mongodb.version>
+        <com.thoughtworks.xstream.version>1.4.9</com.thoughtworks.xstream.version>
+        <net.sf.ehcache.version>2.6.11</net.sf.ehcache.version>
+        <cglib.version>3.2.4</cglib.version>
+        <javax.mail.version>1.5.0-b01</javax.mail.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <zip4j.version>1.3.2</zip4j.version>
+        <httpasyncclient.version>4.1.3</httpasyncclient.version>
+    </properties>
+>>>>>>> master
 
 	<dependencies>
 		<dependency>
 			<groupId>com.thankjava.toolkit</groupId>
 			<artifactId>fast-toolkit</artifactId>
+            <version>${com.thankjava.toolkit.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
+            <version>${com.alibaba.fastjson.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
+            <version>${org.mybatis.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
+            <version>${com.alibaba.druid.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
+            <version>${redis.clients.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
+            <version>${org.mongodb.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
+            <version>${com.thoughtworks.xstream.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
+            <version>${net.sf.ehcache.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
+            <version>${javax.mail.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
+            <version>${javax.activation.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.lingala.zip4j</groupId>
 			<artifactId>zip4j</artifactId>
+            <version>${zip4j.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpasyncclient</artifactId>
+            <version>${httpasyncclient.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+    <build>
+        <plugins>
+            <plugin><!-- 跳过测试 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin><!-- 指定JDK版本 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin><!-- 指定 mvn install jar源码 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <tag>master</tag>
+        <url>git@github.com:thankjava/java-toolkit.git</url>
+        <connection>scm:git:git@github.com:thankjava/java-toolkit.git</connection>
+        <developerConnection>scm:git:git@github.com:thankjava/java-toolkit.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>acexy</name>
+            <email>zhaoxy@thankjava.com</email>
+            <organization>Thankjava</organization>
+        </developer>
+    </developers>
 
 </project>
