@@ -18,19 +18,21 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 ## 更新备注
 * 1.0.3 调整async.http模块
 	* 该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
 	* 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组数据
+* 1.0.4 修正maven结构
+	* 修正maven结构导致发布到中央库的maven依赖失败
 
 ---
 ## java-tookit 介绍（基于jdk实现，不需要引入其他组件）
