@@ -165,19 +165,25 @@ public class JedisManager implements RedisManager{
 	}
 
 	@Override
-	public boolean hset(String key,HashMap<String, String> hashValue) {
-		if(hashValue == null || hashValue.size() == 0){
-			return false;
-		}
-		
+	public boolean hset(String key,String hashKey,String hashValue) {
 		Jedis jedis = null;
 		try {
 			jedis = getJedis();
-			long influenceCount = 0;
-			for (Map.Entry<String, String> entry : hashValue.entrySet()) {
-				influenceCount += jedis.hset(key, entry.getKey(), entry.getValue());
-			}
-			return influenceCount > 0 ? true : false;
+			return jedis.hset(key, hashKey, hashValue) > 0 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
+		}
+	}
+
+	@Override
+	public boolean hmset(String key, HashMap<String, String> hash) {
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return SUCCESS_CODE_STR.equals(jedis.hmset(key, hash));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
