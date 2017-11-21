@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.thankjava.toolkit.reflect.BeanCopier;
 
+import com.thankjava.toolkit.reflect.ReflectHelper;
 import reflect.bean.entity.Entity1;
 import reflect.bean.vo.Vo1;
 
@@ -34,17 +35,17 @@ public class BeanCopyerTest {
 			
 			List<String> listStr = new ArrayList<String>();
 			listStr.add("1");
-//			e1.setListStr(listStr);
+			e1.setListStr(listStr);
 			
 			
 			String[] strArr = new String[]{"aa","bb","cc"};
-//			e1.setStrArr(strArr);
+			e1.setStrArr(strArr);
 			
-			for(int i = 0 ; i < 100000 ; i ++){
+			for(int i = 0 ; i < 100 ; i ++){
 				Vo1 v1 = new Vo1();
 				v1.setBol(e1.getBol());
-//				v1.setListStr(e1.getListStr());
-//				v1.setStrArr(e1.getStrArr());
+				v1.setListStr(e1.getListStr());
+				v1.setStrArr(e1.getStrArr());
 			}
 			System.out.println("use time : " + (System.currentTimeMillis() - st));
 		}
@@ -55,17 +56,18 @@ public class BeanCopyerTest {
 			e1.setBol(false);
 			List<String> listStr = new ArrayList<String>();
 			listStr.add("你好");
-//			e1.setListStr(listStr);
+			e1.setListStr(listStr);
 			String[] strArr = new String[]{"aa","bb","cc"};
-//			e1.setStrArr(strArr);
+			e1.setStrArr(strArr);
 			
-			for(int i = 0 ; i < 100000 ; i ++){
+			for(int i = 0 ; i < 100 ; i ++){
 				BeanCopier.copy(e1, Vo1.class);
 			}
-			
-			
+
+
 			System.out.println("use time : " + (System.currentTimeMillis() - st));
 		}
+
 	}
 
 }

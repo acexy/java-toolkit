@@ -81,7 +81,7 @@ public final class BeanCopier {
 	* @author zhaoxy@thankjava.com
 	* @date 2016年1月11日 下午2:48:10
 	* @version 1.0
-	* @param originObject
+	* @param originObjects
 	* @param targetClass
 	* @return ArrayList
 	 */
