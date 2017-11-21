@@ -56,7 +56,7 @@ public final class MD5Security {
 	/**
 	 * 转换字节数组为十六进制字符串
 	 * 
-	 * @param 字节数组
+	 * @param b 字节数组
 	 * @return 十六进制字符串
 	 */
 	private static String byteArrayToHexString(byte[] b) {
