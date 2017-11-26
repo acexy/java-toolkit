@@ -205,4 +205,12 @@ public interface RedisManager {
      * @version 1.0
      */
     public List<Object> hgetallPipelined(Set<String> keys);
+
+    /**
+     * 删除hash
+     * @param key
+     * @param fields 可选，不填删除整个key
+     * @return
+     */
+    public boolean hdel(String key, String... fields);
 }

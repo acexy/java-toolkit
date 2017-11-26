@@ -309,6 +309,23 @@ public class JedisManager implements RedisManager{
 	}
 
 	@Override
+	public boolean hdel(String key, String... fields) {
+		if(fields == null || fields.length == 0){
+			return false;
+		}
+		Jedis jedis = null;
+		try {
+			jedis = getJedis();
+			return jedis.hdel(key,fields) == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			returnJedis(jedis);
+		}
+	}
+
+	@Override
 	public String hget(String key, String field) {
 		Jedis jedis = null;
 		try {
