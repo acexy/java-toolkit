@@ -11,7 +11,7 @@
         <snapshotRepository>
             <id>snapshots</id>
             <name>Snapshots</name>
-            <url>http://niaoyun.thankjava.com:8000/content/repositories/snapshots/</url>
+            <url>http://maven.thankjava.com/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
