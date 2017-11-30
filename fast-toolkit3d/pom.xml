@@ -22,6 +22,7 @@
 
     <properties>
         <com.thankjava.toolkit.version>1.0.5-SNAPSHOT</com.thankjava.toolkit.version>
+
         <com.alibaba.fastjson.version>1.2.24</com.alibaba.fastjson.version>
         <com.alibaba.druid.version>1.0.28</com.alibaba.druid.version>
         <org.mybatis.version>3.3.1</org.mybatis.version>
