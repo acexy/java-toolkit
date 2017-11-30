@@ -109,14 +109,14 @@ public final class BeanCopier {
 	 */
 	private static <OriginObject,TargetObject> TargetObject setValue(OriginObject originObject,TargetObject targetObject,Class<TargetObject> targetClass){
 		
-		Field[] targetFields = ReflectHelper.getFieldArrayExcludeUID(targetClass);
+		Field[] targetFields = ReflectHelper.getFieldArrayIncludeSupClassExcludeUID(targetClass);
 		
 		Field originField = null; //目标字段类型
 		
 		Object originValue = null; //原始对象属性值
 		Object targetValue = null; //目标对象属性值
 		
-		//实行从目标对象中找原始对象的属性方式， 
+		//从目标对象中找原始对象的属性方式，
 		for (Field targetField : targetFields) {
 			
 			originField = ReflectHelper.getField(originObject, targetField.getName()); 
