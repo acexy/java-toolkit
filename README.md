@@ -33,6 +33,10 @@ maven仓库
 	* 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组数据
 * 1.0.4 修正maven结构
 	* 修正maven结构导致发布到中央库的maven依赖失败
+* 1.0.5 新增功能
+    * redis模块提供更多常用命令
+    * BeanCopier模块支持父级属性对等复制
+    * 移除了一些简单的api
 
 ---
 ## java-tookit 介绍（基于jdk实现，不需要引入其他组件）
