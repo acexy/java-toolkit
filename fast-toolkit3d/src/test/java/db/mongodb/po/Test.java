@@ -1,30 +1,37 @@
 package db.mongodb.po;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
+import java.util.Date;
+
 public class Test {
 
-	@SuppressWarnings("unused")
-	private static final long serialVersionUID = 1L;
-	
-	public Test(Long id,String value){
-		this.id = id;
-		this.value = value;
-	}
-	public Test(){}
-	
-	private Long id;
+	@JSONField(name = "_id")
+	private String id;
 	private String value;
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private Long time;
+
 	public String getValue() {
 		return value;
 	}
+
 	public void setValue(String value) {
 		this.value = value;
 	}
 
+	public Long getTime() {
+		return time;
+	}
+
+	public void setTime(Long time) {
+		this.time = time;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 }

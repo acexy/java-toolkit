@@ -26,7 +26,7 @@ public final class TimeHelper {
 		HHmmss("HHmmss"),
 		;
 		
-		String type;
+		public String type;
 		private TimeType(String type){
 			this.type = type;
 		}
