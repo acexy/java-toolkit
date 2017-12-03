@@ -45,6 +45,9 @@ class TypeSort {
 		if (Byte.class == type || byte.class == type) {
 			return true;
 		}
+		if (Short.class == type || short.class == type) {
+			return true;
+		}
 		return false;
 	}
 
