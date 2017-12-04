@@ -30,7 +30,7 @@ public class MongoDriverManager implements MongoDBManager {
 
     final static String OPERATOR_SET = "$set";
 
-    final static String ObjectIdKey= "_id";
+    final static String ObjectIdKey = "_id";
 
     static {
         Reader reader = null;
@@ -298,6 +298,24 @@ public class MongoDriverManager implements MongoDBManager {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean updateOneByObjectId(String docName, Document doc, String objectHexString) {
+        if (objectHexString == null) {
+            return false;
+        }
+        ObjectId objectId = new ObjectId(objectHexString);
+        Document docFilter = new Document(ObjectIdKey, objectId);
+        return updateOne(docName, doc, docFilter);
+    }
+
+    @Override
+    public boolean updateOneByObjectId(String docName, Object t, String objectHexString) {
+        if (objectHexString == null) {
+            return false;
+        }
+        return updateOneByObjectId(docName, t2Doc(t), objectHexString);
     }
 
     @Override

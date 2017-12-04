@@ -90,6 +90,7 @@ public interface MongoDBManager {
 
     /**
      * 通过Mongo Bson Object HexString 主键查询
+     *
      * @param docName
      * @param objectHexString
      * @return
@@ -98,6 +99,7 @@ public interface MongoDBManager {
 
     /**
      * 通过Mongo Bson Object HexString 主键查询
+     *
      * @param docName
      * @param objectHexString
      * @param clazz
@@ -213,6 +215,26 @@ public interface MongoDBManager {
      * @return
      */
     public boolean updateOne(String docName, Document doc, Document docFilter);
+
+    /**
+     * 根据objectHexString更新一条数据
+     * 更新的文档将置于$set属性值中,用于部分节点更新
+     * @param docName
+     * @param doc
+     * @param objectHexString
+     * @return
+     */
+    public boolean updateOneByObjectId(String docName, Document doc, String objectHexString);
+
+    /**
+     * 根据objectHexString更新一条数据
+     * 更新的文档将置于$set属性值中,用于部分节点更新
+     * @param docName
+     * @param t
+     * @param objectHexString
+     * @return
+     */
+    public boolean updateOneByObjectId(String docName, Object t, String objectHexString);
 
     /**
      * 更新多条数据,当找到符合更新条件的数据n条,更新数据y条,当n=0||y=0(或者没有更新任何一条数据)返回false
