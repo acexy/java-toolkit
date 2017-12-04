@@ -101,6 +101,7 @@ public class MongoDriverManager implements MongoDBManager {
         if (doc == null) {
             return null;
         }
+        System.out.println(doc.toJson());
         Object objectId = doc.get(ObjectIdKey);
         if (objectId != null && objectId instanceof ObjectId) {
             String _id = ((ObjectId) objectId).toHexString();
@@ -305,8 +306,7 @@ public class MongoDriverManager implements MongoDBManager {
         if (objectHexString == null) {
             return false;
         }
-        ObjectId objectId = new ObjectId(objectHexString);
-        Document docFilter = new Document(ObjectIdKey, objectId);
+        Document docFilter = new Document(ObjectIdKey, new ObjectId(objectHexString));
         return updateOne(docName, doc, docFilter);
     }
 

@@ -17,10 +17,12 @@ public class MongodbManagerTest {
 
     public static void main(String[] args) {
         Test test = new Test();
-        test.setTime(new Date().getTime());
-        test.setValue("1");
-        System.out.println(mongoDBManager.insertOne("test", test));
+//        test.setTime(new Date().getTime());
+//        test.setValue("1");
+//        System.out.println(mongoDBManager.insertOne("test", test));
 
-//        System.out.println(mongoDBManager.findByObjectId("test", "5a240c6f1d3ced51b8c60541"));
+
+        test.setValue("美国");
+        System.out.println(mongoDBManager.updateOneByObjectId("test",test,"5a24f854eba60917d0191f8f"));
     }
 }
