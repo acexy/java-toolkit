@@ -21,6 +21,6 @@ public class MongodbManagerTest {
         test.setValue("1");
         System.out.println(mongoDBManager.insertOne("test", test));
 
-        System.out.println(mongoDBManager.findByObjectId("test", "5a240c6f1d3ced51b8c60541"));
+//        System.out.println(mongoDBManager.findByObjectId("test", "5a240c6f1d3ced51b8c60541"));
     }
 }

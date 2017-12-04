@@ -44,7 +44,7 @@ public interface MongoDBManager {
      * @date 2016年3月8日 下午5:27:57
      * @version 1.0
      */
-    public boolean insertOne(String docName, Document doc);
+    public String insertOne(String docName, Document doc);
 
     /**
      * 一次性插入批量数据
@@ -72,7 +72,7 @@ public interface MongoDBManager {
      * @date 2016年3月8日 下午5:28:34
      * @version 1.0
      */
-    public boolean insertOne(String docName, Object t);
+    public String insertOne(String docName, Object t);
 
     /**
      * 一次性插入批量数据

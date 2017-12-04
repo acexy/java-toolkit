@@ -28,7 +28,9 @@ public class MongoDriverManager implements MongoDBManager {
 
     private static MongoDatabase mongoDatabase = null;
 
-    final String OPERATOR_SET = "$set";
+    final static String OPERATOR_SET = "$set";
+
+    final static String ObjectIdKey= "_id";
 
     static {
         Reader reader = null;
@@ -52,8 +54,8 @@ public class MongoDriverManager implements MongoDBManager {
             if (uname == null || uname.length() == 0 || pwd == null || pwd.length() == 0) {
                 mongoClient = new MongoClient(new ServerAddress(props.getProperty("mongo.host"), Integer.valueOf(props.getProperty("mongo.port"))), myOptions);
             } else {
-                MongoCredential credentia = MongoCredential.createCredential(uname, databaseName, pwd.toCharArray());
-                mongoClient = new MongoClient(new ServerAddress(props.getProperty("mongo.host"), Integer.valueOf(props.getProperty("mongo.port"))), Arrays.asList(credentia), myOptions);
+                MongoCredential credential = MongoCredential.createCredential(uname, databaseName, pwd.toCharArray());
+                mongoClient = new MongoClient(new ServerAddress(props.getProperty("mongo.host"), Integer.valueOf(props.getProperty("mongo.port"))), Arrays.asList(credential), myOptions);
             }
             mongoDatabase = mongoClient.getDatabase(databaseName);
         } catch (IOException e) {
@@ -99,11 +101,11 @@ public class MongoDriverManager implements MongoDBManager {
         if (doc == null) {
             return null;
         }
-        Object objectId = doc.get("_id");
+        Object objectId = doc.get(ObjectIdKey);
         if (objectId != null && objectId instanceof ObjectId) {
             String _id = ((ObjectId) objectId).toHexString();
-            doc.remove("_id");
-            doc.put("_id", _id);
+            doc.remove(ObjectIdKey);
+            doc.put(ObjectIdKey, _id);
         }
         return FastJson.toObject(FastJson.toJsonString(doc), clazz);
     }
@@ -118,18 +120,18 @@ public class MongoDriverManager implements MongoDBManager {
     }
 
     @Override
-    public boolean insertOne(String docName, Document doc) {
+    public String insertOne(String docName, Document doc) {
         if (doc == null) {
-            return false;
+            return null;
         }
         MongoCollection<Document> collection = getDBCollection(docName);
         try {
             collection.insertOne(doc);
+            return doc.getObjectId(ObjectIdKey).toHexString();
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
-        return true;
+        return null;
     }
 
     @Override
@@ -148,18 +150,19 @@ public class MongoDriverManager implements MongoDBManager {
     }
 
     @Override
-    public boolean insertOne(String docName, Object t) {
+    public String insertOne(String docName, Object t) {
         if (t == null) {
-            return false;
+            return null;
         }
         MongoCollection<Document> collection = getDBCollection(docName);
         try {
-            collection.insertOne(t2Doc(t));
+            Document doc = t2Doc(t);
+            collection.insertOne(doc);
+            return doc.getObjectId(ObjectIdKey).toHexString();
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
-        return true;
+        return null;
     }
 
     @Override
@@ -188,7 +191,7 @@ public class MongoDriverManager implements MongoDBManager {
         }
         ObjectId objectId = new ObjectId(objectHexString);
         Document doc = new Document();
-        doc.put("_id", objectId);
+        doc.put(ObjectIdKey, objectId);
 
         MongoCursor<Document> cursor = baseFind(docName, doc);
         doc = null;
