@@ -24,6 +24,8 @@ public final class TimeHelper {
 		yyyyMMddHHmmss("yyyyMMddHHmmss"),
 		yyyyMMdd("yyyyMMdd"),
 		HHmmss("HHmmss"),
+
+        yyyy1MM1dd1HH1mm("yyyy/MM/dd/HH/mm"),
 		;
 		
 		public String type;
