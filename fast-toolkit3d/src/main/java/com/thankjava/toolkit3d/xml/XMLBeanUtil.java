@@ -20,7 +20,7 @@ public class XMLBeanUtil {
 
 	private static final String ENCODING = "utf-8";
 	private static XStream xStream = new XStream(new DomDriver(ENCODING));
-	private static Map<Class<?>, XStream> xStreamInstance = new HashMap<Class<?>, XStream>();
+	private static final Map<Class<?>, XStream> xStreamInstance = new HashMap<Class<?>, XStream>();
 	
 	/**
 	 * 将xml转java对象

@@ -81,7 +81,7 @@ public class FastJson {
 
     /**
      * 将对象转json字符串
-     * <p>Function: toJsonString</p>
+     * <p>Function: toJSONString</p>
      * <p>Description: </p>
      *
      * @param object
@@ -90,7 +90,7 @@ public class FastJson {
      * @date 2015年12月30日 下午12:26:29
      * @version 1.0
      */
-    public static String toJsonString(Object object) {
+    public static String toJSONString(Object object) {
         if (object == null) {
             return null;
         }
@@ -122,7 +122,7 @@ public class FastJson {
         if (object == null) {
             return null;
         }
-        return toMap(toJsonString(object));
+        return toMap(toJSONString(object));
     }
 
     /**

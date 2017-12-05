@@ -53,7 +53,7 @@ public class XMLBeanUtilTest {
 					classMap.put("a", EntityB.class);
 					classMap.put("dous", String.class);
 					entityB = XMLBeanUtil.xml2Bean(classMap, xmlStr1, EntityB.class, false);
-					System.out.println(FastJson.toJsonString(entityB));
+					System.out.println(FastJson.toJSONString(entityB));
 					
 					entityB = new EntityB();
 					entityB.setDou(new String[]{"a","b"});
@@ -64,7 +64,7 @@ public class XMLBeanUtilTest {
 					
 					
 		String a = "0|1";
-		System.out.println(FastJson.toJsonString(a.split("\\|")));
+		System.out.println(FastJson.toJSONString(a.split("\\|")));
 	}
 	
 	

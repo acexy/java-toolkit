@@ -94,7 +94,7 @@ public class MongoDriverManager implements MongoDBManager {
         if (t == null) {
             return null;
         }
-        return Document.parse(FastJson.toJsonString(t));
+        return Document.parse(FastJson.toJSONString(t));
     }
 
     private <T> T doc2T(Document doc, Class<T> clazz) {
@@ -108,7 +108,7 @@ public class MongoDriverManager implements MongoDBManager {
             doc.remove(ObjectIdKey);
             doc.put(ObjectIdKey, _id);
         }
-        return FastJson.toObject(FastJson.toJsonString(doc), clazz);
+        return FastJson.toObject(FastJson.toJSONString(doc), clazz);
     }
 
     @Override
