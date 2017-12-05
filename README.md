@@ -8,7 +8,7 @@ fast-tookit
 
 fast-tookit3d
 ---
-- 依赖fast-tookit
+- 依赖其他常用的开源jar
 - 将其他第三方优秀lib组件化,整理并提供更简洁的api处理方案
 
 --- 
