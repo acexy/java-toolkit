@@ -46,6 +46,7 @@ public class FastJson {
 
     /**
      * 将JSONObject 转成对象
+     *
      * @param jsonObject
      * @param clazz
      * @param <T>
@@ -94,6 +95,16 @@ public class FastJson {
             return null;
         }
         return JSONObject.toJSONString(object);
+    }
+
+    /**
+     * java bean 2 JSONObject
+     *
+     * @param object
+     * @return
+     */
+    public static JSONObject toJSONObject(Object object) {
+        return (JSONObject) JSONObject.toJSON(object);
     }
 
     /**
