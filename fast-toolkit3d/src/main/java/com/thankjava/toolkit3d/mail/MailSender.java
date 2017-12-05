@@ -29,7 +29,7 @@ import com.thankjava.toolkit3d.vo.mail.MailEntity;
  * 邮件发送工具
 * <p>Function: MailSender</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年1月4日 下午6:16:08
 * @version 1.0
  */

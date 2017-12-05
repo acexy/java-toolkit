@@ -13,7 +13,7 @@ import com.thankjava.toolkit.reflect.ReflectHelper;
  * 用于确认字段类型
 * <p>Function: BeanCopyTypeSort</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2015-1-27 下午3:40:16
 * @version 1.0
  */

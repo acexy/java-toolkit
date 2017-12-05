@@ -35,7 +35,7 @@ public final class ThreadTask {
 	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后将立刻执行
 	* 2.下一个任务的执行时间并不是上一个任务完成后才计算指定的周期延时时间,而是上一个任务一开始,下一个任务的延迟时间就开始计算
 	* </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 上午11:39:12
 	* @version 1.0
 	* @param taskEntity
@@ -58,13 +58,13 @@ public final class ThreadTask {
 	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后将立刻执行
 	* 2.下一个任务的执行时间并不是上一个任务完成后才计算指定的周期延时时间,而是上一个任务一开始,下一个任务的延迟时间就开始计算
 	* </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 上午11:39:12
 	* @version 1.0
-	* @param taskEntity
+	* @param taskEntities
 	 */
-	public void addTaskAtFixedRate(List<TaskEntity> taskEntitys){
-		for (TaskEntity taskEntity : taskEntitys) {
+	public void addTaskAtFixedRate(List<TaskEntity> taskEntities){
+		for (TaskEntity taskEntity : taskEntities) {
 			ScheduledFuture<?> future = scheduledExecutorService.scheduleAtFixedRate(
 					taskEntity.getRunnable(), 
 					taskEntity.getStartDelayTime(), 
@@ -82,7 +82,7 @@ public final class ThreadTask {
 	* Description: 如果任务的任何执行遇到异常,则抑制后续的执行,否则,任务只会通过执行器的取消或终止而终止
 	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后才计算周期延迟时间
 	* </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年10月8日 下午3:24:48
 	* @version 1.0
 	* @param taskEntity
@@ -104,13 +104,13 @@ public final class ThreadTask {
 	* Description: 如果任务的任何执行遇到异常,则抑制后续的执行,否则,任务只会通过执行器的取消或终止而终止
 	* 1.当任务周期过长时，下一个任务就算到达执行时间也将会处于等待状态,直到上一个任务完成后才计算周期延迟时间
 	* </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 上午11:39:12
 	* @version 1.0
-	* @param taskEntity
+	* @param taskEntities
 	 */
-	public void addTaskWithFixedDelay(List<TaskEntity> taskEntitys){
-		for (TaskEntity taskEntity : taskEntitys) {
+	public void addTaskWithFixedDelay(List<TaskEntity> taskEntities){
+		for (TaskEntity taskEntity : taskEntities) {
 			ScheduledFuture<?> future = scheduledExecutorService.scheduleWithFixedDelay(
 					taskEntity.getRunnable(), 
 					taskEntity.getStartDelayTime(), 
@@ -126,7 +126,7 @@ public final class ThreadTask {
 	 * 运行一次的指定任务
 	* <p>Function: addTaskRunOnce</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年10月8日 下午3:00:51
 	* @version 1.0
 	* @param startDelayTime 延迟时间(s)
@@ -140,7 +140,7 @@ public final class ThreadTask {
 	 * 通过任务id 停止某个任务
 	* <p>Function: removeTaskByTaskId</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 上午11:40:04
 	* @version 1.0
 	* @param taskId
@@ -159,7 +159,7 @@ public final class ThreadTask {
 	 * 获取运行中的任务数量
 	* <p>Function: getRunningTaskCount</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 上午11:40:59
 	* @version 1.0
 	* @return
@@ -172,7 +172,7 @@ public final class ThreadTask {
 	 * 清除所有任务
 	* <p>Function: clearAllTasks</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 下午3:33:29
 	* @version 1.0
 	* @param isInterrupt
@@ -196,7 +196,7 @@ public final class ThreadTask {
 	 * 停止整个任务服务
 	* <p>Function: shutdown</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 上午11:47:21
 	* @version 1.0
 	 */

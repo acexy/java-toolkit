@@ -12,7 +12,7 @@ import org.bson.Document;
  * <p>Function: MongoDBManager</p>
  * <p>Description: </p>
  *
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @version 1.0
  * @date 2016年3月8日 下午5:29:26
  */
@@ -26,7 +26,7 @@ public interface MongoDBManager {
      * @param docName
      * @param docFilter 为null 则统计全部
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月8日 上午11:36:00
      * @version 1.0
      */
@@ -40,7 +40,7 @@ public interface MongoDBManager {
      * @param docName
      * @param doc     org.bson.Document
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:27:57
      * @version 1.0
      */
@@ -54,7 +54,7 @@ public interface MongoDBManager {
      * @param docName
      * @param docs
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:28:24
      * @version 1.0
      */
@@ -68,7 +68,7 @@ public interface MongoDBManager {
      * @param docName
      * @param t       JavaBean
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:28:34
      * @version 1.0
      */
@@ -82,7 +82,7 @@ public interface MongoDBManager {
      * @param docName
      * @param ts
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:28:53
      * @version 1.0
      */
@@ -116,7 +116,7 @@ public interface MongoDBManager {
      * @param docName
      * @param docFilter
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月30日 上午11:47:51
      * @version 1.0
      */
@@ -130,7 +130,7 @@ public interface MongoDBManager {
      * @param docName
      * @param t
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月30日 下午1:48:01
      * @version 1.0
      */
@@ -145,7 +145,7 @@ public interface MongoDBManager {
      * @param tFilter
      * @param clazz
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月30日 下午1:41:07
      * @version 1.0
      */
@@ -161,7 +161,7 @@ public interface MongoDBManager {
      * @param docFilter
      * @param clazz
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月30日 下午1:57:43
      * @version 1.0
      */
@@ -258,7 +258,7 @@ public interface MongoDBManager {
      * @param t
      * @param tFilter
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年9月2日 下午5:31:08
      * @version 1.0
      */
@@ -275,7 +275,7 @@ public interface MongoDBManager {
      * @param t
      * @param tFilter
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年9月2日 下午5:32:24
      * @version 1.0
      */

@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * 该注解用于声明 使用该注解的方法 在执行后 将执行自定义aop切片
 * <p>Function: After</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年5月16日 上午11:04:51
 * @version 1.0
  */

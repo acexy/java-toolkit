@@ -16,7 +16,7 @@ import net.lingala.zip4j.util.Zip4jConstants;
  * 依赖于 maven[net.lingala.zip4j:zip4j]
 * <p>Function: Zip4jHelper</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年8月12日 下午3:21:15
 * @version 1.0
  */
@@ -29,7 +29,7 @@ public class Zip4jHelper {
 	 * 解压压缩文件
 	* <p>Function: unzip</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月12日 下午4:08:54
 	* @version 1.0
 	* @param zipFilePath 压缩文件位置
@@ -94,7 +94,7 @@ public class Zip4jHelper {
 	 * 压缩资源
 	* <p>Function: zip</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月16日 下午1:50:18
 	* @version 1.0
 	* @param srcPath	需要压缩的资源 可以是文件或文件夹地址

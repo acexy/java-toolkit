@@ -12,7 +12,7 @@ public class CutPoint {
 	 * 传入和返回值必须为AopParam类型
 	* <p>Function: before</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月17日 下午7:58:46
 	* @version 1.0
 	* @param param

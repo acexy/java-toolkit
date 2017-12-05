@@ -16,7 +16,7 @@ class ValueFactory {
 	 * 处理类型是数组类型
 	* <p>Function: createValueArray</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2015-1-27 下午4:30:29
 	* @version 1.0
 	* @param targetFieldType
@@ -46,7 +46,7 @@ class ValueFactory {
 	 * 处理的数据是枚举类型
 	* <p>Function: createValueEnum</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2015-1-27 下午4:58:57
 	* @version 1.0
 	* @param targetFieldType
@@ -71,7 +71,7 @@ class ValueFactory {
 	 * 处理的数据是集合类型
 	* <p>Function: createValueList</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2015-1-27 下午4:59:12
 	* @version 1.0
 	* @param targetFieldType

@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 * 依赖于 maven[com.thoughtworks.xstream:xstream]
 * <p>Function: XMLBeanUtil</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年4月18日 上午10:13:07
 * @version 1.0
  */
@@ -26,7 +26,7 @@ public class XMLBeanUtil {
 	 * 将xml转java对象
 	* <p>Function: xml2Bean</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月12日 下午3:14:40
 	* @version 1.0
 	* @param xmlRoot xml根节点名

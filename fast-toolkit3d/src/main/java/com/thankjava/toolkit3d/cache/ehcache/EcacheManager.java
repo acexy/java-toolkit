@@ -43,7 +43,7 @@ public class EcacheManager {
 	 * 设置缓存
 	* <p>Function: setCache</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年4月18日 下午5:41:37
 	* @version 1.0
 	* @param cacheName	缓存名 ehchace.xml里面配置的缓存策略

@@ -17,7 +17,7 @@ import java.security.SignatureException;
  * 基于JDK 的 rsa 算法
 * <p>Function: RSASecurity</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年8月10日 下午4:57:19
 * @version 1.0
  */
@@ -33,7 +33,7 @@ public final class RSASecurity {
 	 * RSA 公密钥对生成
 	* <p>Function: keyGen</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月10日 下午5:31:36
 	* @version 1.0
 	* @param keysize
@@ -67,7 +67,7 @@ public final class RSASecurity {
 	 * 加密算法
 	* <p>Function: encrypt</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月10日 下午5:41:51
 	* @version 1.0
 	* @param originalText 明文
@@ -89,7 +89,7 @@ public final class RSASecurity {
 	 * 验密算法
 	* <p>Function: verify</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月10日 下午6:18:28
 	* @version 1.0
 	* @param originalText 明文

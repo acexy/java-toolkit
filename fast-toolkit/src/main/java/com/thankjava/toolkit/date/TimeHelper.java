@@ -12,7 +12,7 @@ import java.util.Map;
  * <p>Function: TimeHelper</p>
  * <p>Description: </p>
  *
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @version 1.0
  * @date 2014年12月10日 下午8:40:49
  */
@@ -53,7 +53,7 @@ public final class TimeHelper {
      * @param date
      * @param timeType
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2015年6月18日 上午9:59:42
      * @version 1.0
      */
@@ -74,7 +74,7 @@ public final class TimeHelper {
      *
      * @param timeType
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:00:31
      * @version 1.0
      */
@@ -98,7 +98,7 @@ public final class TimeHelper {
      * @param timeType
      * @param date
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:01:09
      * @version 1.0
      */
@@ -115,7 +115,7 @@ public final class TimeHelper {
      * @param calendarUnit
      * @param dateOffset
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:01:26
      * @version 1.0
      */

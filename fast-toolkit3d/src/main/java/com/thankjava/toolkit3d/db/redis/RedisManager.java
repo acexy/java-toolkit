@@ -12,7 +12,7 @@ import java.util.Set;
  * <p>Function: RedisManager</p>
  * <p>Description: </p>
  *
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @version 1.0
  * @date 2016年4月18日 上午10:16:37
  */
@@ -26,7 +26,7 @@ public interface RedisManager {
      * @param key
      * @param value
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月7日 下午5:11:29
      * @version 1.0
      */
@@ -39,7 +39,7 @@ public interface RedisManager {
      *
      * @param key
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月7日 下午6:11:19
      * @version 1.0
      */
@@ -52,7 +52,7 @@ public interface RedisManager {
      *
      * @param key
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月8日 上午10:12:23
      * @version 1.0
      */
@@ -67,7 +67,7 @@ public interface RedisManager {
      * @param key
      * @param expirationTime 单位秒
      * @return 实际操作数据量大于0 则 true
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月24日 上午10:58:36
      * @version 1.0
      */
@@ -81,7 +81,7 @@ public interface RedisManager {
      * @param key
      * @param setValue
      * @return 实际操作数据量大于0 则 true
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月24日 上午11:07:57
      * @version 1.0
      */
@@ -96,7 +96,7 @@ public interface RedisManager {
      * @param hashKey 值hashkey
      * @param hashValue 值
      * @return 实际操作数据量大于0 则 true
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月24日 上午11:24:28
      * @version 1.0
      */
@@ -117,7 +117,7 @@ public interface RedisManager {
      *
      * @param key
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月24日 上午11:27:27
      * @version 1.0
      */
@@ -131,7 +131,7 @@ public interface RedisManager {
      * @param key
      * @param listValue
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年5月5日 下午3:34:30
      * @version 1.0
      */
@@ -144,7 +144,7 @@ public interface RedisManager {
      *
      * @param key
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年5月5日 下午3:53:48
      * @version 1.0
      */
@@ -158,7 +158,7 @@ public interface RedisManager {
      *
      * @param key
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年5月19日 下午2:46:23
      * @version 1.0
      */
@@ -171,7 +171,7 @@ public interface RedisManager {
      *
      * @param key
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年5月19日 下午2:53:03
      * @version 1.0
      */
@@ -187,7 +187,7 @@ public interface RedisManager {
      * @param key
      * @param fields
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2017年3月29日 下午7:15:05
      * @version 1.0
      */
@@ -200,7 +200,7 @@ public interface RedisManager {
      *
      * @param keys
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2017年3月29日 下午6:52:52
      * @version 1.0
      */

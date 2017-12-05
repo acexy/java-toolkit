@@ -16,7 +16,7 @@ import java.util.Map;
 * 默认JDK HTTP-CLIENT
 * <p>Function: MailSender</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年1月4日 下午6:16:08
 * @version 1.0
 */
@@ -32,7 +32,7 @@ public final class DefaultHttpClient {
 	 * 使用GET方式请求目标网站
 	* <p>Function: get</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月4日 下午5:59:17
 	* @version 1.0
 	* @param url	完整的请求url
@@ -72,7 +72,7 @@ public final class DefaultHttpClient {
 	 * 使用POST方式请求目标网站
 	* <p>Function: post</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月4日 下午5:59:17
 	* @version 1.0
 	* @param url	请求url
@@ -142,7 +142,7 @@ public final class DefaultHttpClient {
 	 * 参数Encode
 	* <p>Function: encode</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月12日 上午11:55:53
 	* @version 1.0
 	* @param str

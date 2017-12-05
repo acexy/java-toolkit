@@ -15,7 +15,7 @@ public class ValueCast {
      * @param targetObject
      * @param originValue
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年1月11日 上午11:07:37
      * @version 1.0
      */

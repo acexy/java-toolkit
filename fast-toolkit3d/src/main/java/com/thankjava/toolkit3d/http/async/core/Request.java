@@ -8,7 +8,7 @@ import org.apache.http.impl.client.BasicCookieStore;
  * 封装的Async请求框架
 * <p>Function: Request</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年12月15日 下午6:00:19
 * @version 1.0
  */
@@ -31,7 +31,7 @@ class Request {
 	 * 获取请求的CookieStore
 	* <p>Function: getSyncCookieStore</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年12月15日 下午6:00:02
 	* @version 1.0
 	* @return

@@ -4,7 +4,7 @@ package com.thankjava.toolkit3d.enums.zip4j;
  * 压缩等级
 * <p>Function: ZipLevel</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年8月16日 上午10:18:32
 * @version 1.0
  */

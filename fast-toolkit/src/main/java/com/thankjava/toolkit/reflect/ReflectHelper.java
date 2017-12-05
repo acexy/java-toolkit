@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  * 常用的反射操作
  * <p>Function: ReflectHelper</p>
  * <p>Description: </p>
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @date 2014-12-16 上午11:26:53
  * @version 1.0
  */
@@ -20,7 +20,7 @@ public final class ReflectHelper {
      * 获取对象指定属性信息
      * <p>Function: getField</p>
      * <p>Description: 取消安全机制限制，如果当前类不存在，则获取父类属性信息，未找到则返回NULL</p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2014-12-16 上午11:27:07
      * @version 1.0
      * @param obj
@@ -49,7 +49,7 @@ public final class ReflectHelper {
      * 获取指定对象的所有属性，包含父类属性
      * <p>Function: getFieldArrayExcludeUID</p>
      * <p>Description: 不抓取serialVersionUID属性</p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2014-12-16 上午11:27:44
      * @version 1.0
      * @param clazz
@@ -86,7 +86,7 @@ public final class ReflectHelper {
      * 获取指定对象的所有属性，不包含父类属性
      * <p>Function: getFieldArrayExcludeUID</p>
      * <p>Description: 不抓取serialVersionUID属性</p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2014-12-16 上午11:27:44
      * @version 1.0
      * @param clazz
@@ -121,7 +121,7 @@ public final class ReflectHelper {
      * 获取指定类字段属性值
      * <p>Function: getFieldVal</p>
      * <p>Description: 取消安全访问限制，如果当前类不存在，则获取父类属性值  发生异常则返回NULL</p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2014-12-16 上午11:28:20
      * @version 1.0
      * @param obj
@@ -153,7 +153,7 @@ public final class ReflectHelper {
      * 为字段属性设置属性值
      * <p>Function: setFieldVal</p>
      * <p>Description: </p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2014-12-18 上午9:52:18
      * @version 1.0
      * @param obj
@@ -182,7 +182,7 @@ public final class ReflectHelper {
      * 获取指定方法
      * <p>Function: getMethod</p>
      * <p>Description: </p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2014-12-18 上午9:55:54
      * @version 1.0
      * @param obj
@@ -210,7 +210,7 @@ public final class ReflectHelper {
      * 获取obj中 自己的全部方法
      * <p>Function: getAllMethod</p>
      * <p>Description: </p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年8月17日 下午5:49:53
      * @version 1.0
      * @param obj
@@ -234,7 +234,7 @@ public final class ReflectHelper {
      * 执行指定方法
      * <p>Function: invokeMethod</p>
      * <p>Description: </p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2014-12-18 下午1:50:06
      * @version 1.0
      * @param obj
@@ -259,7 +259,7 @@ public final class ReflectHelper {
      * 获取父级的Class
      * <p>Function: getSignificantSupperClass</p>
      * <p>Description: </p>
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:02:35
      * @version 1.0
      * @param classType

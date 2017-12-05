@@ -31,7 +31,7 @@ public class AsyncHttpClient {
 	 * 发生同步请求,并自动携带相关的请求头信息
 	* <p>Function: syncRequestWithSession</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年12月12日 下午3:54:33
 	* @version 1.0
 	* @param asyncRequest
@@ -45,7 +45,7 @@ public class AsyncHttpClient {
 	 * 获取历史请求CookieStore
 	* <p>Function: getRequestCookieStore</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2017年6月12日 下午3:31:00
 	* @version 1.0
 	* @return
@@ -58,7 +58,7 @@ public class AsyncHttpClient {
 	 * 获取指定的cookie
 	* <p>Function: getCookie</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2017年6月12日 下午3:41:55
 	* @version 1.0
 	* @param cookieName
@@ -72,7 +72,7 @@ public class AsyncHttpClient {
 	 * 停止整个client
 	* <p>Function: shutdown</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年12月14日 下午2:56:25
 	* @version 1.0
 	 */

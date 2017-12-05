@@ -13,7 +13,7 @@ import com.thankjava.toolkit3d.aop.entity.AopConfig;
  * 用于扫码缓存的aop配置和加载历史配置
 * <p>Function: AopConfigResolve</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年5月16日 上午11:07:32
 * @version 1.0
  */
@@ -84,7 +84,7 @@ class AopConfigResolve {
 	 * 创建Key
 	* <p>Function: getAopConfgKey</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月22日 下午3:52:36
 	* @version 1.0
 	* @param proxy

@@ -4,7 +4,7 @@ package com.thankjava.toolkit3d.enums.mail;
  * 邮箱供应服务商
 * <p>Function: ServiceType</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2014年10月29日 下午5:29:30
 * @version 1.0
  */

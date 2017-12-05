@@ -63,7 +63,7 @@ public final class ThreadPool {
 	 * 执行任务
 	* <p>Function: execute</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年1月5日 下午3:21:05
 	* @version 1.0
 	* @param command

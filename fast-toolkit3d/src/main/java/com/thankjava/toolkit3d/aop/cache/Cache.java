@@ -9,7 +9,7 @@ import com.thankjava.toolkit3d.aop.entity.AopConfig;
  * 该类主要是用于在检索切片信息时起到一次扫描后续读取,以及对切片类做单实例处理
 * <p>Function: Cache</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年5月16日 上午11:06:28
 * @version 1.0
  */

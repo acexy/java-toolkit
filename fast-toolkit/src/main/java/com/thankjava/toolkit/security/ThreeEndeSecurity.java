@@ -8,7 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
  * 可逆加解密3DS
 * <p>Function: ThreeEndeSecurity</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2015年12月30日 上午11:08:20
 * @version 1.0
  */

@@ -18,7 +18,7 @@ import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
  * 负责构建HttpGet/HttpPost对象
 * <p>Function: RequestBuilder</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年12月12日 下午4:44:39
 * @version 1.0
  */
@@ -28,7 +28,7 @@ public class RequestBuilder {
 	 * 创建get请求对象
 	* <p>Function: builderGet</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年12月12日 下午4:46:22
 	* @version 1.0
 	* @param asyncRequest
@@ -42,7 +42,7 @@ public class RequestBuilder {
 	 * 创建post请求对象
 	* <p>Function: builderPost</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年12月12日 下午6:27:34
 	* @version 1.0
 	* @param asyncRequest

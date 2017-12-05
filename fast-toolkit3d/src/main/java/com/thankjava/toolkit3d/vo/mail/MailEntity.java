@@ -9,7 +9,7 @@ import com.thankjava.toolkit3d.enums.mail.MailService;
  * <p>Function: MailBean</p>
  * <p>Description: </p>
  *
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @version 1.0
  * @date 2014年10月29日 下午4:04:56
  */

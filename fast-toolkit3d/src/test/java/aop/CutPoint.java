@@ -11,7 +11,7 @@ import com.thankjava.toolkit3d.aop.entity.AopParam;
  * 被拦截的方法 如果配置了切片 将自动执行该切片里面的方法
 * <p>Function: CutPoint</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年8月17日 下午7:58:08
 * @version 1.0
  */
@@ -23,7 +23,7 @@ public class CutPoint {
 	 * 传入和返回值必须为AopParam类型
 	* <p>Function: before</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月17日 下午7:58:46
 	* @version 1.0
 	* @param param

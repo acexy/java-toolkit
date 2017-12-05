@@ -6,7 +6,7 @@ import java.security.MessageDigest;
  * Md5加密
  * <p> Function: MD5Security </p>
  * <p> Description: </p>
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @date 2015年12月30日 上午11:08:43
  * @version 1.0
  */

@@ -11,7 +11,7 @@ import com.thankjava.toolkit.aop.entity.AopConfig;
  * 缓存一些aop扫描的配置信息，避免每次扫描aop信息可以提高代码性能
 * <p>Function: Cache</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年8月17日 下午5:45:04
 * @version 1.0
  */
@@ -34,7 +34,7 @@ public class Cache {
 	 * 检查该类是否已经被扫描aop配置
 	* <p>Function: isScannedClass</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月17日 下午5:44:41
 	* @version 1.0
 	* @param clazz

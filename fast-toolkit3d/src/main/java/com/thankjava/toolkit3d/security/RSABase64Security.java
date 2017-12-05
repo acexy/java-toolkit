@@ -20,7 +20,7 @@ import com.thankjava.toolkit.security.RSASecurity;
  * 基于JDK RSA 算法 通过Base64缩位
 * <p>Function: RSABase64Security</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年8月10日 下午6:25:44
 * @version 1.0
  */
@@ -33,7 +33,7 @@ public class RSABase64Security {
 	 * 获取RAS Base64 公密钥对
 	* <p>Function: keyGen</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月10日 下午6:31:26
 	* @version 1.0
 	* @param 
@@ -62,7 +62,7 @@ public class RSABase64Security {
 	 * 从Base64字符中解出私钥
 	* <p>Function: decryptPrivateKeyForBase64KeyStr</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月11日 上午9:43:39
 	* @version 1.0
 	* @param privateKeyStr
@@ -85,7 +85,7 @@ public class RSABase64Security {
 	 * 从Base64字符中解出公钥
 	* <p>Function: decryptPublicKeyForBasee64KeyStr</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月11日 上午9:50:30
 	* @version 1.0
 	* @param publicKeyStr
@@ -109,7 +109,7 @@ public class RSABase64Security {
 	 * 加密
 	* <p>Function: encrypt</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月11日 上午9:48:48
 	* @version 1.0
 	* @param originalText
@@ -136,7 +136,7 @@ public class RSABase64Security {
 	 * 验密
 	* <p>Function: verify</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月11日 上午9:54:13
 	* @version 1.0
 	* @param originalText

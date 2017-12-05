@@ -10,7 +10,7 @@ import org.apache.http.message.BasicHeader;
  * 包装header信息
  * <p>Function: Header</p>
  * <p>Description:</p>
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @date 2016年12月13日 上午10:43:11
  * @version 1.0
  */

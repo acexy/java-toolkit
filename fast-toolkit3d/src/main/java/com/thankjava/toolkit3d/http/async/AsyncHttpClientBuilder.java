@@ -10,7 +10,7 @@ public class AsyncHttpClientBuilder {
 	 * 创建默认的AsyncHttpClient实例
 	* <p>Function: createDefault</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年12月12日 下午3:45:57
 	* @version 1.0
 	* @return
@@ -23,7 +23,7 @@ public class AsyncHttpClientBuilder {
 	 * 创建通用的AsyncHttpClient实例
 	* <p>Function: createCommon</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年12月13日 下午2:20:45
 	* @version 1.0
 	* @return

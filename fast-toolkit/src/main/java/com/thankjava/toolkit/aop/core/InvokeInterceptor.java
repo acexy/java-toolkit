@@ -15,7 +15,7 @@ import com.thankjava.toolkit.reflect.ReflectHelper;
  * 核心执行的拦截器
 * <p>Function: InvokeInterceptor</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年8月17日 下午2:11:06
 * @version 1.0
  */
@@ -36,7 +36,7 @@ public class InvokeInterceptor implements InvocationHandler{
 	 * 将被代理的类的方法进行扫描，检测是否有aop的配置
 	* <p>Function: scanneAnno</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月17日 下午5:51:04
 	* @version 1.0
 	* @param implementObject
@@ -101,7 +101,7 @@ public class InvokeInterceptor implements InvocationHandler{
 	 * 创建Key
 	* <p>Function: getAopConfgKey</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年8月22日 下午3:52:36
 	* @version 1.0
 	* @param proxy

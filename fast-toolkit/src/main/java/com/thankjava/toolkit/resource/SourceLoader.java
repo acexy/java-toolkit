@@ -9,7 +9,7 @@ import java.io.Reader;
  * 资源加载
 * <p>Function: SourceLoader</p>
 * <p>Description: </p>
-* @author zhaoxy@thankjava.com
+* @author acexy@thankjava.com
 * @date 2016年4月18日 上午10:33:00
 * @version 1.0
  */
@@ -21,7 +21,7 @@ public class SourceLoader {
 	 * 加载内部指定资源
 	* <p>Function: getResourceAsReader</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年3月9日 下午5:06:34
 	* @version 1.0
 	* @param resource
@@ -41,7 +41,7 @@ public class SourceLoader {
 	 * 加载内部指定资源
 	* <p>Function: getResourceAsReader</p>
 	* <p>Description: </p>
-	* @author zhaoxy@thankjava.com
+	* @author acexy@thankjava.com
 	* @date 2016年3月9日 下午5:06:34
 	* @version 1.0
 	* @param resource

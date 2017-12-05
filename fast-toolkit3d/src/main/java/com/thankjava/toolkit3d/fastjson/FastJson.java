@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSONObject;
  * <p>Function: FastJson</p>
  * <p>Description: </p>
  *
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @version 1.0
  * @date 2015年12月30日 下午12:01:26
  */
@@ -27,7 +27,7 @@ public class FastJson {
      * @param json
      * @param clazz
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2015年12月30日 下午12:01:44
      * @version 1.0
      */
@@ -68,7 +68,7 @@ public class FastJson {
      * @param json
      * @param t
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2017年3月10日 下午3:01:58
      * @version 1.0
      */
@@ -86,7 +86,7 @@ public class FastJson {
      *
      * @param object
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2015年12月30日 下午12:26:29
      * @version 1.0
      */
@@ -114,7 +114,7 @@ public class FastJson {
      *
      * @param object
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:01:19
      * @version 1.0
      */
@@ -132,7 +132,7 @@ public class FastJson {
      *
      * @param json
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年1月19日 下午5:56:52
      * @version 1.0
      */

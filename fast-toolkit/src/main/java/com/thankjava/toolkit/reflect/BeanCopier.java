@@ -12,7 +12,7 @@ import com.thankjava.toolkit.reflect.copier.ValueCast;
  * <p>Function: BeanCopier</p>
  * <p>Description: 适用于类似Po转Vo公共步骤</p>
  *
- * @author zhaoxy@thankjava.com
+ * @author acexy@thankjava.com
  * @version 1.0
  * @date 2016年1月11日 上午10:27:41
  */
@@ -29,7 +29,7 @@ public final class BeanCopier {
      * @param targetClass
      * @param originObject
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年1月11日 上午10:29:26
      * @version 1.0
      */
@@ -68,7 +68,7 @@ public final class BeanCopier {
      * @param originObject
      * @param targetObject
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年12月22日 上午10:41:58
      * @version 1.0
      */
@@ -93,7 +93,7 @@ public final class BeanCopier {
      * @param originObjects
      * @param targetClass
      * @return ArrayList
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年1月11日 下午2:48:10
      * @version 1.0
      */
@@ -121,7 +121,7 @@ public final class BeanCopier {
      *
      * @param targetObject
      * @return
-     * @author zhaoxy@thankjava.com
+     * @author acexy@thankjava.com
      * @date 2016年1月11日 上午10:42:16
      * @version 1.0
      */
