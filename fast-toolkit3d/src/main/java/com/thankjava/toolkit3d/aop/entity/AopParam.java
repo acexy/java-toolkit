@@ -14,7 +14,7 @@ public class AopParam {
 	private Object result;
 	
 	/**
-	 * aop切片执行Befor时，判断是否需要继续执行被代理的源方法
+	 * aop切片执行Before时，判断是否需要继续执行被代理的源方法
 	 * 若代理的方法设置为不执行，After切片将不会生效
 	 */
 	private boolean isInvokeProxyMethod = true;
