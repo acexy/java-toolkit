@@ -103,9 +103,7 @@ public class MongoDriverManager implements MongoDBManager {
         }
         Object objectId = doc.get(ObjectIdKey);
         if (objectId != null && objectId instanceof ObjectId) {
-            String _id = ((ObjectId) objectId).toHexString();
-            doc.remove(ObjectIdKey);
-            doc.put(ObjectIdKey, _id);
+            doc.put(ObjectIdKey, ((ObjectId) objectId).toHexString());
         }
         return FastJson.toObject(FastJson.toJSONString(doc), clazz);
     }
