@@ -101,7 +101,6 @@ public class MongoDriverManager implements MongoDBManager {
         if (doc == null) {
             return null;
         }
-        System.out.println(doc.toJson());
         Object objectId = doc.get(ObjectIdKey);
         if (objectId != null && objectId instanceof ObjectId) {
             String _id = ((ObjectId) objectId).toHexString();
