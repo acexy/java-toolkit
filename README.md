@@ -144,7 +144,6 @@ public class Entity1 {
 }	
 ```
 - VO
-
 ```java
 public class Vo1 {
 
