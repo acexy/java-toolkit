@@ -20,7 +20,8 @@ maven仓库
   <artifactId>fast-toolkit</artifactId>
   <version>1.0.5</version>
 </dependency>
-
+```
+```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
@@ -46,8 +47,8 @@ maven仓库
 - 一个处理业务的接口IBusiness，其exe函数传入一个字符串
 ```java
 public interface IBusiness {
-	``
 	public String exe(String str);
+}
 ```
 - 在它的实现中引入@Befor 和 @After切片 并把传入的参数返回回去
 ```java
@@ -58,6 +59,7 @@ public class BusinessImpl implements IBusiness{
 	public String exe(String str){
 		return str;
 	}
+}
 ```
 - IBusiness接口的切片函数
 ```java
@@ -121,6 +123,7 @@ public class ProxyTest {
 		
 		System.out.println("最终函数获得的返回值: " + iBusiness.exe("1"));
 	}
+}	
 ```
 ## 输出结果
 - 我将在Business执行exe 方法之前执行 并且 exe原来传递的参数: 1 将被我修改为 abc
@@ -138,7 +141,7 @@ public class Entity1 {
 	private Integer inte;
 	private List<String> listStr;
 	private String[] strArr;
-	
+}	
 ```
 - VO
 
@@ -150,10 +153,11 @@ public class Vo1 {
 	private int inte;
 	private List<String> listStr;
 	private String[] strArr;
+}
 ```
 
 - 使用**BeanCopier** 将Entity里面的属性值全部复制给VO，并且支持对象的属性还是另外一个对象，也支持枚举
-```java
+```
 		Entity1 e1 = new Entity1();
 		e1.setBol(false);
 		
