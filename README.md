@@ -158,17 +158,17 @@ public class Vo1 {
 
 - 使用**BeanCopier** 将Entity里面的属性值全部复制给VO，并且支持对象的属性还是另外一个对象，也支持枚举
 ```
-		Entity1 e1 = new Entity1();
-		e1.setBol(false);
-		
-		List<String> listStr = new ArrayList<>();
-		listStr.add("你好");
-		e1.setListStr(listStr);
-		String[] strArr = new String[]{"aa","bb","cc"};
-		e1.setStrArr(strArr);
-		
-		Vo1 v1 = BeanCopier.copy(e1, Vo1.class);
-		System.out.println(JSONObject.toJSONString(v1));
+    Entity1 e1 = new Entity1();
+    e1.setBol(false);
+    
+    List<String> listStr = new ArrayList<>();
+    listStr.add("你好");
+    e1.setListStr(listStr);
+    String[] strArr = new String[]{"aa","bb","cc"};
+    e1.setStrArr(strArr);
+    
+    Vo1 v1 = BeanCopier.copy(e1, Vo1.class);
+    System.out.println(JSONObject.toJSONString(v1));
 ```
 ---
 - MD5 3DS RSA 算法
