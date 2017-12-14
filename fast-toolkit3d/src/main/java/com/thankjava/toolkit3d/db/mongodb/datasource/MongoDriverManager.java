@@ -1,5 +1,7 @@
 package com.thankjava.toolkit3d.db.mongodb.datasource;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -28,12 +30,55 @@ public class MongoDriverManager implements MongoDBManager {
 
     private static MongoDatabase mongoDatabase = null;
 
-    final static String OPERATOR_SET = "$set";
+    private final static String OPERATOR_SET = "$set";
 
-    final static String ObjectIdKey = "_id";
+    private final static String ObjectIdKey = "_id";
 
+    private static MongoDBManager manager = null;
+
+
+    /**
+     * 单例模式初始化
+     * @return
+     */
+    public static MongoDBManager getSingleton(){
+        if (manager == null) {
+            new MongoDriverManager();
+        }
+        return manager;
+    }
+
+    /**
+     * 单例模式自定加载文件初始化
+     * @param filePath
+     * @return
+     */
+    public static MongoDBManager getSingleton(String filePath){
+        if (manager == null) {
+            new MongoDriverManager(filePath);
+        }
+        return manager;
+    }
+
+    /**
+     * 允许非单例模式初始化
+     */
     public MongoDriverManager() {
         init(SourceLoader.getResourceAsReader("mongodb.properties"));
+        manager = this;
+    }
+
+    /**
+     * 允许非单例模式加载指定配置文件初始化
+     * @param file
+     */
+    public MongoDriverManager(String file) {
+        try {
+            init(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        manager = this;
     }
 
     private void init(Reader reader) {

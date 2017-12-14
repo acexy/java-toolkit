@@ -30,9 +30,9 @@ public class JedisManager implements RedisManager {
      * 单例模式redis管理处理器
      * @return
      */
-    public static RedisManager getInstance() {
+    public static RedisManager getSingleton() {
         if (manager == null) {
-            manager = new JedisManager();
+            new JedisManager();
         }
         return manager;
     }
@@ -42,9 +42,9 @@ public class JedisManager implements RedisManager {
      * @param filePath redis 配置文件位置
      * @return
      */
-    public static RedisManager getInstance(String filePath) {
+    public static RedisManager getSingleton(String filePath) {
         if (manager == null) {
-            manager = new JedisManager(filePath);
+            new JedisManager(filePath);
         }
         return manager;
     }
@@ -56,10 +56,12 @@ public class JedisManager implements RedisManager {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        manager = this;
     }
 
     public JedisManager() {
         init(SourceLoader.getResourceAsReader("redis.properties"));
+        manager = this;
     }
 
     private void init(Reader reader) {
