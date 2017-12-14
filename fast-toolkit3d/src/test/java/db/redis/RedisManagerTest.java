@@ -8,7 +8,8 @@ import com.thankjava.toolkit3d.db.redis.datasource.JedisManager;
 public class RedisManagerTest {
 
 	public static void main(String[] args) {
-		final RedisManager redis = JedisManager.getInstance();
+//		final RedisManager redis = JedisManager.getInstance();
+		final RedisManager redis = JedisManager.getInstance("/Users/acexy/Downloads/redis.properties");
 
 //		System.out.println(redis.lpush("test", new String[]{"aa","cc","bb"}));
 //		System.out.println(redis.rpop("test"));
