@@ -24,13 +24,13 @@ public class JedisManager implements RedisManager {
 
     private static final String SUCCESS_CODE_STR = "OK";
 
-    private static JedisManager manager = null;
+    private static RedisManager manager = null;
 
     /**
      * 单例模式redis管理处理器
      * @return
      */
-    public static JedisManager getInstance() {
+    public static RedisManager getInstance() {
         if (manager == null) {
             manager = new JedisManager();
         }
@@ -42,14 +42,14 @@ public class JedisManager implements RedisManager {
      * @param filePath redis 配置文件位置
      * @return
      */
-    public static JedisManager getInstance(String filePath) {
+    public static RedisManager getInstance(String filePath) {
         if (manager == null) {
             manager = new JedisManager(filePath);
         }
         return manager;
     }
 
-    private JedisManager(String filePath) {
+    public JedisManager(String filePath) {
         try {
             FileReader reader = new FileReader(filePath);
             init(reader);
@@ -58,7 +58,7 @@ public class JedisManager implements RedisManager {
         }
     }
 
-    private JedisManager() {
+    public JedisManager() {
         init(SourceLoader.getResourceAsReader("redis.properties"));
     }
 

@@ -32,12 +32,14 @@ public class MongoDriverManager implements MongoDBManager {
 
     final static String ObjectIdKey = "_id";
 
-    static {
-        Reader reader = null;
+    public MongoDriverManager() {
+        init(SourceLoader.getResourceAsReader("mongodb.properties"));
+    }
+
+    private void init(Reader reader) {
         MongoClient mongoClient = null;
         try {
             Properties props = new Properties();
-            reader = SourceLoader.getResourceAsReader("mongodb.properties");
             props.load(reader);
 
             Builder build = new Builder();
