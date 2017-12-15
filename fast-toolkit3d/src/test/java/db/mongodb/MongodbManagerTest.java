@@ -13,16 +13,20 @@ import java.util.Date;
 
 public class MongodbManagerTest {
 
-    final static MongoDBManager mongoDBManager = new MongoDriverManager();
+
 
     public static void main(String[] args) {
+//        MongoDBManager mongoDBManager = new MongoDriverManager();
+//        MongoDBManager mongoDBManager = new MongoDriverManager("/Users/acexy/Downloads/mongodb.properties");
+//        MongoDBManager mongoDBManager = MongoDriverManager.getSingleton();
+        MongoDBManager mongoDBManager = MongoDriverManager.getSingleton("/Users/acexy/Downloads/mongodb.properties");
         Test test = new Test();
-//        test.setTime(new Date().getTime());
-//        test.setValue("1");
-//        System.out.println(mongoDBManager.insertOne("test", test));
+        test.setTime(new Date().getTime());
+        test.setValue("1");
+        System.out.println(mongoDBManager.insertOne("test", test));
 
 
-        test.setValue("美国");
-        System.out.println(mongoDBManager.updateOneByObjectId("test",test,"5a24f854eba60917d0191f8f"));
+//        test.setValue("美国");
+//        System.out.println(mongoDBManager.updateOneByObjectId("test",test,"5a24f854eba60917d0191f8f"));
     }
 }
