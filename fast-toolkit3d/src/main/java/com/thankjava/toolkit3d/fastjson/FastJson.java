@@ -98,13 +98,22 @@ public class FastJson {
     }
 
     /**
-     * java bean 2 JSONObject
+     * JavaBean 2 JSONObject
      *
      * @param object
      * @return
      */
     public static JSONObject toJSONObject(Object object) {
         return (JSONObject) JSONObject.toJSON(object);
+    }
+
+    /**
+     * JSON String 2 JSONObject
+     * @param json
+     * @return
+     */
+    public static JSONObject toJSONObject(String json) {
+        return JSONObject.parseObject(json);
     }
 
     /**
