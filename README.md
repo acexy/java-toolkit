@@ -9,7 +9,7 @@
 
 - fast-toolkit3d
     - 依赖fast-toolkit
-    - 依赖其他常用的开源jar
+    - 依赖其他常用的开源jar（按实际需求进行依赖，该项目pom指定相关依赖为provided）
     - 将其他第三方优秀lib组件化，整理并提供更简洁的api处理方案
 
 > ## 获取
@@ -31,7 +31,9 @@ maven仓库
 ```
 
 > ## 更新备注
-
+- 1.0.0 项目初始
+- 1.0.1 新功能增加
+- 1.0.2 新功能增加
 - 1.0.3 调整async.http模块
 	- 该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
 	- 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组
@@ -41,7 +43,8 @@ maven仓库
     - 调整redis&mongodb，并新增更多常用方法
     - BeanCopier模块支持复制类的父级属性对等复制
     - 移除了一些简单的api
-    - 新增大量数据快速写入文件的IO append功能(100W条共100MB数据 约600毫秒完成，并基于此提供大量csv写入方法）
+    - 新增大量数据快速追加写入文件的IO功能 100W条共100MB数据 约600毫秒完成
+    - 基于上述提供大量数据的csv写入方法
 ---
 
 ## java-tookit 介绍（基于jdk实现，不需要引入其他组件）
