@@ -19,32 +19,34 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 </dependency>
 ```
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 </dependency>
 ```
 
 > ## 更新备注
-- 1.0.0 项目初始
-- 1.0.1 新功能增加
-- 1.0.2 新功能增加
-- 1.0.3 调整async.http模块
-	- 该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
-	- 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组
-- 1.0.4 修正maven结构
-	- 修正maven结构导致发布到中央库的maven依赖失败
-- 1.0.5 新增功能
-    - 调整redis&mongodb，并新增更多常用方法
-    - BeanCopier模块支持复制类的父级属性对等复制
-    - 移除了一些简单的api
-    - 新增大量数据快速追加写入文件的IO功能 100W条共100MB数据 约600毫秒完成
-    - 基于上述提供大量数据的csv写入方法
+```
+1.0.0 项目初始
+1.0.1 新功能增加
+1.0.2 新功能增加
+1.0.3 调整async.http模块
+	1.该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
+	2.返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组
+1.0.4 修正maven结构
+	1.修正maven结构导致发布到中央库的maven依赖失败
+1.0.5 新增功能
+    1.调整redis&mongodb，并新增更多常用方法
+    2.BeanCopier模块支持复制类的父级属性对等复制
+    3.移除了一些简单的api
+    4.新增大量数据快速追加写入文件的IO功能 100W条共100MB数据 约600毫秒完成
+    5.基于上述提供大量数据的csv写入方法
+```
 ---
 
 ## java-tookit 介绍（基于jdk实现，不需要引入其他组件）
