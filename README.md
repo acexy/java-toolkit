@@ -1,20 +1,20 @@
-# java-toolkit
-# fast-tookit&fast-tookit3d
-基于java将一些项目中常用的模块案例组件化
-
-fast-toolkit
----
+> ## 作用
 - 基于jdk开发 不依赖第三方代码 (JDK >= 1.7)
+- 将一些java项目中常用的模块案例组件化，以便提供更简洁，更方便的代码案例
 
-fast-toolkit3d
 ---
-- 依赖fast-toolkit
-- 依赖其他常用的开源jar
-- 将其他第三方优秀lib组件化,整理并提供更简洁的api处理方案
+> ## 介绍
+- fast-toolkit
+    - 基于JDK功能，不引入其他第三方组件
 
---- 
+- fast-toolkit3d
+    - 依赖fast-toolkit
+    - 依赖其他常用的开源jar
+    - 将其他第三方优秀lib组件化，整理并提供更简洁的api处理方案
+
+> ## 获取
 maven仓库
-- toolkit & toolkit3d 版本号要对应使用
+    toolkit & toolkit3d 版本号要对应使用
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
@@ -29,10 +29,12 @@ maven仓库
   <version>1.0.5</version>
 </dependency>
 ```
-## 更新备注
+
+> ## 更新备注
+
 - 1.0.3 调整async.http模块
 	- 该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
-	- 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组数据
+	- 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组
 - 1.0.4 修正maven结构
 	- 修正maven结构导致发布到中央库的maven依赖失败
 - 1.0.5 新增功能
@@ -40,7 +42,6 @@ maven仓库
     - BeanCopier模块支持复制类的父级属性对等复制
     - 移除了一些简单的api
     - 新增大量数据快速写入文件的IO append功能(100W条共100MB数据 约600毫秒完成，并基于此提供大量csv写入方法）
-
 ---
 
 ## java-tookit 介绍（基于jdk实现，不需要引入其他组件）
