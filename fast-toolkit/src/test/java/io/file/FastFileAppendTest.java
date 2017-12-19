@@ -10,23 +10,15 @@ public class FastFileAppendTest {
         int i = 0;
         long startTime = System.currentTimeMillis();
 
-        String filePath = "/Users/acexy/Downloads/fastFileWriter";
+        String filePath = "/Users/acexy/Downloads/append.txt";
         String lineSeparator = System.getProperty("line.separator");
-        while (i < 1000000) {
-            FastFileAppend.fastFileWriter(filePath, UUID.randomUUID().toString() + lineSeparator);
+        FastFileAppend fastFileAppend = new FastFileAppend(filePath, "GBK");
+        while (i < 10000) {
+            fastFileAppend.write(UUID.randomUUID().toString() + lineSeparator);
             i++;
         }
-        FastFileAppend.closeFileWriter(filePath);
+        fastFileAppend.close();
         System.out.println(System.currentTimeMillis() - startTime);
 
-        filePath = "/Users/acexy/Downloads/fastBufferedWriter";
-        startTime = System.currentTimeMillis();
-        i = 0;
-        while (i < 1000000) {
-            FastFileAppend.fastBufferedWriter(filePath, UUID.randomUUID() + lineSeparator);
-            i++;
-        }
-        FastFileAppend.closeBufferedWriterIO(filePath);
-        System.out.println(System.currentTimeMillis() - startTime);
     }
 }
