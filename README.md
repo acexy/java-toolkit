@@ -36,10 +36,10 @@ maven仓库
 1.0.1 新功能增加
 1.0.2 新功能增加
 1.0.3 调整async.http模块
-	1.该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
-	2.返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组
+    1.该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
+    2.返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组
 1.0.4 修正maven结构
-	1.修正maven结构导致发布到中央库的maven依赖失败
+    1.修正maven结构导致发布到中央库的maven依赖失败
 1.0.5 新增功能
     1.调整redis&mongodb，并新增更多常用方法
     2.BeanCopier模块支持复制类的父级属性对等复制
