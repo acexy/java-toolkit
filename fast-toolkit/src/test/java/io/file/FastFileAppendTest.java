@@ -13,8 +13,9 @@ public class FastFileAppendTest {
         String filePath = "/Users/acexy/Downloads/append.txt";
         String lineSeparator = System.getProperty("line.separator");
         FastFileAppend fastFileAppend = new FastFileAppend(filePath, "GBK");
-        while (i < 10000) {
-            fastFileAppend.write(UUID.randomUUID().toString() + lineSeparator);
+        String content = UUID.randomUUID().toString() + lineSeparator;
+        while (i < 1000000) {
+            fastFileAppend.write(content);
             i++;
         }
         fastFileAppend.close();
