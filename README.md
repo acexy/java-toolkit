@@ -2,12 +2,13 @@
 # fast-tookit&fast-tookit3d
 基于java将一些项目中常用的模块案例组件化
 
-fast-tookit
+fast-toolkit
 ---
 - 基于jdk开发 不依赖第三方代码 (JDK >= 1.7)
 
-fast-tookit3d
+fast-toolkit3d
 ---
+- 依赖fast-toolkit
 - 依赖其他常用的开源jar
 - 将其他第三方优秀lib组件化,整理并提供更简洁的api处理方案
 
@@ -29,17 +30,19 @@ maven仓库
 </dependency>
 ```
 ## 更新备注
-* 1.0.3 调整async.http模块
-	* 该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
-	* 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组数据
-* 1.0.4 修正maven结构
-	* 修正maven结构导致发布到中央库的maven依赖失败
-* 1.0.5 新增功能
-    * redis模块提供更多常用命令
-    * BeanCopier模块支持父级属性对等复制
-    * 移除了一些简单的api
+- 1.0.3 调整async.http模块
+	- 该模块解析超文本数据为byteArray不再自动通过content-type判断，提高解析可靠性
+	- 返回参数通过getDataString|getDataByteArray自动将返回数据解析成字符串或byte数组数据
+- 1.0.4 修正maven结构
+	- 修正maven结构导致发布到中央库的maven依赖失败
+- 1.0.5 新增功能
+    - 调整redis&mongodb，并新增更多常用方法
+    - BeanCopier模块支持复制类的父级属性对等复制
+    - 移除了一些简单的api
+    - 新增大量数据快速写入文件的IO append功能（并基于此提供csv写入方法）
 
 ---
+
 ## java-tookit 介绍（基于jdk实现，不需要引入其他组件）
 ---
 - [参考博客](https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec)
