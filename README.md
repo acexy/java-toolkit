@@ -49,29 +49,26 @@ maven仓库
 ```
 ---
 > ## 已实现的功能列表
+
 - toolkit
-```
-    - 基于JDK的接口层面AOP功能 API
-    - 常用时间处理函数 API
-    - JDK HTTP 请求 API
-    - IO 文件追加写入,并拓展快速写入csv文件(100W条共100MB数据 约600毫秒完成) API
-    - 一些简单的不损失精度的计算 API
-    - 常用反射功能 并基于此提供Java对象PO VO对象属性的对等复制 API
-    - 加载内部资源 API
-    - MD5、RSA、3D API
-    - 线程池&定时任务 API
-    - 图片验证码生成 API
-```
+  - 基于JDK的接口层面AOP功能 [参考](https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec)
+  - 常用时间处理函数
+  - JDK HTTP请求
+  - IO文件追加写入,并拓展快速写入csv文件(100W条共100MB数据 约600毫秒完成)
+  - 一些简单的不损失精度的计算
+  - 常用反射功能(并基于此提供Java对象PO-VO对象属性的对等复制)
+  - 加载工程内部资源
+  - MD5、RSA、3DS
+  - 线程池&定时任务
+  - 图片验证码生成
     
 - toolkit3d
-```
-    - 基于cglib的AOP API
-    - ehcache API
-    - redis & Mongo API
-    - 基于alibaba fastjson API
-    - 基于apache async-http API
-    - 电子邮件发送 API
-    - RSA API
-    - 基于xstream的xml处理 API
-    - 给予zip4j的压缩文件处理 API
-```
+  - 基于cglib的AOP API
+  - ehcache API
+  - redis & Mongo API
+  - 基于alibaba fastjson API
+  - 基于apache async-http API
+  - 电子邮件发送 API
+  - RSA API
+  - 基于xstream的xml处理 API
+  - 给予zip4j的压缩文件处理 API
