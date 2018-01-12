@@ -71,4 +71,4 @@ maven仓库
   - 电子邮件发送 API
   - RSA API
   - 基于xstream的xml处理 API
-  - 给予zip4j的压缩文件处理 API
+  - 基于zip4j的压缩文件处理 API
