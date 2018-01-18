@@ -26,29 +26,6 @@ public class JedisManager implements RedisManager {
 
     private static RedisManager manager = null;
 
-    /**
-     * 单例模式redis管理处理器
-     * @return
-     */
-    public static RedisManager getSingleton() {
-        if (manager == null) {
-            new JedisManager();
-        }
-        return manager;
-    }
-
-    /**
-     * 单例模式redis管理处理器
-     * @param filePath redis 配置文件位置
-     * @return
-     */
-    public static RedisManager getSingleton(String filePath) {
-        if (manager == null) {
-            new JedisManager(filePath);
-        }
-        return manager;
-    }
-
     public JedisManager(String filePath) {
         try {
             FileReader reader = new FileReader(filePath);
