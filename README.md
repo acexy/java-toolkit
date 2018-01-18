@@ -68,7 +68,7 @@ maven仓库
 - toolkit3d
   - 基于cglib的AOP API
   - ehcache API
-  - redis & Mongo API
+  - redis&Mongo API
   - 基于alibaba fastjson API
   - 基于apache async-http API
   - 电子邮件发送 API
