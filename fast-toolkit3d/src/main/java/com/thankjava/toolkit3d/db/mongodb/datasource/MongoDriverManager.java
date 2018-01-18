@@ -9,16 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
+import com.mongodb.*;
 import org.bson.Document;
 import com.thankjava.toolkit.resource.SourceLoader;
 import com.thankjava.toolkit3d.db.mongodb.MongoDBManager;
 import com.thankjava.toolkit3d.fastjson.FastJson;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientOptions.Builder;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -38,29 +35,6 @@ public class MongoDriverManager implements MongoDBManager {
 
 
     /**
-     * 单例模式初始化
-     * @return
-     */
-    public static MongoDBManager getSingleton(){
-        if (manager == null) {
-            new MongoDriverManager();
-        }
-        return manager;
-    }
-
-    /**
-     * 单例模式自定加载文件初始化
-     * @param filePath
-     * @return
-     */
-    public static MongoDBManager getSingleton(String filePath){
-        if (manager == null) {
-            new MongoDriverManager(filePath);
-        }
-        return manager;
-    }
-
-    /**
      * 允许非单例模式初始化
      */
     public MongoDriverManager() {
@@ -70,6 +44,7 @@ public class MongoDriverManager implements MongoDBManager {
 
     /**
      * 允许非单例模式加载指定配置文件初始化
+     *
      * @param file
      */
     public MongoDriverManager(String file) {
@@ -82,8 +57,9 @@ public class MongoDriverManager implements MongoDBManager {
     }
 
     private void init(Reader reader) {
-        MongoClient mongoClient = null;
         try {
+            MongoClient mongoClient = null;
+
             Properties props = new Properties();
             props.load(reader);
 
@@ -92,20 +68,11 @@ public class MongoDriverManager implements MongoDBManager {
             build.threadsAllowedToBlockForConnectionMultiplier(Integer.valueOf(props.getProperty("mongo.pool.threadsAllowedToBlockForConnectionMultiplier")));
             build.maxWaitTime(Integer.valueOf(props.getProperty("mongo.pool.maxWaitTime")));
             build.connectTimeout(Integer.valueOf(props.getProperty("mongo.pool.connectTimeout")));
-            MongoClientOptions myOptions = build.build();
 
-            String databaseName = props.getProperty("mongo.databaseName");
-            String uname = props.getProperty("mongo.uname");
-            String pwd = props.getProperty("mongo.pwd");
-
-            if (uname == null || uname.length() == 0 || pwd == null || pwd.length() == 0) {
-                mongoClient = new MongoClient(new ServerAddress(props.getProperty("mongo.host"), Integer.valueOf(props.getProperty("mongo.port"))), myOptions);
-            } else {
-                MongoCredential credential = MongoCredential.createCredential(uname, databaseName, pwd.toCharArray());
-                mongoClient = new MongoClient(new ServerAddress(props.getProperty("mongo.host"), Integer.valueOf(props.getProperty("mongo.port"))), Arrays.asList(credential), myOptions);
-            }
-            mongoDatabase = mongoClient.getDatabase(databaseName);
-        } catch (IOException e) {
+            MongoClientURI mongoClientURI = new MongoClientURI(props.getProperty("mongo.connString"), build);
+            mongoClient = new MongoClient(mongoClientURI);
+            mongoDatabase = mongoClient.getDatabase(mongoClientURI.getDatabase());
+        } catch (Throwable e) {
             e.printStackTrace();
         } finally {
             try {
