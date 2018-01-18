@@ -1,6 +1,7 @@
 > ## 作用
 - 基于jdk开发 不依赖第三方代码 (JDK >= 1.7)
 - 将一些java项目中常用的模块案例组件化，以便提供更简洁，更方便的代码案例
+- 用于不依赖大型框架快速开始进入开发的工具包
 
 ---
 > ## 介绍
@@ -19,14 +20,14 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 </dependency>
 ```
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 </dependency>
 ```
 
@@ -46,6 +47,8 @@ maven仓库
     3.移除了一些简单的api
     4.新增大量数据快速追加写入文件的IO功能 100W条共100MB数据 约600毫秒完成
     5.基于上述提供大量数据的csv写入方法
+1.0.6 调整功能
+    1.调整mongo使用connectionString的方式进行配置，能方便连接副本集及主从复制的DB搭建形式
 ```
 ---
 > ## 已实现的功能列表
