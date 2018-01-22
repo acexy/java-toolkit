@@ -45,11 +45,11 @@ public class MongoDriverManager implements MongoDBManager {
     /**
      * 允许非单例模式加载指定配置文件初始化
      *
-     * @param file
+     * @param configFilePath
      */
-    public MongoDriverManager(String file) {
+    public MongoDriverManager(String configFilePath) {
         try {
-            init(new FileReader(file));
+            init(new FileReader(configFilePath));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

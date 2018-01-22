@@ -8,36 +8,15 @@ import net.sf.ehcache.Element;
 
 public class EhcacheManager {
 
-    /**
-     * 配置文件路径
-     */
-    private String configUri = "ehcache.xml";
-
-    /**
-     * 配置文件默认位置是否来至于项目内部资源
-     */
-    private boolean isConfigFromSources = true;
-
     private static CacheManager cacheManager = null;
 
     public EhcacheManager() {
-        init();
+        cacheManager = CacheManager.create(SourceLoader.getResourceAsInputStream("ehcache.xml"));
     }
 
-    public EhcacheManager(String configUri, boolean isConfigFromSources) {
-        this.configUri = configUri;
-        this.isConfigFromSources = isConfigFromSources;
-        init();
+    public EhcacheManager(String configFilePath) {
+        CacheManager.create(configFilePath);
     }
-
-    private void init() {
-        if (isConfigFromSources) {
-            cacheManager = CacheManager.create(SourceLoader.getResourceAsInputStream(configUri));
-        } else {
-            cacheManager = CacheManager.create(configUri);
-        }
-    }
-
 
     /**
      * 设置缓存
