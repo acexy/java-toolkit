@@ -16,8 +16,8 @@ public class MongodbManagerTest {
 
 
     public static void main(String[] args) {
-        MongoDBManager mongoDBManager = new MongoDriverManager();
-//        MongoDBManager mongoDBManager = new MongoDriverManager("/Users/acexy/Downloads/mongodb.properties");
+        MongoDBManager mongoDBManager = MongoDriverManager.getSingleton();
+//        MongoDBManager mongoDBManager = MongoDriverManager.getSingleton("/Users/acexy/Downloads/mongodb.properties");
         Test test = new Test();
         test.setTime(new Date().getTime());
         test.setValue("1");
