@@ -36,6 +36,11 @@ public class JedisManager implements RedisManager {
         manager = this;
     }
 
+    /**
+     * 获取单例模式的redis驱动
+     * 自动加载工程内部classpath下redis.properties
+     * @return
+     */
     public static RedisManager getSingleton() {
         if (manager == null) {
             new JedisManager();
@@ -43,6 +48,11 @@ public class JedisManager implements RedisManager {
         return manager;
     }
 
+    /**
+     * 获取单例模式redis驱动
+     * @param filePath 指定配置文件源位置
+     * @return
+     */
     public static RedisManager getSingleton(String filePath) {
         if (manager == null) {
             new JedisManager(filePath);
