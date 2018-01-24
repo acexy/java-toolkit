@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.mongodb.*;
+import com.thankjava.toolkit3d.db.redis.RedisManager;
 import org.bson.Document;
 import com.thankjava.toolkit.resource.SourceLoader;
 import com.thankjava.toolkit3d.db.mongodb.MongoDBManager;
@@ -33,27 +34,42 @@ public class MongoDriverManager implements MongoDBManager {
 
     private static MongoDBManager manager = null;
 
-
-    /**
-     * 允许非单例模式初始化
-     */
-    public MongoDriverManager() {
+    private MongoDriverManager() {
         init(SourceLoader.getResourceAsReader("mongodb.properties"));
         manager = this;
     }
 
-    /**
-     * 允许非单例模式加载指定配置文件初始化
-     *
-     * @param configFilePath
-     */
-    public MongoDriverManager(String configFilePath) {
+    private MongoDriverManager(String configFilePath) {
         try {
             init(new FileReader(configFilePath));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         manager = this;
+    }
+
+    /**
+     * 获取单例模式的mongo驱动
+     * 配置文件自动加载工程内部 classpath下 mongodb.properties
+     * @return
+     */
+    public static MongoDBManager getSingleton() {
+        if (manager == null) {
+            new MongoDriverManager();
+        }
+        return manager;
+    }
+
+    /**
+     * 获取单例模式的mongo驱动
+     * @param filePath 配置文件源
+     * @return
+     */
+    public static MongoDBManager getSingleton(String filePath) {
+        if (manager == null) {
+            new MongoDriverManager(filePath);
+        }
+        return manager;
     }
 
     private void init(Reader reader) {
