@@ -26,19 +26,28 @@ public class JedisManager implements RedisManager {
 
     private static RedisManager manager = null;
 
-    public JedisManager(String filePath) {
-        try {
-            FileReader reader = new FileReader(filePath);
-            init(reader);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    private JedisManager() {
+        init(SourceLoader.getResourceAsReader("redis.properties"));
         manager = this;
     }
 
-    public JedisManager() {
-        init(SourceLoader.getResourceAsReader("redis.properties"));
+    private JedisManager(String filePath) {
+        init(SourceLoader.getResourceAsReader(filePath));
         manager = this;
+    }
+
+    public static RedisManager getSingleton() {
+        if (manager == null) {
+            new JedisManager();
+        }
+        return manager;
+    }
+
+    public static RedisManager getSingleton(String filePath) {
+        if (manager == null) {
+            new JedisManager(filePath);
+        }
+        return manager;
     }
 
     private void init(Reader reader) {
