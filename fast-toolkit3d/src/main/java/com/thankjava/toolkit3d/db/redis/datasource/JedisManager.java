@@ -32,7 +32,11 @@ public class JedisManager implements RedisManager {
     }
 
     private JedisManager(String filePath) {
-        init(SourceLoader.getResourceAsReader(filePath));
+        try {
+            init(new FileReader(filePath));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         manager = this;
     }
 
