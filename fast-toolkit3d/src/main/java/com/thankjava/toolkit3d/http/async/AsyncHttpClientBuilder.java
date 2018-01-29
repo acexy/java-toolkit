@@ -1,36 +1,30 @@
 package com.thankjava.toolkit3d.http.async;
 
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.params.HttpClientParams;
+import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 
 public class AsyncHttpClientBuilder {
 
 
-	/**
-	 * 创建默认的AsyncHttpClient实例
-	* <p>Function: createDefault</p>
-	* <p>Description: </p>
-	* @author acexy@thankjava.com
-	* @date 2016年12月12日 下午3:45:57
-	* @version 1.0
-	* @return
-	 */
-	public static AsyncHttpClient createDefault(){
-		return new AsyncHttpClient(HttpAsyncClients.createDefault(),true);
-	}
-	
-	/**
-	 * 创建通用的AsyncHttpClient实例
-	* <p>Function: createCommon</p>
-	* <p>Description: </p>
-	* @author acexy@thankjava.com
-	* @date 2016年12月13日 下午2:20:45
-	* @version 1.0
-	* @return
-	 */
-	public static AsyncHttpClient createCommon(){
-		HttpAsyncClientBuilder httpAsyncClientBuilder = HttpAsyncClients.custom();
-		httpAsyncClientBuilder.setUserAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
-		return new AsyncHttpClient(httpAsyncClientBuilder.build(),true);
-	}
+    /**
+     * 创建默认的AsyncHttpClient实例
+     * <p>Function: createDefault</p>
+     * <p>Description: </p>
+     *
+     * @return
+     * @author acexy@thankjava.com
+     * @date 2016年12月12日 下午3:45:57
+     * @version 1.0
+     */
+    public static AsyncHttpClient createDefault() {
+        System.setProperty("jsse.enableSNIExtension", "true");
+        HttpAsyncClientBuilder httpAsyncClientBuilder = HttpAsyncClients.custom();
+        httpAsyncClientBuilder.setDefaultRequestConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.IGNORE_COOKIES).build());
+        CloseableHttpAsyncClient closeableHttpAsyncClient = httpAsyncClientBuilder.build();
+        return new AsyncHttpClient(closeableHttpAsyncClient);
+    }
 }
