@@ -52,8 +52,7 @@ public class RequestBuilder {
 		return (HttpPost)builderRequest(asyncRequest);
 	}
 	
-	// Impl
-	
+
 	private static HttpRequestBase builderRequest(AsyncRequest asyncRequest){
 		HttpRequestBase request = null;
 		

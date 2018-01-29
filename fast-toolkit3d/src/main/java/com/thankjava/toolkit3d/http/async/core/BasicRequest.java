@@ -1,18 +1,19 @@
 package com.thankjava.toolkit3d.http.async.core;
 
 import org.apache.http.client.CookieStore;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.BasicCookieStore;
 
 /**
  * 封装的Async请求框架
-* <p>Function: RequestContent</p>
+* <p>Function: BasicRequest</p>
 * <p>Description: </p>
 * @author acexy@thankjava.com
 * @date 2016年12月15日 下午6:00:19
 * @version 1.0
  */
-class RequestContent {
+class BasicRequest {
 	
 	/**
 	 * 请求上下文
@@ -37,6 +38,6 @@ class RequestContent {
 	* @return
 	 */
 	public static CookieStore getSyncCookieStore(){
-		return RequestContent.syncCookieStore;
+		return BasicRequest.syncCookieStore;
 	}
 }

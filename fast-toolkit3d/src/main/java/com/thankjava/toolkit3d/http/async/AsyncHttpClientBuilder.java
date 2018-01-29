@@ -22,9 +22,6 @@ public class AsyncHttpClientBuilder {
      */
     public static AsyncHttpClient createDefault() {
         System.setProperty("jsse.enableSNIExtension", "true");
-        HttpAsyncClientBuilder httpAsyncClientBuilder = HttpAsyncClients.custom();
-        httpAsyncClientBuilder.setDefaultRequestConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.IGNORE_COOKIES).build());
-        CloseableHttpAsyncClient closeableHttpAsyncClient = httpAsyncClientBuilder.build();
-        return new AsyncHttpClient(closeableHttpAsyncClient);
+        return new AsyncHttpClient(HttpAsyncClients.createDefault());
     }
 }

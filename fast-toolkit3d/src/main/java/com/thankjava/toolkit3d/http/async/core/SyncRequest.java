@@ -15,7 +15,7 @@ import com.thankjava.toolkit3d.http.async.core.utils.ResponseBuilder;
 import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
 import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
 
-public class SyncRequest extends RequestContent {
+public class SyncRequest extends BasicRequest {
 
 	private static SyncRequest syncRequest = new SyncRequest();
 	private static CloseableHttpAsyncClient closeableHttpAsyncClient;
