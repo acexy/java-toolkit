@@ -49,6 +49,7 @@ maven仓库
     5.基于上述提供大量数据的csv写入方法
 1.0.6 调整功能
     1.调整mongo使用connectionString的方式进行配置，能方便连接副本集及主从复制的DB搭建形式
+    2.关闭了async.http模块cookies相关警告提示
 ```
 ---
 > ## 已实现的功能列表
