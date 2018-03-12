@@ -16,6 +16,7 @@ public class MathUtils {
 
     /**
      * 相对精确的加法
+     *
      * @param doubleA
      * @param doubleB
      * @return
@@ -26,6 +27,7 @@ public class MathUtils {
 
     /**
      * 相对精确的乘法
+     *
      * @param doubleA
      * @param doubleB
      * @return
@@ -36,6 +38,7 @@ public class MathUtils {
 
     /**
      * 相对精确的减法
+     *
      * @param doubleA
      * @param doubleB
      * @return
@@ -46,11 +49,23 @@ public class MathUtils {
 
     /**
      * 相对精确的除法
+     *
      * @param doubleA
      * @param doubleB
      * @return
      */
     public static double divide(double doubleA, double doubleB) {
         return toBigDecimal(doubleA).divide(toBigDecimal(doubleB)).doubleValue();
+    }
+
+    /**
+     * 提供相对精确的除法 (超出精度的数字默认使用BigDecimal.ROUND_DOWN策略处理)
+     * @param doubleA
+     * @param doubleB
+     * @param scale 精度
+     * @return
+     */
+    public static double divide(double doubleA, double doubleB, int scale) {
+        return toBigDecimal(doubleA).divide(toBigDecimal(doubleB), scale, BigDecimal.ROUND_DOWN).doubleValue();
     }
 }
