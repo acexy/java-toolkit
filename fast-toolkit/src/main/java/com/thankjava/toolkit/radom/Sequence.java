@@ -23,23 +23,6 @@ public final class Sequence {
 	private Sequence(){}
 	
 	/**
-	 * 生成一个uuid字符串
-	* <p>Function: uuid</p>
-	* <p>Description: </p>
-	* @author acexy@thankjava.com
-	* @date 2016年1月5日 下午2:11:58
-	* @version 1.0
-	* @return 返回String数组， 长度为2 下标为:0是去除中划线后的uuidString 下标:1是原始的uuidString
-	 */
-	public static String[] uuid(){
-		String uuidStr = UUID.randomUUID().toString();
-		String[] uuidStrs = new String[2];
-		uuidStrs[0] = uuidStr.replace("-", "");
-		uuidStrs[1] = uuidStr;
-		return uuidStrs;
-	}
-	
-	/**
 	 * 按照时间戳&随机3位数生成唯一seq
 	* <p>Function: generateUnique</p>
 	* <p>Description: 最大可并发约1000  随机器性能增加而并发数减少</p>
