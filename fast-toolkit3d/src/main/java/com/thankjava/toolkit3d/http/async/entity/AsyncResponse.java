@@ -82,6 +82,7 @@ public class AsyncResponse {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return dataString;
     }
@@ -94,6 +95,7 @@ public class AsyncResponse {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return dataByteArray;
     }
