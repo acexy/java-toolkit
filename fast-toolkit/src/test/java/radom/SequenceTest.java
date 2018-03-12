@@ -21,39 +21,10 @@ public class SequenceTest {
 			}
 		}));
 		
-		System.out.println(Sequence.uuid()[0]);
 		System.out.println(Sequence.generateUnique());
 		System.out.println(Sequence.generateChar(10));
 		System.out.println(Sequence.generateNum(10));
 		
-		//----并发测试
-		uuidConcurrentTest();
-		generateConcurrentTest();
-		
-		
-	}
 
-	static void uuidConcurrentTest(){
-		for (int i = 0; i < 1010; i++) {
-			new ThreadPool().execute(new Runnable() {
-				public void run() {
-					String seq = Sequence.uuid()[0];
-					System.out.println(seq);
-					uuidConcurrentTestKV.put(seq, "value");
-				}
-			});
-		}
-	}
-	
-	static void generateConcurrentTest(){
-		for (int i = 0; i < 1010; i++) {
-			new ThreadPool().execute(new Runnable() {
-				public void run() {
-					String seq = Sequence.generateUnique().toString();
-					System.out.println(seq);
-					generateConcurrentTestKV.put(seq, "value");
-				}
-			});
-		}
 	}
 }
