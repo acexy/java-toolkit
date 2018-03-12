@@ -10,6 +10,8 @@ import com.thankjava.toolkit3d.db.mysql.datasource.MySQLManager;
 import db.mysql.mapper.TestMapper;
 import db.mysql.po.Test;
 
+import java.util.UUID;
+
 public class MyBatisManagerTest {
 
 	public static void main(String[] args) {
@@ -26,7 +28,7 @@ public class MyBatisManagerTest {
 					SqlSession session = sessionFactory.openSession();
 					TestMapper mapper = (TestMapper) session.getMapper(TestMapper.class);
 					Test test = new Test();
-					test.setValue(Sequence.uuid()[0]);
+					test.setValue(UUID.randomUUID().toString());
 					mapper.save(test);
 					System.out.println(test.getId());
 					myBatisManager.commitAndcloseSqlSession(session);;
