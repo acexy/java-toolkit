@@ -50,6 +50,7 @@ maven仓库
 1.0.6 调整功能
     1.调整mongo使用connectionString的方式进行配置，能方便连接副本集及主从复制的DB搭建形式
     2.优化AsyncHttpCliet模块代码结构
+    3.升级第三方最新依赖
 ```
 ---
 > ## 已实现的功能列表
