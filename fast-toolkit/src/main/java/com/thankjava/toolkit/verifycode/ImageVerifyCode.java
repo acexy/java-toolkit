@@ -169,9 +169,6 @@ public class ImageVerifyCode {
         width = width < 1 ? defaultWidth : width;
         high = high < 1 ? defaultHigh : high;
         File outputFile = new File(imgPathAndName);
-        if(outputFile == null){
-            return;
-        }
         File dir = outputFile.getParentFile();
         if(!dir.exists()){
             dir.mkdirs();

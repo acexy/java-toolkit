@@ -3,7 +3,6 @@ package com.thankjava.toolkit.radom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
-import java.util.UUID;
 
 public final class Sequence {
 
