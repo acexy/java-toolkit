@@ -22,7 +22,7 @@ class AopConfigResolve {
 	
 	AopConfig config(Object obj, Method method){
 		
-		AopConfig config = Cache.getAop(getAopConfgKey(obj, method));
+		AopConfig config = Cache.getAop(getAopConfigKey(obj, method));
 		
 		//缓存的Aop切片配置信息不存在，则该方法是第一次被扫描
 		Class<?>[] argsType;
@@ -82,17 +82,16 @@ class AopConfigResolve {
 	
 	/**
 	 * 创建Key
-	* <p>Function: getAopConfgKey</p>
+	* <p>Function: getAopConfigKey</p>
 	* <p>Description: </p>
 	* @author acexy@thankjava.com
 	* @date 2016年8月22日 下午3:52:36
 	* @version 1.0
 	* @param proxy
 	* @param method
-	* @param args
 	* @return
 	 */
-	private String getAopConfgKey(Object proxy, Method method){
+	private String getAopConfigKey(Object proxy, Method method){
 		StringBuffer sb = new StringBuffer();
 		sb.append(proxy.getClass().getName());
 		sb.append(method.getName());
