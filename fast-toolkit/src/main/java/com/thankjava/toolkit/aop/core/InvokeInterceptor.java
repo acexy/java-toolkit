@@ -99,17 +99,15 @@ public class InvokeInterceptor implements InvocationHandler{
 	
 	/**
 	 * 创建Key
-	* <p>Function: getAopConfgKey</p>
+	* <p>Function: getAopConfigKey</p>
 	* <p>Description: </p>
 	* @author acexy@thankjava.com
 	* @date 2016年8月22日 下午3:52:36
 	* @version 1.0
-	* @param proxy
 	* @param method
-	* @param args
 	* @return
 	 */
-	private String getAopConfgKey(Method method){
+	private String getAopConfigKey(Method method){
 		StringBuffer sb = new StringBuffer();
 		sb.append(implementObject.getClass().getName());
 		sb.append(method.getName());
@@ -123,7 +121,7 @@ public class InvokeInterceptor implements InvocationHandler{
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		
-		AopConfig aopConfig = Cache.getAop(getAopConfgKey(method));
+		AopConfig aopConfig = Cache.getAop(getAopConfigKey(method));
 		if(!aopConfig.isUsedAop()){
 			return method.invoke(implementObject, args);
 		}
