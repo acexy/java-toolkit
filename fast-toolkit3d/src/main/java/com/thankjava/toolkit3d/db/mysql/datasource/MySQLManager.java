@@ -92,7 +92,7 @@ public class MySQLManager implements MyBatisManager{
 		}
 	}
 	
-	public void commitAndcloseSqlSession(SqlSession session){
+	public void commitAndCloseSqlSession(SqlSession session){
 		if(session != null){
 			session.commit();
 			session.close();
