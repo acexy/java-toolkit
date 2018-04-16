@@ -23,7 +23,7 @@ public class EhcacheManager {
      * <p>Function: setCache</p>
      * <p>Description: </p>
      *
-     * @param cacheName 缓存名 ehchace.xml里面配置的缓存策略
+     * @param cacheName 缓存名 ehcache.xml里面配置的缓存策略
      * @param cacheKey  缓存key
      * @param object
      * @author acexy@thankjava.com
