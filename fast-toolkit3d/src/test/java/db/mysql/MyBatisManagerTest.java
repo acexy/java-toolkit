@@ -31,7 +31,7 @@ public class MyBatisManagerTest {
 					test.setValue(UUID.randomUUID().toString());
 					mapper.save(test);
 					System.out.println(test.getId());
-					myBatisManager.commitAndcloseSqlSession(session);;
+					myBatisManager.commitAndCloseSqlSession(session);;
 //				}
 //			});
 //		}
