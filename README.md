@@ -65,6 +65,8 @@ maven仓库
   - MD5、RSA、3DS
   - 线程池&定时任务
   - 图片验证码生成
+  - 动态java源代码执行的字节码编译器和字节码加载器(ClassLoader)
+  
 - toolkit3d
   - 基于cglib的AOP API
   - ehcache API
