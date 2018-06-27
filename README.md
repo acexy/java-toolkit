@@ -58,7 +58,7 @@ maven仓库
 > ## 已实现的功能列表
 
 - toolkit
-  - 基于JDK的接口层面AOP功能 [参考](https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec)
+  - 基于JDK的接口层面AOP功能 [了解更多](https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec)
   - 常用时间处理函数
   - JDK HTTP请求
   - IO文件追加写入,并拓展快速写入csv文件(100W条共100MB数据 约600毫秒完成)
@@ -68,7 +68,7 @@ maven仓库
   - MD5、RSA、3DS
   - 线程池&定时任务
   - 图片验证码生成
-  - 动态java源代码执行的字节码编译器和字节码加载器(ClassLoader)
+  - 动态java源代码执行的字节码编译器和字节码加载器(ClassLoader)[了解更多](https://www.thankjava.com/java/ad45a9286d234105ad9165a7f43626b7)
   
 - toolkit3d
   - 基于cglib的AOP API
