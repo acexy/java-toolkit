@@ -17,7 +17,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.thankjava.toolkit</groupId>
 	<artifactId>fast-toolkit</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.7</version>
 
     <build>
         <plugins>
