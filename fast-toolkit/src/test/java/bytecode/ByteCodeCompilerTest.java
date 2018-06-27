@@ -33,8 +33,6 @@ public class ByteCodeCompilerTest {
         System.out.println(byteCodes.keySet().toString());
     }
 
-
-
     public static Map<String, byte[]> compile() {
         return ByteCodeCompiler.compile(sourceCode);
     }
