@@ -19,7 +19,7 @@ import org.bson.Document;
 public interface MongoDBManager {
 
     /**
-     * 统计文档中有多少条数据 docFilter=lnull 则统计全部
+     * 统计文档中有多少条数据 docFilter=null 则统计全部
      * <p>Function: count</p>
      * <p>Description: </p>
      *

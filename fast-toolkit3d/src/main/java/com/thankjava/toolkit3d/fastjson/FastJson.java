@@ -2,6 +2,7 @@ package com.thankjava.toolkit3d.fastjson;
 
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONArray;
 import com.thankjava.toolkit.reflect.BeanCopier;
 
 import com.alibaba.fastjson.JSON;
@@ -80,24 +81,6 @@ public class FastJson {
     }
 
     /**
-     * 将对象转json字符串
-     * <p>Function: toJSONString</p>
-     * <p>Description: </p>
-     *
-     * @param object
-     * @return
-     * @author acexy@thankjava.com
-     * @date 2015年12月30日 下午12:26:29
-     * @version 1.0
-     */
-    public static String toJSONString(Object object) {
-        if (object == null) {
-            return null;
-        }
-        return JSONObject.toJSONString(object);
-    }
-
-    /**
      * JavaBean 2 JSONObject
      *
      * @param object
@@ -114,6 +97,24 @@ public class FastJson {
      */
     public static JSONObject toJSONObject(String json) {
         return JSONObject.parseObject(json);
+    }
+
+    /**
+     * JavaBean 2 JSONArray
+     * @param object
+     * @return
+     */
+    public static JSONArray toJSONArray(Object object) {
+        return (JSONArray) JSONArray.toJSON(object);
+    }
+
+    /**
+     * json 2 JSONArray
+     * @param json
+     * @return
+     */
+    public static JSONArray toJSONArray(String json) {
+        return JSONArray.parseArray(json);
     }
 
     /**
@@ -134,6 +135,7 @@ public class FastJson {
         return toMap(toJSONString(object));
     }
 
+
     /**
      * 将jsonstr 转换成Map对象
      * <p>Function: toMap</p>
@@ -148,6 +150,24 @@ public class FastJson {
     @SuppressWarnings("unchecked")
     public static Map<String, Object> toMap(String json) {
         return (Map<String, Object>) JSON.parse(json);
+    }
+
+    /**
+     * 将对象转json字符串
+     * <p>Function: toJSONString</p>
+     * <p>Description: </p>
+     *
+     * @param object
+     * @return
+     * @author acexy@thankjava.com
+     * @date 2015年12月30日 下午12:26:29
+     * @version 1.0
+     */
+    public static String toJSONString(Object object) {
+        if (object == null) {
+            return null;
+        }
+        return JSONObject.toJSONString(object);
     }
 
 }

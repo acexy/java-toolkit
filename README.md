@@ -20,14 +20,14 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
 </dependency>
 ```
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
 </dependency>
 ```
 
@@ -51,6 +51,8 @@ maven仓库
     1.调整mongo使用connectionString的方式进行配置，能方便连接副本集及主从复制的DB搭建形式
     2.优化AsyncHttpCliet模块代码结构
     3.升级第三方最新依赖
+1.0.7 新增功能
+    1.提供动态执行Java源代码功能，源代码动态编译，源代码动态加载
 ```
 ---
 > ## 已实现的功能列表
@@ -66,6 +68,8 @@ maven仓库
   - MD5、RSA、3DS
   - 线程池&定时任务
   - 图片验证码生成
+  - 动态java源代码执行的字节码编译器和字节码加载器(ClassLoader)
+  
 - toolkit3d
   - 基于cglib的AOP API
   - ehcache API

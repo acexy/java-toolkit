@@ -58,5 +58,6 @@ public interface MyBatisManager {
 	* @version 1.0
 	* @param session
 	 */
-	public void commitAndcloseSqlSession(SqlSession session);
+	public void commitAndCloseSqlSession(SqlSession session);
+
 }

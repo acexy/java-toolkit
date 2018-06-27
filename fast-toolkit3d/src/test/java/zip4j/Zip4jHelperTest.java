@@ -9,7 +9,7 @@ public class Zip4jHelperTest {
 	public static void main(String[] args) {
 		
 		boolean flag = false;
-//		boolean flag = Zip4jHelper.unzip("F:\\Temp\\windows.weiyun.3.3.1539.zip", "F:\\Temp\\froad-cbank-server-order-0.0.1-SNAPSHOT","123");
+//		boolean flag = Zip4jHelper.unzip("F:\\Temp\\windows.weiyun.3.3.1539.zip", "F:\\Temp\\testZip","123");
 //		System.out.println(flag);
 		
 		
