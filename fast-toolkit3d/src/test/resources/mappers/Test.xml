@@ -13,5 +13,9 @@
 	<select id="select" resultMap="test">
 		select * from test where value = #{value}
 	</select>
+
+    <select id="selectByPage" parameterType="PageEntity" resultMap="test">
+        select * from test
+    </select>
 </mapper>
 

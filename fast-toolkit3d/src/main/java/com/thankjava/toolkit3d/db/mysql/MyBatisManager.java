@@ -17,17 +17,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 public interface MyBatisManager {
 
 	/**
-	 * 获取SqlSessionFactory
-	* <p>Function: getSqlSessionFactory</p>
-	* <p>Description: </p>
-	* @author acexy@thankjava.com
-	* @date 2016年1月13日 下午4:21:15
-	* @version 1.0
-	* @return
-	 */
-	public SqlSessionFactory getSqlSessionFactory();
-	
-	/**
 	 * 获取SqlSession
 	* <p>Function: getSqlSession</p>
 	* <p>Description: </p>
