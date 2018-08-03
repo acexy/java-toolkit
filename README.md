@@ -20,14 +20,14 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
 </dependency>
 ```
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
 </dependency>
 ```
 
@@ -53,6 +53,9 @@ maven仓库
     3.升级第三方最新依赖
 1.0.7 新增功能
     1.提供动态执行Java源代码功能，源代码动态编译，源代码动态加载
+1.0.8 新增功能
+    1.新增mongo物理分页插件
+    2.新增mybatis mysql 物理分页插件
 ```
 ---
 > ## 已实现的功能列表
@@ -68,14 +71,14 @@ maven仓库
   - MD5、RSA、3DS
   - 线程池&定时任务
   - 图片验证码生成
-  - 动态java源代码执行的字节码编译器和字节码加载器(ClassLoader)[了解更多](https://www.thankjava.com/java/ad45a9286d234105ad9165a7f43626b7)
+  - 动态Java源代码执行的字节码编译器和字节码加载器(ClassLoader)[了解更多](https://www.thankjava.com/java/ad45a9286d234105ad9165a7f43626b7)
   
 - toolkit3d
   - 基于cglib的AOP API
-  - ehcache API
-  - redis&Mongo API
+  - 缓存ehcache redis API
+  - 数据库 Mongo&mybatis(mysql) API
   - 基于alibaba fastjson API
-  - 基于apache async-http API
+  - 基于 apache async-http API
   - 电子邮件发送 API
   - RSA API
   - 基于xstream的xml处理 API

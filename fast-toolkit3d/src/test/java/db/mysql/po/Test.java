@@ -5,8 +5,15 @@ import java.io.Serializable;
 public class Test implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
-	private Long id;
+
+    public Test() {
+    }
+
+    public Test(String value) {
+        this.value = value;
+    }
+
+    private Long id;
 	private String value;
 	
 	public Long getId() {

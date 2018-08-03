@@ -3,6 +3,7 @@ package com.thankjava.toolkit3d.db.mongodb;
 
 import java.util.List;
 
+import com.thankjava.toolkit3d.vo.db.PageEntity;
 import org.bson.Document;
 
 
@@ -219,6 +220,7 @@ public interface MongoDBManager {
     /**
      * 根据objectHexString更新一条数据
      * 更新的文档将置于$set属性值中,用于部分节点更新
+     *
      * @param docName
      * @param doc
      * @param objectHexString
@@ -229,6 +231,7 @@ public interface MongoDBManager {
     /**
      * 根据objectHexString更新一条数据
      * 更新的文档将置于$set属性值中,用于部分节点更新
+     *
      * @param docName
      * @param t
      * @param objectHexString
@@ -264,7 +267,6 @@ public interface MongoDBManager {
      */
     public boolean updateOne(String docName, Object t, Object tFilter);
 
-
     /**
      * 更新多条数据,当找到符合更新条件的数据n条,更新数据y条,当n=0||y=0(或者没有更新任何一条数据)返回false
      * 更新的文档将置于$set属性值中,用于部分节点更新
@@ -280,5 +282,13 @@ public interface MongoDBManager {
      * @version 1.0
      */
     public boolean updateMany(String docName, Object t, Object tFilter);
+
+    /**
+     * 分页条件查询
+     * @param docName
+     * @param pageEntity
+     * @param <T>
+     */
+    public <T> void findByPage(String docName, PageEntity<T> pageEntity);
 
 }

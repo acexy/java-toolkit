@@ -11,6 +11,18 @@ public class Test {
 	private String value;
 	private Long time;
 
+	public Test(){}
+
+	public Test(String value) {
+		this.value = value;
+	}
+
+	public Test(String id, String value, Long time) {
+		this.id = id;
+		this.value = value;
+		this.time = time;
+	}
+
 	public String getValue() {
 		return value;
 	}

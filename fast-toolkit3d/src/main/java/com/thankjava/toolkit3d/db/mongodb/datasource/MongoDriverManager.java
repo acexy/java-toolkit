@@ -5,12 +5,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
 import com.mongodb.*;
-import com.thankjava.toolkit3d.db.redis.RedisManager;
+import com.thankjava.toolkit3d.vo.db.PageEntity;
+import com.thankjava.toolkit3d.vo.db.Sort;
+import com.thankjava.toolkit3d.vo.db.SortType;
+import org.bson.BSON;
 import org.bson.Document;
 import com.thankjava.toolkit.resource.SourceLoader;
 import com.thankjava.toolkit3d.db.mongodb.MongoDBManager;
@@ -30,7 +32,7 @@ public class MongoDriverManager implements MongoDBManager {
 
     private final static String OPERATOR_SET = "$set";
 
-    private final static String ObjectIdKey = "_id";
+    private final static String OBJECT_ID_KEY = "_id";
 
     private static MongoDBManager manager = null;
 
@@ -51,6 +53,7 @@ public class MongoDriverManager implements MongoDBManager {
     /**
      * 获取单例模式的mongo驱动
      * 配置文件自动加载工程内部 classpath下 mongodb.properties
+     *
      * @return
      */
     public static MongoDBManager getSingleton() {
@@ -62,6 +65,7 @@ public class MongoDriverManager implements MongoDBManager {
 
     /**
      * 获取单例模式的mongo驱动
+     *
      * @param filePath 配置文件源
      * @return
      */
@@ -131,9 +135,9 @@ public class MongoDriverManager implements MongoDBManager {
         if (doc == null) {
             return null;
         }
-        Object objectId = doc.get(ObjectIdKey);
+        Object objectId = doc.get(OBJECT_ID_KEY);
         if (objectId != null && objectId instanceof ObjectId) {
-            doc.put(ObjectIdKey, ((ObjectId) objectId).toHexString());
+            doc.put(OBJECT_ID_KEY, ((ObjectId) objectId).toHexString());
         }
         return FastJson.toObject(FastJson.toJSONString(doc), clazz);
     }
@@ -155,7 +159,7 @@ public class MongoDriverManager implements MongoDBManager {
         MongoCollection<Document> collection = getDBCollection(docName);
         try {
             collection.insertOne(doc);
-            return doc.getObjectId(ObjectIdKey).toHexString();
+            return doc.getObjectId(OBJECT_ID_KEY).toHexString();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -186,7 +190,7 @@ public class MongoDriverManager implements MongoDBManager {
         try {
             Document doc = t2Doc(t);
             collection.insertOne(doc);
-            return doc.getObjectId(ObjectIdKey).toHexString();
+            return doc.getObjectId(OBJECT_ID_KEY).toHexString();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -219,7 +223,7 @@ public class MongoDriverManager implements MongoDBManager {
         }
         ObjectId objectId = new ObjectId(objectHexString);
         Document doc = new Document();
-        doc.put(ObjectIdKey, objectId);
+        doc.put(OBJECT_ID_KEY, objectId);
 
         MongoCursor<Document> cursor = baseFind(docName, doc);
         doc = null;
@@ -333,7 +337,7 @@ public class MongoDriverManager implements MongoDBManager {
         if (objectHexString == null) {
             return false;
         }
-        Document docFilter = new Document(ObjectIdKey, new ObjectId(objectHexString));
+        Document docFilter = new Document(OBJECT_ID_KEY, new ObjectId(objectHexString));
         return updateOne(docName, doc, docFilter);
     }
 
@@ -367,6 +371,37 @@ public class MongoDriverManager implements MongoDBManager {
     @Override
     public boolean updateMany(String docName, Object t, Object tFilter) {
         return updateMany(docName, t2Doc(t), t2Doc(tFilter));
+    }
+
+    @Override
+    public <T> void findByPage(String docName, PageEntity<T> pageEntity) {
+
+        if (docName == null || pageEntity == null) return;
+        MongoCollection<Document> collection = getDBCollection(docName);
+        pageEntity.setTotalCount(this.count(docName, t2Doc(pageEntity.getQueryCondition())));
+        FindIterable findIterable = collection.find(t2Doc(pageEntity.getQueryCondition())).skip(pageEntity.getPageSize() * (pageEntity.getPageNumber() - 1)).limit(pageEntity.getPageSize());
+        if (pageEntity.getSorts().size() > 0) {
+            List<Sort> sorts = pageEntity.getSorts();
+            Document sortCondition = new Document();
+            for (Sort sort : sorts) {
+                sortCondition.put(sort.getColumn(), sort.getSortType().code);
+            }
+            findIterable.sort(sortCondition);
+        }
+
+        List<Document> docs = new ArrayList<>();
+        MongoCursor<Document> cursor = findIterable.iterator();
+        while (cursor.hasNext()) {
+            docs.add(cursor.next());
+        }
+        cursor.close();
+
+        ArrayList<T> objs = new ArrayList<T>();
+
+        for (Document doc : docs) {
+            objs.add(doc2T(doc, pageEntity.getTClass()));
+        }
+        pageEntity.setList(objs);
     }
 
 
