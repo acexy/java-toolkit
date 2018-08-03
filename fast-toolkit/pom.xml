@@ -65,15 +65,15 @@
     </licenses>
     <scm>
         <tag>master</tag>
-        <url>git@github.com:thankjava/java-toolkit.git</url>
-        <connection>scm:git:git@github.com:thankjava/java-toolkit.git</connection>
-        <developerConnection>scm:git:git@github.com:thankjava/java-toolkit.git</developerConnection>
+        <url>git@github.com:lazy-koala/java-toolkit.git</url>
+        <connection>scm:git:git@github.com:lazy-koala/java-toolkit.git</connection>
+        <developerConnection>scm:git:git@github.com:lazy-koala/java-toolkit.git</developerConnection>
     </scm>
     <developers>
         <developer>
             <name>acexy</name>
             <email>acexy@thankjava.com</email>
-            <organization>Thankjava</organization>
+            <organization>Lazy Koala</organization>
         </developer>
     </developers>
 
