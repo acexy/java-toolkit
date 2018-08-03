@@ -1,3 +1,7 @@
+![license](https://img.shields.io/badge/license-Apache2.0-100000.svg)
+[![org](https://img.shields.io/badge/org-@LazyKoala-blue.svg)](https://github.com/lazy-koala/)
+![version](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/thankjava/toolkit/fast-toolkit/maven-metadata.xml.svg)
+
 > ## 作用
 - 基于jdk开发 不依赖第三方代码 (JDK >= 1.7)
 - 将一些java项目中常用的模块案例组件化，以便提供更简洁，更方便的代码案例
