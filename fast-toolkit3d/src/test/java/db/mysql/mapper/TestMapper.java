@@ -7,7 +7,9 @@ import db.mysql.po.Test;
 
 public interface TestMapper {
 
-	public List<Test> select(Test test);
-	public void save(Test test);
-	public List<Test> selectByPage(PageEntity<Test> testPageEntity);
+    public List<Test> select(Test test);
+
+    public void save(Test test);
+
+    public List<Test> selectByPage(PageEntity<Test> testPageEntity);
 }

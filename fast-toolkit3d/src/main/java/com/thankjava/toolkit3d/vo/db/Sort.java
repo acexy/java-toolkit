@@ -22,4 +22,5 @@ public class Sort {
     public SortType getSortType() {
         return sortType;
     }
+
 }

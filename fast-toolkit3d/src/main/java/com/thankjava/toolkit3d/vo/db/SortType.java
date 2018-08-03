@@ -12,6 +12,7 @@ public enum SortType {
     SortType(int code) {
         this.code = code;
     }
+
     public int code;
 
 }

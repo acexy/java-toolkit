@@ -16,6 +16,13 @@
 
     <select id="selectByPage" parameterType="PageEntity" resultMap="test">
         select * from test
+        <where>
+            <if test="queryCondition != null">
+                <if test="queryCondition.value != null">
+                    value = #{queryCondition.value}
+                </if>
+            </if>
+        </where>
     </select>
 </mapper>
 

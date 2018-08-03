@@ -2,6 +2,8 @@ package db.mysql;
 
 import com.thankjava.toolkit3d.fastjson.FastJson;
 import com.thankjava.toolkit3d.vo.db.PageEntity;
+import com.thankjava.toolkit3d.vo.db.Sort;
+import com.thankjava.toolkit3d.vo.db.SortType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.thankjava.toolkit.thread.ThreadPool;
@@ -39,10 +41,13 @@ public class MyBatisManagerTest {
 //			});
 //		}
 
-//        System.out.println(FastJson.toJSONString(mapper.select(new Test("7074e6ed9c7b455c94c3b69ca5ac7006"))));
+        System.out.println(FastJson.toJSONString(mapper.select(new Test("7074e6ed9c7b455c94c3b69ca5ac7006"))));
 
-        PageEntity<Test> t = PageEntity.newPageEntity(Test.class, null);
-        mapper.selectByPage(t);
+//        PageEntity<Test> pageEntity = PageEntity.newPageEntity(Test.class, new Test("7074e6ed9c7b455c94c3b69ca5ac7006"));
+//        pageEntity.addSort(new Sort("id", SortType.desc));
+//        mapper.selectByPage(pageEntity);
+//        System.out.println(FastJson.toJSONString(pageEntity));
+
 
     }
 
