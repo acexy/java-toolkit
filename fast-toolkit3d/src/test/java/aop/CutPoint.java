@@ -42,7 +42,7 @@ public class CutPoint {
 //		param.setInvokeProxyMethod(false);
 		//如果设置被拦截的方法不要执行，并setResult值 则被拦截的方法的执行结果就是 param.result
 //		param.setResult("Result");
-		Method method = ReflectHelper.getMethod(param.getProxyInstance(),"exe",int.class);
+		Method method = ReflectHelper.getMethod(param.getProxyInstance().getClass(),"exe",int.class);
 		ReflectHelper.invokeMethod(param.getProxyInstance(), method, 5);
 		return param;
 	}

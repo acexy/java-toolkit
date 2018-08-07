@@ -10,11 +10,14 @@ public class ReflectHelperTest {
 
 	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException {
 		ChiClass cc = new ChiClass();
-		Field[] fields = ReflectHelper.getFieldArrayExcludeUID(cc.getClass());
-		
-		for (Field field : fields) {
-			field.setAccessible(true);
-			System.out.println(field.get(cc));
-		}
+
+		System.out.println(ReflectHelper.getField(ChiClass.class,"name1"));
+
+//		Field[] fields = ReflectHelper.getFieldArrayExcludeUID(cc.getClass());
+//
+//		for (Field field : fields) {
+//			field.setAccessible(true);
+//			System.out.println(field.get(cc));
+//		}
 	}
 }

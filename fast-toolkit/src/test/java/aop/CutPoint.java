@@ -32,7 +32,7 @@ public class CutPoint {
 		//如果设置被拦截的方法不要执行，并setResult值 则被拦截的方法的执行结果就是 param.result
 //		param.setResult("Result");
 		BusinessImpl proxyInstance = (BusinessImpl)param.getProxyInstance();
-		Method method = ReflectHelper.getMethod(proxyInstance, "exe", int.class);
+		Method method = ReflectHelper.getMethod(proxyInstance.getClass(), "exe", int.class);
 		ReflectHelper.invokeMethod(proxyInstance, method, 0);
 		return param;
 	}

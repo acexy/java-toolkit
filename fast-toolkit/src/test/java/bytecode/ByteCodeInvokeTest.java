@@ -18,7 +18,7 @@ public class ByteCodeInvokeTest {
         byteCodeClassLoader.loadClassFromByteCodes(ByteCodeCompilerTest.compile());
         Class simpleClass = byteCodeClassLoader.findClass("bytecode.SimpleClass");
         Object instance = simpleClass.newInstance();
-        Method method = ReflectHelper.getMethod(instance, "main");
+        Method method = ReflectHelper.getMethod(instance.getClass(), "main");
         ReflectHelper.invokeMethod(instance, method);
     }
 }

@@ -137,7 +137,7 @@ public class InvokeInterceptor implements InvocationHandler {
 
         if (before != null) { //执行before
             aopInstance = aopConfig.getAopBeforeInstance();
-            aopMethod = ReflectHelper.getMethod(aopInstance, before.cutMethod(), AopParam.class);
+            aopMethod = ReflectHelper.getMethod(aopInstance.getClass(), before.cutMethod(), AopParam.class);
             aopParam = new AopParam(args);
             aopParam.setProxyInstance(aopConfig.getProxyInstance());
             aopParam = (AopParam) ReflectHelper.invokeMethod(aopInstance, aopMethod, aopParam);
@@ -153,7 +153,7 @@ public class InvokeInterceptor implements InvocationHandler {
         After after = aopConfig.getAfter();
         if (after != null) {
             aopInstance = aopConfig.getAopAfterInstance();
-            aopMethod = ReflectHelper.getMethod(aopInstance, after.cutMethod(), AopParam.class);
+            aopMethod = ReflectHelper.getMethod(aopInstance.getClass(), after.cutMethod(), AopParam.class);
             if (aopParam == null) {
                 aopParam = new AopParam(args);
                 aopParam.setProxyInstance(aopConfig.getProxyInstance());

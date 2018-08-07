@@ -14,7 +14,7 @@ class InvokeBreankMethod {
 
 	public AopParam before(AopConfig aopConfig, Before before, AopParam param){
 		Object aopInstance = aopConfig.getAopBeforeInstance();
-		Method cutMethod = ReflectHelper.getMethod(aopInstance, before.cutMethod(), AopParam.class);
+		Method cutMethod = ReflectHelper.getMethod(aopInstance.getClass(), before.cutMethod(), AopParam.class);
 		param = (AopParam) ReflectHelper.invokeMethod(aopInstance, cutMethod, param);
 		return param;
 	}
@@ -22,7 +22,7 @@ class InvokeBreankMethod {
 
 	public AopParam after(AopConfig aopConfig, After after, AopParam param, Object invokeResult){
 		Object aopInstance = aopConfig.getAopAfterInstance();
-		Method cutMethod = ReflectHelper.getMethod(aopInstance, after.cutMethod(), AopParam.class);
+		Method cutMethod = ReflectHelper.getMethod(aopInstance.getClass(), after.cutMethod(), AopParam.class);
 		return (AopParam) ReflectHelper.invokeMethod(aopInstance, cutMethod, param);
 	}
 }

@@ -137,7 +137,7 @@ public final class BeanCopier {
         //从目标对象中找原始对象的属性方式，
         for (Field targetField : targetFields) {
 
-            originField = ReflectHelper.getField(originObject, targetField.getName());
+            originField = ReflectHelper.getField(originObject.getClass(), targetField.getName());
 
             if (originField == null) { //目标对象有，但是原始对象中没有
                 continue;
