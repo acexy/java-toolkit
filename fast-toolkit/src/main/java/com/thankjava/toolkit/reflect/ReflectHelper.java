@@ -186,6 +186,23 @@ public final class ReflectHelper {
     }
 
     /**
+     * 设置静态类成员变量值
+     * @param clazz
+     * @param fieldName
+     * @param value
+     */
+    public static void setFiledVal(Class clazz, String fieldName, Object value) {
+        Field field = getField(clazz,fieldName);
+        if (field == null) return;
+        field.setAccessible(true);
+        try {
+            field.set(null,value);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 获取指定方法
      * <p>Function: getMethod</p>
      * <p>Description: </p>
