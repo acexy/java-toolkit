@@ -128,7 +128,11 @@ public class MongoDriverManager implements MongoDBManager {
         if (t == null) {
             return null;
         }
-        return Document.parse(FastJson.toJSONString(t));
+        Document doc = Document.parse(FastJson.toJSONString(t));
+        if (doc.get(OBJECT_ID_KEY) != null) {
+            doc.put(OBJECT_ID_KEY, new ObjectId((String) doc.get(OBJECT_ID_KEY)));
+        }
+        return doc;
     }
 
     private <T> T doc2T(Document doc, Class<T> clazz) {
