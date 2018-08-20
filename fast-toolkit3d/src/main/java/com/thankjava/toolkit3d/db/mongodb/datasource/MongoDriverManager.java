@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.mongodb.*;
+import com.mongodb.client.result.DeleteResult;
 import com.thankjava.toolkit3d.vo.db.PageEntity;
 import com.thankjava.toolkit3d.vo.db.Sort;
 import com.thankjava.toolkit3d.vo.db.SortType;
@@ -24,6 +25,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 public class MongoDriverManager implements MongoDBManager {
@@ -311,6 +313,22 @@ public class MongoDriverManager implements MongoDBManager {
         return collection.updateOne(docFilter, new Document(OPERATOR_SET, doc));
     }
 
+    private DeleteResult baseDeleteOne(String docName, Document doc) {
+        if (doc == null || doc.size() == 0) {
+            return null;
+        }
+        MongoCollection<Document> collection = getDBCollection(docName);
+        return collection.deleteOne(doc);
+    }
+
+    private DeleteResult baseDeleteMany(String docName, Document doc) {
+        if (doc == null || doc.size() == 0) {
+            return null;
+        }
+        MongoCollection<Document> collection = getDBCollection(docName);
+        return collection.deleteOne(doc);
+    }
+
     private UpdateResult baseUpdateMany(String docName, Document doc, Document docFilter) {
         if (doc == null || doc.size() == 0) {
             return null;
@@ -406,6 +424,11 @@ public class MongoDriverManager implements MongoDBManager {
             objs.add(doc2T(doc, pageEntity.getTClass()));
         }
         pageEntity.setList(objs);
+    }
+
+    @Override
+    public void delOneByObjectId(String dcName, String objectHexString) {
+
     }
 
 

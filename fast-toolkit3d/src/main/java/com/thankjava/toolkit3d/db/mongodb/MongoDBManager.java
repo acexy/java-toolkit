@@ -291,4 +291,10 @@ public interface MongoDBManager {
      */
     public <T> void findByPage(String docName, PageEntity<T> pageEntity);
 
+    /**
+     * 通过objectId删除数据
+     * @param dcName
+     * @param objectHexString
+     */
+    public void delOneByObjectId(String dcName,String objectHexString);
 }
