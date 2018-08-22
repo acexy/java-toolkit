@@ -351,6 +351,20 @@ public class JedisManager implements RedisManager {
     }
 
     @Override
+    public boolean sismember(String key, String field) {
+        Jedis jedis = null;
+        try {
+            jedis = getJedis();
+            return jedis.sismember(key,field);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            returnJedis(jedis);
+        }
+    }
+
+    @Override
     public String hget(String key, String field) {
         Jedis jedis = null;
         try {

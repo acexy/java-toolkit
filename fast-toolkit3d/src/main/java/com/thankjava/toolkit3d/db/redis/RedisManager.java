@@ -92,8 +92,8 @@ public interface RedisManager {
      * <p>Function: hset</p>
      * <p>Description: </p>
      *
-     * @param key redisKey
-     * @param hashKey 值hashkey
+     * @param key       redisKey
+     * @param hashKey   值hashkey
      * @param hashValue 值
      * @return 实际操作数据量大于0 则 true
      * @author acexy@thankjava.com
@@ -104,6 +104,7 @@ public interface RedisManager {
 
     /**
      * 设置多个hash
+     *
      * @param key
      * @param hash
      * @return
@@ -208,9 +209,19 @@ public interface RedisManager {
 
     /**
      * 删除hash
+     *
      * @param key
      * @param fields 可选，不填删除整个key
      * @return
      */
     public boolean hdel(String key, String... fields);
+
+    /**
+     * 判断提供的数据是否在set里面
+     *
+     * @param key
+     * @param field
+     * @return
+     */
+    public boolean sismember(String key, String field);
 }
