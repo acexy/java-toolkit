@@ -427,8 +427,8 @@ public class MongoDriverManager implements MongoDBManager {
     }
 
     @Override
-    public void delOneByObjectId(String dcName, String objectHexString) {
-
+    public void delOneByObjectId(String docName, String objectHexString) {
+        baseDeleteOne(docName,new Document(OBJECT_ID_KEY,new ObjectId(objectHexString)));
     }
 
 

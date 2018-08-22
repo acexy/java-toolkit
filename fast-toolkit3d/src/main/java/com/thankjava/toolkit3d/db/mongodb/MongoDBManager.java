@@ -293,8 +293,8 @@ public interface MongoDBManager {
 
     /**
      * 通过objectId删除数据
-     * @param dcName
+     * @param docName
      * @param objectHexString
      */
-    public void delOneByObjectId(String dcName,String objectHexString);
+    public void delOneByObjectId(String docName,String objectHexString);
 }
