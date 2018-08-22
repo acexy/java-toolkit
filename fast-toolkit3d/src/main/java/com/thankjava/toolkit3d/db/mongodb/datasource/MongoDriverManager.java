@@ -322,11 +322,8 @@ public class MongoDriverManager implements MongoDBManager {
     }
 
     private DeleteResult baseDeleteMany(String docName, Document doc) {
-        if (doc == null || doc.size() == 0) {
-            return null;
-        }
         MongoCollection<Document> collection = getDBCollection(docName);
-        return collection.deleteOne(doc);
+        return collection.deleteMany(doc);
     }
 
     private UpdateResult baseUpdateMany(String docName, Document doc, Document docFilter) {
@@ -427,8 +424,43 @@ public class MongoDriverManager implements MongoDBManager {
     }
 
     @Override
-    public void delOneByObjectId(String dcName, String objectHexString) {
+    public boolean deleteOneByObjectId(String docName, String objectHexString) {
 
+
+        DeleteResult deleteResult = baseDeleteOne(docName, new Document(OBJECT_ID_KEY, new ObjectId((objectHexString))));
+        if (deleteResult.getDeletedCount() > 0) {
+            return true;
+        }
+        return false;
+
+    }
+
+    @Override
+    public boolean deleteOneByCondition(String docName, Document filter) {
+        DeleteResult deleteResult = baseDeleteOne(docName, filter);
+        if (deleteResult.getDeletedCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteOneByCondition(String docName, Object tFilter) {
+        return deleteOneByCondition(docName, t2Doc(tFilter));
+    }
+
+    @Override
+    public boolean deleteManyByCondition(String docName, Document filter) {
+        DeleteResult deleteResult = baseDeleteMany(docName, filter);
+        if (deleteResult.getDeletedCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteManyByCondition(String docName, Object tFilter) {
+        return deleteOneByCondition(docName, t2Doc(tFilter));
     }
 
 

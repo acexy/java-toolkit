@@ -43,5 +43,6 @@ public class MongodbManagerTest {
 //        mongoDBManager.findByPage("test", pageEntity);
 //        System.out.println(FastJson.toJSONString(pageEntity));
 
+        mongoDBManager.deleteOneByObjectId("logs","5b76db371bba200ca44124fe");
     }
 }

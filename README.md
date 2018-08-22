@@ -62,6 +62,7 @@ maven仓库
     2.新增mybatis mysql 物理分页插件
 1.0.9 调整功能
     1. 优化反射工具对静态方法/类的相关支持
+    2. MongoDriverManager新增删除相关封装，优化api
 ```
 ---
 > ## 已实现的功能列表
