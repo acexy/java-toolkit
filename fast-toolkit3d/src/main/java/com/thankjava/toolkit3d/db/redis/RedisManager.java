@@ -85,7 +85,7 @@ public interface RedisManager {
      * @date 2016年3月24日 上午11:07:57
      * @version 1.0
      */
-    public boolean sadd(String key, String[] setValue);
+    public boolean sadd(String key, String... setValue);
 
     /**
      * 设置hash
@@ -136,7 +136,7 @@ public interface RedisManager {
      * @date 2016年5月5日 下午3:34:30
      * @version 1.0
      */
-    public boolean lpush(String key, String[] listValue);
+    public boolean lpush(String key, String... listValue);
 
     /**
      * 获取并移除list中尾元素

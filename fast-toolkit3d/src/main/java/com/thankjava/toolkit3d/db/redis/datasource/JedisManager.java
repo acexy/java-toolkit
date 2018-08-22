@@ -178,7 +178,7 @@ public class JedisManager implements RedisManager {
     }
 
     @Override
-    public boolean sadd(String key, String[] setValue) {
+    public boolean sadd(String key, String... setValue) {
         Jedis jedis = null;
         try {
             jedis = getJedis();
@@ -234,7 +234,7 @@ public class JedisManager implements RedisManager {
     }
 
     @Override
-    public boolean lpush(String key, String[] listValue) {
+    public boolean lpush(String key, String... listValue) {
         Jedis jedis = null;
         try {
             jedis = getJedis();
