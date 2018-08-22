@@ -224,4 +224,12 @@ public interface RedisManager {
      * @return
      */
     public boolean sismember(String key, String field);
+
+    /**
+     * 从set中移除
+     *
+     * @param key
+     * @param fields
+     */
+    public long srem(String key, String... fields);
 }
