@@ -72,16 +72,16 @@ public final class BeanCopier {
      * @date 2016年12月22日 上午10:41:58
      * @version 1.0
      */
-    public static <OriginObject, TargetObject> TargetObject append(OriginObject originObject, TargetObject targetObject) {
+    public static <OriginObject, TargetObject> void append(OriginObject originObject, TargetObject targetObject) {
         if (originObject == null) {
-            return null;
+            return;
         }
         if (targetObject == null) {
             throw new IllegalArgumentException("targetClass can't be null");
         }
         @SuppressWarnings("unchecked")
         Class<TargetObject> targetClass = (Class<TargetObject>) targetObject.getClass();
-        return setValue(originObject, targetObject, targetClass);
+        setValue(originObject, targetObject, targetClass);
 
     }
 
