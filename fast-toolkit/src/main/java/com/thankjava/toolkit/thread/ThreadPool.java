@@ -19,12 +19,12 @@ public final class ThreadPool {
 	/**
 	 * 空闲线程最大等待时间
 	 */
-	private static final int ALIVE_TIME = 1000;
+	private static final int ALIVE_TIME = 60;
 	
 	/**
 	 * 排队任务接受最大数目
 	 */
-	private static final int WAIT_RUNABLE_MAX_NUM = 200;
+	private static final int WAIT_RUNNABLE_MAX_NUM = 200;
 	
 	private static ThreadPoolExecutor threadPoolExecutor;
 
@@ -33,8 +33,8 @@ public final class ThreadPool {
 				INIT_THREAD_NUM, 
 				MAX_THREAD_NUM,
 				ALIVE_TIME,
-				TimeUnit.MILLISECONDS,
-				new ArrayBlockingQueue<Runnable>(WAIT_RUNABLE_MAX_NUM),
+				TimeUnit.SECONDS,
+				new ArrayBlockingQueue<Runnable>(WAIT_RUNNABLE_MAX_NUM),
 				new ThreadPoolExecutor.DiscardOldestPolicy());
 		threadPoolExecutor.allowCoreThreadTimeOut(true);
 	}
