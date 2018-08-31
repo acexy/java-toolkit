@@ -77,7 +77,8 @@ public class FastJson {
         @SuppressWarnings("unchecked")
         Class<T> clazz = (Class<T>) t.getClass();
         T tNew = toObject(json, clazz);
-        return BeanCopier.append(tNew, t);
+        BeanCopier.append(tNew, t);
+        return tNew;
     }
 
     /**
@@ -92,6 +93,7 @@ public class FastJson {
 
     /**
      * JSON String 2 JSONObject
+     *
      * @param json
      * @return
      */
@@ -101,6 +103,7 @@ public class FastJson {
 
     /**
      * JavaBean 2 JSONArray
+     *
      * @param object
      * @return
      */
@@ -110,6 +113,7 @@ public class FastJson {
 
     /**
      * json 2 JSONArray
+     *
      * @param json
      * @return
      */

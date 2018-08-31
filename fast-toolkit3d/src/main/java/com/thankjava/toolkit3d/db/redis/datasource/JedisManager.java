@@ -43,6 +43,7 @@ public class JedisManager implements RedisManager {
     /**
      * 获取单例模式的redis驱动
      * 自动加载工程内部classpath下redis.properties
+     *
      * @return
      */
     public static RedisManager getSingleton() {
@@ -54,6 +55,7 @@ public class JedisManager implements RedisManager {
 
     /**
      * 获取单例模式redis驱动
+     *
      * @param filePath 指定配置文件源位置
      * @return
      */
@@ -176,7 +178,7 @@ public class JedisManager implements RedisManager {
     }
 
     @Override
-    public boolean sadd(String key, String[] setValue) {
+    public boolean sadd(String key, String... setValue) {
         Jedis jedis = null;
         try {
             jedis = getJedis();
@@ -232,7 +234,7 @@ public class JedisManager implements RedisManager {
     }
 
     @Override
-    public boolean lpush(String key, String[] listValue) {
+    public boolean lpush(String key, String... listValue) {
         Jedis jedis = null;
         try {
             jedis = getJedis();
@@ -345,6 +347,34 @@ public class JedisManager implements RedisManager {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            returnJedis(jedis);
+        }
+    }
+
+    @Override
+    public boolean sismember(String key, String field) {
+        Jedis jedis = null;
+        try {
+            jedis = getJedis();
+            return jedis.sismember(key, field);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            returnJedis(jedis);
+        }
+    }
+
+    @Override
+    public long srem(String key, String... fields) {
+        Jedis jedis = null;
+        try {
+            jedis = getJedis();
+            return jedis.srem(key, fields);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
         } finally {
             returnJedis(jedis);
         }

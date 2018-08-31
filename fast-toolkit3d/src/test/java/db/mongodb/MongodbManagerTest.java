@@ -33,14 +33,16 @@ public class MongodbManagerTest {
 //        test.setValue("10");
 //        System.out.println(mongoDBManager.updateOneByObjectId("test",test,"5a24f854eba60917d0191f8f"));
 
-        PageEntity<Test> pageEntity = PageEntity.newPageEntity(Test.class, new Test());
-        pageEntity
-                .addSort(new Sort("value", SortType.desc))
-                .addSort(new Sort("create_time", SortType.asc))
-                .setPageNumber(5)
-                .setPageSize(5)
-        ;
-        mongoDBManager.findByPage("test", pageEntity);
-        System.out.println(FastJson.toJSONString(pageEntity));
+//        PageEntity<Test> pageEntity = PageEntity.newPageEntity(Test.class, new Test());
+//        pageEntity
+//                .addSort(new Sort("value", SortType.desc))
+//                .addSort(new Sort("create_time", SortType.asc))
+//                .setPageNumber(5)
+//                .setPageSize(5)
+//        ;
+//        mongoDBManager.findByPage("test", pageEntity);
+//        System.out.println(FastJson.toJSONString(pageEntity));
+
+        mongoDBManager.deleteOneByObjectId("logs","5b76db371bba200ca44124fe");
     }
 }

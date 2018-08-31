@@ -32,7 +32,8 @@ public final class TimeHelper {
         yyyyMMdd("yyyyMMdd"),
         HHmmss("HHmmss"),
 
-        yyyy1MM1dd1HH1mm("yyyy/MM/dd/HH/mm"),;
+        yyyy1MM1dd1HH1mm("yyyy/MM/dd/HH/mm"),
+        ;
 
         public String type;
 
@@ -50,14 +51,14 @@ public final class TimeHelper {
      * <p>Function: parseDate</p>
      * <p>Description: </p>
      *
-     * @param date
      * @param timeType
+     * @param date
      * @return
      * @author acexy@thankjava.com
      * @date 2015年6月18日 上午9:59:42
      * @version 1.0
      */
-    public static Date parseDate(String date, TimeType timeType) {
+    public static Date parseDate(TimeType timeType, String date) {
         SimpleDateFormat sdf = getDateFormat(timeType);
         try {
             return sdf.parse(date);

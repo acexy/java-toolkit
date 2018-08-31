@@ -285,10 +285,53 @@ public interface MongoDBManager {
 
     /**
      * 分页条件查询
+     *
      * @param docName
      * @param pageEntity
      * @param <T>
      */
     public <T> void findByPage(String docName, PageEntity<T> pageEntity);
 
+    /**
+     * 通过objectId删除数据
+     *
+     * @param docName
+     * @param objectHexString
+     */
+    public boolean deleteOneByObjectId(String docName, String objectHexString);
+
+    /**
+     * 条件删除一条数据
+     *
+     * @param docName
+     * @param filter
+     * @return
+     */
+    public boolean deleteOneByCondition(String docName, Document filter);
+
+    /**
+     * 条件删除一条数据
+     *
+     * @param docName
+     * @param tFilter
+     * @return
+     */
+    public boolean deleteOneByCondition(String docName, Object tFilter);
+
+    /**
+     * 条件删除多条
+     *
+     * @param docName
+     * @param filter
+     * @return
+     */
+    public boolean deleteManyByCondition(String docName, Document filter);
+
+    /**
+     * 条件删除多条
+     * @param docName
+     * @param tFilter
+     * @return
+     */
+    public boolean deleteManyByCondition(String docName, Object tFilter);
 }

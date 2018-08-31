@@ -85,15 +85,15 @@ public interface RedisManager {
      * @date 2016年3月24日 上午11:07:57
      * @version 1.0
      */
-    public boolean sadd(String key, String[] setValue);
+    public boolean sadd(String key, String... setValue);
 
     /**
      * 设置hash
      * <p>Function: hset</p>
      * <p>Description: </p>
      *
-     * @param key redisKey
-     * @param hashKey 值hashkey
+     * @param key       redisKey
+     * @param hashKey   值hashkey
      * @param hashValue 值
      * @return 实际操作数据量大于0 则 true
      * @author acexy@thankjava.com
@@ -104,6 +104,7 @@ public interface RedisManager {
 
     /**
      * 设置多个hash
+     *
      * @param key
      * @param hash
      * @return
@@ -135,7 +136,7 @@ public interface RedisManager {
      * @date 2016年5月5日 下午3:34:30
      * @version 1.0
      */
-    public boolean lpush(String key, String[] listValue);
+    public boolean lpush(String key, String... listValue);
 
     /**
      * 获取并移除list中尾元素
@@ -208,9 +209,27 @@ public interface RedisManager {
 
     /**
      * 删除hash
+     *
      * @param key
      * @param fields 可选，不填删除整个key
      * @return
      */
     public boolean hdel(String key, String... fields);
+
+    /**
+     * 判断提供的数据是否在set里面
+     *
+     * @param key
+     * @param field
+     * @return
+     */
+    public boolean sismember(String key, String field);
+
+    /**
+     * 从set中移除
+     *
+     * @param key
+     * @param fields
+     */
+    public long srem(String key, String... fields);
 }

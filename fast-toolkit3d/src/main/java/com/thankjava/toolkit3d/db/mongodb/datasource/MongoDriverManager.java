@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.mongodb.*;
+import com.mongodb.client.result.DeleteResult;
 import com.thankjava.toolkit3d.vo.db.PageEntity;
 import com.thankjava.toolkit3d.vo.db.Sort;
 import com.thankjava.toolkit3d.vo.db.SortType;
@@ -24,6 +25,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 public class MongoDriverManager implements MongoDBManager {
@@ -128,7 +130,11 @@ public class MongoDriverManager implements MongoDBManager {
         if (t == null) {
             return null;
         }
-        return Document.parse(FastJson.toJSONString(t));
+        Document doc = Document.parse(FastJson.toJSONString(t));
+        if (doc.get(OBJECT_ID_KEY) != null) {
+            doc.put(OBJECT_ID_KEY, new ObjectId((String) doc.get(OBJECT_ID_KEY)));
+        }
+        return doc;
     }
 
     private <T> T doc2T(Document doc, Class<T> clazz) {
@@ -307,6 +313,19 @@ public class MongoDriverManager implements MongoDBManager {
         return collection.updateOne(docFilter, new Document(OPERATOR_SET, doc));
     }
 
+    private DeleteResult baseDeleteOne(String docName, Document doc) {
+        if (doc == null || doc.size() == 0) {
+            return null;
+        }
+        MongoCollection<Document> collection = getDBCollection(docName);
+        return collection.deleteOne(doc);
+    }
+
+    private DeleteResult baseDeleteMany(String docName, Document doc) {
+        MongoCollection<Document> collection = getDBCollection(docName);
+        return collection.deleteMany(doc);
+    }
+
     private UpdateResult baseUpdateMany(String docName, Document doc, Document docFilter) {
         if (doc == null || doc.size() == 0) {
             return null;
@@ -402,6 +421,46 @@ public class MongoDriverManager implements MongoDBManager {
             objs.add(doc2T(doc, pageEntity.getTClass()));
         }
         pageEntity.setList(objs);
+    }
+
+    @Override
+    public boolean deleteOneByObjectId(String docName, String objectHexString) {
+
+
+        DeleteResult deleteResult = baseDeleteOne(docName, new Document(OBJECT_ID_KEY, new ObjectId((objectHexString))));
+        if (deleteResult.getDeletedCount() > 0) {
+            return true;
+        }
+        return false;
+
+    }
+
+    @Override
+    public boolean deleteOneByCondition(String docName, Document filter) {
+        DeleteResult deleteResult = baseDeleteOne(docName, filter);
+        if (deleteResult.getDeletedCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteOneByCondition(String docName, Object tFilter) {
+        return deleteOneByCondition(docName, t2Doc(tFilter));
+    }
+
+    @Override
+    public boolean deleteManyByCondition(String docName, Document filter) {
+        DeleteResult deleteResult = baseDeleteMany(docName, filter);
+        if (deleteResult.getDeletedCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteManyByCondition(String docName, Object tFilter) {
+        return deleteOneByCondition(docName, t2Doc(tFilter));
     }
 
 
