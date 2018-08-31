@@ -24,14 +24,14 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.8</version>
+  <version>1.0.9</version>
 </dependency>
 ```
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.8</version>
+  <version>1.0.9</version>
 </dependency>
 ```
 
@@ -64,6 +64,7 @@ maven仓库
     1. 优化反射工具对静态方法/类的相关支持
     2. MongoDriverManager新增删除相关封装，优化api
     3. 调整了BeanCopier的属性追加函数
+    4. 调整线程池初始化的默认参数
 ```
 ---
 > ## 已实现的功能列表
