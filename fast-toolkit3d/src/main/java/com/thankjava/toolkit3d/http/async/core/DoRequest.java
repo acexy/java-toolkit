@@ -1,39 +1,35 @@
 package com.thankjava.toolkit3d.http.async.core;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import com.thankjava.toolkit3d.http.async.entity.ResponseCallback;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import com.thankjava.toolkit3d.http.async.core.utils.RequestBuilder;
 import com.thankjava.toolkit3d.http.async.core.utils.ResponseBuilder;
 import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
 import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
 
-public class SyncRequest extends BasicRequest {
+public class DoRequest extends BasicRequest {
 
-    private static SyncRequest syncRequest = new SyncRequest();
+    private static DoRequest doRequest = new DoRequest();
     private static CloseableHttpAsyncClient closeableHttpAsyncClient;
 
-    private SyncRequest() {
+    private DoRequest() {
     }
 
-    public static SyncRequest getInterface(CloseableHttpAsyncClient closeableHttpAsyncClient) {
-        SyncRequest.closeableHttpAsyncClient = closeableHttpAsyncClient;
-        return syncRequest;
+    public static DoRequest getInterface(CloseableHttpAsyncClient closeableHttpAsyncClient) {
+        DoRequest.closeableHttpAsyncClient = closeableHttpAsyncClient;
+        return doRequest;
     }
 
-    public AsyncResponse requestWithSession(AsyncRequest asyncRequest) {
-        return doRequest(asyncRequest, true, null);
+    public AsyncResponse requestWithSession(AsyncRequest asyncRequest, boolean withSession, ResponseCallback callback) {
+        return doRequest(asyncRequest, withSession, callback);
     }
 
     private AsyncResponse doRequest(final AsyncRequest asyncRequest, boolean withSession, final ResponseCallback callback) {

@@ -3,9 +3,10 @@ package com.thankjava.toolkit3d.http.async;
 import java.io.IOException;
 
 import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
+import com.thankjava.toolkit3d.http.async.entity.ResponseCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import com.thankjava.toolkit3d.http.async.core.SyncRequest;
+import com.thankjava.toolkit3d.http.async.core.DoRequest;
 import com.thankjava.toolkit3d.http.async.entity.Cookies;
 import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
 
@@ -14,18 +15,18 @@ public class AsyncHttpClient {
     /**
      * 同步请求的处理
      */
-    private static SyncRequest syncRequest;
+    private static DoRequest doRequest;
 
     private static CloseableHttpAsyncClient closeableHttpAsyncClient;
 
     AsyncHttpClient(CloseableHttpAsyncClient closeableHttpAsyncClient) {
         AsyncHttpClient.closeableHttpAsyncClient = closeableHttpAsyncClient;
         closeableHttpAsyncClient.start();
-        syncRequest = SyncRequest.getInterface(closeableHttpAsyncClient);
+        doRequest = DoRequest.getInterface(closeableHttpAsyncClient);
     }
 
     /**
-     * 发生同步请求,并自动携带相关的请求头信息
+     * 发生同步请求,并自动携带历史可用的请求头部信息
      * <p>Function: syncRequestWithSession</p>
      * <p>Description: </p>
      *
@@ -36,7 +37,17 @@ public class AsyncHttpClient {
      * @version 1.0
      */
     public AsyncResponse syncRequestWithSession(AsyncRequest asyncRequest) {
-        return syncRequest.requestWithSession(asyncRequest);
+        return doRequest.requestWithSession(asyncRequest, true, null);
+    }
+
+    /**
+     * 发起异步请求,并自动携带历史可用的请求头部信息
+     *
+     * @param asyncRequest
+     * @param responseCallback
+     */
+    public void asyncRequestWithSession(AsyncRequest asyncRequest, ResponseCallback responseCallback) {
+        doRequest.requestWithSession(asyncRequest, true, responseCallback);
     }
 
     /**
@@ -50,7 +61,7 @@ public class AsyncHttpClient {
      * @version 1.0
      */
     public Cookies getAllCookies() {
-        return new Cookies(SyncRequest.getSyncCookieStore().getCookies());
+        return new Cookies(DoRequest.getSyncCookieStore().getCookies());
     }
 
     /**
