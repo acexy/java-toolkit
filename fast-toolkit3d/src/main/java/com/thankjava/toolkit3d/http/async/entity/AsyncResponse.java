@@ -117,7 +117,7 @@ public class AsyncResponse {
         buffer.append("] cookies: [");
         buffer.append(cookies == null ? "" : cookies.toString());
         buffer.append("] dataString: [");
-        buffer.append(getDataString() == null ? "" : dataString);
+        buffer.append(getDataString() == null ? "" : getDataString());
         buffer.append("]");
         return buffer.toString();
     }

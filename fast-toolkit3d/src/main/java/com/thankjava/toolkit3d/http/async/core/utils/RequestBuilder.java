@@ -2,6 +2,7 @@ package com.thankjava.toolkit3d.http.async.core.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -12,6 +13,8 @@ import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import com.thankjava.toolkit3d.http.async.entity.Headers;
 import com.thankjava.toolkit3d.http.async.entity.Parameters;
 import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 
 
 /**
@@ -28,10 +31,12 @@ public class RequestBuilder {
 
     /**
      * 创建请求信息
+     *
      * @param asyncRequest
      * @return
      */
     public static HttpRequestBase builderRequest(AsyncRequest asyncRequest) {
+
         HttpRequestBase request = null;
 
         if (HttpMethod.post.equals(asyncRequest.getHttpMethod())) {
@@ -55,12 +60,30 @@ public class RequestBuilder {
         }
 
         Parameters parameter = asyncRequest.getParameter();
+
         if (parameter != null) {
-            try {
-                post.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), asyncRequest.getReqCharset().charset));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+            if (parameter.getNameValuePair() != null) {
+
+                try {
+                    post.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), asyncRequest.getReqCharset().charset));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+            } else if (parameter.getText() != null) {
+
+                post.setEntity(
+                        new StringEntity(parameter.getText(),
+                                ContentType.create(
+                                        parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
+                                        Charset.forName(asyncRequest.getReqCharset().charset
+                                        )
+                                )
+                        )
+                );
+
             }
+
         }
 
         return post;
