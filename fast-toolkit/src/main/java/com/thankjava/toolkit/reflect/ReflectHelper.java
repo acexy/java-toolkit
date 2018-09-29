@@ -3,6 +3,7 @@ package com.thankjava.toolkit.reflect;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * 常用的反射操作
@@ -98,28 +99,25 @@ public final class ReflectHelper {
      * @version 1.0
      */
     public static Field[] getFieldArrayExcludeUID(Class<?> clazz) {
+
         Field[] currField = clazz.getDeclaredFields();
 
-        Field[] temp = new Field[currField.length];
-        boolean getUid = false;
+        int len = currField.length;
 
-        int index = 0;
-        for (Field curr : currField) {
-            if ("serialVersionUID".equals(curr.getName())) {
-                getUid = true;
+        boolean existUID = false;
+
+        Field[] temp = new Field[len];
+        for (int index = 0; index < len; index++) {
+            if ("serialVersionUID".equals(currField[index].getName())) {
+                existUID = true;
                 continue;
             }
-            temp[index] = curr;
-            index++;
+            temp[index] = currField[index];
         }
-        if (!getUid) {
+        if (!existUID) {
             return currField;
         }
-        Field[] all = new Field[index];
-        for (int i = 0; i < all.length; i++) {
-            all[i] = temp[i];
-        }
-        return all;
+        return Arrays.copyOf(temp, len - 1);
     }
 
     /**
@@ -187,16 +185,17 @@ public final class ReflectHelper {
 
     /**
      * 设置静态类成员变量值
+     *
      * @param clazz
      * @param fieldName
      * @param value
      */
     public static void setFiledVal(Class clazz, String fieldName, Object value) {
-        Field field = getField(clazz,fieldName);
+        Field field = getField(clazz, fieldName);
         if (field == null) return;
         field.setAccessible(true);
         try {
-            field.set(null,value);
+            field.set(null, value);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
