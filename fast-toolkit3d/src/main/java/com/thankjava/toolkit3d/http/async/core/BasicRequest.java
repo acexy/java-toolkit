@@ -19,6 +19,7 @@ class BasicRequest {
 	 * 请求上下文
 	 */
 	protected static HttpClientContext syncHttpClientContext = HttpClientContext.create();
+
 	/**
 	 * 请求的CookieStore
 	 */

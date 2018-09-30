@@ -37,7 +37,17 @@ public class AsyncHttpClient {
      * @version 1.0
      */
     public AsyncResponse syncRequestWithSession(AsyncRequest asyncRequest) {
-        return doRequest.requestWithSession(asyncRequest, true, null);
+        return doRequest.doRequest(asyncRequest, true, null);
+    }
+
+
+    /**
+     * 发生同步请求,不携带任何历史可用的头部信息
+     * @param asyncRequest
+     * @return
+     */
+    public AsyncResponse syncRequestWithoutSession(AsyncRequest asyncRequest) {
+        return doRequest.doRequest(asyncRequest, false, null);
     }
 
     /**
@@ -47,11 +57,21 @@ public class AsyncHttpClient {
      * @param responseCallback
      */
     public void asyncRequestWithSession(AsyncRequest asyncRequest, ResponseCallback responseCallback) {
-        doRequest.requestWithSession(asyncRequest, true, responseCallback);
+        doRequest.doRequest(asyncRequest, true, responseCallback);
     }
 
     /**
-     * 获取历史请求CookieStore
+     * 发起异步请求,不携带任何历史可用的头部信息
+     *
+     * @param asyncRequest
+     * @param responseCallback
+     */
+    public void asyncRequestWithoutSession(AsyncRequest asyncRequest, ResponseCallback responseCallback) {
+        doRequest.doRequest(asyncRequest, false, responseCallback);
+    }
+
+    /**
+     * 从整个http client 上下文中获取所有cookie
      * <p>Function: getRequestCookieStore</p>
      * <p>Description: </p>
      *
@@ -60,12 +80,12 @@ public class AsyncHttpClient {
      * @date 2017年6月12日 下午3:31:00
      * @version 1.0
      */
-    public Cookies getAllCookies() {
+    public Cookies getAllCookiesFromClientContext() {
         return new Cookies(DoRequest.getSyncCookieStore().getCookies());
     }
 
     /**
-     * 获取指定的cookie
+     * 从整个http client 上下文中获取指定的cookie
      * <p>Function: getCookie</p>
      * <p>Description: </p>
      *
@@ -75,12 +95,12 @@ public class AsyncHttpClient {
      * @date 2017年6月12日 下午3:41:55
      * @version 1.0
      */
-    public Cookie getCookie(String cookieName) {
-        return getAllCookies().getCookie(cookieName);
+    public Cookie getCookieFromClientContext(String cookieName) {
+        return getAllCookiesFromClientContext().getCookie(cookieName);
     }
 
     /**
-     * 停止整个client
+     * 停止整个http client
      * <p>Function: shutdown</p>
      * <p>Description: </p>
      *

@@ -62,6 +62,7 @@ public class RequestBuilder {
         Parameters parameter = asyncRequest.getParameter();
 
         if (parameter != null) {
+
             if (parameter.getNameValuePair() != null) {
 
                 try {

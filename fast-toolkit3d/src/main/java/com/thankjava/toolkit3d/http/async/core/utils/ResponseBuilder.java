@@ -35,7 +35,6 @@ public class ResponseBuilder {
             asyncResponse.setCookies(new Cookies(cookies));
         }
 
-
         asyncResponse.setHttpEntity(response.getEntity());
         asyncResponse.setCharset(charset);
 

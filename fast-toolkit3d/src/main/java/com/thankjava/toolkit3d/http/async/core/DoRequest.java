@@ -28,17 +28,11 @@ public class DoRequest extends BasicRequest {
         return doRequest;
     }
 
-    public AsyncResponse requestWithSession(AsyncRequest asyncRequest, boolean withSession, ResponseCallback callback) {
-        return doRequest(asyncRequest, withSession, callback);
-    }
+    public AsyncResponse doRequest(final AsyncRequest asyncRequest, boolean withSession, final ResponseCallback callback) {
 
-    private AsyncResponse doRequest(final AsyncRequest asyncRequest, boolean withSession, final ResponseCallback callback) {
+        Future<HttpResponse> future;
 
-        Future<HttpResponse> future = null;
-        addCookies(asyncRequest);
-
-
-        HttpClientContext requestCtx = null;
+        HttpClientContext requestCtx;
 
         if (withSession) {
             requestCtx = syncHttpClientContext;
@@ -46,13 +40,14 @@ public class DoRequest extends BasicRequest {
             requestCtx = HttpClientContext.create();
         }
 
+        addCookies(asyncRequest, requestCtx);
+
         try {
 
             final HttpRequestBase request = RequestBuilder.builderRequest(asyncRequest);
             final HttpClientContext ctx = requestCtx;
 
             future = closeableHttpAsyncClient.execute(request, requestCtx, callback != null ? new FutureCallback<HttpResponse>() {
-
 
                 @Override
                 public void completed(HttpResponse httpResponse) {
@@ -82,11 +77,11 @@ public class DoRequest extends BasicRequest {
         return null;
     }
 
-    private void addCookies(AsyncRequest asyncRequest) {
+    private void addCookies(AsyncRequest asyncRequest, HttpClientContext syncHttpClientContext) {
         if (asyncRequest.getCookies() != null) {
             List<Cookie> cookies = asyncRequest.getCookies().getAllCookies();
             for (Cookie cookie : cookies) {
-                syncCookieStore.addCookie(cookie);
+                syncHttpClientContext.getCookieStore().addCookie(cookie);
             }
         }
     }
