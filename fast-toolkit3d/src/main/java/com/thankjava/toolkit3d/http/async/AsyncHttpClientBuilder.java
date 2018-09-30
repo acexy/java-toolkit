@@ -11,7 +11,6 @@ import javax.net.ssl.SSLContext;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 public class AsyncHttpClientBuilder {
@@ -52,11 +51,14 @@ public class AsyncHttpClientBuilder {
         SSLContext sslContext = null;
 
         try {
-            sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
-                public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                    return true;
-                }
-            }).build();
+            sslContext = new SSLContextBuilder().loadTrustMaterial(
+                    null,
+                    new TrustStrategy() {
+                        public boolean isTrusted(X509Certificate[] chain, String authType) {
+                            return true;
+                        }
+                    }
+            ).build();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (KeyManagementException e) {
@@ -93,6 +95,7 @@ public class AsyncHttpClientBuilder {
 
     /**
      * 设置超时时间
+     *
      * @param timeout milliseconds
      * @return
      */

@@ -1,5 +1,6 @@
 package http.async;
 
+import com.thankjava.toolkit.io.file.FileIO;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClient;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClientBuilder;
 import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
@@ -12,21 +13,18 @@ public class AsyncHttpClientTest {
         AsyncHttpClient client = new AsyncHttpClientBuilder()
                 .setWithoutSSLCheck()
                 .setCookiePolicyLevel(CookieCheckLevel.BROWSER_COMPATIBILITY)
-                .setTimeout(3000)
+                .setTimeout(30000)
                 .create();
 
         AsyncRequest request = new AsyncRequest(
 //                "https://ser.chinaebi.com/mrbui/bmbuurm7/4800180.do",
-                "http://localhost:8001",
-                HttpMethod.post,
-                new Parameters(
-                        "text/html",
-                        RequestContentType.TEXT_HTML
-                )
+                "https://source.thankjava.com/2018/9/18/54e35fc2951193af3867cd35942f3395.png",
+                HttpMethod.get
         );
 
         AsyncResponse response = client.syncRequestWithSession(request);
-        System.out.println(response);
+        FileIO.write2File("./a.png", response.getDataByteArray());
+//        System.out.println(response.getDataByteArray());
 
 //        Thread.sleep(2000);
 //        response = client.syncRequestWithoutSession(request);

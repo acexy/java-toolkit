@@ -95,7 +95,7 @@ public class RequestBuilder {
 
         HttpGet get = new HttpGet(asyncRequest.getUrl());
         Parameters parameter = asyncRequest.getParameter();
-        if (parameter != null) {
+        if (parameter != null && parameter.getNameValuePair() != null) {
             try {
                 get.setURI(new URIBuilder(get.getURI()).addParameters(parameter.getNameValuePair()).build());
             } catch (URISyntaxException e) {
