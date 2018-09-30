@@ -9,7 +9,11 @@ public class AsyncHttpClientTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        AsyncHttpClient client = new AsyncHttpClientBuilder().setWithoutSSLCheck().setCookiePolicyLevel(CookieCheckLevel.BROWSER_COMPATIBILITY).create();
+        AsyncHttpClient client = new AsyncHttpClientBuilder()
+                .setWithoutSSLCheck()
+                .setCookiePolicyLevel(CookieCheckLevel.BROWSER_COMPATIBILITY)
+                .setTimeout(3000)
+                .create();
 
         AsyncRequest request = new AsyncRequest(
 //                "https://ser.chinaebi.com/mrbui/bmbuurm7/4800180.do",
@@ -24,13 +28,13 @@ public class AsyncHttpClientTest {
         AsyncResponse response = client.syncRequestWithSession(request);
         System.out.println(response);
 
-        Thread.sleep(2000);
-        response = client.syncRequestWithoutSession(request);
-        System.out.println(response);
-
-        Thread.sleep(2000);
-        response = client.syncRequestWithSession(request);
-        System.out.println(response);
+//        Thread.sleep(2000);
+//        response = client.syncRequestWithoutSession(request);
+//        System.out.println(response);
+//
+//        Thread.sleep(2000);
+//        response = client.syncRequestWithSession(request);
+//        System.out.println(response);
 
 
 //        long st = System.currentTimeMillis();

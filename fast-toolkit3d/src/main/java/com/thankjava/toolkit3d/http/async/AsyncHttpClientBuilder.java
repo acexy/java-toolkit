@@ -82,11 +82,24 @@ public class AsyncHttpClientBuilder {
 
     /**
      * 关闭http-client警告日志
+     *
      * @return
      */
     public AsyncHttpClientBuilder setCloseWarnLogger() {
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
         System.setProperty("org.apache.commons.logging.simplelog.defaultlog", "error");
+        return this;
+    }
+
+    /**
+     * 设置超时时间
+     * @param timeout milliseconds
+     * @return
+     */
+    public AsyncHttpClientBuilder setTimeout(int timeout) {
+        requestConfigBuilder.setConnectTimeout(timeout);
+        requestConfigBuilder.setSocketTimeout(timeout);
+        requestConfigBuilder.setConnectionRequestTimeout(timeout);
         return this;
     }
 

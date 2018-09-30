@@ -1,6 +1,7 @@
 package com.thankjava.toolkit3d.http.async.core;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import com.thankjava.toolkit3d.http.async.entity.ResponseCallback;
@@ -42,36 +43,36 @@ public class DoRequest extends BasicRequest {
 
         addCookies(asyncRequest, requestCtx);
 
-        try {
 
-            final HttpRequestBase request = RequestBuilder.builderRequest(asyncRequest);
-            final HttpClientContext ctx = requestCtx;
+        final HttpRequestBase request = RequestBuilder.builderRequest(asyncRequest);
+        final HttpClientContext ctx = requestCtx;
 
-            future = closeableHttpAsyncClient.execute(request, requestCtx, callback != null ? new FutureCallback<HttpResponse>() {
+        future = closeableHttpAsyncClient.execute(request, requestCtx, callback != null ? new FutureCallback<HttpResponse>() {
 
-                @Override
-                public void completed(HttpResponse httpResponse) {
-                    callback.completed(ResponseBuilder.builder(httpResponse, asyncRequest.getResCharset(), ctx));
-                }
-
-                @Override
-                public void failed(Exception e) {
-                    callback.failed(e);
-                }
-
-                @Override
-                public void cancelled() {
-                    callback.cancelled();
-                }
-
-            } : null);
-
-            if (callback == null) {
-                return ResponseBuilder.builder(future.get(), asyncRequest.getResCharset(), requestCtx);
+            @Override
+            public void completed(HttpResponse httpResponse) {
+                callback.completed(ResponseBuilder.builder(httpResponse, asyncRequest.getResCharset(), ctx));
             }
 
-        } catch (Throwable e) {
-            e.printStackTrace();
+            @Override
+            public void failed(Exception e) {
+                callback.failed(e);
+            }
+
+            @Override
+            public void cancelled() {
+                callback.cancelled();
+            }
+
+        } : null);
+
+        if (callback == null) {
+
+            try {
+                return ResponseBuilder.builder(future.get(), asyncRequest.getResCharset(), requestCtx);
+            } catch (Throwable e) {
+                return new AsyncResponse(e);
+            }
         }
 
         return null;
