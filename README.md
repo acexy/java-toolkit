@@ -65,6 +65,8 @@ maven仓库
     2. MongoDriverManager新增删除相关封装，优化api
     3. 调整了BeanCopier的属性追加函数
     4. 调整线程池初始化的默认参数
+1.0.10
+    1. 调整async http 模块，提供更加简洁高效的api并加入异步请求方式
 ```
 ---
 > ## 已实现的功能列表
