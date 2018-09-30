@@ -9,9 +9,10 @@ public class AsyncHttpClientTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        AsyncHttpClient client = AsyncHttpClientBuilder.createDefault();
+        AsyncHttpClient client = new AsyncHttpClientBuilder().setWithoutSSLCheck().setCookiePolicyLevel(CookieCheckLevel.BROWSER_COMPATIBILITY).create();
 
         AsyncRequest request = new AsyncRequest(
+//                "https://ser.chinaebi.com/mrbui/bmbuurm7/4800180.do",
                 "http://localhost:8001",
                 HttpMethod.post,
                 new Parameters(

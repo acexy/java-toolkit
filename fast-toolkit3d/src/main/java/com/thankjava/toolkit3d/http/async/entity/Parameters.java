@@ -29,14 +29,14 @@ public class Parameters {
         if (parameters == null || parameters.size() == 0) {
             return;
         }
-        this.nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs = new ArrayList<NameValuePair>();
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
-            this.nameValuePairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+            nameValuePairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
         }
     }
 
     /**
-     * 普通字符串数据
+     * 向post body发送普通字符串
      *
      * @param text
      */
@@ -44,14 +44,32 @@ public class Parameters {
         this.text = text;
     }
 
+    /**
+     * 向post body发送普通字符串
+     *
+     * @param text
+     * @param contentType
+     */
     public Parameters(String text, RequestContentType contentType) {
         this.text = text;
         this.contentType = contentType.code;
     }
 
-    public Parameters(byte[] byteArray) {
-
+    /**
+     * 追加 from-urlencode参数
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    public Parameters append(String key, String value) {
+        if (nameValuePairs == null) {
+            nameValuePairs = new ArrayList<NameValuePair>();
+        }
+        nameValuePairs.add(new BasicNameValuePair(key, value));
+        return this;
     }
+
 
     public List<NameValuePair> getNameValuePair() {
         return nameValuePairs;
