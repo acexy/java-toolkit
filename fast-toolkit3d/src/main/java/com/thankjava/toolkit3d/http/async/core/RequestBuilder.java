@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.http.async.core.utils;
+package com.thankjava.toolkit3d.http.async.core;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
@@ -77,7 +77,7 @@ public class RequestBuilder {
                         new StringEntity(parameter.getText(),
                                 ContentType.create(
                                         parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                        Charset.forName(asyncRequest.getReqCharset().charset
+                                        Charset.forName(parameter.getCharset() == null ? asyncRequest.getReqCharset().charset : parameter.getCharset()
                                         )
                                 )
                         )

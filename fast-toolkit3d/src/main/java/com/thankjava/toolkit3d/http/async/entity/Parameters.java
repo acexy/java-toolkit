@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.thankjava.toolkit3d.http.async.consts.Charset;
+import com.thankjava.toolkit3d.http.async.consts.RequestContentType;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -13,6 +15,7 @@ public class Parameters {
 
     private String text = null;
     private String contentType = null;
+    private String charset = null;
 
     /**
      * 新增from-urlencode参数
@@ -56,6 +59,18 @@ public class Parameters {
     }
 
     /**
+     * 向post body发送普通字符串
+     * @param text
+     * @param contentType
+     * @param charset
+     */
+    public Parameters(String text, String contentType, Charset charset) {
+        this.text = text;
+        this.contentType = contentType;
+        this.charset = charset.charset;
+    }
+
+    /**
      * 追加 from-urlencode参数
      *
      * @param key
@@ -81,5 +96,9 @@ public class Parameters {
 
     public String getContentType() {
         return contentType;
+    }
+
+    public String getCharset() {
+        return charset;
     }
 }

@@ -1,7 +1,6 @@
 package com.thankjava.toolkit3d.http.async.core;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import com.thankjava.toolkit3d.http.async.entity.ResponseCallback;
@@ -11,8 +10,6 @@ import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import com.thankjava.toolkit3d.http.async.core.utils.RequestBuilder;
-import com.thankjava.toolkit3d.http.async.core.utils.ResponseBuilder;
 import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
 import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
 
