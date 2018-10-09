@@ -6,13 +6,16 @@ import com.thankjava.toolkit3d.http.async.AsyncHttpClientBuilder;
 import com.thankjava.toolkit3d.http.async.consts.Charset;
 import com.thankjava.toolkit3d.http.async.consts.CookieCheckLevel;
 import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
+import com.thankjava.toolkit3d.http.async.consts.RequestContentType;
 import com.thankjava.toolkit3d.http.async.entity.*;
+
+import java.io.File;
 
 public class AsyncHttpClientTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        AsyncHttpClient client = new AsyncHttpClientBuilder()
+        final AsyncHttpClient client = new AsyncHttpClientBuilder()
                 .setWithoutSSLCheck()
                 .setCookiePolicyLevel(CookieCheckLevel.BROWSER_COMPATIBILITY)
                 .setTimeout(30000)
@@ -32,12 +35,30 @@ public class AsyncHttpClientTest {
                 "http://localhost:8001",
                 HttpMethod.post,
                 new Parameters(
-                        FileIO.read2ByteArray("/Users/acexy/Downloads/AsyncClientConfiguration.java1"), Charset.gbk
+                        new File("F:\\Download\\ChromeStandaloneSetup64.exe"),
+//                        FileIO.read2ByteArray("F:\\Temp\\file.utf-8")
+                        RequestContentType.TEXT_PLAIN
                 )
         );
 
-        AsyncResponse response = client.syncRequestWithoutSession(request);
-        System.out.println(response);
+        client.asyncRequestWithoutSession(request, new AsyncResponseCallback() {
+            @Override
+            public void completed(AsyncResponse asyncResponse) {
+                System.out.println(asyncResponse);
+                client.shutdown();
+            }
+
+            @Override
+            public void failed(Exception e) {
+                System.out.println(e);
+                client.shutdown();
+            }
+
+            @Override
+            public void cancelled() {
+                client.shutdown();
+            }
+        });
 
 //        Thread.sleep(2000);
 //        response = client.syncRequestWithoutSession(request);
@@ -75,7 +96,7 @@ public class AsyncHttpClientTest {
 //            System.out.println(response.getHeader());
 //        }
 //        System.out.println("发起10次同步请求耗时: " + (System.currentTimeMillis() - st));
-        client.shutdown();
+//        client.shutdown();
 
     }
 }

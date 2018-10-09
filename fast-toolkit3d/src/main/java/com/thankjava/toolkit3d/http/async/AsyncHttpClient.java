@@ -43,6 +43,7 @@ public class AsyncHttpClient {
 
     /**
      * 发生同步请求,不携带任何历史可用的头部信息
+     *
      * @param asyncRequest
      * @return
      */

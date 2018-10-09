@@ -1,5 +1,6 @@
 package com.thankjava.toolkit3d.http.async.entity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -12,18 +13,17 @@ import org.apache.http.message.BasicNameValuePair;
 public class Parameters {
 
     private String contentType = null;
-
     private List<NameValuePair> nameValuePairs = null;
     private String text = null;
     private byte[] byteData = null;
     private String contentEncoding = null;
-    private String charset = null;
+    private File file = null;
 
     /**
      * 新增from-urlencode参数
      */
     public Parameters(String name, String value) {
-        nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs = new ArrayList<>();
         nameValuePairs.add(new BasicNameValuePair(name, value));
     }
 
@@ -34,43 +34,10 @@ public class Parameters {
         if (parameters == null || parameters.size() == 0) {
             return;
         }
-        nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs = new ArrayList<>();
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
             nameValuePairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
         }
-    }
-
-    /**
-     * 向post body发送普通字符串
-     *
-     * @param text
-     */
-    public Parameters(String text) {
-        this.text = text;
-    }
-
-    /**
-     * 向post body发送普通字符串
-     *
-     * @param text
-     * @param contentType
-     */
-    public Parameters(String text, RequestContentType contentType) {
-        this.text = text;
-        this.contentType = contentType.code;
-    }
-
-    /**
-     * 向post body发送普通字符串
-     *
-     * @param text
-     * @param contentType
-     * @param charset
-     */
-    public Parameters(String text, String contentType, Charset charset) {
-        this.text = text;
-        this.contentType = contentType;
-        this.charset = charset.charset;
     }
 
     /**
@@ -88,9 +55,50 @@ public class Parameters {
         return this;
     }
 
+    /**
+     * 向post body发送普通字符串
+     *
+     * @param text
+     */
+    public Parameters(String text) {
+        this.text = text;
+    }
 
     /**
-     * 设置 byte 数据
+     * 向post body发送普通字符串
+     *
+     * @param text
+     * @param contentType
+     */
+    public Parameters(String text, RequestContentType contentType, Charset... contentEncoding) {
+
+        this.text = text;
+        this.contentType = contentType.code;
+
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+
+    }
+
+    /**
+     * 向post body发送字符串数据
+     *
+     * @param text
+     * @param contentType
+     * @param contentEncoding
+     */
+    public Parameters(String text, String contentType, Charset... contentEncoding) {
+        this.text = text;
+        this.contentType = contentType;
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+    }
+
+
+    /**
+     * 设置二进制数据 默认 content-type: application/octet-stream
      *
      * @param byteData
      */
@@ -103,14 +111,45 @@ public class Parameters {
     }
 
     /**
-     * 设置byte数组
+     * 设置二进制数据
      *
      * @param byteData
-     * @param requestContentType
+     * @param contentType
      */
-    public Parameters(byte[] byteData, RequestContentType requestContentType, Charset... contentEncoding) {
+    public Parameters(byte[] byteData, RequestContentType contentType, Charset... contentEncoding) {
         this.byteData = byteData;
-        this.contentType = requestContentType.code;
+        this.contentType = contentType.code;
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+    }
+
+
+    /**
+     * 设置二进制数据
+     *
+     * @param byteData
+     * @param contentType
+     */
+    public Parameters(byte[] byteData, String contentType, Charset... contentEncoding) {
+        this.byteData = byteData;
+        this.contentType = contentType;
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+    }
+
+    public Parameters(File file, RequestContentType contentType, Charset... contentEncoding) {
+        this.file = file;
+        this.contentType = contentType.code;
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+    }
+
+    public Parameters(File file, String contentType, Charset... contentEncoding) {
+        this.file = file;
+        this.contentType = contentType;
         if (contentEncoding != null && contentEncoding.length > 0) {
             this.contentEncoding = contentEncoding[0].charset;
         }
@@ -136,7 +175,7 @@ public class Parameters {
         return contentEncoding;
     }
 
-    public String getCharset() {
-        return charset;
+    public File getFile() {
+        return file;
     }
 }

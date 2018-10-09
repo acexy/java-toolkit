@@ -78,7 +78,7 @@ public class RequestBuilder {
                         new StringEntity(parameter.getText(),
                                 ContentType.create(
                                         parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                        Charset.forName(parameter.getCharset() == null ? asyncRequest.getReqCharset().charset : parameter.getCharset()
+                                        Charset.forName(parameter.getContentEncoding() == null ? asyncRequest.getReqCharset().charset : parameter.getContentEncoding()
                                         )
                                 )
                         )
@@ -96,10 +96,26 @@ public class RequestBuilder {
                 entityBuilder.setContentType(
                         ContentType.create(
                                 parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                Charset.forName(asyncRequest.getReqCharset().charset)
+                                Charset.forName(parameter.getContentEncoding() == null ? asyncRequest.getReqCharset().charset : parameter.getContentEncoding())
                         )
                 );
 
+                post.setEntity(entityBuilder.build());
+            } else if (parameter.getFile() != null) {
+
+                EntityBuilder entityBuilder = EntityBuilder.create();
+                entityBuilder.setFile(parameter.getFile());
+
+                if (parameter.getContentEncoding() != null) {
+                    entityBuilder.setContentEncoding(parameter.getContentEncoding());
+                }
+
+                entityBuilder.setContentType(
+                        ContentType.create(
+                                parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
+                                Charset.forName(parameter.getContentEncoding() == null ? asyncRequest.getReqCharset().charset : parameter.getContentEncoding())
+                        )
+                );
                 post.setEntity(entityBuilder.build());
             }
 

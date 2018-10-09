@@ -25,6 +25,7 @@ public enum RequestContentType {
     TEXT_PLAIN("text/plain"),
     TEXT_XML("text/xml"),
     APPLICATION_OCTET_STREAM("application/octet-stream");
+
     public String code;
 
     RequestContentType(String code) {
