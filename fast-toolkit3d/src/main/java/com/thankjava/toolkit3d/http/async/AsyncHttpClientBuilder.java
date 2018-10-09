@@ -1,6 +1,6 @@
 package com.thankjava.toolkit3d.http.async;
 
-import com.thankjava.toolkit3d.http.async.entity.CookieCheckLevel;
+import com.thankjava.toolkit3d.http.async.consts.CookieCheckLevel;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;

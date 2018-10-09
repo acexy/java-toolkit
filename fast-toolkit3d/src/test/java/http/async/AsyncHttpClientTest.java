@@ -4,6 +4,7 @@ import com.thankjava.toolkit.io.file.FileIO;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClient;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClientBuilder;
 import com.thankjava.toolkit3d.http.async.consts.Charset;
+import com.thankjava.toolkit3d.http.async.consts.CookieCheckLevel;
 import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import com.thankjava.toolkit3d.http.async.entity.*;
 
@@ -49,7 +50,7 @@ public class AsyncHttpClientTest {
 
 //        long st = System.currentTimeMillis();
 //        for (int i = 0; i < 10; i++) {
-//            client.asyncRequestWithSession(request, new ResponseCallback() {
+//            client.asyncRequestWithSession(request, new AsyncResponseCallback() {
 //                @Override
 //                public void completed(AsyncResponse asyncResponse) {
 //                    System.out.println(asyncResponse.getHeader());

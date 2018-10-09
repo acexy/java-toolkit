@@ -6,7 +6,7 @@ package com.thankjava.toolkit3d.http.async.entity;
  * 2018/9/29
  * @Description: 使用异步请求http时请求完毕的回调
  **/
-public interface ResponseCallback {
+public interface AsyncResponseCallback {
 
     /**
      * 请求完毕

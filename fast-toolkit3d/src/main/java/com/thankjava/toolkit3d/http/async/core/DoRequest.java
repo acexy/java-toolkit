@@ -1,18 +1,15 @@
 package com.thankjava.toolkit3d.http.async.core;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import com.thankjava.toolkit3d.http.async.entity.ResponseCallback;
+import com.thankjava.toolkit3d.http.async.entity.AsyncResponseCallback;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import com.thankjava.toolkit3d.http.async.core.utils.RequestBuilder;
-import com.thankjava.toolkit3d.http.async.core.utils.ResponseBuilder;
 import com.thankjava.toolkit3d.http.async.entity.AsyncRequest;
 import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
 
@@ -29,7 +26,7 @@ public class DoRequest extends BasicRequest {
         return doRequest;
     }
 
-    public AsyncResponse doRequest(final AsyncRequest asyncRequest, boolean withSession, final ResponseCallback callback) {
+    public AsyncResponse doRequest(final AsyncRequest asyncRequest, boolean withSession, final AsyncResponseCallback callback) {
 
         Future<HttpResponse> future;
 

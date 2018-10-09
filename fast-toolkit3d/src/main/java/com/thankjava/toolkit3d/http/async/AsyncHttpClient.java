@@ -3,7 +3,7 @@ package com.thankjava.toolkit3d.http.async;
 import java.io.IOException;
 
 import com.thankjava.toolkit3d.http.async.entity.AsyncResponse;
-import com.thankjava.toolkit3d.http.async.entity.ResponseCallback;
+import com.thankjava.toolkit3d.http.async.entity.AsyncResponseCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import com.thankjava.toolkit3d.http.async.core.DoRequest;
@@ -54,20 +54,20 @@ public class AsyncHttpClient {
      * 发起异步请求,并自动携带历史可用的请求头部信息
      *
      * @param asyncRequest
-     * @param responseCallback
+     * @param asyncResponseCallback
      */
-    public void asyncRequestWithSession(AsyncRequest asyncRequest, ResponseCallback responseCallback) {
-        doRequest.doRequest(asyncRequest, true, responseCallback);
+    public void asyncRequestWithSession(AsyncRequest asyncRequest, AsyncResponseCallback asyncResponseCallback) {
+        doRequest.doRequest(asyncRequest, true, asyncResponseCallback);
     }
 
     /**
      * 发起异步请求,不携带任何历史可用的头部信息
      *
      * @param asyncRequest
-     * @param responseCallback
+     * @param asyncResponseCallback
      */
-    public void asyncRequestWithoutSession(AsyncRequest asyncRequest, ResponseCallback responseCallback) {
-        doRequest.doRequest(asyncRequest, false, responseCallback);
+    public void asyncRequestWithoutSession(AsyncRequest asyncRequest, AsyncResponseCallback asyncResponseCallback) {
+        doRequest.doRequest(asyncRequest, false, asyncResponseCallback);
     }
 
     /**

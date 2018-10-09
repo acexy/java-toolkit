@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.http.async.entity;
+package com.thankjava.toolkit3d.http.async.consts;
 
 /**
  * @Author: acexy@thankjava.com

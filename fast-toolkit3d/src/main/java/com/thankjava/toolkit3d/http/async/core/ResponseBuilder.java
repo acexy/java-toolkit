@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.http.async.core.utils;
+package com.thankjava.toolkit3d.http.async.core;
 
 import java.util.List;
 
