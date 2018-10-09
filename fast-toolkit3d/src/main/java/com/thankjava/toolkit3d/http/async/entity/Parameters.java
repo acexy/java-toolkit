@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.thankjava.toolkit3d.http.async.consts.Charset;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 public class Parameters {
 
-    private List<NameValuePair> nameValuePairs = null;
-
-    private String text = null;
     private String contentType = null;
+
+    private List<NameValuePair> nameValuePairs = null;
+    private String text = null;
+    private byte[] byteData = null;
+    private String contentEncoding = null;
 
     /**
      * 新增from-urlencode参数
@@ -71,6 +74,33 @@ public class Parameters {
     }
 
 
+    /**
+     * 设置 byte 数据
+     *
+     * @param byteData
+     */
+    public Parameters(byte[] byteData, Charset... contentEncoding) {
+        this.byteData = byteData;
+        this.contentType = RequestContentType.APPLICATION_OCTET_STREAM.code;
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+    }
+
+    /**
+     * 设置byte数组
+     *
+     * @param byteData
+     * @param requestContentType
+     */
+    public Parameters(byte[] byteData, RequestContentType requestContentType, Charset... contentEncoding) {
+        this.byteData = byteData;
+        this.contentType = requestContentType.code;
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+    }
+
     public List<NameValuePair> getNameValuePair() {
         return nameValuePairs;
     }
@@ -81,5 +111,13 @@ public class Parameters {
 
     public String getContentType() {
         return contentType;
+    }
+
+    public byte[] getByteData() {
+        return byteData;
+    }
+
+    public String getContentEncoding() {
+        return contentEncoding;
     }
 }

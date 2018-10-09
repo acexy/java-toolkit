@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 
+import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -83,6 +84,23 @@ public class RequestBuilder {
                         )
                 );
 
+            } else if (parameter.getByteData() != null) {
+
+                EntityBuilder entityBuilder = EntityBuilder.create();
+                entityBuilder.setBinary(parameter.getByteData());
+
+                if (parameter.getContentEncoding() != null) {
+                    entityBuilder.setContentEncoding(parameter.getContentEncoding());
+                }
+
+                entityBuilder.setContentType(
+                        ContentType.create(
+                                parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
+                                Charset.forName(asyncRequest.getReqCharset().charset)
+                        )
+                );
+
+                post.setEntity(entityBuilder.build());
             }
 
         }

@@ -27,4 +27,23 @@ public class FileIO {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 将指定文件读成byte数据
+     * @param filePath
+     * @return
+     */
+    public static byte[] read2ByteArray(String filePath) {
+        try {
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(filePath)));
+            byte[] byteArr = new byte[bufferedInputStream.available()];
+            bufferedInputStream.read(byteArr);
+            return byteArr;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

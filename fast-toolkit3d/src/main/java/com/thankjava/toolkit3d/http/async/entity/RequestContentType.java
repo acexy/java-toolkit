@@ -13,11 +13,18 @@ public enum RequestContentType {
     APPLICATION_SVG_XML("application/svg+xml"),
     APPLICATION_XHTML_XML("application/xhtml+xml"),
     APPLICATION_XML("application/xml"),
+    IMAGE_BMP("image/bmp"),
+    IMAGE_GIF("image/gif"),
+    IMAGE_JPEG("image/jpeg"),
+    IMAGE_PNG("image/png"),
+    IMAGE_SVG("image/svg+xml"),
+    IMAGE_TIFF("image/tiff"),
+    IMAGE_WEBP("image/webp"),
     MULTIPART_FORM_DATA("multipart/form-data"),
     TEXT_HTML("text/html"),
     TEXT_PLAIN("text/plain"),
-    TEXT_XML("text/xml");
-
+    TEXT_XML("text/xml"),
+    APPLICATION_OCTET_STREAM("application/octet-stream");
     public String code;
 
     RequestContentType(String code) {

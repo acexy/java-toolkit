@@ -3,6 +3,7 @@ package http.async;
 import com.thankjava.toolkit.io.file.FileIO;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClient;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClientBuilder;
+import com.thankjava.toolkit3d.http.async.consts.Charset;
 import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import com.thankjava.toolkit3d.http.async.entity.*;
 
@@ -16,15 +17,26 @@ public class AsyncHttpClientTest {
                 .setTimeout(30000)
                 .create();
 
+//        AsyncRequest request = new AsyncRequest(
+//                "https://source.thankjava.com/2018/9/18/54e35fc2951193af3867cd35942f3395.png",
+//                HttpMethod.get
+//        );
+//
+//        AsyncResponse response = client.syncRequestWithSession(request);
+//        FileIO.write2File("./a.png", response.getDataByteArray());
+//        System.out.println(response.getDataByteArray());
+
+
         AsyncRequest request = new AsyncRequest(
-//                "https://ser.chinaebi.com/mrbui/bmbuurm7/4800180.do",
-                "https://source.thankjava.com/2018/9/18/54e35fc2951193af3867cd35942f3395.png",
-                HttpMethod.get
+                "http://localhost:8001",
+                HttpMethod.post,
+                new Parameters(
+                        FileIO.read2ByteArray("/Users/acexy/Downloads/AsyncClientConfiguration.java1"), Charset.gbk
+                )
         );
 
-        AsyncResponse response = client.syncRequestWithSession(request);
-        FileIO.write2File("./a.png", response.getDataByteArray());
-//        System.out.println(response.getDataByteArray());
+        AsyncResponse response = client.syncRequestWithoutSession(request);
+        System.out.println(response);
 
 //        Thread.sleep(2000);
 //        response = client.syncRequestWithoutSession(request);
