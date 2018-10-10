@@ -7,6 +7,12 @@
         <version>7</version>
     </parent>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://maven.thankjava.com/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thankjava.toolkit3d</groupId>
