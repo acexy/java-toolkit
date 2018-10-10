@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.0.10-SNAPSHOT</version>
+    <version>1.0.10</version>
 
     <properties>
 

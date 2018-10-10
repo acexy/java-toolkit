@@ -24,14 +24,14 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.9</version>
+  <version>1.0.10</version>
 </dependency>
 ```
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.9</version>
+  <version>1.0.10</version>
 </dependency>
 ```
 
@@ -69,6 +69,8 @@ maven仓库
     1. 调整async模块，公共的请求和响应方式，更加完善的请求参数限定
     2. 调整async模块，提供更加丰富的http-client功能定制，例如取消证书校验，关闭警告日志
     3. 调整async模块，新增异步调用api 包括在一个http-client中可使用上下文持续请求或者单独不传送上下文请求
+    4. 调整async模块，新增发送二进制数据(包括byte数组或文件)
+    5. 增加jdk原始io常用模块（待拓展）
 ```
 ---
 > ## 已实现的功能列表
