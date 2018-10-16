@@ -3,7 +3,7 @@ package com.thankjava.toolkit3d.fastjson;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONArray;
-import com.thankjava.toolkit.reflect.BeanCopier;
+import com.thankjava.toolkit.core.reflect.BeanCopier;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

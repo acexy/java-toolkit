@@ -1,6 +1,6 @@
 package com.thankjava.toolkit3d.cache.ehcache;
 
-import com.thankjava.toolkit.resource.SourceLoader;
+import com.thankjava.toolkit.core.utils.ClassSourceLoaderUtil;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
@@ -11,7 +11,7 @@ public class EhcacheManager {
     private static CacheManager cacheManager = null;
 
     public EhcacheManager() {
-        cacheManager = CacheManager.create(SourceLoader.getResourceAsInputStream("ehcache.xml"));
+        cacheManager = CacheManager.create(ClassSourceLoaderUtil.getResourceAsInputStream("ehcache.xml"));
     }
 
     public EhcacheManager(String configFilePath) {

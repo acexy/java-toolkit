@@ -1,14 +1,8 @@
 package verifycode;
 
-import com.thankjava.toolkit.verifycode.ImageVerifyCode;
+import com.thankjava.toolkit.core.verifycode.ImageVerifyCode;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Arrays;
-import java.util.Random;
 
 /**
  * 简易图片验证码

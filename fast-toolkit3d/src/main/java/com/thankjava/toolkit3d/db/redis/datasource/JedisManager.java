@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import com.thankjava.toolkit.resource.SourceLoader;
+import com.thankjava.toolkit.core.utils.ClassSourceLoaderUtil;
 import com.thankjava.toolkit3d.db.redis.RedisManager;
 
 import redis.clients.jedis.Jedis;
@@ -27,7 +27,7 @@ public class JedisManager implements RedisManager {
     private static RedisManager manager = null;
 
     private JedisManager() {
-        init(SourceLoader.getResourceAsReader("redis.properties"));
+        init(ClassSourceLoaderUtil.getResourceAsReader("redis.properties"));
         manager = this;
     }
 

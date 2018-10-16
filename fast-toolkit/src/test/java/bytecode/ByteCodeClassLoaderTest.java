@@ -1,6 +1,6 @@
 package bytecode;
 
-import com.thankjava.toolkit.bytecode.ByteCodeClassLoader;
+import com.thankjava.toolkit.core.bytecode.ByteCodeClassLoader;
 
 import java.util.Map;
 

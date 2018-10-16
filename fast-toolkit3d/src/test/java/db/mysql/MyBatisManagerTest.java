@@ -1,19 +1,12 @@
 package db.mysql;
 
 import com.thankjava.toolkit3d.fastjson.FastJson;
-import com.thankjava.toolkit3d.vo.db.PageEntity;
-import com.thankjava.toolkit3d.vo.db.Sort;
-import com.thankjava.toolkit3d.vo.db.SortType;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import com.thankjava.toolkit.thread.ThreadPool;
 import com.thankjava.toolkit3d.db.mysql.MyBatisManager;
 import com.thankjava.toolkit3d.db.mysql.datasource.MySQLManager;
 
 import db.mysql.mapper.TestMapper;
 import db.mysql.po.Test;
-
-import java.util.UUID;
 
 public class MyBatisManagerTest {
 

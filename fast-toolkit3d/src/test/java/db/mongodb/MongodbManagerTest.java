@@ -1,17 +1,8 @@
 package db.mongodb;
 
-import com.thankjava.toolkit3d.fastjson.FastJson;
-import com.thankjava.toolkit3d.vo.db.PageEntity;
-import com.thankjava.toolkit3d.vo.db.Sort;
-import com.thankjava.toolkit3d.vo.db.SortType;
-import db.mongodb.po.Test;
-import org.bson.Document;
 import com.thankjava.toolkit.radom.Sequence;
-import com.thankjava.toolkit.thread.ThreadPool;
 import com.thankjava.toolkit3d.db.mongodb.MongoDBManager;
 import com.thankjava.toolkit3d.db.mongodb.datasource.MongoDriverManager;
-
-import java.util.Date;
 
 
 public class MongodbManagerTest {

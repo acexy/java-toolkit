@@ -14,7 +14,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
-import com.thankjava.toolkit.security.RSASecurity;
+import com.thankjava.toolkit.core.security.RSASecurity;
 
 /**
  * 基于JDK RSA 算法 通过Base64缩位

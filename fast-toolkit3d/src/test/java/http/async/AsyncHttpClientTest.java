@@ -1,9 +1,7 @@
 package http.async;
 
-import com.thankjava.toolkit.io.file.FileIO;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClient;
 import com.thankjava.toolkit3d.http.async.AsyncHttpClientBuilder;
-import com.thankjava.toolkit3d.http.async.consts.Charset;
 import com.thankjava.toolkit3d.http.async.consts.CookieCheckLevel;
 import com.thankjava.toolkit3d.http.async.consts.HttpMethod;
 import com.thankjava.toolkit3d.http.async.consts.RequestContentType;

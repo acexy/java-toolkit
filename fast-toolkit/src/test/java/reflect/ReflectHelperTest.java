@@ -1,8 +1,6 @@
 package reflect;
 
-import java.lang.reflect.Field;
-
-import com.thankjava.toolkit.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectHelper;
 
 import reflect.bean.ChiClass;
 

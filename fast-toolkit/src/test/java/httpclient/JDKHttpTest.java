@@ -1,9 +1,6 @@
 package httpclient;
 
-import com.thankjava.toolkit.http.JDKHttp;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.thankjava.toolkit.core.http.JDKHttp;
 
 
 public class JDKHttpTest {

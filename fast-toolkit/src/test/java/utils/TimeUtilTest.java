@@ -3,8 +3,8 @@ package utils;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.thankjava.toolkit.utils.TimeUtil;
-import com.thankjava.toolkit.utils.TimeUtil.TimeType;
+import com.thankjava.toolkit.core.utils.TimeUtil;
+import com.thankjava.toolkit.core.utils.TimeUtil.TimeType;
 
 public class TimeUtilTest {
 

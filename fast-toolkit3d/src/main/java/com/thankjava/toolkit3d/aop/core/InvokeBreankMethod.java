@@ -2,7 +2,7 @@ package com.thankjava.toolkit3d.aop.core;
 
 import java.lang.reflect.Method;
 
-import com.thankjava.toolkit.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectHelper;
 import com.thankjava.toolkit3d.aop.anno.After;
 import com.thankjava.toolkit3d.aop.anno.Before;
 import com.thankjava.toolkit3d.aop.entity.AopConfig;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.thankjava.toolkit.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectHelper;
 import com.thankjava.toolkit3d.vo.db.PageEntity;
 import com.thankjava.toolkit3d.vo.db.Sort;
 import org.apache.ibatis.executor.Executor;

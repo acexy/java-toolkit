@@ -1,7 +1,7 @@
 package bytecode;
 
-import com.thankjava.toolkit.bytecode.ByteCodeClassLoader;
-import com.thankjava.toolkit.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.bytecode.ByteCodeClassLoader;
+import com.thankjava.toolkit.core.reflect.ReflectHelper;
 
 import java.lang.reflect.Method;
 

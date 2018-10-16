@@ -10,12 +10,10 @@ import java.util.Properties;
 
 import com.mongodb.*;
 import com.mongodb.client.result.DeleteResult;
+import com.thankjava.toolkit.core.utils.ClassSourceLoaderUtil;
 import com.thankjava.toolkit3d.vo.db.PageEntity;
 import com.thankjava.toolkit3d.vo.db.Sort;
-import com.thankjava.toolkit3d.vo.db.SortType;
-import org.bson.BSON;
 import org.bson.Document;
-import com.thankjava.toolkit.resource.SourceLoader;
 import com.thankjava.toolkit3d.db.mongodb.MongoDBManager;
 import com.thankjava.toolkit3d.fastjson.FastJson;
 
@@ -25,7 +23,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 public class MongoDriverManager implements MongoDBManager {
@@ -39,7 +36,7 @@ public class MongoDriverManager implements MongoDBManager {
     private static MongoDBManager manager = null;
 
     private MongoDriverManager() {
-        init(SourceLoader.getResourceAsReader("mongodb.properties"));
+        init(ClassSourceLoaderUtil.getResourceAsReader("mongodb.properties"));
         manager = this;
     }
 

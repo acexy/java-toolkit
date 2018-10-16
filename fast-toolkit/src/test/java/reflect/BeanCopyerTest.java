@@ -3,9 +3,8 @@ package reflect;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.thankjava.toolkit.reflect.BeanCopier;
+import com.thankjava.toolkit.core.reflect.BeanCopier;
 
-import com.thankjava.toolkit.reflect.ReflectHelper;
 import reflect.bean.entity.Entity1;
 import reflect.bean.vo.Vo1;
 
