@@ -3,8 +3,8 @@ package thread;
 import java.io.IOException;
 import java.util.Date;
 
+import com.thankjava.toolkit.bean.utils.TimeType;
 import com.thankjava.toolkit.core.utils.TimeUtil;
-import com.thankjava.toolkit.core.utils.TimeUtil.TimeType;
 import com.thankjava.toolkit.core.thread.ThreadTask;
 import com.thankjava.toolkit.core.thread.ThreadUtil;
 import com.thankjava.toolkit.bean.thread.TaskEntity;

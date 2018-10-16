@@ -1,5 +1,7 @@
 package com.thankjava.toolkit.core.utils;
 
+import com.thankjava.toolkit.bean.utils.TimeType;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,30 +23,8 @@ public final class TimeUtil {
     private TimeUtil() {
     }
 
-    private static final Map<TimeType, SimpleDateFormat> simpleDateFormatMap = new HashMap<TimeType, SimpleDateFormat>();
+    private static final Map<TimeType, SimpleDateFormat> simpleDateFormatMap = new HashMap<>();
 
-    public enum TimeType {
-
-        DEFAULT("yyyy-MM-dd|HH:mm:ss"),
-        yyyyMMddHH("yyyyMMddHH"),
-        yyyyMMddHHmmssSSS("yyyyMMddHHmmssSSS"),
-        yyyyMMddHHmmss("yyyyMMddHHmmss"),
-        yyyyMMdd("yyyyMMdd"),
-        HHmmss("HHmmss"),
-
-        yyyy1MM1dd1HH1mm("yyyy/MM/dd/HH/mm"),
-        ;
-
-        public String type;
-
-        private TimeType(String type) {
-            this.type = type;
-        }
-
-        public String getType() {
-            return type;
-        }
-    }
 
     /**
      * 将date Str 转换为 Date 类型
@@ -122,7 +102,7 @@ public final class TimeUtil {
      */
     public static Date offsetDate(Date date, int calendarUnit, int dateOffset) {
         if (date == null) {
-            return date;
+            return null;
         }
 
         Calendar ca = Calendar.getInstance();
