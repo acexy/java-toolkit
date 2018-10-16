@@ -24,18 +24,18 @@ maven仓库
 <dependency>
   <groupId>com.thankjava.toolkit</groupId>
   <artifactId>fast-toolkit</artifactId>
-  <version>1.0.10</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 ```xml
 <dependency>
   <groupId>com.thankjava.toolkit3d</groupId>
   <artifactId>fast-toolkit3d</artifactId>
-  <version>1.0.10</version>
+  <version>1.1.0</version>
 </dependency>
 ```
-
-> ## [ChangeLog]()
+---
+> ## [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/changelog.md)
 ---
 > ## 已实现的功能列表
 
