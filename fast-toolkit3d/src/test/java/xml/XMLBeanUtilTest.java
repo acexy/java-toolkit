@@ -4,8 +4,8 @@ package xml;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.thankjava.toolkit3d.fastjson.FastJson;
-import com.thankjava.toolkit3d.xml.XMLBeanUtil;
+import com.thankjava.toolkit3d.core.fastjson.FastJson;
+import com.thankjava.toolkit3d.core.xml.XMLBeanUtil;
 
 public class XMLBeanUtilTest {
 	

@@ -2,7 +2,7 @@ package db.mysql.mapper;
 
 import java.util.List;
 
-import com.thankjava.toolkit3d.vo.db.PageEntity;
+import com.thankjava.toolkit3d.bean.db.PageEntity;
 import db.mysql.po.Test;
 
 public interface TestMapper {

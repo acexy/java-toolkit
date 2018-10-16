@@ -1,7 +1,7 @@
 package aop;
 
-import com.thankjava.toolkit3d.aop.anno.After;
-import com.thankjava.toolkit3d.aop.anno.Before;
+import com.thankjava.toolkit3d.core.aop.anno.After;
+import com.thankjava.toolkit3d.core.aop.anno.Before;
 
 public class Business {
 	

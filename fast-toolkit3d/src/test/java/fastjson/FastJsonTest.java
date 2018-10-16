@@ -1,7 +1,7 @@
 package fastjson;
 
-import com.thankjava.toolkit3d.fastjson.FastJson;
-import com.thankjava.toolkit3d.vo.mail.MailEntity;
+import com.thankjava.toolkit3d.core.fastjson.FastJson;
+import com.thankjava.toolkit3d.bean.mail.MailEntity;
 
 import java.util.ArrayList;
 import java.util.List;

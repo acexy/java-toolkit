@@ -1,8 +1,7 @@
 package db.mongodb;
 
-import com.thankjava.toolkit.radom.Sequence;
-import com.thankjava.toolkit3d.db.mongodb.MongoDBManager;
-import com.thankjava.toolkit3d.db.mongodb.datasource.MongoDriverManager;
+import com.thankjava.toolkit3d.core.db.mongodb.MongoDBManager;
+import com.thankjava.toolkit3d.core.db.mongodb.datasource.MongoDriverManager;
 
 
 public class MongodbManagerTest {

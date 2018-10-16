@@ -1,8 +1,7 @@
 package db.redis;
 
-import com.thankjava.toolkit.radom.Sequence;
-import com.thankjava.toolkit3d.db.redis.RedisManager;
-import com.thankjava.toolkit3d.db.redis.datasource.JedisManager;
+import com.thankjava.toolkit3d.core.db.redis.RedisManager;
+import com.thankjava.toolkit3d.core.db.redis.datasource.JedisManager;
 
 public class RedisManagerTest {
 

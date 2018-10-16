@@ -3,7 +3,7 @@ package aop;
 import java.lang.reflect.Method;
 
 import com.thankjava.toolkit.core.reflect.ReflectHelper;
-import com.thankjava.toolkit3d.aop.entity.AopParam;
+import com.thankjava.toolkit3d.core.aop.entity.AopParam;
 
 
 /**
