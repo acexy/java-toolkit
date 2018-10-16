@@ -8,7 +8,7 @@ import com.thankjava.toolkit.core.reflect.ReflectHelper;
 
 import java.lang.reflect.Method;
 
-public class ScannerAopConfig {
+public class AopScanner {
 
     /**
      * 将被代理的类的方法进行扫描，检测是否有aop的配置
@@ -58,7 +58,14 @@ public class ScannerAopConfig {
                     if (before != null) {
                         config.setBefore(before);
                         try {
-                            config.setBeforeInstance(before.cutClass().newInstance());
+                            Object instance = AopCache.getCutPoint(before.cutClass());
+                            if (instance != null) {
+                                config.setBeforeInstance(instance);
+                            } else {
+                                instance = before.cutClass().newInstance();
+                                config.setBeforeInstance(instance);
+                                AopCache.putCutPoint(instance);
+                            }
                         } catch (InstantiationException e) {
                             e.printStackTrace();
                         } catch (IllegalAccessException e) {
@@ -68,11 +75,13 @@ public class ScannerAopConfig {
                     if (after != null) {
                         config.setAfter(after);
                         try {
-                            if (before != null && before.cutClass() != null && before.cutClass() == after.cutClass()) {
-                                config.setAfterInstance(before.cutClass().newInstance());
+                            Object instance = AopCache.getCutPoint(after.cutClass());
+                            if (instance != null) {
+                                config.setAfterInstance(instance);
                             } else {
-                                config.setAfterInstance(after.cutClass().newInstance());
-
+                                instance = after.cutClass().newInstance();
+                                config.setAfterInstance(instance);
+                                AopCache.putCutPoint(instance);
                             }
                         } catch (InstantiationException e) {
                             e.printStackTrace();
@@ -82,7 +91,7 @@ public class ScannerAopConfig {
                     }
                 }
 
-                AopCache.put(config);
+                AopCache.putAopConfig(config);
             }
         }
     }

@@ -23,12 +23,17 @@ public class AopCache {
     /**
      * 已经被扫描过的类
      */
-    private static ArrayList<Class<?>> scannedClass = new ArrayList<Class<?>>();
+    private static ArrayList<Class<?>> scannedClass = new ArrayList<>();
 
     /**
      * 扫描到的Aop配置信息
      */
-    private static Map<String, AopConfig> aopConfigs = new HashMap<String, AopConfig>();
+    private static Map<String, AopConfig> aopConfigs = new HashMap<>();
+
+    /**
+     * 切片配置信息
+     */
+    private static Map<Class<?>, Object> cutPoints = new HashMap<>();
 
     /**
      * 检查该类是否已经被扫描aop配置
@@ -45,16 +50,23 @@ public class AopCache {
         return scannedClass.contains(clazz);
     }
 
-    public static void put(AopConfig aopConfig) {
+    public static void putAopConfig(AopConfig aopConfig) {
         aopConfigs.put(aopConfig.getClassPath() + aopConfig.getMethodName() + aopConfig.getArgs(), aopConfig);
     }
 
-    public static AopConfig getAop(Object proxy, Method method, Object[] args) {
+    public static AopConfig getAopConfig(Object proxy, Method method, Object[] args) {
         String key = proxy.getClass().getName();
         key += method.getName();
         for (Object obj : args) {
             key += obj.getClass().getName();
         }
         return aopConfigs.get(key);
+    }
+
+    public static void putCutPoint(Object cutPoint) {
+        cutPoints.put(cutPoint.getClass(), cutPoint);
+    }
+    public static Object getCutPoint(Class<?> cutPointClass) {
+        return cutPoints.get(cutPointClass);
     }
 }

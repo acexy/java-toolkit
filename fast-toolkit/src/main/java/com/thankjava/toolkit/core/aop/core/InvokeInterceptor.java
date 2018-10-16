@@ -8,7 +8,7 @@ import com.thankjava.toolkit.bean.aop.anno.Before;
 import com.thankjava.toolkit.bean.aop.entity.AopCache;
 import com.thankjava.toolkit.bean.aop.entity.AopConfig;
 import com.thankjava.toolkit.bean.aop.entity.AopArgs;
-import com.thankjava.toolkit.bean.aop.util.ScannerAopConfig;
+import com.thankjava.toolkit.bean.aop.util.AopScanner;
 import com.thankjava.toolkit.core.reflect.ReflectHelper;
 
 
@@ -27,14 +27,14 @@ class InvokeInterceptor implements InvocationHandler {
 
     public InvokeInterceptor(Object implementObject) {
         this.implementObject = implementObject;
-        ScannerAopConfig.scanner(implementObject);
+        AopScanner.scanner(implementObject);
     }
 
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-        AopConfig aopConfig = AopCache.getAop(implementObject, method, args);
+        AopConfig aopConfig = AopCache.getAopConfig(implementObject, method, args);
 
         if (!aopConfig.isUsedAop()) {
             return method.invoke(implementObject, args);

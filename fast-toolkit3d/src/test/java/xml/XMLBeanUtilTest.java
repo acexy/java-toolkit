@@ -43,8 +43,8 @@ public class XMLBeanUtilTest {
 //				public void run() {
 					Entity entity;
 	//				Map<String, Class<?>> classMap = new HashMap<>();
-	//				classMap.put("root", Entity.class);
-	//				classMap.put("entityA", EntityA.class);
+	//				classMap.putAopConfig("root", Entity.class);
+	//				classMap.putAopConfig("entityA", EntityA.class);
 //					entity = XMLBeanUtil.xml2Bean("root", xmlStr, Entity.class, false);
 //					System.out.println(FastJson.toJsonString(entity));
 					

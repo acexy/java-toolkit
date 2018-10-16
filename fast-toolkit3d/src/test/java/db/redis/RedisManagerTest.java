@@ -30,8 +30,8 @@ public class RedisManagerTest {
 //		System.out.println(redis.setList("list", listValue));
 		
 //		HashMap<String, String> hashValue = new HashMap<>();
-//		hashValue.put("a", "a");
-//		hashValue.put("b", "b");
+//		hashValue.putAopConfig("a", "a");
+//		hashValue.putAopConfig("b", "b");
 //		System.out.println(redis.setHash("hash", hashValue));
 		
 	}
