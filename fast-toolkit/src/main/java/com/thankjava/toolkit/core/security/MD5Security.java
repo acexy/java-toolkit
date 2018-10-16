@@ -57,7 +57,7 @@ public final class MD5Security {
                 // 使用指定的字节数组对摘要进行最后更新，然后完成摘要计算
                 byte[] results = md.digest(content.getBytes());
                 // 将得到的字节数组变成字符串返回
-                return byteArrayToHexString(results);;
+                return byteArrayToHexString(results);
             } catch (Exception e) {
                 e.printStackTrace();
             }
