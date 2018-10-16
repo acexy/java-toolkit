@@ -1,6 +1,6 @@
 package io.file;
 
-import com.thankjava.toolkit.core.file.FastFileAppend;
+import com.thankjava.toolkit.core.io.FastFileAppend;
 
 import java.util.UUID;
 

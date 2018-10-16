@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.core.file;
+package com.thankjava.toolkit.core.io;
 
 import java.io.*;
 

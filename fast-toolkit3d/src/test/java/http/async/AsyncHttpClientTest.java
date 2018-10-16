@@ -34,7 +34,7 @@ public class AsyncHttpClientTest {
                 HttpMethod.post,
                 new Parameters(
                         new File("F:\\Download\\ChromeStandaloneSetup64.exe"),
-//                        FileIO.read2ByteArray("F:\\Temp\\file.utf-8")
+//                        FileIO.read2ByteArray("F:\\Temp\\io.utf-8")
                         RequestContentType.TEXT_PLAIN
                 )
         );

@@ -56,7 +56,7 @@ public class Zip4jHelper {
 			if(zipFile.isEncrypted()){
 				if(pwd == null || pwd.length == 0){
 					//需要密码访问
-					new ZipException("The password is required to access the file").printStackTrace();
+					new ZipException("The password is required to access the io").printStackTrace();
 					return false;
 				}
 				
