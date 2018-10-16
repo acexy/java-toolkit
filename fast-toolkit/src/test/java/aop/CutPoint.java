@@ -34,10 +34,10 @@ public class CutPoint {
     public void after(AopArgs param) {
 
         // 获取被拦截的方法执行后的返回结果 (如果被代理的方法含有before切片，需要该切片允许执行被代理的方法才有该返回值)
-        String result = (String) param.getOrigReturnResult();
+        String result = (String) param.getReturnResult();
 
         //设置返回值 如果你想修改被拦截的方法的源生返回值
-        param.setOrigReturnResult("proxy_result");
+        param.setReturnResult("proxy_result");
         System.out.println("我是参数after，原来返回的参数: " + result + " 将被我修改为 proxy_result");
     }
 

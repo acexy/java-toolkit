@@ -1,17 +1,17 @@
-package com.thankjava.toolkit.core.aop.core;
+package com.thankjava.toolkit.core.aop;
 
 import java.lang.reflect.Proxy;
 
 /**
  * 创建基于JDK的代理对象 JDK代理是基于接口层面的
- * <p>Function: AopProxyFactory</p>
+ * <p>Function: JDKAopProxy</p>
  * <p>Description: </p>
  *
  * @author acexy@thankjava.com
  * @version 1.0
  * @date 2016年8月17日 下午1:56:28
  */
-public class AopProxyFactory {
+public class JDKAopProxy {
 
     /**
      * 创建代理对象

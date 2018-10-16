@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.bean.aop.util;
+package com.thankjava.toolkit.core.aop.util;
 
 import com.thankjava.toolkit.bean.aop.anno.After;
 import com.thankjava.toolkit.bean.aop.anno.Before;
@@ -15,18 +15,17 @@ public class AopScanner {
      * <p>Function: scanner</p>
      * <p>Description: </p>
      *
-     * @param implementObject
+     * @param implementObjectClass
      * @author acexy@thankjava.com
      * @date 2016年8月17日 下午5:51:04
      * @version 1.0
      */
-    public static void scanner(Object implementObject) {
+    public static void scanner(Class<?> implementObjectClass, Class<?>... proxyClass) {
 
-        if (AopCache.isScannedClass(implementObject.getClass())) {
+        if (AopCache.isScannedClass(implementObjectClass)) {
             return;
         }
-
-        Method[] methods = ReflectHelper.getAllMethod(implementObject);
+        Method[] methods = ReflectHelper.getAllMethod(implementObjectClass);
 
         if (methods != null) {
 
@@ -48,12 +47,15 @@ public class AopScanner {
                 after = method.getAnnotation(After.class);
 
                 config.setMethodName(method.getName());
-                config.setClassPath(implementObject.getClass().getName());
+                if (proxyClass != null && proxyClass.length > 0) {
+                    config.setClassPath(proxyClass[0].getName());
+                } else {
+                    config.setClassPath(implementObjectClass.getName());
+                }
 
                 if (before == null && after == null) {
                     config.setUsedAop(false);
                 } else {
-                    config.setProxyInstance(implementObject);
                     config.setUsedAop(true);
                     if (before != null) {
                         config.setBefore(before);

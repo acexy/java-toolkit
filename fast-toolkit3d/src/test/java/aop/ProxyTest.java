@@ -1,18 +1,13 @@
 package aop;
 
-import com.thankjava.toolkit3d.core.aop.core.AopProxyFactory;
+import com.thankjava.toolkit3d.core.aop.CglibAopProxy;
 
 public class ProxyTest {
 
-	public static void main(String[] args) {
-		
-		Business business = AopProxyFactory.createProxyObject(Business.class);
-		
-		long st = System.currentTimeMillis();
-//		for (int i = 0 ; i < 100000 ; i ++) {
-//			System.out.println("最终函数获得的返回值: " + business.exe(1));
-			System.out.println("最终函数获得的返回值: " + business.exe("1"));
-//		}
-		System.out.println("total time : " + (System.currentTimeMillis() - st));
-	}
+    public static void main(String[] args) {
+
+        Business business = CglibAopProxy.createProxyObject(Business.class);
+
+        System.out.println("最终执行函数返回值为：" + business.exe("exe"));
+    }
 }

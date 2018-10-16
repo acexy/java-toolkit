@@ -17,7 +17,7 @@ public class AopArgs {
 	/**
 	 * 被代理的源方法的返回值 (如果含有before切片，需要该切片允许执行被代理的函数)
 	 */
-	private Object origReturnResult;
+	private Object returnResult;
 	
 	/**
 	 * aop切片执行before时，判断是否需要继续执行被代理的源方法
@@ -39,12 +39,12 @@ public class AopArgs {
         this.invokeArgs = invokeArgs;
     }
 
-    public Object getOrigReturnResult() {
-        return origReturnResult;
+    public Object getReturnResult() {
+        return returnResult;
     }
 
-    public void setOrigReturnResult(Object origReturnResult) {
-        this.origReturnResult = origReturnResult;
+    public void setReturnResult(Object returnResult) {
+        this.returnResult = returnResult;
     }
 
     public boolean isInvokeProxyMethod() {

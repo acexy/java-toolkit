@@ -33,7 +33,6 @@ public class AopConfig {
     /**
      * 被代理的对象实例
      */
-    private Object proxyInstance;
     private Before before;
     private After after;
     private boolean isUsedAop = false;
@@ -100,14 +99,6 @@ public class AopConfig {
 
     public void setAfterInstance(Object afterInstance) {
         this.afterInstance = afterInstance;
-    }
-
-    public Object getProxyInstance() {
-        return proxyInstance;
-    }
-
-    public void setProxyInstance(Object proxyInstance) {
-        this.proxyInstance = proxyInstance;
     }
 
 }
