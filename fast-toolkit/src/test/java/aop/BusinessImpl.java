@@ -1,19 +1,14 @@
 package aop;
 
-import com.thankjava.toolkit.core.aop.anno.After;
-import com.thankjava.toolkit.core.aop.anno.Before;
+import com.thankjava.toolkit.bean.aop.anno.After;
+import com.thankjava.toolkit.bean.aop.anno.Before;
 
 public class BusinessImpl implements IBusiness{
 	
 	@Before(cutMethod = "before",cutClass = CutPoint.class)
 	@After(cutMethod = "after",cutClass = CutPoint.class)
 	public String exe(String str){
+        System.out.println("我是BusinessImpl.exe方法，我得到了参数：" + str + " 并返回了它");
 		return str;
-	}
-
-	@Override
-	public String exe(int num) {
-		System.out.println(num);
-		return "num";
 	}
 }

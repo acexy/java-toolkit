@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.core.aop.anno;
+package com.thankjava.toolkit.bean.aop.anno;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -41,7 +41,7 @@ public class CutPoint {
 		//可以设置被拦截的方法到底是否需要执行 (该属性只有Before切片有用)
 //		param.setInvokeProxyMethod(false);
 		//如果设置被拦截的方法不要执行，并setResult值 则被拦截的方法的执行结果就是 param.result
-//		param.setResult("Result");
+//		param.setOrigReturnResult("Result");
 		Method method = ReflectHelper.getMethod(param.getProxyInstance().getClass(),"exe",int.class);
 		ReflectHelper.invokeMethod(param.getProxyInstance(), method, 5);
 		return param;
@@ -51,7 +51,7 @@ public class CutPoint {
 	public AopParam after(AopParam param){
 		
 		//获取原始参数或者是Before切片设置的参数
-//		String orgiStr = (String)param.getParams()[0];
+//		String orgiStr = (String)param.getInvokeArgs()[0];
 		
 		//获取被拦截的方法执行后的返回结果
 		String resutlt = (String) param.getResult();

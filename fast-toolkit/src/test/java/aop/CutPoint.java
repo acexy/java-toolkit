@@ -1,54 +1,44 @@
 package aop;
 
-import java.lang.reflect.Method;
-
-import com.thankjava.toolkit.core.aop.entity.AopParam;
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
+import com.thankjava.toolkit.bean.aop.entity.AopArgs;
 
 public class CutPoint {
 
-	/**
-	 * before 案例
-	 * 传入和返回值必须为AopParam类型
-	* <p>Function: before</p>
-	* <p>Description: </p>
-	* @author acexy@thankjava.com
-	* @date 2016年8月17日 下午7:58:46
-	* @version 1.0
-	* @param param
-	* @return
-	 */
-	public AopParam before(AopParam param){
-		//通过该方法获取原始被拦截的方法的传入参数
-		String orgiStr = (String)param.getParams()[0];
-		
-		//修改被拦截的方法所能获得的参数 并且在after 切片中也只能获得被修改后的参数
-		param.setParams(new Object[]{"abc"});
-		System.out.println("我将在Business执行exe 方法之前执行 并且 exe原来传递的参数: " +orgiStr+ " 将被我修改为 abc");
-		
-		
-		//可以设置被拦截的方法到底是否需要执行 (该属性只有Before切片有用)
-//		param.setInvokeProxyMethod(false);
-		//如果设置被拦截的方法不要执行，并setResult值 则被拦截的方法的执行结果就是 param.result
-//		param.setResult("Result");
-		BusinessImpl proxyInstance = (BusinessImpl)param.getProxyInstance();
-		Method method = ReflectHelper.getMethod(proxyInstance.getClass(), "exe", int.class);
-		ReflectHelper.invokeMethod(proxyInstance, method, 0);
-		return param;
-	}
-	
-	
-	public AopParam after(AopParam param){
-		
-		//获取原始参数或者是Before切片设置的参数
-//		String orgiStr = (String)param.getParams()[0];
-		
-		//获取被拦截的方法执行后的返回结果
-		String resutlt = (String) param.getResult();
-		//设置返回值 如果你想修改被拦截的方法的源生返回值
-		param.setResult("result");
-		System.out.println("我将在Business执行exe 方法后执行 并且exe原来返回的参数: " + resutlt + " 将被我修改为 result");
-		return param;
-	}
-	
+    /**
+     * before 案例
+     * 传入和返回值必须为AopParam类型
+     * <p>Function: before</p>
+     * <p>Description: </p>
+     *
+     * @param param
+     * @return
+     * @author acexy@thankjava.com
+     * @date 2016年8月17日 下午7:58:46
+     * @version 1.0
+     */
+    public void before(AopArgs param) {
+
+        //通过该方法获取原始被拦截的方法的传入参数
+        String origStr = (String) param.getInvokeArgs()[0];
+
+        //修改被拦截的方法所能获得的参数 并且在after 切片中也只能获得被修改后的参数
+        System.out.println("我是切片before，原来传递的参数: " + origStr + " 被我修改成了：proxy");
+        param.setInvokeArgs(new Object[]{"proxy"});
+
+
+        //可以设置被拦截的方法到底是否需要执行 (该属性只有Before切片有用)
+        param.setInvokeProxyMethod(true);
+
+    }
+
+    public void after(AopArgs param) {
+
+        // 获取被拦截的方法执行后的返回结果 (如果被代理的方法含有before切片，需要该切片允许执行被代理的方法才有该返回值)
+        String result = (String) param.getOrigReturnResult();
+
+        //设置返回值 如果你想修改被拦截的方法的源生返回值
+        param.setOrigReturnResult("proxy_result");
+        System.out.println("我是参数after，原来返回的参数: " + result + " 将被我修改为 proxy_result");
+    }
+
 }
