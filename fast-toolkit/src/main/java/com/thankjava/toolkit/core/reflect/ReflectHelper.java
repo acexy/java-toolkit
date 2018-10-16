@@ -230,7 +230,7 @@ public final class ReflectHelper {
 
 
     /**
-     * 获取obj中 自己的全部方法
+     * 获取obj中所有方法函数
      * <p>Function: getAllMethod</p>
      * <p>Description: </p>
      *
@@ -245,6 +245,23 @@ public final class ReflectHelper {
             return null;
         }
         Class<?> clazz = obj.getClass();
+        try {
+            return clazz.getDeclaredMethods();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取指定类类型的所有方法函数
+     * @param clazz
+     * @return
+     */
+    public static Method[] getAllMethod(Class<?> clazz) {
+        if (clazz == null) {
+            return null;
+        }
         try {
             return clazz.getDeclaredMethods();
         } catch (SecurityException e) {
