@@ -1,13 +1,13 @@
-package com.thankjava.toolkit.math;
+package com.thankjava.toolkit.utils;
 
 import java.math.BigDecimal;
 
 /**
  * 提供相对精确不损失精度的算法
  */
-public class MathUtils {
+public class MathUtil {
 
-    private MathUtils() {
+    private MathUtil() {
     }
 
     private static BigDecimal toBigDecimal(double doubleValue) {

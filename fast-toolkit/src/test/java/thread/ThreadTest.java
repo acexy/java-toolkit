@@ -3,8 +3,8 @@ package thread;
 import java.io.IOException;
 import java.util.Date;
 
-import com.thankjava.toolkit.date.TimeHelper;
-import com.thankjava.toolkit.date.TimeHelper.TimeType;
+import com.thankjava.toolkit.utils.TimeUtil;
+import com.thankjava.toolkit.utils.TimeUtil.TimeType;
 import com.thankjava.toolkit.thread.ThreadTask;
 import com.thankjava.toolkit.thread.ThreadUtil;
 import com.thankjava.toolkit.vo.thread.TaskEntity;
@@ -99,7 +99,7 @@ public class ThreadTest {
 				System.out.println("============================");
 				for (int i = 0; i < 5; i ++) {
 					try {
-						System.out.println("task 1 running " + i + " " + TimeHelper.formatDate(TimeType.DEFAULT, new Date()));
+						System.out.println("task 1 running " + i + " " + TimeUtil.formatDate(TimeType.DEFAULT, new Date()));
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();

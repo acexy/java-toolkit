@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.date;
+package com.thankjava.toolkit.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,16 +9,16 @@ import java.util.Map;
 
 /**
  * 对java Date 进行的常规操作
- * <p>Function: TimeHelper</p>
+ * <p>Function: TimeUtil</p>
  * <p>Description: </p>
  *
  * @author acexy@thankjava.com
  * @version 1.0
  * @date 2014年12月10日 下午8:40:49
  */
-public final class TimeHelper {
+public final class TimeUtil {
 
-    private TimeHelper() {
+    private TimeUtil() {
     }
 
     private static final Map<TimeType, SimpleDateFormat> simpleDateFormatMap = new HashMap<TimeType, SimpleDateFormat>();
