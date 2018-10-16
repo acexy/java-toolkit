@@ -133,7 +133,7 @@ public final class ThreeEndeSecurity {
 			e.printStackTrace();
 		} catch (javax.crypto.NoSuchPaddingException e) {
 			e.printStackTrace();
-		} catch (java.lang.Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -152,7 +152,7 @@ public final class ThreeEndeSecurity {
 			e1.printStackTrace();
 		} catch (javax.crypto.NoSuchPaddingException e2) {
 			e2.printStackTrace();
-		} catch (java.lang.Exception e3) {
+		} catch (Exception e3) {
 			e3.printStackTrace();
 		}
 		return null;
