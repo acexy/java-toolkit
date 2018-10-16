@@ -9,9 +9,6 @@ import java.net.URL;
 
 /**
  * Class内部资源加载器
- * <p>Function: ClassSourceLoaderUtil</p>
- * <p>Description: </p>
- *
  * @author acexy@thankjava.com
  * @version 1.0
  * @date 2016年4月18日 上午10:33:00
