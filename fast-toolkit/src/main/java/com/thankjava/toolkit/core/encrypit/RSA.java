@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.core.security;
+package com.thankjava.toolkit.core.encrypit;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,13 +15,13 @@ import java.security.SignatureException;
 
 /**
  * 基于JDK 的 rsa 算法
-* <p>Function: RSASecurity</p>
+* <p>Function: RSA</p>
 * <p>Description: </p>
 * @author acexy@thankjava.com
 * @date 2016年8月10日 下午4:57:19
 * @version 1.0
  */
-public final class RSASecurity {
+public final class RSA {
 	
 	private static final String algorithm = "RSA";
 	

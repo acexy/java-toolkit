@@ -161,14 +161,14 @@ public class ImageVerifyCode {
      * 生成验证码文件
      * @param width
      * @param high
-     * @param imgPathAndName
+     * @param imgFilename
      * @param verifyCode
      * @throws IOException
      */
-    public static void writeImage(int width, int high, String imgPathAndName, String verifyCode) throws IOException{
+    public static void encode2ImgFile(int width, int high, String imgFilename, String verifyCode) throws IOException{
         width = width < 1 ? defaultWidth : width;
         high = high < 1 ? defaultHigh : high;
-        File outputFile = new File(imgPathAndName);
+        File outputFile = new File(imgFilename);
         File dir = outputFile.getParentFile();
         if(!dir.exists()){
             dir.mkdirs();
@@ -186,7 +186,7 @@ public class ImageVerifyCode {
      * @return
      * @throws IOException
      */
-    public static byte[] encodeImage(int width, int high, String verifyCode) throws IOException {
+    public static byte[] encode2ByteArray(int width, int high, String verifyCode) throws IOException {
         width = width < 1 ? defaultWidth : width;
         high = high < 1 ? defaultHigh : high;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

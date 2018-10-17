@@ -1,20 +1,20 @@
-package com.thankjava.toolkit.core.security;
+package com.thankjava.toolkit.core.encrypit;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
  * Md5加密
- * <p> Function: MD5Security </p>
+ * <p> Function: MD5 </p>
  * <p> Description: </p>
  *
  * @author acexy@thankjava.com
  * @version 1.0
  * @date 2015年12月30日 上午11:08:43
  */
-public final class MD5Security {
+public final class MD5 {
 
-    private MD5Security() {
+    private MD5() {
     }
 
     static MessageDigest md;

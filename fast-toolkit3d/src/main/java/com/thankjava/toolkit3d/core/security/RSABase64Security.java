@@ -13,8 +13,8 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
+import com.thankjava.toolkit.core.encrypit.RSA;
 import org.apache.commons.codec.binary.Base64;
-import com.thankjava.toolkit.core.security.RSASecurity;
 
 /**
  * 基于JDK RSA 算法 通过Base64缩位
@@ -41,7 +41,7 @@ public class RSABase64Security {
 	 */
 	public static String[] keyGen(int keysize){
 		try {
-			Key[] keys = RSASecurity.keyGen(keysize);
+			Key[] keys = RSA.keyGen(keysize);
 			
 			String[] keysStr = new String[2];
 			String publicKey = new String(Base64.encodeBase64(keys[0].getEncoded()));
@@ -119,7 +119,7 @@ public class RSABase64Security {
 	public static String encrypt(String originalText,String privateKeyStr){
 		PrivateKey privateKey = decryptPrivateKeyForBase64KeyStr(privateKeyStr);
 		try {
-			return new String(Base64.encodeBase64(RSASecurity.encrypt(originalText, privateKey)));
+			return new String(Base64.encodeBase64(RSA.encrypt(originalText, privateKey)));
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
@@ -147,7 +147,7 @@ public class RSABase64Security {
 	public static boolean verify(String originalText,String ciphertext, String publicKeyStr){
 		PublicKey publicKey = decryptPublicKeyForBasee64KeyStr(publicKeyStr);
 		try {
-			return RSASecurity.verify(originalText, Base64.decodeBase64(ciphertext), publicKey);
+			return RSA.verify(originalText, Base64.decodeBase64(ciphertext), publicKey);
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {

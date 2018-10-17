@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.core.security;
+package com.thankjava.toolkit.core.encrypit;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -6,15 +6,15 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * 可逆加解密3DS
-* <p>Function: ThreeEndeSecurity</p>
+* <p>Function: ThreeDES</p>
 * <p>Description: </p>
 * @author acexy@thankjava.com
 * @date 2015年12月30日 上午11:08:20
 * @version 1.0
  */
-public final class ThreeEndeSecurity {
+public final class ThreeDES {
 
-	private ThreeEndeSecurity(){}
+	private ThreeDES(){}
 	
 	public static String encryptStr(String key, String encryptStr) {
 		key += "0000000000000000";
