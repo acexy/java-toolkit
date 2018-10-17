@@ -2,56 +2,56 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties url="file:./src/test/resources/jdbc.properties" />
+    <properties resource="jdbc.properties"/>
 
-	<typeAliases>
-		<typeAlias alias="Test" type="db.mysql.po.Test" />
-		<typeAlias alias="PageEntity" type="com.thankjava.toolkit3d.bean.db.PageEntity" />
-	</typeAliases>
+    <typeAliases>
+        <typeAlias alias="Test" type="db.mysql.po.Test"/>
+        <typeAlias alias="PageEntity" type="com.thankjava.toolkit3d.bean.db.PageEntity"/>
+    </typeAliases>
 
     <plugins>
-    <!-- 指定分页拦截器 -->
-        <plugin interceptor="com.thankjava.toolkit3d.core.db.mysql.plugins.PageSQLInterceptor" />
+        <!-- 指定分页拦截器 -->
+        <plugin interceptor="com.thankjava.toolkit3d.core.db.mysql.plugins.PageSQLInterceptor"/>
     </plugins>
 
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="com.thankjava.toolkit3d.core.db.mysql.datasource.DruidDataSourceFactory">
-				<property name="driverClassName" value="${jdbc.driverClassName}" />
-				<property name="url" value="${jdbc.url}" />
-				<property name="username" value="${jdbc.username}" />
-				<property name="password" value="${jdbc.password}" />
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="com.thankjava.toolkit3d.core.db.mysql.datasource.DruidDataSourceFactory">
+                <property name="driverClassName" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
 
-				<!-- 配置初始化大小、最小、最大 -->
-				<property name="initialSize" value="${pool.initialSize}" />
-				<property name="minIdle" value="${pool.minIdle}" />
-				<property name="maxActive" value="${pool.maxActive}" />
+                <!-- 配置初始化大小、最小、最大 -->
+                <property name="initialSize" value="${pool.initialSize}"/>
+                <property name="minIdle" value="${pool.minIdle}"/>
+                <property name="maxActive" value="${pool.maxActive}"/>
 
-				<!-- 配置获取连接等待超时的时间 -->
-				<property name="maxWait" value="${pool.maxWait}" />
+                <!-- 配置获取连接等待超时的时间 -->
+                <property name="maxWait" value="${pool.maxWait}"/>
 
-				<property name="validationQuery" value="select now()" />
-				<property name="testWhileIdle" value="true" />
-				<property name="testOnBorrow" value="false" />
-				<property name="testOnReturn" value="false" />
-				<property name="poolPreparedStatements" value="false" />
-				<property name="maxOpenPreparedStatements" value="-1" />
+                <property name="validationQuery" value="select now()"/>
+                <property name="testWhileIdle" value="true"/>
+                <property name="testOnBorrow" value="false"/>
+                <property name="testOnReturn" value="false"/>
+                <property name="poolPreparedStatements" value="false"/>
+                <property name="maxOpenPreparedStatements" value="-1"/>
 
-				<!-- 对于长时间不使用的连接强制关闭 -->
-				<property name="removeAbandoned" value="true" />
+                <!-- 对于长时间不使用的连接强制关闭 -->
+                <property name="removeAbandoned" value="true"/>
 
-				<!-- 超过30分钟开始关闭空闲连接 -->
-				<property name="removeAbandonedTimeout" value="1800" />
+                <!-- 超过30分钟开始关闭空闲连接 -->
+                <property name="removeAbandonedTimeout" value="1800"/>
 
-				<!-- 将当前关闭动作记录到日志 -->
-				<property name="logAbandoned" value="true" />
-			</dataSource>
-		</environment>
-	</environments>
+                <!-- 将当前关闭动作记录到日志 -->
+                <property name="logAbandoned" value="true"/>
+            </dataSource>
+        </environment>
+    </environments>
 
-	<mappers>
-		<mapper resource="mappers/Test.xml"/>
-	</mappers>
+    <mappers>
+        <mapper resource="mappers/Test.xml"/>
+    </mappers>
 
 </configuration>

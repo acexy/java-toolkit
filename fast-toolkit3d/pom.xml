@@ -24,14 +24,14 @@
         <com.thankjava.toolkit.version>1.1.0-SNAPSHOT</com.thankjava.toolkit.version>
 
         <com.alibaba.fastjson.version>1.2.46</com.alibaba.fastjson.version>
-        <com.alibaba.druid.version>1.1.9</com.alibaba.druid.version>
+        <com.alibaba.druid.version>1.1.12</com.alibaba.druid.version>
         <org.mybatis.version>3.4.6</org.mybatis.version>
         <mysql.version>5.1.38</mysql.version>
         <redis.clients.version>2.9.0</redis.clients.version>
-        <org.mongodb.version>3.6.3</org.mongodb.version>
-        <com.thoughtworks.xstream.version>1.4.9</com.thoughtworks.xstream.version>
+        <org.mongodb.version>3.8.2</org.mongodb.version>
+        <com.thoughtworks.xstream.version>1.4.10</com.thoughtworks.xstream.version>
         <net.sf.ehcache.version>2.6.11</net.sf.ehcache.version>
-        <cglib.version>3.2.6</cglib.version>
+        <cglib.version>3.2.8</cglib.version>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
         <javax.activation.version>1.1.1</javax.activation.version>
         <commons-codec.version>1.11</commons-codec.version>

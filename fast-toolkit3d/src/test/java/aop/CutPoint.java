@@ -50,7 +50,7 @@ public class CutPoint {
 
 		//设置返回值 如果你想修改被拦截的方法的源生返回值
 		param.setReturnResult("proxy_result");
-		System.out.println("我是参数after，原来返回的参数: " + result + " 将被我修改为 proxy_result");
+		System.out.println("我是切片after，原来返回的参数: " + result + " 将被我修改为 proxy_result");
 	}
 	
 }
