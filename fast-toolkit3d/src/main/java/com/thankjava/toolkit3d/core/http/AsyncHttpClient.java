@@ -2,13 +2,13 @@ package com.thankjava.toolkit3d.core.http;
 
 import java.io.IOException;
 
-import com.thankjava.toolkit3d.core.http.entity.AsyncResponse;
-import com.thankjava.toolkit3d.core.http.entity.AsyncResponseCallback;
+import com.thankjava.toolkit3d.bean.http.AsyncResponse;
+import com.thankjava.toolkit3d.bean.http.AsyncResponseCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import com.thankjava.toolkit3d.core.http.core.DoRequest;
-import com.thankjava.toolkit3d.core.http.entity.Cookies;
-import com.thankjava.toolkit3d.core.http.entity.AsyncRequest;
+import com.thankjava.toolkit3d.bean.http.Cookies;
+import com.thankjava.toolkit3d.bean.http.AsyncRequest;
 
 public class AsyncHttpClient {
 

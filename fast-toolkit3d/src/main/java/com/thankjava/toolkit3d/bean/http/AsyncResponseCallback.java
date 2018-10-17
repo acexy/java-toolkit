@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.http.entity;
+package com.thankjava.toolkit3d.bean.http;
 
 
 /**

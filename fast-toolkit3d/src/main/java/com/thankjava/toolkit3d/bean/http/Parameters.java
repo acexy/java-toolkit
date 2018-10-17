@@ -1,12 +1,10 @@
-package com.thankjava.toolkit3d.core.http.entity;
+package com.thankjava.toolkit3d.bean.http;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.thankjava.toolkit3d.core.http.consts.Charset;
-import com.thankjava.toolkit3d.core.http.consts.RequestContentType;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 

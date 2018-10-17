@@ -1,7 +1,4 @@
-package com.thankjava.toolkit3d.core.http.entity;
-
-import com.thankjava.toolkit3d.core.http.consts.Charset;
-import com.thankjava.toolkit3d.core.http.consts.HttpMethod;
+package com.thankjava.toolkit3d.bean.http;
 
 public class AsyncRequest {
 

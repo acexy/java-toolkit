@@ -1,11 +1,9 @@
-package com.thankjava.toolkit3d.core.http.entity;
+package com.thankjava.toolkit3d.bean.http;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-
-import com.thankjava.toolkit3d.core.http.consts.Charset;
 
 public class AsyncResponse {
 

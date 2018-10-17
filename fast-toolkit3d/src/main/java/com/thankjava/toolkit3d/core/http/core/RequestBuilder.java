@@ -10,10 +10,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.utils.URIBuilder;
-import com.thankjava.toolkit3d.core.http.consts.HttpMethod;
-import com.thankjava.toolkit3d.core.http.entity.Headers;
-import com.thankjava.toolkit3d.core.http.entity.Parameters;
-import com.thankjava.toolkit3d.core.http.entity.AsyncRequest;
+import com.thankjava.toolkit3d.bean.http.HttpMethod;
+import com.thankjava.toolkit3d.bean.http.Headers;
+import com.thankjava.toolkit3d.bean.http.Parameters;
+import com.thankjava.toolkit3d.bean.http.AsyncRequest;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 

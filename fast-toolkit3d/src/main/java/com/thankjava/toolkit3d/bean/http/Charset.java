@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.http.consts;
+package com.thankjava.toolkit3d.bean.http;
 
 public enum Charset {
 

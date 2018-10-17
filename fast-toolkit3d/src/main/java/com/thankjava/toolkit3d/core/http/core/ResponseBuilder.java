@@ -2,14 +2,14 @@ package com.thankjava.toolkit3d.core.http.core;
 
 import java.util.List;
 
-import com.thankjava.toolkit3d.core.http.entity.AsyncResponse;
+import com.thankjava.toolkit3d.bean.http.AsyncResponse;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.cookie.Cookie;
-import com.thankjava.toolkit3d.core.http.consts.Charset;
-import com.thankjava.toolkit3d.core.http.entity.Cookies;
-import com.thankjava.toolkit3d.core.http.entity.Headers;
+import com.thankjava.toolkit3d.bean.http.Charset;
+import com.thankjava.toolkit3d.bean.http.Cookies;
+import com.thankjava.toolkit3d.bean.http.Headers;
 
 public class ResponseBuilder {
 

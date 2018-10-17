@@ -3,15 +3,15 @@ package com.thankjava.toolkit3d.core.http.core;
 import java.util.List;
 import java.util.concurrent.Future;
 
-import com.thankjava.toolkit3d.core.http.entity.AsyncResponseCallback;
+import com.thankjava.toolkit3d.bean.http.AsyncResponseCallback;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import com.thankjava.toolkit3d.core.http.entity.AsyncRequest;
-import com.thankjava.toolkit3d.core.http.entity.AsyncResponse;
+import com.thankjava.toolkit3d.bean.http.AsyncRequest;
+import com.thankjava.toolkit3d.bean.http.AsyncResponse;
 
 public class DoRequest extends BasicRequest {
 
