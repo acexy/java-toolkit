@@ -19,7 +19,6 @@ public class FileIO {
         try {
             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
             bufferedOutputStream.write(byteData);
-            bufferedOutputStream.flush();
             bufferedOutputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -38,6 +37,7 @@ public class FileIO {
             BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(filePath)));
             byte[] byteArr = new byte[bufferedInputStream.available()];
             bufferedInputStream.read(byteArr);
+            bufferedInputStream.close();
             return byteArr;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

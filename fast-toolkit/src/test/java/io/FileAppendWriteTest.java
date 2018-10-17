@@ -1,10 +1,10 @@
 package io;
 
-import com.thankjava.toolkit.core.io.FastFileAppend;
+import com.thankjava.toolkit.core.io.FileAppendWriter;
 
 import java.util.UUID;
 
-public class FastFileAppendTest {
+public class FileAppendWriteTest {
 
     public static void main(String[] args) {
         int i = 0;
@@ -12,13 +12,13 @@ public class FastFileAppendTest {
 
         String filePath = "/Users/acexy/Downloads/append.txt";
         String lineSeparator = System.getProperty("line.separator");
-        FastFileAppend fastFileAppend = new FastFileAppend(filePath, "GBK");
+        FileAppendWriter fileAppendWriter = new FileAppendWriter(filePath, "GBK");
         String content = UUID.randomUUID().toString() + UUID.randomUUID().toString() + UUID.randomUUID().toString() + lineSeparator;
         while (i < 1000000) {
-            fastFileAppend.write(content);
+            fileAppendWriter.write(content);
             i++;
         }
-        fastFileAppend.close();
+        fileAppendWriter.close();
         System.out.println(System.currentTimeMillis() - startTime);
 
     }

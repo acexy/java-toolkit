@@ -6,7 +6,7 @@ import java.io.*;
  * 高效率大量数据写入同一个文件的方法
  * IO追加的方式写入文件
  */
-public class FastFileAppend {
+public class FileAppendWriter {
 
     private Writer writer;
 
@@ -15,7 +15,7 @@ public class FastFileAppend {
      * @param filePath
      * @param charset
      */
-    public FastFileAppend(String filePath, String charset) {
+    public FileAppendWriter(String filePath, String charset) {
         try {
             writer = new BufferedWriter(
                     new OutputStreamWriter(
@@ -35,7 +35,7 @@ public class FastFileAppend {
      * 追加写入字符串
      * @param content
      */
-    public FastFileAppend write(String content) {
+    public FileAppendWriter write(String content) {
         try {
             writer.write(content);
         } catch (IOException e) {
@@ -48,7 +48,7 @@ public class FastFileAppend {
      * 追加写入char数组数据
      * @param chars
      */
-    public FastFileAppend write(char[] chars) {
+    public FileAppendWriter write(char[] chars) {
         try {
             writer.write(chars);
         } catch (IOException e) {

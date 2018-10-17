@@ -1,13 +1,15 @@
-package com.thankjava.toolkit.core.io;
+package com.thankjava.toolkit.core.io.util;
+
+import com.thankjava.toolkit.core.io.FileAppendWriter;
 
 import java.io.*;
 
 /**
- * 基于 FastFileAppend 快速写入大量数据的CSV文件
+ * 基于 FileAppendWriter 快速写入大量数据的CSV文件
  */
-public class LargerDataWrite2CSV {
+public class WriteCSVUtil {
 
-    private FastFileAppend fastFileAppend;
+    private FileAppendWriter fileAppendWriter;
     private String lineSeparator;
     StringBuffer stringBuffer = new StringBuffer();
 
@@ -29,8 +31,8 @@ public class LargerDataWrite2CSV {
      * @param lineSeparator 换行符 如果为空则获取当前系统环境的换行符
      * @throws FileNotFoundException
      */
-    public LargerDataWrite2CSV(String filePath, String charset, LineSeparator lineSeparator) {
-        fastFileAppend = new FastFileAppend(filePath, charset);
+    public WriteCSVUtil(String filePath, String charset, LineSeparator lineSeparator) {
+        fileAppendWriter = new FileAppendWriter(filePath, charset);
         if (lineSeparator != null) {
             this.lineSeparator = lineSeparator.separator;
         } else {
@@ -56,14 +58,14 @@ public class LargerDataWrite2CSV {
         }
         stringBuffer.append(lineSeparator);
         stringBuffer.deleteCharAt(stringBuffer.length() - 2);
-        fastFileAppend.write(stringBuffer.toString());
+        fileAppendWriter.write(stringBuffer.toString());
     }
 
     public void write(String line) {
-        fastFileAppend.write(line + lineSeparator);
+        fileAppendWriter.write(line + lineSeparator);
     }
 
     public void close() {
-        fastFileAppend.close();
+        fileAppendWriter.close();
     }
 }

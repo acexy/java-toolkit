@@ -2,7 +2,7 @@ package aop;
 
 import com.thankjava.toolkit3d.core.aop.CglibAopProxy;
 
-public class ProxyTest {
+public class CglibAopProxyTest {
 
     public static void main(String[] args) {
 
