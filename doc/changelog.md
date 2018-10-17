@@ -7,6 +7,7 @@
     3. 调整基于JDK代理&Cglib实现的AOP方法切片，并修复的切片配置错误造成的bug
     4. 调整IO模块
     5. 调整反射模块BeanCopierUtil (JavaBean对象对等复制属性)
+    6. 调整了基于JDK的RSA算法，提供加密和验签功能，提供Base64版本的RSA
 ```
 ---
 - 1.0.x

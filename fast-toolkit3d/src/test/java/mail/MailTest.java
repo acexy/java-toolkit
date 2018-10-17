@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import javax.mail.MessagingException;
 
 import com.thankjava.toolkit3d.core.enums.mail.MailService;
-import com.thankjava.toolkit3d.core.mail.MailSender;
+import com.thankjava.toolkit3d.core.mail.MailUtil;
 import com.thankjava.toolkit3d.bean.mail.MailEntity;
 
 public class MailTest {
@@ -21,7 +21,7 @@ public class MailTest {
 				"来着Fast-Toolkit3d发送的电子邮件"//邮件内容(支持标准邮件HTML结构)
 		);
 		
-//		MailSender.sendMail(mailEntity,new File("F:/Download/Browser/rootCA.crt"));//发送带附件的邮件
-		MailSender.sendMail(mailEntity);//发送不带附件的邮件
+//		MailUtil.sendMail(mailEntity,new File("F:/Download/Browser/rootCA.crt"));//发送带附件的邮件
+		MailUtil.sendMail(mailEntity);//发送不带附件的邮件
 	}
 }

@@ -3,7 +3,7 @@ package db.mysql;
 import com.thankjava.toolkit3d.core.fastjson.FastJson;
 import org.apache.ibatis.session.SqlSession;
 import com.thankjava.toolkit3d.core.db.mysql.MyBatisManager;
-import com.thankjava.toolkit3d.core.db.mysql.datasource.MySQLManager;
+import com.thankjava.toolkit3d.core.db.mysql.datasource.MyBatisManagerImpl;
 
 import db.mysql.mapper.TestMapper;
 import db.mysql.po.Test;
@@ -12,7 +12,7 @@ public class MyBatisManagerTest {
 
     public static void main(String[] args) {
 
-        final MyBatisManager myBatisManager = MySQLManager.getInstance();
+        final MyBatisManager myBatisManager = MyBatisManagerImpl.getInstance();
         SqlSession session = myBatisManager.getSqlSession();
         TestMapper mapper = session.getMapper(TestMapper.class);
 

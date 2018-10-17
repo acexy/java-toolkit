@@ -1,6 +1,6 @@
 package com.thankjava.toolkit.bean.reflect.copier;
 
-enum ClassType {
+public enum ClassType {
 
 	JDK_BASE, //JDK，默认简单类型
 	JDK_ARRAY, //数组 类型

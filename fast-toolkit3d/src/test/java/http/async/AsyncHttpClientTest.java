@@ -1,11 +1,11 @@
 package http.async;
 
-import com.thankjava.toolkit3d.core.async.AsyncHttpClient;
-import com.thankjava.toolkit3d.core.async.AsyncHttpClientBuilder;
-import com.thankjava.toolkit3d.core.async.consts.CookieCheckLevel;
-import com.thankjava.toolkit3d.core.async.consts.HttpMethod;
-import com.thankjava.toolkit3d.core.async.consts.RequestContentType;
-import com.thankjava.toolkit3d.core.async.entity.*;
+import com.thankjava.toolkit3d.core.http.AsyncHttpClient;
+import com.thankjava.toolkit3d.core.http.AsyncHttpClientBuilder;
+import com.thankjava.toolkit3d.core.http.consts.CookieCheckLevel;
+import com.thankjava.toolkit3d.core.http.consts.HttpMethod;
+import com.thankjava.toolkit3d.core.http.consts.RequestContentType;
+import com.thankjava.toolkit3d.core.http.entity.*;
 
 import java.io.File;
 

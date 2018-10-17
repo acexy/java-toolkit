@@ -1,13 +1,13 @@
 package db.redis;
 
 import com.thankjava.toolkit3d.core.db.redis.RedisManager;
-import com.thankjava.toolkit3d.core.db.redis.datasource.JedisManager;
+import com.thankjava.toolkit3d.core.db.redis.datasource.RedisManagerImpl;
 
 public class RedisManagerTest {
 
 	public static void main(String[] args) {
-		final RedisManager redis = JedisManager.getSingleton();
-//		final RedisManager redis = JedisManager.getSingleton("/Users/acexy/Downloads/redis.properties");
+		final RedisManager redis = RedisManagerImpl.getSingleton();
+//		final RedisManager redis = RedisManagerImpl.getSingleton("/Users/acexy/Downloads/redis.properties");
 
 //		System.out.println(redis.lpush("test", new String[]{"aa","cc","bb"}));
 //		System.out.println(redis.rpop("test"));

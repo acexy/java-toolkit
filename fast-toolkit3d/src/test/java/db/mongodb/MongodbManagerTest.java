@@ -1,15 +1,15 @@
 package db.mongodb;
 
-import com.thankjava.toolkit3d.core.db.mongodb.MongoDBManager;
-import com.thankjava.toolkit3d.core.db.mongodb.datasource.MongoDriverManager;
+import com.thankjava.toolkit3d.core.db.mongodb.MongoManager;
+import com.thankjava.toolkit3d.core.db.mongodb.datasource.MongoManagerImpl;
 
 
 public class MongodbManagerTest {
 
 
     public static void main(String[] args) {
-        MongoDBManager mongoDBManager = MongoDriverManager.getSingleton();
-//        MongoDBManager mongoDBManager = MongoDriverManager.getSingleton("/Users/acexy/Downloads/mongodb.properties");
+        MongoManager mongoManager = MongoManagerImpl.getSingleton();
+//        MongoManager mongoManager = MongoManagerImpl.getSingleton("/Users/acexy/Downloads/mongodb.properties");
 
 
 //        int index = 0;
@@ -17,11 +17,11 @@ public class MongodbManagerTest {
 //            Test test = new Test();
 //            test.setTime(new Date().getTime());
 //            test.setValue(String.valueOf(i));
-//            System.out.println(mongoDBManager.insertOne("test", test));
+//            System.out.println(mongoManager.insertOne("test", test));
 //        }
 
 //        test.setValue("10");
-//        System.out.println(mongoDBManager.updateOneByObjectId("test",test,"5a24f854eba60917d0191f8f"));
+//        System.out.println(mongoManager.updateOneByObjectId("test",test,"5a24f854eba60917d0191f8f"));
 
 //        PageEntity<Test> pageEntity = PageEntity.newPageEntity(Test.class, new Test());
 //        pageEntity
@@ -30,9 +30,9 @@ public class MongodbManagerTest {
 //                .setPageNumber(5)
 //                .setPageSize(5)
 //        ;
-//        mongoDBManager.findByPage("test", pageEntity);
+//        mongoManager.findByPage("test", pageEntity);
 //        System.out.println(FastJson.toJSONString(pageEntity));
 
-        mongoDBManager.deleteOneByObjectId("logs","5b76db371bba200ca44124fe");
+        mongoManager.deleteOneByObjectId("logs","5b76db371bba200ca44124fe");
     }
 }
