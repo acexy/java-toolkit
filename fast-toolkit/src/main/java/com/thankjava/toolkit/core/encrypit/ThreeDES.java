@@ -98,7 +98,6 @@ public final class ThreeDES {
 	}
 
 	private static byte[] unhexba(String str) {
-		str = str.replaceAll(" ", "");
 		byte[] origBe = str.getBytes();
 		byte[] newBe = new byte[str.length() / 2];
 
