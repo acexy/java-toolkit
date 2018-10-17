@@ -2,8 +2,6 @@ package com.thankjava.toolkit3d.bean.mail;
 
 import java.util.Properties;
 
-import com.thankjava.toolkit3d.core.enums.mail.MailService;
-
 /**
  * 邮件请求体
  * <p>Function: MailBean</p>

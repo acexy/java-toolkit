@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.enums.zip4j;
+package com.thankjava.toolkit3d.bean.zip4j;
 
 /**
  * 压缩方式

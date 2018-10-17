@@ -15,7 +15,7 @@ public class EhcacheManager {
     }
 
     public EhcacheManager(String configFilePath) {
-        CacheManager.create(configFilePath);
+        cacheManager = CacheManager.create(configFilePath);
     }
 
     /**
@@ -23,7 +23,7 @@ public class EhcacheManager {
      * <p>Function: setCache</p>
      * <p>Description: </p>
      *
-     * @param cacheName 缓存名 ehcache.xml里面配置的缓存策略
+     * @param cacheName 缓存名 ehcache.xml 里面配置的缓存策略
      * @param cacheKey  缓存key
      * @param object
      * @author acexy@thankjava.com

@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import javax.mail.MessagingException;
 
-import com.thankjava.toolkit3d.core.enums.mail.MailService;
+import com.thankjava.toolkit3d.bean.mail.MailService;
 import com.thankjava.toolkit3d.core.mail.MailUtil;
 import com.thankjava.toolkit3d.bean.mail.MailEntity;
 

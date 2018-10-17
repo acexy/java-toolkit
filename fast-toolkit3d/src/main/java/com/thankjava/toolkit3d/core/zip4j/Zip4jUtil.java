@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.thankjava.toolkit3d.core.enums.zip4j.ZipLevel;
-import com.thankjava.toolkit3d.core.enums.zip4j.ZipType;
+import com.thankjava.toolkit3d.bean.zip4j.ZipLevel;
+import com.thankjava.toolkit3d.bean.zip4j.ZipType;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
