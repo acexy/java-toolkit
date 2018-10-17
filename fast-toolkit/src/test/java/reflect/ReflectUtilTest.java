@@ -1,17 +1,17 @@
 package reflect;
 
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 
 import reflect.bean.ChiClass;
 
-public class ReflectHelperTest {
+public class ReflectUtilTest {
 
 	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException {
 		ChiClass cc = new ChiClass();
 
-		System.out.println(ReflectHelper.getField(ChiClass.class,"name1"));
+		System.out.println(ReflectUtil.getField(ChiClass.class,"name1"));
 
-//		Field[] fields = ReflectHelper.getFieldArrayExcludeUID(cc.getClass());
+//		Field[] fields = ReflectUtil.getFieldArrayExcludeUID(cc.getClass());
 //
 //		for (Field field : fields) {
 //			field.setAccessible(true);

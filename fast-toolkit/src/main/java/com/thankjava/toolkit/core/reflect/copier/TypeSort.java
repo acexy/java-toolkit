@@ -5,8 +5,8 @@ import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
-
+import com.thankjava.toolkit.bean.reflect.copier.ClassType;
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 
 
 /**
@@ -80,7 +80,7 @@ class TypeSort {
 			return ClassType.JDK_ENUM;
 		}
 		
-		type = ReflectHelper.getSignificantSupperClass(type);
+		type = ReflectUtil.getSignificantSupperClass(type);
 		
 		if(isBaseJDKListType(type)){
 			return ClassType.JDK_LIST;

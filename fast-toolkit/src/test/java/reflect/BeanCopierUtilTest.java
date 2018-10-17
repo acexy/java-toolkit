@@ -3,12 +3,12 @@ package reflect;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.thankjava.toolkit.core.reflect.BeanCopier;
+import com.thankjava.toolkit.core.reflect.BeanCopierUtil;
 
 import reflect.bean.entity.Entity1;
 import reflect.bean.vo.Vo1;
 
-public class BeanCopyerTest {
+public class BeanCopierUtilTest {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -22,7 +22,7 @@ public class BeanCopyerTest {
 //		String[] strArr = new String[]{"aa","bb","cc"};
 //		e1.setStrArr(strArr);
 //		
-//		Vo1 v1 = BeanCopier.copy(e1, Vo1.class);
+//		Vo1 v1 = BeanCopierUtil.copy(e1, Vo1.class);
 //		System.out.println(JSONObject.toJSONString(v1));
 		
 		
@@ -60,7 +60,7 @@ public class BeanCopyerTest {
 			e1.setStrArr(strArr);
 			
 			for(int i = 0 ; i < 100 ; i ++){
-				BeanCopier.copy(e1, Vo1.class);
+				BeanCopierUtil.copy(e1, Vo1.class);
 			}
 
 

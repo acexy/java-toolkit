@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 
 class ValueFactory {
 
@@ -59,7 +59,7 @@ class ValueFactory {
 		if(originValue == null){
 			return null;
 		}
-		Object enumNameObj = ReflectHelper.getFieldVal(originValue,"name");//获取枚举中的name属性
+		Object enumNameObj = ReflectUtil.getFieldVal(originValue,"name");//获取枚举中的name属性
 		if(enumNameObj == null){
 			return null;
 		}
@@ -93,12 +93,12 @@ class ValueFactory {
 		Class<?> proxyType = originList.get(0).getClass();
 
 //		Type type = targetField.getGenericType();
-//		Type[] types = (Type[]) ReflectHelper.getFieldVal(type, "actualTypeArguments");
+//		Type[] types = (Type[]) ReflectUtil.getFieldVal(type, "actualTypeArguments");
 //		System.out.println(types);
 //		Class<?> proxyType = null;
 //		try {
-//			System.out.println(ReflectHelper.getFieldVal(types[0], "name").toString());
-//			proxyType = Class.forName(ReflectHelper.getFieldVal(types[0], "name").toString());
+//			System.out.println(ReflectUtil.getFieldVal(types[0], "name").toString());
+//			proxyType = Class.forName(ReflectUtil.getFieldVal(types[0], "name").toString());
 //		} catch (ClassNotFoundException e) {
 //			e.printStackTrace();
 //			return null;

@@ -4,7 +4,7 @@ import com.thankjava.toolkit.bean.aop.anno.After;
 import com.thankjava.toolkit.bean.aop.anno.Before;
 import com.thankjava.toolkit.bean.aop.entity.AopArgs;
 import com.thankjava.toolkit.bean.aop.entity.AopConfig;
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 
 import java.lang.reflect.Method;
 
@@ -21,8 +21,8 @@ public class BreakMethod {
         Before before = aopConfig.getBefore();
         if (before != null) {
             Object aopInstance = aopConfig.getBeforeInstance();
-            Method aopMethod = ReflectHelper.getMethod(aopInstance.getClass(), aopConfig.getBefore().cutMethod(), AopArgs.class);
-            ReflectHelper.invokeMethod(aopInstance, aopMethod, aopArgs);
+            Method aopMethod = ReflectUtil.getMethod(aopInstance.getClass(), aopConfig.getBefore().cutMethod(), AopArgs.class);
+            ReflectUtil.invokeMethod(aopInstance, aopMethod, aopArgs);
         }
     }
 
@@ -30,8 +30,8 @@ public class BreakMethod {
         After after = aopConfig.getAfter();
         if (after != null) {
             Object aopInstance = aopConfig.getAfterInstance();
-            Method aopMethod = ReflectHelper.getMethod(aopInstance.getClass(), aopConfig.getAfter().cutMethod(), AopArgs.class);
-            ReflectHelper.invokeMethod(aopInstance, aopMethod, aopArgs);
+            Method aopMethod = ReflectUtil.getMethod(aopInstance.getClass(), aopConfig.getAfter().cutMethod(), AopArgs.class);
+            ReflectUtil.invokeMethod(aopInstance, aopMethod, aopArgs);
         }
     }
 

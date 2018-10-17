@@ -7,16 +7,16 @@ import java.util.Arrays;
 
 /**
  * 常用的反射操作
- * <p>Function: ReflectHelper</p>
+ * <p>Function: ReflectUtil</p>
  * <p>Description: </p>
  *
  * @author acexy@thankjava.com
  * @version 1.0
  * @date 2014-12-16 上午11:26:53
  */
-public final class ReflectHelper {
+public final class ReflectUtil {
 
-    private ReflectHelper() {
+    private ReflectUtil() {
     }
 
     /**

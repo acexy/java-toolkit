@@ -8,17 +8,17 @@ import java.util.List;
 import com.thankjava.toolkit.core.reflect.copier.ValueCast;
 
 /**
- * BeanCopier 属性对等复制
- * <p>Function: BeanCopier</p>
+ * BeanCopierUtil 属性对等复制
+ * <p>Function: BeanCopierUtil</p>
  * <p>Description: 适用于类似Po转Vo公共步骤</p>
  *
  * @author acexy@thankjava.com
  * @version 1.0
  * @date 2016年1月11日 上午10:27:41
  */
-public final class BeanCopier {
+public final class BeanCopierUtil {
 
-    private BeanCopier() {
+    private BeanCopierUtil() {
     }
 
     /**
@@ -127,7 +127,7 @@ public final class BeanCopier {
      */
     private static <OriginObject, TargetObject> TargetObject setValue(OriginObject originObject, TargetObject targetObject, Class<TargetObject> targetClass) {
 
-        Field[] targetFields = ReflectHelper.getFieldArrayIncludeSupClassExcludeUID(targetClass);
+        Field[] targetFields = ReflectUtil.getFieldArrayIncludeSupClassExcludeUID(targetClass);
 
         Field originField = null; //目标字段类型
 
@@ -137,7 +137,7 @@ public final class BeanCopier {
         //从目标对象中找原始对象的属性方式，
         for (Field targetField : targetFields) {
 
-            originField = ReflectHelper.getField(originObject.getClass(), targetField.getName());
+            originField = ReflectUtil.getField(originObject.getClass(), targetField.getName());
 
             if (originField == null) { //目标对象有，但是原始对象中没有
                 continue;
@@ -150,7 +150,7 @@ public final class BeanCopier {
             targetField.setAccessible(true);
             originField.setAccessible(true);
 
-            originValue = ReflectHelper.getFieldVal(originObject, targetField.getName());
+            originValue = ReflectUtil.getFieldVal(originObject, targetField.getName());
             if (originValue == null) { //从原始对象中获取的字段属性为null
                 continue;
             }

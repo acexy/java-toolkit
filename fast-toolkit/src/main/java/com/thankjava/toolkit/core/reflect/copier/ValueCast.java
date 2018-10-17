@@ -2,7 +2,7 @@ package com.thankjava.toolkit.core.reflect.copier;
 
 import java.lang.reflect.Field;
 
-import com.thankjava.toolkit.core.reflect.BeanCopier;
+import com.thankjava.toolkit.core.reflect.BeanCopierUtil;
 
 public class ValueCast {
 
@@ -39,7 +39,7 @@ public class ValueCast {
             case JDK_MAP:
                 return ValueFactory.createValueMap(targetField, targetFieldType, targetObject, originValue);
             default: //T
-                return BeanCopier.copy(originValue, targetFieldType);
+                return BeanCopierUtil.copy(originValue, targetFieldType);
         }
 
     }

@@ -4,7 +4,7 @@ import com.thankjava.toolkit.bean.aop.anno.After;
 import com.thankjava.toolkit.bean.aop.anno.Before;
 import com.thankjava.toolkit.bean.aop.entity.AopCache;
 import com.thankjava.toolkit.bean.aop.entity.AopConfig;
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 
 import java.lang.reflect.Method;
 
@@ -25,7 +25,7 @@ public class AopScanner {
         if (AopCache.isScannedClass(implementObjectClass)) {
             return;
         }
-        Method[] methods = ReflectHelper.getAllMethod(implementObjectClass);
+        Method[] methods = ReflectUtil.getAllMethod(implementObjectClass);
 
         if (methods != null) {
 

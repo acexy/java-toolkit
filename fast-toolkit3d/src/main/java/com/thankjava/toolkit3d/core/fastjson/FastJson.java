@@ -3,7 +3,7 @@ package com.thankjava.toolkit3d.core.fastjson;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONArray;
-import com.thankjava.toolkit.core.reflect.BeanCopier;
+import com.thankjava.toolkit.core.reflect.BeanCopierUtil;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -77,7 +77,7 @@ public class FastJson {
         @SuppressWarnings("unchecked")
         Class<T> clazz = (Class<T>) t.getClass();
         T tNew = toObject(json, clazz);
-        BeanCopier.append(tNew, t);
+        BeanCopierUtil.append(tNew, t);
         return tNew;
     }
 

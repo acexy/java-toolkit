@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 import com.thankjava.toolkit3d.bean.db.PageEntity;
 import com.thankjava.toolkit3d.bean.db.Sort;
 import org.apache.ibatis.executor.Executor;
@@ -44,14 +44,14 @@ public class PageSQLInterceptor implements Interceptor {
 
             BoundSql boundSql = statementHandler.getBoundSql();
             RoutingStatementHandler routingStatementHandler = (RoutingStatementHandler) invocation.getTarget();
-            PreparedStatementHandler preparedStatementHandler = (PreparedStatementHandler) ReflectHelper.getFieldVal(routingStatementHandler, "delegate");
-            MappedStatement mappedStatement = (MappedStatement) ReflectHelper.getFieldVal(preparedStatementHandler, "mappedStatement");
+            PreparedStatementHandler preparedStatementHandler = (PreparedStatementHandler) ReflectUtil.getFieldVal(routingStatementHandler, "delegate");
+            MappedStatement mappedStatement = (MappedStatement) ReflectUtil.getFieldVal(preparedStatementHandler, "mappedStatement");
 
             // 设置分页总条数
             setPageTotalCount(connection, mappedStatement, boundSql);
 
             // 修改语句变成分页语句
-            ReflectHelper.setFieldVal(boundSql, "sql", createPageSql(boundSql.getSql(), (PageEntity) boundSql.getParameterObject()));
+            ReflectUtil.setFieldVal(boundSql, "sql", createPageSql(boundSql.getSql(), (PageEntity) boundSql.getParameterObject()));
 
         } else {
 

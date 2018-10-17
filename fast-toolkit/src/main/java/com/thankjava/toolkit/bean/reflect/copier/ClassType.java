@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.core.reflect.copier;
+package com.thankjava.toolkit.bean.reflect.copier;
 
 enum ClassType {
 

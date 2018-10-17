@@ -1,7 +1,7 @@
 package bytecode;
 
 import com.thankjava.toolkit.core.bytecode.ByteCodeClassLoader;
-import com.thankjava.toolkit.core.reflect.ReflectHelper;
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 
 import java.lang.reflect.Method;
 
@@ -18,7 +18,7 @@ public class ByteCodeInvokeTest {
         byteCodeClassLoader.loadClassFromByteCodes(ByteCodeCompilerTest.compile());
         Class simpleClass = byteCodeClassLoader.findClass("bytecode.SimpleClass");
         Object instance = simpleClass.newInstance();
-        Method method = ReflectHelper.getMethod(instance.getClass(), "main");
-        ReflectHelper.invokeMethod(instance, method);
+        Method method = ReflectUtil.getMethod(instance.getClass(), "main");
+        ReflectUtil.invokeMethod(instance, method);
     }
 }
