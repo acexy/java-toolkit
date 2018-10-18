@@ -46,8 +46,8 @@ public class RSAWithBase64 {
         try {
             RSAKeys keys = RSA.keyGen(keySize);
             return new RSAStringKeys(
-                    new String(Base64.encodeBase64(keys.getPublicKey().getEncoded())),
-                    new String(Base64.encodeBase64(keys.getPrivateKey().getEncoded()))
+                    Base64Util.encode2String(keys.getPublicKey().getEncoded()),
+                    Base64Util.encode2String(keys.getPrivateKey().getEncoded())
             );
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class RSAWithBase64 {
     public static PrivateKey decryptPrivateKey(String privateKeyStr) {
         try {
             KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
-            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(Base64.decodeBase64(privateKeyStr));
+            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(Base64Util.decode(privateKeyStr));
             return keyFactory.generatePrivate(keySpec);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class RSAWithBase64 {
     public static PublicKey decryptPublicKey(String publicKeyStr) {
         try {
             KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
-            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.decodeBase64(publicKeyStr));
+            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64Util.decode(publicKeyStr));
             return keyFactory.generatePublic(keySpec);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -117,7 +117,7 @@ public class RSAWithBase64 {
      * @version 1.0
      */
     public static String encrypt(String content, String pubKey) {
-        return new String(Base64.encodeBase64(RSA.encrypt(content.getBytes(), decryptPublicKey(pubKey))));
+        return Base64Util.encode2String(RSA.encrypt(content.getBytes(), decryptPublicKey(pubKey)));
     }
 
     /**
@@ -133,7 +133,7 @@ public class RSAWithBase64 {
      * @version 1.0
      */
     public static String decrypt(String base64Cipher, String priKey) {
-        return new String(RSA.decrypt(Base64.decodeBase64(base64Cipher), decryptPrivateKey(priKey)));
+        return new String(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey)));
     }
 
     /**
@@ -144,19 +144,20 @@ public class RSAWithBase64 {
      * @return
      */
     public static String sign(String content, String priKey) {
-        return new String(Base64.encodeBase64(RSA.sign(content.getBytes(), decryptPrivateKey(priKey))));
+        return Base64Util.encode2String(RSA.sign(content.getBytes(), decryptPrivateKey(priKey)));
     }
 
 
     /**
      * 对源内容及base64密文进行验签处理
+     *
      * @param content
      * @param base64Cipher
      * @param pubKey
      * @return
      */
     public static boolean verify(String content, String base64Cipher, String pubKey) {
-        return RSA.verify(content.getBytes(), Base64.decodeBase64(base64Cipher), decryptPublicKey(pubKey));
+        return RSA.verify(content.getBytes(), Base64Util.decode(base64Cipher), decryptPublicKey(pubKey));
     }
 
 }
