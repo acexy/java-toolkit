@@ -2,13 +2,13 @@
 [![org](https://img.shields.io/badge/org-@LazyKoala-blue.svg)](https://github.com/lazy-koala/)
 ![version](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/thankjava/toolkit/fast-toolkit/maven-metadata.xml.svg)
 
-> ## 作用
+> ##### 作用
 - 基于jdk开发 不依赖第三方代码 (JDK >= 1.7)
 - 将一些java项目中常用的模块案例组件化，以便提供更简洁，更方便的代码案例
 - 用于不依赖大型框架快速开始进入开发的工具包
 
 ---
-> ## 介绍
+> #### 介绍
 - fast-toolkit
     - 基于JDK功能，不引入其他第三方组件
 
@@ -17,7 +17,7 @@
     - 依赖其他常用的开源jar（按实际需求进行依赖，该项目pom指定相关依赖为provided）
     - 将其他第三方优秀lib组件化，整理并提供更简洁的api处理方案
 
-> ## 获取
+> #### 获取
 maven仓库
     toolkit & toolkit3d 版本号要对应使用
 ```xml
@@ -34,10 +34,9 @@ maven仓库
   <version>1.1.0</version>
 </dependency>
 ```
----
-> ## [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/changelog.md)
----
-> ## 已实现的功能列表
+> #### [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/changelog.md)
+
+> #### 已实现的功能列表
 
 - toolkit
   - 基于JDK的接口层面AOP功能 [了解更多](https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec)
