@@ -1,22 +1,16 @@
 package com.thankjava.toolkit3d.core.encrypit;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.Key;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.SignatureException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-import com.thankjava.toolkit.bean.encrypit.RSAKeys;
+import com.thankjava.toolkit.bean.encrypit.RSAKey;
 import com.thankjava.toolkit.core.encrypit.RSA;
-import com.thankjava.toolkit3d.bean.encrypit.RSAStringKeys;
-import org.apache.commons.codec.binary.Base64;
+import com.thankjava.toolkit3d.bean.encrypit.RSAKeyString;
 
 /**
  * 基于JDK RSA 算法 通过Base64缩位
@@ -42,10 +36,10 @@ public class RSAWithBase64 {
      * @date 2016年8月10日 下午6:31:26
      * @version 1.0
      */
-    public static RSAStringKeys keyGen(int keySize) {
+    public static RSAKeyString keyGen(int keySize) {
         try {
-            RSAKeys keys = RSA.keyGen(keySize);
-            return new RSAStringKeys(
+            RSAKey keys = RSA.keyGen(keySize);
+            return new RSAKeyString(
                     Base64Util.encode2String(keys.getPublicKey().getEncoded()),
                     Base64Util.encode2String(keys.getPrivateKey().getEncoded())
             );

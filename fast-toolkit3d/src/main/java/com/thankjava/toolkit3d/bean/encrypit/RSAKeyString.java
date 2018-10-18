@@ -1,11 +1,11 @@
 package com.thankjava.toolkit3d.bean.encrypit;
 
-public class RSAStringKeys {
+public class RSAKeyString {
 
     private String publicKey;
     private String privateKey;
 
-    public RSAStringKeys(String publicKey, String privateKey) {
+    public RSAKeyString(String publicKey, String privateKey) {
         this.publicKey = publicKey;
         this.privateKey = privateKey;
     }

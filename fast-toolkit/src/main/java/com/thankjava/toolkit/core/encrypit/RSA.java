@@ -1,6 +1,6 @@
 package com.thankjava.toolkit.core.encrypit;
 
-import com.thankjava.toolkit.bean.encrypit.RSAKeys;
+import com.thankjava.toolkit.bean.encrypit.RSAKey;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -46,7 +46,7 @@ public final class RSA {
      * @date 2016年8月10日 下午5:31:36
      * @version 1.0
      */
-    public static RSAKeys keyGen(int keySize) {
+    public static RSAKey keyGen(int keySize) {
 
         KeyPairGenerator generator = null;
         try {
@@ -55,7 +55,7 @@ public final class RSA {
 
             KeyPair keyPair = generator.generateKeyPair();
 
-            return new RSAKeys(keyPair.getPublic(), keyPair.getPrivate());
+            return new RSAKey(keyPair.getPublic(), keyPair.getPrivate());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

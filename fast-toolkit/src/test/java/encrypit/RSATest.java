@@ -8,17 +8,17 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SignatureException;
 
-import com.thankjava.toolkit.bean.encrypit.RSAKeys;
+import com.thankjava.toolkit.bean.encrypit.RSAKey;
 import com.thankjava.toolkit.core.encrypit.RSA;
 
 public class RSATest {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException, IOException, InvalidKeyException, SignatureException {
 
-        RSAKeys keys = RSA.keyGen(1024);
+        RSAKey key = RSA.keyGen(1024);
 
-        PublicKey pubK = keys.getPublicKey();
-        PrivateKey priK = keys.getPrivateKey();
+        PublicKey pubK = key.getPublicKey();
+        PrivateKey priK = key.getPrivateKey();
 
         // 私钥加签数据
         String text = "RSA非对称算法";
