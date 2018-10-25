@@ -13,9 +13,9 @@ import java.net.URL;
  * @version 1.0
  * @date 2016年4月18日 上午10:33:00
  */
-public class ClassSourceLoaderUtil {
+public class SourceLoaderUtil {
 
-    private static ClassLoaderWrapper classLoaderWrapper = new ClassSourceLoaderUtil.ClassLoaderWrapper();
+    private static ClassLoaderWrapper classLoaderWrapper = new SourceLoaderUtil.ClassLoaderWrapper();
 
     /**
      * 加载内部指定资源

@@ -2,7 +2,7 @@ package com.thankjava.toolkit3d.core.db.mysql.datasource;
 
 import java.io.Reader;
 
-import com.thankjava.toolkit.core.utils.ClassSourceLoaderUtil;
+import com.thankjava.toolkit.core.utils.SourceLoaderUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -68,7 +68,7 @@ public class MyBatisManagerImpl implements MyBatisManager{
 		if(isConfigFromSources){
 			Reader reader = null;
 			try {
-				reader = ClassSourceLoaderUtil.getResourceAsReader(resource);
+				reader = SourceLoaderUtil.getResourceAsReader(resource);
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			} catch (Exception e) {
 				e.printStackTrace();

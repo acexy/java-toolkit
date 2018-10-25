@@ -10,7 +10,7 @@ import java.util.Properties;
 
 import com.mongodb.*;
 import com.mongodb.client.result.DeleteResult;
-import com.thankjava.toolkit.core.utils.ClassSourceLoaderUtil;
+import com.thankjava.toolkit.core.utils.SourceLoaderUtil;
 import com.thankjava.toolkit3d.bean.db.PageEntity;
 import com.thankjava.toolkit3d.bean.db.Sort;
 import com.thankjava.toolkit3d.core.db.mongodb.MongoManager;
@@ -36,7 +36,7 @@ public class MongoManagerImpl implements MongoManager {
     private static MongoManager manager = null;
 
     private MongoManagerImpl() {
-        init(ClassSourceLoaderUtil.getResourceAsReader("mongodb.properties"));
+        init(SourceLoaderUtil.getResourceAsReader("mongodb.properties"));
         manager = this;
     }
 
