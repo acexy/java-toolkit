@@ -23,12 +23,14 @@ public class Parameters {
     public Parameters(String name, String value) {
         nameValuePairs = new ArrayList<>();
         nameValuePairs.add(new BasicNameValuePair(name, value));
+        this.contentType = RequestContentType.APPLICATION_FORM_URLENCODED.code;
     }
 
     /**
      * 新增from-urlencode参数
      */
     public Parameters(Map<String, String> parameters) {
+
         if (parameters == null || parameters.size() == 0) {
             return;
         }
@@ -36,6 +38,8 @@ public class Parameters {
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
             nameValuePairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
         }
+        this.contentType = RequestContentType.APPLICATION_FORM_URLENCODED.code;
+
     }
 
     /**
@@ -60,6 +64,7 @@ public class Parameters {
      */
     public Parameters(String text) {
         this.text = text;
+        this.contentType = RequestContentType.TEXT_PLAIN.code;
     }
 
     /**
