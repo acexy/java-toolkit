@@ -22,7 +22,7 @@
 2. 提供缓存Ehcache API
 3. 提供数据库 Mongo&Mybatis&Redis API
 4. 提供基于alibaba fastjson API
-5. 提供基于apache async-http 模块的同步&异步http请求api
+5. 提供基于apache async-http 模块的同步&异步http(可类浏览器携带上下文持续请求)请求api
 6. 提供电子邮件发送（含附件）API
 7. 提供RSA(base64)&Base64 API
 8. 提供基于xstream的xml处理 API
