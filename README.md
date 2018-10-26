@@ -35,6 +35,6 @@ JDK >= 1.7
 </dependency>
 ```
 
-- [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/changelog.md)
+> #### [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/changelog.md)
 
-- [API List](https://github.com/lazy-koala/java-toolkit/blob/master/doc/apilist.md)
+> #### [API List](https://github.com/lazy-koala/java-toolkit/blob/master/doc/apilist.md)
