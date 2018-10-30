@@ -54,12 +54,13 @@ public class AopCache {
         aopConfigs.put(aopConfig.getClassPath() + aopConfig.getMethodName() + aopConfig.getArgs(), aopConfig);
     }
 
-    public static AopConfig getAopConfig(Object proxy, Method method, Object[] args) {
+    public static AopConfig getAopConfig(Object proxy, Method method) {
         String key = proxy.getClass().getName();
         key += method.getName();
-        if (args != null && args.length > 0) {
-            for (Object obj : args) {
-                key += obj.getClass().getName();
+        Class<?>[] parameterTypes = method.getParameterTypes();
+        if (parameterTypes != null && parameterTypes.length > 0) {
+            for (Class<?> clazz : parameterTypes) {
+                key += clazz.getName();
             }
         }
         return aopConfigs.get(key);
@@ -68,6 +69,7 @@ public class AopCache {
     public static void putCutPoint(Object cutPoint) {
         cutPoints.put(cutPoint.getClass(), cutPoint);
     }
+
     public static Object getCutPoint(Class<?> cutPointClass) {
         return cutPoints.get(cutPointClass);
     }

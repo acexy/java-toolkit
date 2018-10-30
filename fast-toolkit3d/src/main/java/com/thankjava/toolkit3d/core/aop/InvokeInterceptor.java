@@ -25,10 +25,10 @@ class InvokeInterceptor implements MethodInterceptor {
 
         args = args.length == 0 ? null : args;
 
-        AopConfig aopConfig = AopCache.getAopConfig(obj, method, args);
+        AopConfig aopConfig = AopCache.getAopConfig(obj, method);
         if (aopConfig == null) {
             AopScanner.scanner(implementObjectClass, obj.getClass());
-            aopConfig = AopCache.getAopConfig(obj, method, args);
+            aopConfig = AopCache.getAopConfig(obj, method);
         }
 
         if (!aopConfig.isUsedAop()) {

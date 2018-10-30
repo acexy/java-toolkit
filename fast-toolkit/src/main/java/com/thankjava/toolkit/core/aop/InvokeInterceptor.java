@@ -32,7 +32,7 @@ class InvokeInterceptor implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-        AopConfig aopConfig = AopCache.getAopConfig(implementObject, method, args);
+        AopConfig aopConfig = AopCache.getAopConfig(implementObject, method);
 
         if (!aopConfig.isUsedAop()) {
             return method.invoke(implementObject, args);
