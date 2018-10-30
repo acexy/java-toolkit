@@ -39,8 +39,10 @@ public class AopScanner {
                 config = new AopConfig();
                 argsType = method.getParameterTypes();
 
-                for (Class<?> clazz : argsType) {
-                    config.setArgs(clazz.getName());
+                if (argsType != null && argsType.length > 0) {
+                    for (Class<?> clazz : argsType) {
+                        config.setArgs(clazz.getName());
+                    }
                 }
 
                 before = method.getAnnotation(Before.class);

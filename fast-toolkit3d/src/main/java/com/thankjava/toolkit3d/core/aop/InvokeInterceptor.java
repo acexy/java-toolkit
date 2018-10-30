@@ -23,6 +23,8 @@ class InvokeInterceptor implements MethodInterceptor {
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
 
+        args = args.length == 0 ? null : args;
+
         AopConfig aopConfig = AopCache.getAopConfig(obj, method, args);
         if (aopConfig == null) {
             AopScanner.scanner(implementObjectClass, obj.getClass());
