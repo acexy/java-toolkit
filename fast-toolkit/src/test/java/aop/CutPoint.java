@@ -19,11 +19,11 @@ public class CutPoint {
     public void before(AopArgs param) {
 
         //通过该方法获取原始被拦截的方法的传入参数
-        String origStr = (String) param.getInvokeArgs()[0];
+        String origStr = param.getInvokeArgs() != null ? (String) param.getInvokeArgs()[0] : null;
 
         //修改被拦截的方法所能获得的参数 并且在after 切片中也只能获得被修改后的参数
         System.out.println("我是切片before，原来传递的参数: " + origStr + " 被我修改成了：proxy");
-        param.setInvokeArgs(new Object[]{"proxy"});
+        param.setInvokeArgs(param.getInvokeArgs() != null ? new Object[]{"proxy"} : null);
 
 
         //可以设置被拦截的方法到底是否需要执行 (该属性只有Before切片有用)

@@ -57,8 +57,10 @@ public class AopCache {
     public static AopConfig getAopConfig(Object proxy, Method method, Object[] args) {
         String key = proxy.getClass().getName();
         key += method.getName();
-        for (Object obj : args) {
-            key += obj.getClass().getName();
+        if (args != null) {
+            for (Object obj : args) {
+                key += obj.getClass().getName();
+            }
         }
         return aopConfigs.get(key);
     }
