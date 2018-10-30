@@ -45,9 +45,9 @@ class InvokeInterceptor implements InvocationHandler {
         AopArgs aopArgs = new AopArgs(args);
         aopArgs.setProxyInstance(proxy);
 
-        Object invokeReturn = null;
 
         BreakMethod.invokeBeforeCutPoint(aopConfig, aopArgs);
+        Object invokeReturn = aopArgs.getReturnResult();
 
         if (aopArgs.isInvokeProxyMethod()) {
             invokeReturn = method.invoke(implementObject, aopArgs.getInvokeArgs());
