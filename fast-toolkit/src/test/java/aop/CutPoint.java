@@ -18,6 +18,8 @@ public class CutPoint {
      */
     public void before(AopArgs param) {
 
+        System.out.println(param.getProxyInstance());
+
         //通过该方法获取原始被拦截的方法的传入参数
         String origStr = param.getInvokeArgs() != null ? (String) param.getInvokeArgs()[0] : null;
 

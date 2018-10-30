@@ -31,11 +31,16 @@ class InvokeInterceptor implements MethodInterceptor {
             aopConfig = AopCache.getAopConfig(obj, method);
         }
 
+        if (aopConfig == null) {
+            return proxy.invokeSuper(obj, args);
+        }
+
         if (!aopConfig.isUsedAop()) {
             return proxy.invokeSuper(obj, args);
         }
 
         AopArgs aopArgs = new AopArgs(args);
+        aopArgs.setProxyInstance(obj);
         Object invokeReturn = null;
 
         BreakMethod.invokeBeforeCutPoint(aopConfig, aopArgs);

@@ -34,11 +34,17 @@ class InvokeInterceptor implements InvocationHandler {
 
         AopConfig aopConfig = AopCache.getAopConfig(implementObject, method);
 
+        if (aopConfig == null) {
+            return method.invoke(implementObject, args);
+        }
+
         if (!aopConfig.isUsedAop()) {
             return method.invoke(implementObject, args);
         }
 
         AopArgs aopArgs = new AopArgs(args);
+        aopArgs.setProxyInstance(proxy);
+
         Object invokeReturn = null;
 
         BreakMethod.invokeBeforeCutPoint(aopConfig, aopArgs);
