@@ -14,8 +14,7 @@ JDK >= 1.7
   toolkit3d封装了主流的其他工具api函数，提供更加简洁的api使用函数
   toolkit3d依赖toolkit，版本号要对应使用
   
-所有toolkit3d的第三方依赖均被声明为provided，你不必担心主工程依赖它后自动依赖所有jar，
-  你只需要对你使用到的api引入相关组件即可。
+所有toolkit3d的第三方依赖均被声明为provided，你不必担心主工程依赖它后自动依赖所有jar，只需引入已使用的相关依赖。
 ```
 
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/changelog.md)
@@ -27,7 +26,7 @@ JDK >= 1.7
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
   </dependency>
   ```
 
@@ -35,7 +34,7 @@ JDK >= 1.7
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
   </dependency>
   ```
 
