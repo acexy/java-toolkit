@@ -2,7 +2,8 @@
 
 - toolkit
 ```
-1. 基于JDK的接口层面AOP功能 [了解更多](https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec)
+1. 基于JDK的接口层面AOP功能 
+    了解更多 https://www.thankjava.com/java/ef0d959aada9993d0d1469411f6086ec
 2. 常用时间处理函数
 3. JDK 简单HTTP post/get 请求工具
 4. IO文件追加写入,并拓展快速写入csv文件(100W条共100MB数据 约600毫秒完成)
@@ -13,7 +14,7 @@
 9. 线程池，定时任务等
 10. 图片验证码生成
 11. 动态Java源代码执行&字节码编译器&字节码加载器
-    了解更多https://www.thankjava.com/java/ad45a9286d234105ad9165a7f43626b7
+    了解更多 https://www.thankjava.com/java/ad45a9286d234105ad9165a7f43626b7
 12. 基于JDK代理实现的AOP接口切片
 ```  
 - toolkit3d
