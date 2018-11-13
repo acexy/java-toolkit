@@ -19,7 +19,7 @@
 ```  
 - toolkit3d
 ```
-1. 基于cglib的实现的普通类AOP切片
+1. 提供基于cglib的实现的普通类AOP切片
 2. 提供缓存Ehcache API
 3. 提供数据库 Mongo&Mybatis&Redis API
 4. 提供基于alibaba fastjson API
@@ -27,5 +27,5 @@
 6. 提供电子邮件发送（含附件）API
 7. 提供RSA(base64)&Base64 API
 8. 提供基于xstream的xml处理 API
-9. 基于zip4j的压缩文件处理 API
+9. 提供基于zip4j的压缩文件处理 API
 ```
