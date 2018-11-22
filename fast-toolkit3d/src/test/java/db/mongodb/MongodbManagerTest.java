@@ -1,7 +1,7 @@
 package db.mongodb;
 
 import com.thankjava.toolkit3d.core.db.mongodb.MongoManager;
-import com.thankjava.toolkit3d.core.db.mongodb.datasource.MongoManagerImpl;
+import com.thankjava.toolkit3d.core.db.mongodb.impl.MongoManagerImpl;
 import db.mysql.po.Test;
 
 

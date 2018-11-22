@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.db.mongodb.datasource;
+package com.thankjava.toolkit3d.core.db.mongodb.impl;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

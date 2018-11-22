@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.db.mysql.datasource;
+package com.thankjava.toolkit3d.core.db.mysql.impl;
 
 import java.io.Reader;
 
