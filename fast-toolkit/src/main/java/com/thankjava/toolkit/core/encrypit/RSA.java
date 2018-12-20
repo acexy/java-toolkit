@@ -38,7 +38,7 @@ public final class RSA {
      * <p>Description: </p>
      *
      * @param keySize
-     * @return Key数组  index = 0 公钥 | index = 1 私钥
+     * @return RSAKey
      * @throws NoSuchAlgorithmException
      * @throws FileNotFoundException
      * @throws IOException
