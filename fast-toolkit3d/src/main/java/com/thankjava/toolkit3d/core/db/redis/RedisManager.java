@@ -232,4 +232,10 @@ public interface RedisManager {
      * @param fields
      */
     public long srem(String key, String... fields);
+
+    /**
+     * 原子性递增 1
+     * @param key
+     */
+    public void incr(String key);
 }
