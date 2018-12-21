@@ -381,13 +381,14 @@ public class RedisManagerImpl implements RedisManager {
     }
 
     @Override
-    public void incr(String key) {
+    public Long incr(String key) {
         Jedis jedis = null;
         try {
             jedis = getJedis();
-            jedis.incr(key);
+            return jedis.incr(key);
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         } finally {
             returnJedis(jedis);
         }

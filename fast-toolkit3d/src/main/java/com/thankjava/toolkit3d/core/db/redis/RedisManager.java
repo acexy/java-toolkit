@@ -237,5 +237,5 @@ public interface RedisManager {
      * 原子性递增 1
      * @param key
      */
-    public void incr(String key);
+    public Long incr(String key);
 }

@@ -21,8 +21,7 @@ public class RedisManagerTest {
 
                 @Override
                 public void run() {
-                    redis.incr("a");
-                    System.out.println("do");
+                    System.out.println(redis.incr("a"));
                 }
             });
         }
