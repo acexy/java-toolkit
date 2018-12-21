@@ -20,4 +20,3 @@ hs_err_pid*
 .idea
 *.iml
 .DS_Store
-fast-toolkit3d/src/test/resources/*
