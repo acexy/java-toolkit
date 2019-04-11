@@ -2,7 +2,7 @@ package cache.ehcache;
 
 import com.thankjava.toolkit3d.core.ehcache.EhcacheManager;
 
-public class EcacheManagerTest {
+public class EhcacheManagerTest {
 
 	public static void main(String[] args) {
 		EhcacheManager manager = new EhcacheManager();
