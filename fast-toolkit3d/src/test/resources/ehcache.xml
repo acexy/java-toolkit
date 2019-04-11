@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
 
 
-	<diskStore path="/tmp/ehcache" />
+    <diskStore path="/tmp/ehcache"/>
 
-	<!--  
+    <!--
     name：Cache的唯一标识
     maxElementsInMemory：内存中最大缓存对象数
     maxElementsOnDisk：磁盘中最大缓存对象数，若是0表示无穷大
@@ -17,27 +18,27 @@
     diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区 
     memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）  
     -->
-	<!-- 
-		该缓存会死亡 
-		eternal="false" 
-		（2分钟） 多长时间不访问该缓存,那么ehcache 就会清除该缓存 
-		timeToIdleSeconds="120" 
-		缓存的存活时间,从开始创建的时间算起 
-		timeToLiveSeconds="120" 
-		当缓存中元素的数量超过限制时,就把这些元素持久化到硬盘 
-		overflowToDisk="true" 
-	-->
-	<defaultCache maxElementsInMemory="10000" 
-		eternal="false"
-		timeToIdleSeconds="120" 
-		timeToLiveSeconds="120" 
-		overflowToDisk="true" 
-		maxElementsOnDisk="10000000" 
-		diskPersistent="false" 
-		diskExpiryThreadIntervalSeconds="120" 
-		memoryStoreEvictionPolicy="LRU" />
- 	
-	
-	<cache name="test" maxElementsInMemory="100" eternal="false" overflowToDisk="true" diskPersistent="true" />
-	
+    <!--
+        该缓存会死亡
+        eternal="false"
+        （2分钟） 多长时间不访问该缓存,那么ehcache 就会清除该缓存
+        timeToIdleSeconds="120"
+        缓存的存活时间,从开始创建的时间算起
+        timeToLiveSeconds="120"
+        当缓存中元素的数量超过限制时,就把这些元素持久化到硬盘
+        overflowToDisk="true"
+    -->
+    <defaultCache maxElementsInMemory="10000"
+                  eternal="false"
+                  timeToIdleSeconds="120"
+                  timeToLiveSeconds="120"
+                  overflowToDisk="true"
+                  maxElementsOnDisk="10000000"
+                  diskPersistent="false"
+                  diskExpiryThreadIntervalSeconds="120"
+                  memoryStoreEvictionPolicy="LRU"/>
+
+
+    <cache name="test" maxElementsInMemory="100" eternal="false" overflowToDisk="true" diskPersistent="true"/>
+
 </ehcache>
