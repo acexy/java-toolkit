@@ -16,10 +16,10 @@ JDK >= 1.7
   
 所有toolkit3d的第三方依赖均被声明为provided，你不必担心主工程依赖它后自动依赖所有jar，只需引入已使用的相关依赖。
 ```
-
+---
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/changelog.md)
 - [API List](https://github.com/lazy-koala/java-toolkit/blob/master/doc/apilist.md)
-
+---
 - 获取
 
   ```xml
