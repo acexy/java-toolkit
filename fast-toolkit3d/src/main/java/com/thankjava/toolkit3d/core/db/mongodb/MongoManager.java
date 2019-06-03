@@ -31,7 +31,7 @@ public interface MongoManager {
      * @date 2016年3月8日 上午11:36:00
      * @version 1.0
      */
-    public long count(String docName, Document docFilter);
+    long count(String docName, Document docFilter);
 
     /**
      * 插入一条数据
@@ -45,7 +45,7 @@ public interface MongoManager {
      * @date 2016年3月8日 下午5:27:57
      * @version 1.0
      */
-    public String insertOne(String docName, Document doc);
+    String insertOne(String docName, Document doc);
 
     /**
      * 一次性插入批量数据
@@ -59,7 +59,7 @@ public interface MongoManager {
      * @date 2016年3月8日 下午5:28:24
      * @version 1.0
      */
-    public boolean insertMany(String docName, List<Document> docs);
+    boolean insertMany(String docName, List<Document> docs);
 
     /**
      * 插入一条数据
@@ -73,7 +73,7 @@ public interface MongoManager {
      * @date 2016年3月8日 下午5:28:34
      * @version 1.0
      */
-    public String insertOne(String docName, Object t);
+    String insertOne(String docName, Object t);
 
     /**
      * 一次性插入批量数据
@@ -87,7 +87,7 @@ public interface MongoManager {
      * @date 2016年3月8日 下午5:28:53
      * @version 1.0
      */
-    public boolean insertMany(List<Object> ts, String docName);
+    boolean insertMany(List<Object> ts, String docName);
 
     /**
      * 通过Mongo Bson Object HexString 主键查询
@@ -96,7 +96,7 @@ public interface MongoManager {
      * @param objectHexString
      * @return
      */
-    public Document findByObjectId(String docName, String objectHexString);
+    Document findByObjectId(String docName, String objectHexString);
 
     /**
      * 通过Mongo Bson Object HexString 主键查询
@@ -107,7 +107,7 @@ public interface MongoManager {
      * @param <T>
      * @return
      */
-    public <T> T findByObjectId(String docName, String objectHexString, Class<T> clazz);
+    <T> T findByObjectId(String docName, String objectHexString, Class<T> clazz);
 
     /**
      * 查询一条数据
@@ -121,7 +121,7 @@ public interface MongoManager {
      * @date 2016年3月30日 上午11:47:51
      * @version 1.0
      */
-    public Document findOne(String docName, Document docFilter);
+    Document findOne(String docName, Document docFilter);
 
     /**
      * 查询一条数据
@@ -135,7 +135,7 @@ public interface MongoManager {
      * @date 2016年3月30日 下午1:48:01
      * @version 1.0
      */
-    public Document findOne(String docName, Object t);
+    Document findOne(String docName, Object t);
 
     /**
      * 查询一条数据
@@ -150,7 +150,7 @@ public interface MongoManager {
      * @date 2016年3月30日 下午1:41:07
      * @version 1.0
      */
-    public <T> T findOne(String docName, Object tFilter, Class<T> clazz);
+    <T> T findOne(String docName, Object tFilter, Class<T> clazz);
 
 
     /**
@@ -166,7 +166,7 @@ public interface MongoManager {
      * @date 2016年3月30日 下午1:57:43
      * @version 1.0
      */
-    public <T> T findOne(String docName, Document docFilter, Class<T> clazz);
+    <T> T findOne(String docName, Document docFilter, Class<T> clazz);
 
     /**
      * 通过docFilter查找数据 返回List<Document> docFilter=null时查询全部
@@ -175,7 +175,7 @@ public interface MongoManager {
      * @param docFilter
      * @return
      */
-    public List<Document> findMany(String docName, Document docFilter);
+    List<Document> findMany(String docName, Document docFilter);
 
     /**
      * 通过JavaBean(bean)查找数据 返回List<Document> fFilter=null时查询全部
@@ -184,7 +184,7 @@ public interface MongoManager {
      * @param tFilter
      * @return
      */
-    public List<Document> findMany(String docName, Object tFilter);
+    List<Document> findMany(String docName, Object tFilter);
 
     /**
      * 通过docFilter查找数据 返回List<JavaBean(bean)> docFilter=null时查询全部
@@ -194,7 +194,7 @@ public interface MongoManager {
      * @param clazz
      * @return
      */
-    public <T> List<T> findMany(String docName, Document docFilter, Class<T> clazz);
+    <T> List<T> findMany(String docName, Document docFilter, Class<T> clazz);
 
     /**
      * 通过JavaBean(bean)查找数据 返回List<JavaBean(bean)> fFilter=null时查询全部
@@ -204,7 +204,7 @@ public interface MongoManager {
      * @param clazz
      * @return
      */
-    public <T> List<T> findMany(String docName, Object tFilter, Class<T> clazz);
+    <T> List<T> findMany(String docName, Object tFilter, Class<T> clazz);
 
     /**
      * 找到符合条件的第一条数据(即使有多条也只认为符合的只有一条),并执行更新,当更新的数据!=1返回false
@@ -215,7 +215,7 @@ public interface MongoManager {
      * @param docFilter docFilter=null 更新条件不指定
      * @return
      */
-    public boolean updateOne(String docName, Document doc, Document docFilter);
+    boolean updateOne(String docName, Document doc, Document docFilter);
 
     /**
      * 根据objectHexString更新一条数据
@@ -226,7 +226,7 @@ public interface MongoManager {
      * @param objectHexString
      * @return
      */
-    public boolean updateOneByObjectId(String docName, Document doc, String objectHexString);
+    boolean updateOneByObjectId(String docName, Document doc, String objectHexString);
 
     /**
      * 根据objectHexString更新一条数据
@@ -237,7 +237,7 @@ public interface MongoManager {
      * @param objectHexString
      * @return
      */
-    public boolean updateOneByObjectId(String docName, Object t, String objectHexString);
+    boolean updateOneByObjectId(String docName, Object t, String objectHexString);
 
     /**
      * 更新多条数据,当找到符合更新条件的数据n条,更新数据y条,当n=0||y=0(或者没有更新任何一条数据)返回false
@@ -248,7 +248,7 @@ public interface MongoManager {
      * @param docFilter
      * @return
      */
-    public boolean updateMany(String docName, Document doc, Document docFilter);
+    boolean updateMany(String docName, Document doc, Document docFilter);
 
 
     /**
@@ -265,7 +265,7 @@ public interface MongoManager {
      * @date 2016年9月2日 下午5:31:08
      * @version 1.0
      */
-    public boolean updateOne(String docName, Object t, Object tFilter);
+    boolean updateOne(String docName, Object t, Object tFilter);
 
     /**
      * 更新多条数据,当找到符合更新条件的数据n条,更新数据y条,当n=0||y=0(或者没有更新任何一条数据)返回false
@@ -281,7 +281,7 @@ public interface MongoManager {
      * @date 2016年9月2日 下午5:32:24
      * @version 1.0
      */
-    public boolean updateMany(String docName, Object t, Object tFilter);
+    boolean updateMany(String docName, Object t, Object tFilter);
 
     /**
      * 分页条件查询
@@ -290,7 +290,7 @@ public interface MongoManager {
      * @param pageEntity
      * @param <T>
      */
-    public <T> void findByPage(String docName, PageEntity<T> pageEntity);
+    <T> void findByPage(String docName, PageEntity<T> pageEntity);
 
     /**
      * 通过objectId删除数据
@@ -298,7 +298,7 @@ public interface MongoManager {
      * @param docName
      * @param objectHexString
      */
-    public boolean deleteOneByObjectId(String docName, String objectHexString);
+    boolean deleteOneByObjectId(String docName, String objectHexString);
 
     /**
      * 条件删除一条数据
@@ -307,7 +307,7 @@ public interface MongoManager {
      * @param filter
      * @return
      */
-    public boolean deleteOneByCondition(String docName, Document filter);
+    boolean deleteOneByCondition(String docName, Document filter);
 
     /**
      * 条件删除一条数据
@@ -316,7 +316,7 @@ public interface MongoManager {
      * @param tFilter
      * @return
      */
-    public boolean deleteOneByCondition(String docName, Object tFilter);
+    boolean deleteOneByCondition(String docName, Object tFilter);
 
     /**
      * 条件删除多条
@@ -325,13 +325,14 @@ public interface MongoManager {
      * @param filter
      * @return
      */
-    public boolean deleteManyByCondition(String docName, Document filter);
+    boolean deleteManyByCondition(String docName, Document filter);
 
     /**
      * 条件删除多条
+     *
      * @param docName
      * @param tFilter
      * @return
      */
-    public boolean deleteManyByCondition(String docName, Object tFilter);
+    boolean deleteManyByCondition(String docName, Object tFilter);
 }

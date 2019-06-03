@@ -30,7 +30,7 @@ public interface RedisManager {
      * @date 2016年3月7日 下午5:11:29
      * @version 1.0
      */
-    public boolean set(String key, String value);
+    boolean set(String key, String value);
 
     /**
      * get K
@@ -43,7 +43,7 @@ public interface RedisManager {
      * @date 2016年3月7日 下午6:11:19
      * @version 1.0
      */
-    public String get(String key);
+    String get(String key);
 
     /**
      * 判断一个key是否存在
@@ -56,7 +56,7 @@ public interface RedisManager {
      * @date 2016年3月8日 上午10:12:23
      * @version 1.0
      */
-    public boolean exists(String key);
+    boolean exists(String key);
 
 
     /**
@@ -71,7 +71,7 @@ public interface RedisManager {
      * @date 2016年3月24日 上午10:58:36
      * @version 1.0
      */
-    public boolean expire(String key, int expirationTime);
+    boolean expire(String key, int expirationTime);
 
     /**
      * 设置 set
@@ -85,7 +85,7 @@ public interface RedisManager {
      * @date 2016年3月24日 上午11:07:57
      * @version 1.0
      */
-    public boolean sadd(String key, String... setValue);
+    boolean sadd(String key, String... setValue);
 
     /**
      * 设置hash
@@ -100,7 +100,7 @@ public interface RedisManager {
      * @date 2016年3月24日 上午11:24:28
      * @version 1.0
      */
-    public boolean hset(String key, String hashKey, String hashValue);
+    boolean hset(String key, String hashKey, String hashValue);
 
     /**
      * 设置多个hash
@@ -109,7 +109,7 @@ public interface RedisManager {
      * @param hash
      * @return
      */
-    public boolean hmset(String key, HashMap<String, String> hash);
+    boolean hmset(String key, HashMap<String, String> hash);
 
     /**
      * 删除key
@@ -122,7 +122,7 @@ public interface RedisManager {
      * @date 2016年3月24日 上午11:27:27
      * @version 1.0
      */
-    public boolean del(String key);
+    boolean del(String key);
 
     /**
      * lpush list
@@ -136,7 +136,7 @@ public interface RedisManager {
      * @date 2016年5月5日 下午3:34:30
      * @version 1.0
      */
-    public boolean lpush(String key, String... listValue);
+    boolean lpush(String key, String... listValue);
 
     /**
      * 获取并移除list中尾元素
@@ -149,7 +149,7 @@ public interface RedisManager {
      * @date 2016年5月5日 下午3:53:48
      * @version 1.0
      */
-    public String rpop(String key);
+    String rpop(String key);
 
 
     /**
@@ -163,7 +163,7 @@ public interface RedisManager {
      * @date 2016年5月19日 下午2:46:23
      * @version 1.0
      */
-    public Set<String> smembers(String key);
+    Set<String> smembers(String key);
 
     /**
      * 获取hash数据
@@ -176,9 +176,9 @@ public interface RedisManager {
      * @date 2016年5月19日 下午2:53:03
      * @version 1.0
      */
-    public Map<String, String> hgetall(String key);
+    Map<String, String> hgetall(String key);
 
-    public String hget(String key, String field);
+    String hget(String key, String field);
 
     /**
      * hmaget
@@ -192,7 +192,7 @@ public interface RedisManager {
      * @date 2017年3月29日 下午7:15:05
      * @version 1.0
      */
-    public List<String> hmget(String key, String... fields);
+    List<String> hmget(String key, String... fields);
 
     /**
      * 批处理一次性取出一批key值 hgetall
@@ -205,7 +205,7 @@ public interface RedisManager {
      * @date 2017年3月29日 下午6:52:52
      * @version 1.0
      */
-    public List<Object> hgetallPipelined(Set<String> keys);
+    List<Object> hgetallPipelined(Set<String> keys);
 
     /**
      * 删除hash
@@ -214,7 +214,7 @@ public interface RedisManager {
      * @param fields 可选，不填删除整个key
      * @return
      */
-    public boolean hdel(String key, String... fields);
+    boolean hdel(String key, String... fields);
 
     /**
      * 判断提供的数据是否在set里面
@@ -223,7 +223,7 @@ public interface RedisManager {
      * @param field
      * @return
      */
-    public boolean sismember(String key, String field);
+    boolean sismember(String key, String field);
 
     /**
      * 从set中移除
@@ -231,11 +231,12 @@ public interface RedisManager {
      * @param key
      * @param fields
      */
-    public long srem(String key, String... fields);
+    long srem(String key, String... fields);
 
     /**
      * 原子性递增 1
+     *
      * @param key
      */
-    public Long incr(String key);
+    Long incr(String key);
 }

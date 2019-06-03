@@ -170,12 +170,14 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
     <scm>
         <tag>master</tag>
         <url>git@github.com:lazy-koala/java-toolkit.git</url>
         <connection>scm:git:git@github.com:lazy-koala/java-toolkit.git</connection>
         <developerConnection>scm:git:git@github.com:lazy-koala/java-toolkit.git</developerConnection>
     </scm>
+
     <developers>
         <developer>
             <name>acexy</name>

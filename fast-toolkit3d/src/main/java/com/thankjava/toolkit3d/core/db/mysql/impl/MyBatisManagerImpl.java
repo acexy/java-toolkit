@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.thankjava.toolkit3d.core.db.mysql.MyBatisManager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class MyBatisManagerImpl implements MyBatisManager {
 
     private static SqlSessionFactory sqlSessionFactory;
@@ -14,6 +17,8 @@ class MyBatisManagerImpl implements MyBatisManager {
 
     private MyBatisManagerImpl() {
     }
+
+    private static Map<Object, SqlSession> sessions = new HashMap<>();
 
     private static String sourceName = "mybatis-config.xml";
 
@@ -47,6 +52,28 @@ class MyBatisManagerImpl implements MyBatisManager {
     }
 
     public void commitAndCloseSqlSession(SqlSession session) {
+        if (session != null) {
+            session.commit();
+            session.close();
+        }
+    }
+
+    public <T> T getMapper(Class<T> t) {
+        SqlSession session = getSqlSession();
+        T mapper = session.getMapper(t);
+        sessions.put(mapper, session);
+        return mapper;
+    }
+
+    public void closeSqlSession(Object mapper) {
+        SqlSession session = sessions.get(mapper);
+        if (session != null) {
+            session.close();
+        }
+    }
+
+    public void commitAndCloseSqlSession(Object mapper) {
+        SqlSession session = sessions.get(mapper);
         if (session != null) {
             session.commit();
             session.close();
