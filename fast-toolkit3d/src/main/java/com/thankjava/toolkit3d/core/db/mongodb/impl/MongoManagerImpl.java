@@ -25,7 +25,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
 import org.bson.types.ObjectId;
 
-public class MongoManagerImpl implements MongoManager {
+class MongoManagerImpl implements MongoManager {
 
     private static MongoDatabase mongoDatabase = null;
 
@@ -36,46 +36,24 @@ public class MongoManagerImpl implements MongoManager {
     private static MongoManager manager = null;
 
     private MongoManagerImpl() {
-        init(SourceLoaderUtil.getResourceAsReader("mongodb.properties"));
-        manager = this;
     }
 
-    private MongoManagerImpl(String configFilePath) {
-        try {
-            init(new FileReader(configFilePath));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        manager = this;
-    }
-
-    /**
-     * 获取单例模式的mongo驱动
-     * 配置文件自动加载工程内部 classpath下 mongodb.properties
-     *
-     * @return
-     */
-    public static MongoManager getSingleton() {
+    private static MongoManager init(String configPath) {
         if (manager == null) {
-            new MongoManagerImpl();
+            manager = new MongoManagerImpl();
+        } else {
+            return manager;
         }
-        return manager;
-    }
-
-    /**
-     * 获取单例模式的mongo驱动
-     *
-     * @param filePath 配置文件源
-     * @return
-     */
-    public static MongoManager getSingleton(String filePath) {
-        if (manager == null) {
-            new MongoManagerImpl(filePath);
+        Reader reader = null;
+        if (configPath == null || configPath.trim().length() == 0) {
+            reader = SourceLoaderUtil.getResourceAsReader("mongodb.properties");
+        } else {
+            try {
+                reader = new FileReader(configPath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-        return manager;
-    }
-
-    private void init(Reader reader) {
         try {
             MongoClient mongoClient = null;
 
@@ -102,6 +80,7 @@ public class MongoManagerImpl implements MongoManager {
                 e.printStackTrace();
             }
         }
+        return manager;
     }
 
     /**

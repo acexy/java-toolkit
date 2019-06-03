@@ -22,7 +22,7 @@ public final class ReflectUtil {
     /**
      * 获取对象指定属性信息
      * <p>Function: getField</p>
-     * <p>Description: 取消安全机制限制，如果当前类不存在，则获取父类属性信息，未找到则返回NULL</p>
+     * <p>Description: 取消安全机制限制，如果当前类不存在，则获取父类属性信息，未找到则返回null</p>
      *
      * @param clazz
      * @param fieldName

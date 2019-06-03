@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.db.redis.datasource;
+package com.thankjava.toolkit3d.core.db.redis.impl;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +18,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Pipeline;
 
-public class RedisManagerImpl implements RedisManager {
+class RedisManagerImpl implements RedisManager {
 
     private static JedisPool jedisPool = null;
 
@@ -27,46 +27,24 @@ public class RedisManagerImpl implements RedisManager {
     private static RedisManager manager = null;
 
     private RedisManagerImpl() {
-        init(SourceLoaderUtil.getResourceAsReader("redis.properties"));
-        manager = this;
     }
 
-    private RedisManagerImpl(String filePath) {
-        try {
-            init(new FileReader(filePath));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        manager = this;
-    }
-
-    /**
-     * 获取单例模式的redis驱动
-     * 自动加载工程内部classpath下redis.properties
-     *
-     * @return
-     */
-    public static RedisManager getSingleton() {
+    private static RedisManager init(String configPath) {
         if (manager == null) {
-            new RedisManagerImpl();
+            manager = new RedisManagerImpl();
+        } else {
+            return manager;
         }
-        return manager;
-    }
-
-    /**
-     * 获取单例模式redis驱动
-     *
-     * @param filePath 指定配置文件源位置
-     * @return
-     */
-    public static RedisManager getSingleton(String filePath) {
-        if (manager == null) {
-            new RedisManagerImpl(filePath);
+        Reader reader = null;
+        if (configPath == null || configPath.trim().length() == 0) {
+            reader = SourceLoaderUtil.getResourceAsReader("redis.properties");
+        } else {
+            try {
+                reader = new FileReader(configPath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-        return manager;
-    }
-
-    private void init(Reader reader) {
         try {
             Properties props = new Properties();
             props.load(reader);
@@ -109,13 +87,14 @@ public class RedisManagerImpl implements RedisManager {
                 e.printStackTrace();
             }
         }
+        return manager;
     }
 
-    static Jedis getJedis() {
+    private static Jedis getJedis() {
         return jedisPool.getResource();
     }
 
-    static void returnJedis(Jedis jedis) {
+    private static void returnJedis(Jedis jedis) {
         if (jedis != null) {
             jedis.close();
         }
