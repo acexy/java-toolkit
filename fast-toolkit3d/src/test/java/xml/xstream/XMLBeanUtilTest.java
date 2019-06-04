@@ -1,11 +1,11 @@
-package xml;
+package xml.xstream;
 
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.thankjava.toolkit3d.core.fastjson.FastJson;
-import com.thankjava.toolkit3d.core.xml.XMLBeanUtil;
+import com.thankjava.toolkit3d.core.xml.xstream.XMLBeanUtil;
 
 public class XMLBeanUtilTest {
 	

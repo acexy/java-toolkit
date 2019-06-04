@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.mail;
+package com.thankjava.toolkit3d.core.mail.javax;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;

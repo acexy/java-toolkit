@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.http.core;
+package com.thankjava.toolkit3d.core.http.httpclient.async.core;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;

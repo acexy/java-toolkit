@@ -1,4 +1,4 @@
-package aop;
+package aop.cglib;
 
 
 import com.thankjava.toolkit.bean.aop.anno.After;

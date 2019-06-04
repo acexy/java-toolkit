@@ -1,4 +1,4 @@
-package xml;
+package xml.xstream;
 
 public class EntityA {
 

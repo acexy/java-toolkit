@@ -37,6 +37,7 @@
         <commons-codec.version>1.11</commons-codec.version>
         <zip4j.version>1.3.2</zip4j.version>
         <httpasyncclient.version>4.1.4</httpasyncclient.version>
+        <poi.version>4.1.0</poi.version>
     </properties>
 
     <version>${com.thankjava.toolkit.version}</version>
@@ -132,6 +133,19 @@
             <version>${httpasyncclient.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

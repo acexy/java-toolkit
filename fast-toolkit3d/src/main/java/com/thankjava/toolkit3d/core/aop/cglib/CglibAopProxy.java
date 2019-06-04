@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.aop;
+package com.thankjava.toolkit3d.core.aop.cglib;
 
 import net.sf.cglib.proxy.Enhancer;
 

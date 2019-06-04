@@ -1,8 +1,8 @@
-package http;
+package http.httpclient.async;
 
 import com.thankjava.toolkit3d.bean.http.*;
-import com.thankjava.toolkit3d.core.http.AsyncHttpClient;
-import com.thankjava.toolkit3d.core.http.AsyncHttpClientBuilder;
+import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClient;
+import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClientBuilder;
 
 import java.io.File;
 

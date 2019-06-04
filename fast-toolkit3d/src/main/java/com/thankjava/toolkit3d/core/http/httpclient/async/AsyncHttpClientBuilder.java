@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.http;
+package com.thankjava.toolkit3d.core.http.httpclient.async;
 
 import com.thankjava.toolkit3d.bean.http.CookieCheckLevel;
 import org.apache.http.client.config.RequestConfig;

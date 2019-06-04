@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.core.xml;
+package com.thankjava.toolkit3d.core.xml.xstream;
 
 import java.util.Map;
 import java.util.WeakHashMap;

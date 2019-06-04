@@ -1,11 +1,11 @@
-package mail;
+package mail.javax;
 
 import java.io.UnsupportedEncodingException;
 
 import javax.mail.MessagingException;
 
 import com.thankjava.toolkit3d.bean.mail.MailService;
-import com.thankjava.toolkit3d.core.mail.MailUtil;
+import com.thankjava.toolkit3d.core.mail.javax.MailUtil;
 import com.thankjava.toolkit3d.bean.mail.MailContent;
 
 public class MailUtilTest {

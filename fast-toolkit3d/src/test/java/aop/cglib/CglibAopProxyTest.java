@@ -1,6 +1,6 @@
-package aop;
+package aop.cglib;
 
-import com.thankjava.toolkit3d.core.aop.CglibAopProxy;
+import com.thankjava.toolkit3d.core.aop.cglib.CglibAopProxy;
 
 public class CglibAopProxyTest {
 
