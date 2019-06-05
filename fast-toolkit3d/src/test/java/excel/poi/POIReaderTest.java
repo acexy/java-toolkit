@@ -21,7 +21,7 @@ public class POIReaderTest {
                 "/Users/acexy/Downloads/lanhai-merchant-info.xlsx"
         )
                 .setSkipFirstRow()
-                .setPositionFormatCellValueType(2, 1, FormatCellValueType.DATE)
+//                .setPositionFormatCellValueType(2, 1, FormatCellValueType.DATE)
                 .setDefaultTimeFormatType(TimeType.yyyyMMdd)
                 .setDefaultValue("-")
                 .setMaxColumnNumber(2)
@@ -35,6 +35,7 @@ public class POIReaderTest {
             }
             System.out.println();
         }
+        System.out.println(reader.getPositionCellValue(3,3));
     }
 
 }

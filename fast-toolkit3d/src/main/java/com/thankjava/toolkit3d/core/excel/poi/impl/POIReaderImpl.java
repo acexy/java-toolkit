@@ -181,8 +181,19 @@ class POIReaderImpl implements POIReader {
     }
 
     @Override
-    public String getPositionValue(int rowIndex, int cellIndex) {
-        return null;
+    public String getPositionCellValue(int rowNumber, int columnNumber) {
+
+        if (rowNumber < 1 || columnNumber < 1) {
+            return defaultValue;
+        }
+
+        Row row = sheet.getRow(rowNumber - 1);
+        if (row == null) return defaultValue;
+
+        Cell cell = row.getCell(columnNumber - 1);
+        if (cell == null) return defaultValue;
+
+        return getCellValue(rowNumber - 1, columnNumber - 1, cell);
     }
 
 }
