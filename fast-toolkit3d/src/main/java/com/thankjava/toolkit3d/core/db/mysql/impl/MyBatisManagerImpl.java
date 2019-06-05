@@ -67,6 +67,7 @@ class MyBatisManagerImpl implements MyBatisManager {
 
     public void closeSqlSession(Object mapper) {
         SqlSession session = sessions.get(mapper);
+        mapper = null;
         if (session != null) {
             session.close();
         }
@@ -74,6 +75,7 @@ class MyBatisManagerImpl implements MyBatisManager {
 
     public void commitAndCloseSqlSession(Object mapper) {
         SqlSession session = sessions.get(mapper);
+        mapper = null;
         if (session != null) {
             session.commit();
             session.close();
