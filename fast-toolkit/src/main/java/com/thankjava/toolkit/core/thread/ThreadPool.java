@@ -68,7 +68,7 @@ public final class ThreadPool {
      *
      * @return
      */
-    public ThreadPool setAllowCoreThreadTimeOut() {
+    public ThreadPool allowCoreThreadTimeOut() {
         threadPoolExecutor.allowCoreThreadTimeOut(true);
         return this;
     }
