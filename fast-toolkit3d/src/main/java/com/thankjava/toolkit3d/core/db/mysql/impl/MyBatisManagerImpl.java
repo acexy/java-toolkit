@@ -1,6 +1,7 @@
 package com.thankjava.toolkit3d.core.db.mysql.impl;
 
 import com.thankjava.toolkit.core.utils.SourceLoaderUtil;
+import com.thankjava.toolkit3d.core.db.mysql.BasicFastToolkit3dMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -37,20 +38,25 @@ class MyBatisManagerImpl implements MyBatisManager {
         return manager;
     }
 
-    public SqlSessionFactory getSqlSessionFactory() {
-        return sqlSessionFactory;
-    }
 
-    public SqlSession getSqlSession() {
+    @Override
+    public SqlSession newSqlSession() {
         return sqlSessionFactory.openSession();
     }
 
+    @Override
     public void closeSqlSession(SqlSession session) {
         if (session != null) {
             session.close();
         }
     }
 
+    @Override
+    public void commit(SqlSession session) {
+        if (session != null) session.commit();
+    }
+
+    @Override
     public void commitAndCloseSqlSession(SqlSession session) {
         if (session != null) {
             session.commit();
@@ -58,14 +64,26 @@ class MyBatisManagerImpl implements MyBatisManager {
         }
     }
 
-    public <T> T getMapper(Class<T> t) {
-        SqlSession session = getSqlSession();
-        T mapper = session.getMapper(t);
-        sessions.put(mapper, session);
+    @Override
+    public <T> T getMapper(Class<? extends BasicFastToolkit3dMapper> t) {
+        SqlSession session = newSqlSession();
+        T mapper = null;
+        try {
+            mapper = (T)session.getMapper(t);
+            if (mapper == null) {
+                session.close();
+            } else {
+                sessions.put(mapper, session);
+            }
+        } catch (Throwable e) {
+            session.close();
+        }
+
         return mapper;
     }
 
-    public void closeSqlSession(Object mapper) {
+    @Override
+    public void closeSqlSession(BasicFastToolkit3dMapper mapper) {
         SqlSession session = sessions.get(mapper);
         mapper = null;
         if (session != null) {
@@ -73,12 +91,26 @@ class MyBatisManagerImpl implements MyBatisManager {
         }
     }
 
-    public void commitAndCloseSqlSession(Object mapper) {
+    @Override
+    public void commitAndCloseSqlSession(BasicFastToolkit3dMapper mapper) {
         SqlSession session = sessions.get(mapper);
         mapper = null;
         if (session != null) {
             session.commit();
             session.close();
         }
+    }
+
+    @Override
+    public void commit(BasicFastToolkit3dMapper mapper) {
+        SqlSession session = sessions.get(mapper);
+        if (session != null) {
+            session.commit();
+        }
+    }
+
+    @Override
+    public SqlSession getMapperSqlSession(BasicFastToolkit3dMapper mapper) {
+        return sessions.get(mapper);
     }
 }
