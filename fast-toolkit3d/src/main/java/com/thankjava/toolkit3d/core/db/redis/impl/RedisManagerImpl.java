@@ -13,6 +13,7 @@ import java.util.Set;
 import com.thankjava.toolkit.core.utils.SourceLoaderUtil;
 import com.thankjava.toolkit3d.core.db.redis.RedisManager;
 
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -25,6 +26,8 @@ class RedisManagerImpl implements RedisManager {
     private static final String SUCCESS_CODE_STR = "OK";
 
     private static RedisManager manager = null;
+
+    private static int DEFAULT_DB_INDEX = 0;
 
     private RedisManagerImpl() {
     }
@@ -59,22 +62,37 @@ class RedisManagerImpl implements RedisManager {
             readConfig.setTestOnBorrow(Boolean.valueOf(props.getProperty("redis.pool.testOnBorrow")));
             readConfig.setTestOnReturn(Boolean.valueOf(props.getProperty("redis.pool.testOnReturn")));
 
+            String dbIndexStr = props.getProperty("redis.db.index");
+            if (dbIndexStr != null && dbIndexStr.trim().length() > 0) {
+                int dbIndex = Integer.valueOf(props.getProperty("redis.db.index"));
+                if (dbIndex >= 0) {
+                    DEFAULT_DB_INDEX = dbIndex;
+                }
+            }
+
             String pwd = props.getProperty("redis.pwd");
             if (pwd == null || pwd.trim().length() == 0) {
                 //无密码的redis
+
                 jedisPool = new JedisPool(
                         readConfig,
                         props.getProperty("redis.ip"),
                         Integer.valueOf(props.getProperty("redis.port")),
-                        Integer.valueOf(props.getProperty("redis.timeout")));
+                        Integer.valueOf(props.getProperty("redis.timeout")),
+                        null,
+                        DEFAULT_DB_INDEX,
+                        null);
             } else {
+
                 // 根据配置实例化jedis池
                 jedisPool = new JedisPool(
                         readConfig,
                         props.getProperty("redis.ip"),
                         Integer.valueOf(props.getProperty("redis.port")),
                         Integer.valueOf(props.getProperty("redis.timeout")),
-                        pwd);
+                        pwd,
+                        DEFAULT_DB_INDEX,
+                        null);
             }
         } catch (IOException e) {
             e.printStackTrace();
