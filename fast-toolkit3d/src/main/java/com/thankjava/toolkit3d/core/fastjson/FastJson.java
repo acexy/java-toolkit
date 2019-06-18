@@ -3,6 +3,7 @@ package com.thankjava.toolkit3d.core.fastjson;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.thankjava.toolkit.core.reflect.BeanCopierUtil;
 
 import com.alibaba.fastjson.JSON;
@@ -172,6 +173,18 @@ public class FastJson {
             return null;
         }
         return JSONObject.toJSONString(object);
+    }
+
+    /**
+     * 将对象转json字符串并格式美化输出
+     *
+     * @return
+     */
+    public static String toFormatJSONString(Object object) {
+        return JSON.toJSONString(JSONObject.toJSON(object),
+                SerializerFeature.PrettyFormat,
+                SerializerFeature.WriteMapNullValue,
+                SerializerFeature.WriteDateUseDateFormat);
     }
 
 }

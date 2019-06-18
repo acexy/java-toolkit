@@ -5,6 +5,7 @@
     - 1.1.2
     
         - 调整RedisManager初始化可通过redis.properties的redis.db.index属性来指定redis默认数据库
+        - JSON模块新增 toFormatJSONString() 输出美化后的json字符串
 
     - 1.1.2
     

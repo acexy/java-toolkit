@@ -4,6 +4,7 @@ import com.thankjava.toolkit3d.bean.mail.MailContent;
 import com.thankjava.toolkit3d.core.fastjson.FastJson;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FastJsonTest {
@@ -20,5 +21,7 @@ public class FastJsonTest {
 
         String json = FastJson.toJSONString(FastJson.toJSONArray(list));
         System.out.println(FastJson.toJSONArray(json));
+
+        System.out.println(FastJson.toFormatJSONString(list));
     }
 }
