@@ -181,7 +181,15 @@ public class FastJson {
      * @return
      */
     public static String toFormatJSONString(Object object) {
-        return JSON.toJSONString(JSONObject.toJSON(object),
+        Object obj;
+
+        if (object instanceof String) {
+            obj = JSONObject.parse((String) object);
+        } else {
+            obj = JSONObject.toJSON(object);
+        }
+
+        return JSON.toJSONString(obj,
                 SerializerFeature.PrettyFormat,
                 SerializerFeature.WriteMapNullValue,
                 SerializerFeature.WriteDateUseDateFormat);

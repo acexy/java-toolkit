@@ -23,5 +23,6 @@ public class FastJsonTest {
         System.out.println(FastJson.toJSONArray(json));
 
         System.out.println(FastJson.toFormatJSONString(list));
+        System.out.println(FastJson.toFormatJSONString(json));
     }
 }
