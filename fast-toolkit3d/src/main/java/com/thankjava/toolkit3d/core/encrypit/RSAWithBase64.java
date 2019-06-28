@@ -8,7 +8,9 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
+import com.thankjava.toolkit.bean.encrypit.RSAEncryptAlgorithm;
 import com.thankjava.toolkit.bean.encrypit.RSAKey;
+import com.thankjava.toolkit.bean.encrypit.RSASignAlgorithm;
 import com.thankjava.toolkit.core.encrypit.RSA;
 import com.thankjava.toolkit3d.bean.encrypit.RSAKeyString;
 
@@ -24,6 +26,10 @@ import com.thankjava.toolkit3d.bean.encrypit.RSAKeyString;
 public class RSAWithBase64 {
 
     private static final String algorithm = "RSA";
+
+    private static final RSAEncryptAlgorithm defaultEncryptAlgorithm = RSAEncryptAlgorithm.RSA_ECB_PKCS1Padding;
+
+    private static final RSASignAlgorithm defaultSignAlgorithm = RSASignAlgorithm.SHA1withRSA;
 
     /**
      * 获取RAS Base64 公密钥对
@@ -110,8 +116,11 @@ public class RSAWithBase64 {
      * @date 2016年8月11日 上午9:48:48
      * @version 1.0
      */
-    public static String encrypt(String content, String pubKey) {
-        return Base64Util.encode2String(RSA.encrypt(content.getBytes(), decryptPublicKey(pubKey)));
+    public static String encrypt(String content, String pubKey, RSAEncryptAlgorithm... rsaEncryptAlgorithm) {
+        if (rsaEncryptAlgorithm != null && rsaEncryptAlgorithm.length > 0) {
+            return Base64Util.encode2String(RSA.encrypt(content.getBytes(), decryptPublicKey(pubKey), rsaEncryptAlgorithm[0]));
+        }
+        return Base64Util.encode2String(RSA.encrypt(content.getBytes(), decryptPublicKey(pubKey), defaultEncryptAlgorithm));
     }
 
     /**
@@ -126,8 +135,11 @@ public class RSAWithBase64 {
      * @date 2016年8月11日 上午9:54:13
      * @version 1.0
      */
-    public static String decrypt(String base64Cipher, String priKey) {
-        return new String(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey)));
+    public static String decrypt(String base64Cipher, String priKey, RSAEncryptAlgorithm... rsaEncryptAlgorithm) {
+        if (rsaEncryptAlgorithm != null && rsaEncryptAlgorithm.length > 0) {
+            return new String(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey), rsaEncryptAlgorithm[0]));
+        }
+        return new String(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey), defaultEncryptAlgorithm));
     }
 
     /**
@@ -137,8 +149,12 @@ public class RSAWithBase64 {
      * @param priKey
      * @return
      */
-    public static String sign(String content, String priKey) {
-        return Base64Util.encode2String(RSA.sign(content.getBytes(), decryptPrivateKey(priKey)));
+    public static String sign(String content, String priKey, RSASignAlgorithm... rsaSignAlgorithm) {
+        if (rsaSignAlgorithm != null && rsaSignAlgorithm.length > 0) {
+            return Base64Util.encode2String(RSA.sign(content.getBytes(), decryptPrivateKey(priKey), rsaSignAlgorithm[0]));
+
+        }
+        return Base64Util.encode2String(RSA.sign(content.getBytes(), decryptPrivateKey(priKey), defaultSignAlgorithm));
     }
 
 
@@ -150,8 +166,11 @@ public class RSAWithBase64 {
      * @param pubKey
      * @return
      */
-    public static boolean verify(String content, String base64Cipher, String pubKey) {
-        return RSA.verify(content.getBytes(), Base64Util.decode(base64Cipher), decryptPublicKey(pubKey));
+    public static boolean verify(String content, String base64Cipher, String pubKey, RSASignAlgorithm... rsaSignAlgorithm) {
+        if (rsaSignAlgorithm != null && rsaSignAlgorithm.length > 0) {
+            return RSA.verify(content.getBytes(), Base64Util.decode(base64Cipher), decryptPublicKey(pubKey), rsaSignAlgorithm[0]);
+        }
+        return RSA.verify(content.getBytes(), Base64Util.decode(base64Cipher), decryptPublicKey(pubKey), defaultSignAlgorithm);
     }
 
 }
