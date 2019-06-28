@@ -19,7 +19,11 @@
     ```
 
 ---
-- 获取
+- [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
+- [API List](https://github.com/lazy-koala/java-toolkit/blob/master/doc/API.md)
+
+---
+- Maven 获取
 
   ```xml
   <dependency>
@@ -37,10 +41,6 @@
   </dependency>
   ```
   
----
-- [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
-- [API List](https://github.com/lazy-koala/java-toolkit/blob/master/doc/API.md)
-
 ---
 > #### 关于我们
 
