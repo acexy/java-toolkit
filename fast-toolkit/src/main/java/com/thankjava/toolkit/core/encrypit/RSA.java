@@ -1,6 +1,8 @@
 package com.thankjava.toolkit.core.encrypit;
 
 import com.thankjava.toolkit.bean.encrypit.RSAKey;
+import com.thankjava.toolkit.bean.encrypit.RSAEncryptAlgorithm;
+import com.thankjava.toolkit.bean.encrypit.RSASignAlgorithm;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -30,7 +32,6 @@ import java.security.SignatureException;
 public final class RSA {
 
     private static final String algorithm = "RSA";
-    private static final String signAlgorithm = "SHA1WithRSA";
 
     /**
      * RSA 公密钥对生成
@@ -80,9 +81,9 @@ public final class RSA {
      * @date 2016年8月10日 下午5:41:51
      * @version 1.0
      */
-    public static byte[] sign(byte[] contentByteArray, PrivateKey privateKey) {
+    public static byte[] sign(byte[] contentByteArray, PrivateKey privateKey, RSASignAlgorithm rsaSignAlgorithm) {
         try {
-            Signature signature = Signature.getInstance(signAlgorithm);
+            Signature signature = Signature.getInstance(rsaSignAlgorithm.name());
             signature.initSign(privateKey);
             signature.update(contentByteArray);
             return signature.sign();
@@ -102,8 +103,8 @@ public final class RSA {
      * <p>Description: </p>
      *
      * @param contentByteArray 明文
-     * @param cipherByteArray   密文
-     * @param publicKey    公钥
+     * @param cipherByteArray  密文
+     * @param publicKey        公钥
      * @return
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeyException
@@ -113,10 +114,10 @@ public final class RSA {
      * @date 2016年8月10日 下午6:18:28
      * @version 1.0
      */
-    public static boolean verify(byte[] contentByteArray, byte[] cipherByteArray, PublicKey publicKey) {
+    public static boolean verify(byte[] contentByteArray, byte[] cipherByteArray, PublicKey publicKey, RSASignAlgorithm rsaSignAlgorithm) {
         Signature signature = null;
         try {
-            signature = Signature.getInstance(signAlgorithm);
+            signature = Signature.getInstance(rsaSignAlgorithm.name());
             signature.initVerify(publicKey);
             signature.update(contentByteArray);
             return signature.verify(cipherByteArray);
@@ -137,9 +138,9 @@ public final class RSA {
      * @param publicKey
      * @return
      */
-    public static byte[] encrypt(byte[] contentByteArray, PublicKey publicKey) {
+    public static byte[] encrypt(byte[] contentByteArray, PublicKey publicKey, RSAEncryptAlgorithm rsaEncryptAlgorithm) {
         try {
-            Cipher cipher = Cipher.getInstance(algorithm);
+            Cipher cipher = Cipher.getInstance(rsaEncryptAlgorithm.algorithm);
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
             return cipher.doFinal(contentByteArray);
         } catch (NoSuchAlgorithmException e) {
@@ -163,9 +164,9 @@ public final class RSA {
      * @param privateKey
      * @return
      */
-    public static byte[] decrypt(byte[] cipherByteArray, PrivateKey privateKey) {
+    public static byte[] decrypt(byte[] cipherByteArray, PrivateKey privateKey, RSAEncryptAlgorithm rsaEncryptAlgorithm) {
         try {
-            Cipher cipher = Cipher.getInstance(algorithm);
+            Cipher cipher = Cipher.getInstance(rsaEncryptAlgorithm.algorithm);
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
             return cipher.doFinal(cipherByteArray);
         } catch (NoSuchAlgorithmException e) {

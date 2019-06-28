@@ -19,13 +19,17 @@
     ```
 
 ---
-- 获取
+- [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
+- [API List](https://github.com/lazy-koala/java-toolkit/blob/master/doc/API.md)
+
+---
+- Maven 获取
 
   ```xml
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
   </dependency>
   ```
 
@@ -33,14 +37,10 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
   </dependency>
   ```
   
----
-- [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
-- [API List](https://github.com/lazy-koala/java-toolkit/blob/master/doc/API.md)
-
 ---
 > #### 关于我们
 

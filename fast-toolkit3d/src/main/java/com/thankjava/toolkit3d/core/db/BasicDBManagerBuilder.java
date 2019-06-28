@@ -47,7 +47,6 @@ public final class BasicDBManagerBuilder {
      */
     public static MyBatisManager buildMyBatisManager() {
         return (MyBatisManager) doBuild("com.thankjava.toolkit3d.core.db.mysql.impl.MyBatisManagerImpl", null);
-
     }
 
     private static Object doBuild(String classPath, String... configPath) {

@@ -86,10 +86,9 @@ public interface MyBatisManager {
     void commit(BasicFastToolkit3dMapper mapper);
 
     /**
-     * 获取 Mapper对应的SqlSession
+     * 回滚事物
      * @param mapper
-     * @return
      */
-    SqlSession getMapperSqlSession(BasicFastToolkit3dMapper mapper);
+    void rollback(BasicFastToolkit3dMapper mapper);
 
 }

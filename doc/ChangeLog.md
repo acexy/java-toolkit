@@ -2,6 +2,27 @@
 ---
 - 1.1.x
 
+    - 1.1.3
+    
+        - 调整RedisManager初始化可通过redis.properties的redis.db.index属性来指定redis默认数据库
+        - JSON模块新增 toFormatJSONString() 输出美化后的json字符串
+        - RSA模块拓展API功能提升
+        
+            ```
+            1. 允许指定加解密 paddming algorithm
+            
+                RSA/ECB/PKCS1Padding (默认)
+                RSA/ECB/OAEPWithSHA-1AndMGF1Padding
+                RSA/ECB/OAEPWithSHA-256AndMGF1Padding
+                
+            2. 允许指定加验签 模式 algorithm
+            
+                SHA1withRSA (默认)
+                SHA256withRSA
+                
+            3. 允许将生成的base64公私钥格式化成标准pkcs8.pem文件字符串
+            ```
+
     - 1.1.2
     
         - 允许线程池模块中，自定义线程组&线程的名字以便日志输出

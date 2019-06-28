@@ -85,19 +85,22 @@ class MyBatisManagerImpl implements MyBatisManager {
     @Override
     public void closeSqlSession(BasicFastToolkit3dMapper mapper) {
         SqlSession session = sessions.get(mapper);
-        mapper = null;
         if (session != null) {
             session.close();
+            sessions.remove(mapper);
+            mapper = null;
         }
     }
 
     @Override
     public void commitAndCloseSqlSession(BasicFastToolkit3dMapper mapper) {
         SqlSession session = sessions.get(mapper);
-        mapper = null;
         if (session != null) {
             session.commit();
             session.close();
+            sessions.remove(mapper);
+            mapper = null;
+
         }
     }
 
@@ -110,7 +113,11 @@ class MyBatisManagerImpl implements MyBatisManager {
     }
 
     @Override
-    public SqlSession getMapperSqlSession(BasicFastToolkit3dMapper mapper) {
-        return sessions.get(mapper);
+    public void rollback(BasicFastToolkit3dMapper mapper) {
+        SqlSession session = sessions.get(mapper);
+        if (session != null) {
+            session.rollback();
+        }
     }
+
 }
