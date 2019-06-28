@@ -11,13 +11,13 @@
             ```
             1. 允许指定加解密 paddming algorithm
             
-                RSA/ECB/PKCS1Padding
+                RSA/ECB/PKCS1Padding (默认)
                 RSA/ECB/OAEPWithSHA-1AndMGF1Padding
                 RSA/ECB/OAEPWithSHA-256AndMGF1Padding
                 
             2. 允许指定加验签 模式 algorithm
             
-                SHA1withRSA
+                SHA1withRSA (默认)
                 SHA256withRSA
                 
             3. 允许将生成的base64公私钥格式化成标准pkcs8.pem文件字符串
