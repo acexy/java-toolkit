@@ -20,6 +20,7 @@
                 SHA1withRSA
                 SHA256withRSA
                 
+            3. 允许将生成的base64公私钥格式化成标准pkcs8.pem文件字符串
             ```
 
     - 1.1.2
