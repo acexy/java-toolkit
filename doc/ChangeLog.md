@@ -9,7 +9,7 @@
         - RSA模块拓展API功能提升
         
             ```
-            1. 允许指定加解密 paddming algorithm
+            1. 允许指定加解密 padding algorithm
             
                 RSA/ECB/PKCS1Padding (默认)
                 RSA/ECB/OAEPWithSHA-1AndMGF1Padding
