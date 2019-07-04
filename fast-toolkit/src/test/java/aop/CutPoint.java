@@ -14,7 +14,6 @@ public class CutPoint {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月17日 下午7:58:46
-     * @version 1.0
      */
     public void before(AopArgs param) {
 

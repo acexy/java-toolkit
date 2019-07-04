@@ -95,7 +95,6 @@ public final class ThreadPool {
      * @param command
      * @author acexy@thankjava.com
      * @date 2016年1月5日 下午3:21:05
-     * @version 1.0
      */
     public void execute(Runnable command) {
         threadPoolExecutor.execute(command);

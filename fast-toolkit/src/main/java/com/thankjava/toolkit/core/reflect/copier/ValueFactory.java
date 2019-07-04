@@ -18,7 +18,6 @@ class ValueFactory {
 	* <p>Description: </p>
 	* @author acexy@thankjava.com
 	* @date 2015-1-27 下午4:30:29
-	* @version 1.0
 	* @param targetFieldType
 	* @param targetObject
 	* @param originValue
@@ -48,7 +47,6 @@ class ValueFactory {
 	* <p>Description: </p>
 	* @author acexy@thankjava.com
 	* @date 2015-1-27 下午4:58:57
-	* @version 1.0
 	* @param targetFieldType
 	* @param targetObject
 	* @param originValue
@@ -73,7 +71,6 @@ class ValueFactory {
 	* <p>Description: </p>
 	* @author acexy@thankjava.com
 	* @date 2015-1-27 下午4:59:12
-	* @version 1.0
 	* @param targetFieldType
 	* @param targetObject
 	* @param originValue

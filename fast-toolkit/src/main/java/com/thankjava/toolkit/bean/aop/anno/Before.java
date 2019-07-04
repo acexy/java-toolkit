@@ -14,7 +14,6 @@ import java.lang.annotation.Target;
 * <p>Description: </p>
 * @author acexy@thankjava.com
 * @date 2016年5月16日 上午11:04:51
-* @version 1.0
  */
 public @interface Before {
 

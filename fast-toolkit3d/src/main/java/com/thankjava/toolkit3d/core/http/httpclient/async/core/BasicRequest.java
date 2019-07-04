@@ -34,7 +34,6 @@ class BasicRequest {
 	* <p>Description: </p>
 	* @author acexy@thankjava.com
 	* @date 2016年12月15日 下午6:00:02
-	* @version 1.0
 	* @return
 	 */
 	public static CookieStore getSyncCookieStore(){

@@ -35,7 +35,6 @@ public class XMLBeanUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月12日 下午3:14:40
-     * @version 1.0
      */
     public static <T> T xml2Bean(String xmlRoot, String xml, Class<T> clazz, boolean isIgnoreUnknownEles) {
         XStream xStream = xStreamInstance.get(clazz);

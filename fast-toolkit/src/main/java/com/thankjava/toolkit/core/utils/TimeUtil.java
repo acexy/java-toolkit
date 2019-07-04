@@ -36,7 +36,6 @@ public final class TimeUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2015年6月18日 上午9:59:42
-     * @version 1.0
      */
     public static Date parseDate(TimeType timeType, String date) {
         SimpleDateFormat sdf = getDateFormat(timeType);
@@ -57,7 +56,6 @@ public final class TimeUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:00:31
-     * @version 1.0
      */
     public static SimpleDateFormat getDateFormat(TimeType timeType) {
         if (timeType == null) {
@@ -81,7 +79,6 @@ public final class TimeUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:01:09
-     * @version 1.0
      */
     public static String formatDate(TimeType timeType, Date date) {
         return getDateFormat(timeType).format(date);
@@ -98,7 +95,6 @@ public final class TimeUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:01:26
-     * @version 1.0
      */
     public static Date offsetDate(Date date, int calendarUnit, int dateOffset) {
         if (date == null) {

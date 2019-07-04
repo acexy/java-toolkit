@@ -31,7 +31,6 @@ public class FastJson {
      * @return
      * @author acexy@thankjava.com
      * @date 2015年12月30日 下午12:01:44
-     * @version 1.0
      */
     public static <T> T toObject(String json, Class<T> clazz) {
         if (json == null || json.trim().length() == 0) {
@@ -72,7 +71,6 @@ public class FastJson {
      * @return
      * @author acexy@thankjava.com
      * @date 2017年3月10日 下午3:01:58
-     * @version 1.0
      */
     public static <T> T appendObject(String json, T t) {
         @SuppressWarnings("unchecked")
@@ -131,7 +129,6 @@ public class FastJson {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:01:19
-     * @version 1.0
      */
     public static Map<String, Object> toMap(Object object) {
         if (object == null) {
@@ -150,7 +147,6 @@ public class FastJson {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月19日 下午5:56:52
-     * @version 1.0
      */
     @SuppressWarnings("unchecked")
     public static Map<String, Object> toMap(String json) {
@@ -166,7 +162,6 @@ public class FastJson {
      * @return
      * @author acexy@thankjava.com
      * @date 2015年12月30日 下午12:26:29
-     * @version 1.0
      */
     public static String toJSONString(Object object) {
         if (object == null) {
@@ -175,12 +170,16 @@ public class FastJson {
         return JSONObject.toJSONString(object);
     }
 
+
     /**
      * 将对象转json字符串并格式美化输出
-     *
+     * @param object json字符串或Javabean对象
      * @return
      */
     public static String toFormatJSONString(Object object) {
+
+        if (object == null) return null;
+
         Object obj;
 
         if (object instanceof String) {

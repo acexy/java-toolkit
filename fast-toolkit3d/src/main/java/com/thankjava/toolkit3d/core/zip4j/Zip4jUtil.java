@@ -36,7 +36,6 @@ public class Zip4jUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月12日 下午4:08:54
-     * @version 1.0
      */
     public static boolean unzip(String zipFilePath, String folderPath, String... pwd) {
 
@@ -103,7 +102,6 @@ public class Zip4jUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月16日 下午1:50:18
-     * @version 1.0
      */
     public static boolean zip(String srcPath, String zipFilePath, ZipType zipType, ZipLevel zipLevel, String... pwd) {
         File srcFile = new File(srcPath);

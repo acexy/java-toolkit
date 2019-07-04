@@ -34,7 +34,6 @@ public class AsyncHttpClient {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年12月12日 下午3:54:33
-     * @version 1.0
      */
     public AsyncResponse syncRequestWithSession(AsyncRequest asyncRequest) {
         return doRequest.doRequest(asyncRequest, true, null);
@@ -79,7 +78,6 @@ public class AsyncHttpClient {
      * @return
      * @author acexy@thankjava.com
      * @date 2017年6月12日 下午3:31:00
-     * @version 1.0
      */
     public Cookies getAllCookiesFromClientContext() {
         return new Cookies(DoRequest.getSyncCookieStore().getCookies());
@@ -94,7 +92,6 @@ public class AsyncHttpClient {
      * @return
      * @author acexy@thankjava.com
      * @date 2017年6月12日 下午3:41:55
-     * @version 1.0
      */
     public Cookie getCookieFromClientContext(String cookieName) {
         return getAllCookiesFromClientContext().getCookie(cookieName);
@@ -107,7 +104,6 @@ public class AsyncHttpClient {
      *
      * @author acexy@thankjava.com
      * @date 2016年12月14日 下午2:56:25
-     * @version 1.0
      */
     public void shutdown() {
         try {

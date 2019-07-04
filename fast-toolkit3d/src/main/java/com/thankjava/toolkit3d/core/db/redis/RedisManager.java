@@ -28,7 +28,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月7日 下午5:11:29
-     * @version 1.0
      */
     boolean set(String key, String value);
 
@@ -41,7 +40,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月7日 下午6:11:19
-     * @version 1.0
      */
     String get(String key);
 
@@ -54,7 +52,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 上午10:12:23
-     * @version 1.0
      */
     boolean exists(String key);
 
@@ -69,7 +66,6 @@ public interface RedisManager {
      * @return 实际操作数据量大于0 则 true
      * @author acexy@thankjava.com
      * @date 2016年3月24日 上午10:58:36
-     * @version 1.0
      */
     boolean expire(String key, int expirationTime);
 
@@ -83,7 +79,6 @@ public interface RedisManager {
      * @return 实际操作数据量大于0 则 true
      * @author acexy@thankjava.com
      * @date 2016年3月24日 上午11:07:57
-     * @version 1.0
      */
     boolean sadd(String key, String... setValue);
 
@@ -98,7 +93,6 @@ public interface RedisManager {
      * @return 实际操作数据量大于0 则 true
      * @author acexy@thankjava.com
      * @date 2016年3月24日 上午11:24:28
-     * @version 1.0
      */
     boolean hset(String key, String hashKey, String hashValue);
 
@@ -120,7 +114,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月24日 上午11:27:27
-     * @version 1.0
      */
     boolean del(String key);
 
@@ -134,7 +127,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年5月5日 下午3:34:30
-     * @version 1.0
      */
     boolean lpush(String key, String... listValue);
 
@@ -147,7 +139,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年5月5日 下午3:53:48
-     * @version 1.0
      */
     String rpop(String key);
 
@@ -161,7 +152,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年5月19日 下午2:46:23
-     * @version 1.0
      */
     Set<String> smembers(String key);
 
@@ -174,7 +164,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年5月19日 下午2:53:03
-     * @version 1.0
      */
     Map<String, String> hgetall(String key);
 
@@ -190,7 +179,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2017年3月29日 下午7:15:05
-     * @version 1.0
      */
     List<String> hmget(String key, String... fields);
 
@@ -203,7 +191,6 @@ public interface RedisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2017年3月29日 下午6:52:52
-     * @version 1.0
      */
     List<Object> hgetallPipelined(Set<String> keys);
 

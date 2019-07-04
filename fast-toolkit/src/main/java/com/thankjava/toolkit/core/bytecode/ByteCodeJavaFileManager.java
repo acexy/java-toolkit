@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 final class ByteCodeJavaFileManager extends ForwardingJavaFileManager {
 
-    private Map<String, byte[]> byteCodes = new HashMap<String, byte[]>();
+    private Map<String, byte[]> byteCodes = new HashMap<>();
 
     private URI javaSourceURI;
     private String sourceCode;
@@ -85,7 +85,7 @@ final class ByteCodeJavaFileManager extends ForwardingJavaFileManager {
     public class JavaSourceFileObject extends SimpleJavaFileObject {
 
         protected JavaSourceFileObject() {
-            super(javaSourceURI, Kind.SOURCE);
+            super(javaSourceURI, JavaFileObject.Kind.SOURCE);
         }
 
         @Override
@@ -102,7 +102,7 @@ final class ByteCodeJavaFileManager extends ForwardingJavaFileManager {
         private String className;
 
         protected JavaClassFileObject(String className) {
-            super(URI.create(className), Kind.CLASS);
+            super(URI.create(className), JavaFileObject.Kind.CLASS);
             this.className = className;
         }
 

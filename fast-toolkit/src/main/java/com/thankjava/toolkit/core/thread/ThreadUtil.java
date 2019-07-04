@@ -16,7 +16,6 @@ public class ThreadUtil {
 	* <p>Description: </p>
 	* @author acexy@thankjava.com
 	* @date 2016年1月5日 下午2:45:12
-	* @version 1.0
 	* @param runnable
 	 */
 	public static void runWhenJVMExit(Runnable runnable) {

@@ -31,7 +31,6 @@ public final class BeanCopierUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月11日 上午10:29:26
-     * @version 1.0
      */
     public static <OriginObject, TargetObject> TargetObject copy(OriginObject originObject, Class<TargetObject> targetClass) {
 

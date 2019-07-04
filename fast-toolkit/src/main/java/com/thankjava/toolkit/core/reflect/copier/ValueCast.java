@@ -17,7 +17,6 @@ public class ValueCast {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月11日 上午11:07:37
-     * @version 1.0
      */
     public static Object cast(Field targetField, Object targetObject, Object originValue) {
         return createValueCore(targetField, targetField.getType(), targetObject, originValue);

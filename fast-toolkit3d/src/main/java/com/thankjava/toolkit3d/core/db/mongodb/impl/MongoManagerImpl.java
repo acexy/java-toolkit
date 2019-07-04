@@ -92,7 +92,6 @@ class MongoManagerImpl implements MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 上午11:33:51
-     * @version 1.0
      */
     private MongoCollection<Document> getDBCollection(String docName) {
         if (docName == null || docName.length() == 0) {

@@ -29,7 +29,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 上午11:36:00
-     * @version 1.0
      */
     long count(String docName, Document docFilter);
 
@@ -43,7 +42,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:27:57
-     * @version 1.0
      */
     String insertOne(String docName, Document doc);
 
@@ -57,7 +55,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:28:24
-     * @version 1.0
      */
     boolean insertMany(String docName, List<Document> docs);
 
@@ -71,7 +68,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:28:34
-     * @version 1.0
      */
     String insertOne(String docName, Object t);
 
@@ -85,7 +81,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月8日 下午5:28:53
-     * @version 1.0
      */
     boolean insertMany(List<Object> ts, String docName);
 
@@ -119,7 +114,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月30日 上午11:47:51
-     * @version 1.0
      */
     Document findOne(String docName, Document docFilter);
 
@@ -133,7 +127,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月30日 下午1:48:01
-     * @version 1.0
      */
     Document findOne(String docName, Object t);
 
@@ -148,7 +141,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月30日 下午1:41:07
-     * @version 1.0
      */
     <T> T findOne(String docName, Object tFilter, Class<T> clazz);
 
@@ -164,7 +156,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月30日 下午1:57:43
-     * @version 1.0
      */
     <T> T findOne(String docName, Document docFilter, Class<T> clazz);
 
@@ -263,7 +254,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年9月2日 下午5:31:08
-     * @version 1.0
      */
     boolean updateOne(String docName, Object t, Object tFilter);
 
@@ -279,7 +269,6 @@ public interface MongoManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年9月2日 下午5:32:24
-     * @version 1.0
      */
     boolean updateMany(String docName, Object t, Object tFilter);
 

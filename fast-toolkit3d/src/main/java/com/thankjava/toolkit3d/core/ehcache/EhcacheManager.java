@@ -28,7 +28,6 @@ public class EhcacheManager {
      * @param object
      * @author acexy@thankjava.com
      * @date 2016年4月18日 下午5:41:37
-     * @version 1.0
      */
     public void setCache(String cacheName, String cacheKey, Object object) {
         Cache cache = cacheManager.getCache(cacheName);

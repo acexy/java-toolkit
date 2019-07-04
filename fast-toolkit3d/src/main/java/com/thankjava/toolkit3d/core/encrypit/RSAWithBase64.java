@@ -40,7 +40,6 @@ public class RSAWithBase64 {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月10日 下午6:31:26
-     * @version 1.0
      */
     public static RSAKeyString keyGen(int keySize) {
         try {
@@ -64,7 +63,6 @@ public class RSAWithBase64 {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月11日 上午9:43:39
-     * @version 1.0
      */
     public static PrivateKey decryptPrivateKey(String privateKeyStr) {
         try {
@@ -88,7 +86,6 @@ public class RSAWithBase64 {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月11日 上午9:50:30
-     * @version 1.0
      */
     public static PublicKey decryptPublicKey(String publicKeyStr) {
         try {
@@ -114,7 +111,6 @@ public class RSAWithBase64 {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月11日 上午9:48:48
-     * @version 1.0
      */
     public static String encrypt(String content, String pubKey, RSAEncryptAlgorithm... rsaEncryptAlgorithm) {
         if (rsaEncryptAlgorithm != null && rsaEncryptAlgorithm.length > 0) {
@@ -133,7 +129,6 @@ public class RSAWithBase64 {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月11日 上午9:54:13
-     * @version 1.0
      */
     public static String decrypt(String base64Cipher, String priKey, RSAEncryptAlgorithm... rsaEncryptAlgorithm) {
         if (rsaEncryptAlgorithm != null && rsaEncryptAlgorithm.length > 0) {

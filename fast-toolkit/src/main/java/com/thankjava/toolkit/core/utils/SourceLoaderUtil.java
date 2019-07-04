@@ -46,7 +46,6 @@ public class SourceLoaderUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年3月9日 下午5:06:34
-     * @version 1.0
      */
     public static InputStream getResourceAsInputStream(String resource) {
         InputStream in = classLoaderWrapper.getResourceAsStream(resource);

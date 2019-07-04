@@ -18,7 +18,6 @@ public class AopScanner {
      * @param implementObjectClass
      * @author acexy@thankjava.com
      * @date 2016年8月17日 下午5:51:04
-     * @version 1.0
      */
     public static void scanner(Class<?> implementObjectClass, Class<?>... proxyClass) {
 

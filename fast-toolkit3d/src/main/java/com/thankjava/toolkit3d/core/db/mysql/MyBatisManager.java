@@ -24,7 +24,6 @@ public interface MyBatisManager {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月13日 下午4:21:34
-     * @version 1.0
      */
     SqlSession newSqlSession();
 
@@ -36,7 +35,6 @@ public interface MyBatisManager {
      * @param session
      * @author acexy@thankjava.com
      * @date 2016年1月13日 下午4:21:46
-     * @version 1.0
      */
     void closeSqlSession(SqlSession session);
 
@@ -54,7 +52,6 @@ public interface MyBatisManager {
      * @param session
      * @author acexy@thankjava.com
      * @date 2016年1月13日 下午4:21:59
-     * @version 1.0
      */
     void commitAndCloseSqlSession(SqlSession session);
 

@@ -35,7 +35,6 @@ public class AsyncHttpClientBuilder {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年12月12日 下午3:45:57
-     * @version 1.0
      */
     public static AsyncHttpClient createDefault() {
         return new AsyncHttpClient(HttpAsyncClients.createDefault());

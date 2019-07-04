@@ -23,7 +23,6 @@ public class JDKAopProxy {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月17日 下午1:58:11
-     * @version 1.0
      */
     @SuppressWarnings("unchecked")
     public static <T> T createProxyObject(Class<T> interfaceType, Object implementObject) {

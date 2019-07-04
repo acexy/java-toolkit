@@ -40,7 +40,6 @@ public final class ThreadTask {
      * @param taskEntity
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:39:12
-     * @version 1.0
      */
     public void addTaskAtFixedRate(TaskEntity taskEntity) {
         ScheduledFuture<?> future = scheduledExecutorService.scheduleAtFixedRate(
@@ -64,7 +63,6 @@ public final class ThreadTask {
      * @param taskEntities
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:39:12
-     * @version 1.0
      */
     public void addTaskAtFixedRate(List<TaskEntity> taskEntities) {
         for (TaskEntity taskEntity : taskEntities) {
@@ -89,7 +87,6 @@ public final class ThreadTask {
      * @param taskEntity
      * @author acexy@thankjava.com
      * @date 2016年10月8日 下午3:24:48
-     * @version 1.0
      */
     public void addTaskWithFixedDelay(TaskEntity taskEntity) {
         ScheduledFuture<?> future = scheduledExecutorService.scheduleWithFixedDelay(
@@ -112,7 +109,6 @@ public final class ThreadTask {
      * @param taskEntities
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:39:12
-     * @version 1.0
      */
     public void addTaskWithFixedDelay(List<TaskEntity> taskEntities) {
         for (TaskEntity taskEntity : taskEntities) {
@@ -136,7 +132,6 @@ public final class ThreadTask {
      * @param runnable
      * @author acexy@thankjava.com
      * @date 2016年10月8日 下午3:00:51
-     * @version 1.0
      */
     public void addTaskRunOnce(int startDelayTime, Runnable runnable) {
         scheduledExecutorService.schedule(runnable, startDelayTime, TimeUnit.SECONDS);
@@ -151,7 +146,6 @@ public final class ThreadTask {
      * @param isInterrupt 是否要强制中断该任务（如果任务正在进行）
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:40:04
-     * @version 1.0
      */
     public boolean removeTaskByTaskId(String taskId, boolean isInterrupt) {
         ScheduledFuture<?> future = runningTask.get(taskId);
@@ -170,7 +164,6 @@ public final class ThreadTask {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:40:59
-     * @version 1.0
      */
     public int getRunningTaskCount() {
         return runningTask.size();
@@ -184,7 +177,6 @@ public final class ThreadTask {
      * @param isInterrupt
      * @author acexy@thankjava.com
      * @date 2016年1月12日 下午3:33:29
-     * @version 1.0
      */
     public void clearAllTasks(boolean isInterrupt) {
         List<String> taskIds = new ArrayList<String>();
@@ -208,7 +200,6 @@ public final class ThreadTask {
      *
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:47:21
-     * @version 1.0
      */
     public void shutdown() {
         if (scheduledExecutorService != null) {
