@@ -47,8 +47,9 @@ public class TaskEntity {
      * @param startDelayTime(s)
      * @param timeInterval      任务周期性启动的间隔,时间不能小于0(s)
      * @param runnable          执行体
+     * @param taskId            任务唯一Id
      */
-    public TaskEntity(int startDelayTime, int timeInterval, Runnable runnable) {
+    public TaskEntity(int startDelayTime, int timeInterval, Runnable runnable, String... taskId) {
         if (startDelayTime < 0) {
             throw new IllegalArgumentException("timeInterval must greater than -1");
         }
@@ -56,7 +57,12 @@ public class TaskEntity {
             throw new IllegalArgumentException("timeInterval must greater than 0");
         }
 
-        this.taskId = UUID.randomUUID().toString().replaceAll("-", "");
+        if (taskId != null && taskId.length > 0) {
+            this.taskId = taskId[0];
+        } else {
+            this.taskId = UUID.randomUUID().toString().replaceAll("-", "");
+        }
+
         this.timeInterval = timeInterval;
         this.runnable = runnable;
         this.startDelayTime = startDelayTime;
