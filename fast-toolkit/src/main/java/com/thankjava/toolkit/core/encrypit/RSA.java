@@ -8,9 +8,6 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -38,14 +35,8 @@ public final class RSA {
      * <p>Function: keyGen</p>
      * <p>Description: </p>
      *
-     * @param keySize
      * @return RSAKey
-     * @throws NoSuchAlgorithmException
-     * @throws FileNotFoundException
-     * @throws IOException
      * @author acexy@thankjava.com
-     * @date 2016年8月10日 下午5:31:36
-     * @version 1.0
      */
     public static RSAKey keyGen(int keySize) {
 
@@ -72,14 +63,7 @@ public final class RSA {
      *
      * @param contentByteArray 明文
      * @param privateKey       私钥
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeyException
-     * @throws SignatureException
-     * @throws UnsupportedEncodingException
      * @author acexy@thankjava.com
-     * @date 2016年8月10日 下午5:41:51
-     * @version 1.0
      */
     public static byte[] sign(byte[] contentByteArray, PrivateKey privateKey, RSASignAlgorithm rsaSignAlgorithm) {
         try {
@@ -87,11 +71,7 @@ public final class RSA {
             signature.initSign(privateKey);
             signature.update(contentByteArray);
             return signature.sign();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (SignatureException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
+        } catch (NoSuchAlgorithmException | SignatureException | InvalidKeyException e) {
             e.printStackTrace();
         }
         return null;
@@ -105,14 +85,7 @@ public final class RSA {
      * @param contentByteArray 明文
      * @param cipherByteArray  密文
      * @param publicKey        公钥
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeyException
-     * @throws SignatureException
-     * @throws UnsupportedEncodingException
      * @author acexy@thankjava.com
-     * @date 2016年8月10日 下午6:18:28
-     * @version 1.0
      */
     public static boolean verify(byte[] contentByteArray, byte[] cipherByteArray, PublicKey publicKey, RSASignAlgorithm rsaSignAlgorithm) {
         Signature signature = null;
@@ -121,11 +94,7 @@ public final class RSA {
             signature.initVerify(publicKey);
             signature.update(contentByteArray);
             return signature.verify(cipherByteArray);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (SignatureException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
+        } catch (NoSuchAlgorithmException | SignatureException | InvalidKeyException e) {
             e.printStackTrace();
         }
         return false;
@@ -133,25 +102,13 @@ public final class RSA {
 
     /**
      * 使用公钥对内容进行加密
-     *
-     * @param contentByteArray
-     * @param publicKey
-     * @return
      */
     public static byte[] encrypt(byte[] contentByteArray, PublicKey publicKey, RSAEncryptAlgorithm rsaEncryptAlgorithm) {
         try {
             Cipher cipher = Cipher.getInstance(rsaEncryptAlgorithm.algorithm);
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
             return cipher.doFinal(contentByteArray);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
+        } catch (NoSuchAlgorithmException | IllegalBlockSizeException | BadPaddingException | InvalidKeyException | NoSuchPaddingException e) {
             e.printStackTrace();
         }
         return null;
@@ -160,24 +117,13 @@ public final class RSA {
     /**
      * 使用私钥进行密文解密
      *
-     * @param cipherByteArray
-     * @param privateKey
-     * @return
      */
     public static byte[] decrypt(byte[] cipherByteArray, PrivateKey privateKey, RSAEncryptAlgorithm rsaEncryptAlgorithm) {
         try {
             Cipher cipher = Cipher.getInstance(rsaEncryptAlgorithm.algorithm);
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
             return cipher.doFinal(cipherByteArray);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
             e.printStackTrace();
         }
         return null;

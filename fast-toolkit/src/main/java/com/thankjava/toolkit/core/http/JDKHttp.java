@@ -33,7 +33,6 @@ public final class JDKHttp {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月4日 下午5:59:17
-     * @version 1.0
      */
     public static String get(String url, Map<String, String>... head) {
         StringBuilder sb = new StringBuilder();
@@ -77,7 +76,6 @@ public final class JDKHttp {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月4日 下午5:59:17
-     * @version 1.0
      */
     public static String post(String url, String bodyString, byte[] bodyByteArray, Map<String, String>... head) {
 
@@ -141,7 +139,6 @@ public final class JDKHttp {
      * @return
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:55:53
-     * @version 1.0
      */
     public static String urlEncode(String string) {
         try {

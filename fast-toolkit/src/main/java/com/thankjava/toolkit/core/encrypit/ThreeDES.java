@@ -5,6 +5,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 
 /**
  * 可逆加解密3DS
@@ -31,14 +32,14 @@ public final class ThreeDES {
         this.priKey = priKey;
     }
 
-    private static Cipher cipher;
+    private static Cipher cipherEncryptMode;
+    private static Cipher cipherDECRYPTMode;
 
     static {
         try {
-            cipher = Cipher.getInstance("DESede/ECB/NOPADDING");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
+            cipherEncryptMode = Cipher.getInstance("DESede/ECB/NOPADDING");
+            cipherDECRYPTMode = Cipher.getInstance("DESede/ECB/NOPADDING");
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
             e.printStackTrace();
         }
     }
@@ -78,11 +79,11 @@ public final class ThreeDES {
     }
 
     private static String encryptStr(String key, String data) {
-        return hex(do3des(unhexba(data), unhexba(key)));
+        return hex(Objects.requireNonNull(do3des(unhexba(data), unhexba(key))));
     }
 
     private static String deEncryptStr(String key, String data) {
-        return hex(do3desun(unhexba(data), unhexba(key)));
+        return hex(Objects.requireNonNull(do3desun(unhexba(data), unhexba(key))));
     }
 
 
@@ -112,7 +113,7 @@ public final class ThreeDES {
     };
 
     private static String hex(byte[] dst) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < dst.length; i++) {
             sb.append(byteHexTable[dst[i] & 0xff]);
         }
@@ -157,8 +158,8 @@ public final class ThreeDES {
         byte[] key1 = unhexba(b);
         try {
             SecretKey deskey = new SecretKeySpec(key1, "DESede");
-            cipher.init(Cipher.ENCRYPT_MODE, deskey);
-            return cipher.doFinal(data);
+            cipherEncryptMode.init(Cipher.ENCRYPT_MODE, deskey);
+            return cipherEncryptMode.doFinal(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -171,8 +172,8 @@ public final class ThreeDES {
         byte[] key1 = unhexba(b);
         try {
             SecretKey deskey = new SecretKeySpec(key1, "DESede");
-            cipher.init(Cipher.DECRYPT_MODE, deskey);
-            return cipher.doFinal(data);
+            cipherDECRYPTMode.init(Cipher.DECRYPT_MODE, deskey);
+            return cipherDECRYPTMode.doFinal(data);
         } catch (Exception e3) {
             e3.printStackTrace();
         }
