@@ -1,5 +1,7 @@
 package com.thankjava.toolkit.core.io;
 
+import com.thankjava.toolkit.bean.common.Charset;
+
 import java.io.*;
 
 /**
@@ -15,7 +17,7 @@ public class FileAppendWriter {
      * @param filePath
      * @param charset
      */
-    public FileAppendWriter(String filePath, String charset) {
+    public FileAppendWriter(String filePath, Charset charset) {
         try {
             writer = new BufferedWriter(
                     new OutputStreamWriter(
@@ -23,7 +25,7 @@ public class FileAppendWriter {
                                     new File(filePath),
                                     true
                             ),
-                            charset
+                            charset.charset
                     )
             );
         } catch (IOException e) {
