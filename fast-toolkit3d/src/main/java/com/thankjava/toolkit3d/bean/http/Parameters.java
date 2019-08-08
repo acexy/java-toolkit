@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.thankjava.toolkit.bean.common.Charset;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 

@@ -1,11 +1,9 @@
 package com.thankjava.toolkit.core.http;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import com.thankjava.toolkit.bean.common.Charset;
+
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -21,114 +19,216 @@ import java.util.Map;
  */
 public final class JDKHttp {
 
-    private JDKHttp() {
+    private static final String CHARSET = Charset.utf8.charset;
+
+    private String httpUrl;
+
+    private String postBodyString;
+    private byte[] postBodyByteArray;
+
+    private String requestCharset;
+    private String responseCharset = CHARSET;
+
+    private Map<String, String> headers;
+
+    public JDKHttp(String httpUrl) {
+        this.httpUrl = httpUrl;
     }
 
-    private static final String CHARSET = "utf-8";
-
     /**
-     * 使用GET方式请求目标网站
+     * 设置post body体 (字符串)
      *
-     * @param url 完整的请求url
+     * @param bodyString
+     * @param charset    不设置默认utf-8
      * @return
-     * @author acexy@thankjava.com
-     * @date 2016年1月4日 下午5:59:17
      */
-    public static String get(String url, Map<String, String>... head) {
-        StringBuilder sb = new StringBuilder();
-        BufferedReader in = null;
-        try {
-
-            URL realUrl = new URL(url);
-            URLConnection connection = realUrl.openConnection();
-            if (head != null && head.length != 0) {
-                Map<String, String> header = head[0];
-                for (Map.Entry<String, String> h : header.entrySet()) {
-                    connection.setRequestProperty(h.getKey(), h.getValue());
-                }
-            }
-            connection.connect();
-
-            in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String line;
-            while ((line = in.readLine()) != null) {
-                sb.append(line);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
+    public JDKHttp setPostBody(String bodyString, Charset... charset) {
+        this.postBodyString = bodyString;
+        this.requestCharset = (charset == null || charset.length == 0) ? CHARSET : charset[0].charset;
+        return this;
     }
 
     /**
-     * 使用POST方式请求目标网站
-     * @param bodyString 传输字符串数据
-     * @param bodyByteArray 传输byte数据 * 若bodyString已设值 则该参数无效
+     * 设置http 请求头
+     *
+     * @param headers
      * @return
-     * @author acexy@thankjava.com
-     * @date 2016年1月4日 下午5:59:17
      */
-    public static String post(String url, String bodyString, byte[] bodyByteArray, Map<String, String>... head) {
+    public JDKHttp setHeaders(Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
 
-        BufferedReader in = null;
-        StringBuilder sb = new StringBuilder();
+    public JDKHttp setResponseCharset(Charset charset) {
+        this.responseCharset = charset != null ? charset.charset : CHARSET;
+        return this;
+    }
 
+    /**
+     * 设置post body请求体(byte数组数据) 若设置了bodyString 则 bodyByteArray不生效
+     *
+     * @param bodyByteArray
+     * @return
+     */
+    public JDKHttp setPostBody(byte[] bodyByteArray) {
+        this.postBodyByteArray = bodyByteArray;
+        return this;
+    }
+
+    private URL getUrl() {
         try {
-            URL realUrl = new URL(url);
-            URLConnection connection = realUrl.openConnection();
-            if (head != null && head.length != 0) {
-                Map<String, String> header = head[0];
-                for (Map.Entry<String, String> h : header.entrySet()) {
-                    connection.setRequestProperty(h.getKey(), h.getValue());
-                }
-            }
-            connection.setDoOutput(true);
-            connection.setDoInput(true);
-
-            if (bodyString != null) {
-                OutputStreamWriter outputStream = new OutputStreamWriter(connection.getOutputStream());
-                outputStream.write(bodyString);
-                outputStream.flush();
-                outputStream.close();
-            }
-
-            if (bodyByteArray != null) {
-                OutputStream outputStream = connection.getOutputStream();
-                outputStream.write(bodyByteArray);
-                outputStream.flush();
-                outputStream.close();
-            }
-
-            connection.connect();
-
-            in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
-            String line;
-            while ((line = in.readLine()) != null) {
-                sb.append(line);
-            }
-        } catch (Exception e) {
+            return new URL(httpUrl);
+        } catch (MalformedURLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
+        }
+        return null;
+    }
+
+    private void setHttpHeaders(URLConnection urlConnection) {
+        if (headers != null && headers.size() > 0) {
+            for (Map.Entry<String, String> h : headers.entrySet()) {
+                urlConnection.setRequestProperty(h.getKey(), h.getValue());
             }
         }
-        return sb.toString();
     }
+
+    private URLConnection getConnection() {
+        URL url = getUrl();
+        if (url == null) return null;
+        try {
+            URLConnection urlConnection = url.openConnection();
+            setHttpHeaders(urlConnection);
+            return urlConnection;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static InputStream execute(URLConnection urlConnection) {
+        try {
+            urlConnection.connect();
+            return urlConnection.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    private String getResponseString(InputStream inputStream) {
+        BufferedReader bufferedReader;
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream, responseCharset));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        try {
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            return stringBuilder.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private byte[] getResponseByteArray(InputStream inputStream) {
+        try {
+            byte[] array = new byte[inputStream.available()];
+            inputStream.read(array);
+            return array;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void setPostData(URLConnection urlConnection) {
+
+        urlConnection.setDoOutput(true);
+        urlConnection.setDoInput(true);
+
+        try {
+
+
+            if (postBodyString != null) {
+                OutputStreamWriter outputStream = new OutputStreamWriter(urlConnection.getOutputStream(), requestCharset);
+                outputStream.write(postBodyString);
+                outputStream.flush();
+                outputStream.close();
+            } else {
+                if (postBodyByteArray != null && postBodyByteArray.length > 0) {
+                    OutputStream outputStream = urlConnection.getOutputStream();
+                    outputStream.write(postBodyByteArray);
+                    outputStream.flush();
+                    outputStream.close();
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    /**
+     * 发起基础的http get请求
+     *
+     * @return
+     */
+    public String doGetResponseString() {
+        URLConnection urlConnection = getConnection();
+        if (urlConnection == null) return null;
+        InputStream inputStream = execute(urlConnection);
+        if (inputStream == null) return null;
+        return getResponseString(inputStream);
+    }
+
+    /**
+     * 发起 get 请求返回的数据解析为byte数组
+     *
+     * @return
+     */
+    public byte[] doGetResponseByteArray() {
+        URLConnection urlConnection = getConnection();
+        if (urlConnection == null) return null;
+        InputStream inputStream = execute(urlConnection);
+        if (inputStream == null) return null;
+        return getResponseByteArray(inputStream);
+    }
+
+    /**
+     * 发起post请求
+     * @return
+     */
+    public String doPostResponseString() {
+        URLConnection urlConnection = getConnection();
+        if (urlConnection == null) return null;
+        setPostData(urlConnection);
+        InputStream inputStream = execute(urlConnection);
+        if (inputStream == null) return null;
+        return getResponseString(inputStream);
+    }
+
+    /**
+     * 发起post请求
+     * @return
+     */
+    public byte[] doPostResponseByteArray() {
+        URLConnection urlConnection = getConnection();
+        if (urlConnection == null) return null;
+        setPostData(urlConnection);
+        InputStream inputStream = execute(urlConnection);
+        if (inputStream == null) return null;
+        return getResponseByteArray(inputStream);
+    }
+
 
     /**
      * 参数Encode
@@ -140,9 +240,9 @@ public final class JDKHttp {
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:55:53
      */
-    public static String urlEncode(String string) {
+    public static String urlEncode(String string, Charset... charset) {
         try {
-            return URLEncoder.encode(string, CHARSET);
+            return URLEncoder.encode(string, (charset != null && charset.length > 0) ? charset[0].charset : CHARSET);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

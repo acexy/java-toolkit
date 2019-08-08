@@ -1,5 +1,8 @@
-package com.thankjava.toolkit3d.bean.http;
+package com.thankjava.toolkit.bean.common;
 
+/**
+ * 统一常用的charset枚举值
+ */
 public enum Charset {
 
     utf8("utf-8"),

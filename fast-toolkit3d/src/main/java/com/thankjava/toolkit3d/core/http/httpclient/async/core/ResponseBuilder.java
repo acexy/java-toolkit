@@ -7,7 +7,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.cookie.Cookie;
-import com.thankjava.toolkit3d.bean.http.Charset;
+import com.thankjava.toolkit.bean.common.Charset;
 import com.thankjava.toolkit3d.bean.http.Cookies;
 import com.thankjava.toolkit3d.bean.http.Headers;
 

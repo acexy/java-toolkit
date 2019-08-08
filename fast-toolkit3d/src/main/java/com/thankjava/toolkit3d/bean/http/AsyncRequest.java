@@ -1,5 +1,7 @@
 package com.thankjava.toolkit3d.bean.http;
 
+import com.thankjava.toolkit.bean.common.Charset;
+
 public class AsyncRequest {
 
     /**

@@ -1,5 +1,6 @@
 package com.thankjava.toolkit3d.bean.http;
 
+import com.thankjava.toolkit.bean.common.Charset;
 import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;
 

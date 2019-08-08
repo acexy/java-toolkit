@@ -10,7 +10,7 @@ public class ThreeDESTest {
 
         String pubKey = "PUB KEY";
 
-        String cipher = threeDES.encrypt(pubKey, "对称加密 3des");
+        String cipher = threeDES.encrypt(pubKey, "对称加密");
         System.out.println("通过key加密后的密文：" + cipher);
         System.out.println("通过key解密后的原文：" + threeDES.decrypt(pubKey, cipher));
     }
