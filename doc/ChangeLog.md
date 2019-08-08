@@ -5,7 +5,7 @@
         
         - XML模块 默认自动使用了XStream推荐的安全模块
         - 统一了项目的Charset枚举值及一些基础的枚举引用规范
-        - 调节了基于JDK的http请求方法，提供了更多的请求和返回处理方案，提供更优雅的使用方法 参见 ``JDKHttpTest.java``
+        - 调整基于JDK的http请求方法，更多的请求返回类型，更优雅的使用方法 参见 ``JDKHttpTest.java``
     
     - 1.1.3
     
