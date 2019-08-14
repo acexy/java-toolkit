@@ -59,6 +59,7 @@ class MongoManagerImpl implements MongoManager {
 
             Properties props = new Properties();
             props.load(reader);
+            reader.close();
 
             Builder build = new Builder();
             build.connectionsPerHost(Integer.valueOf(props.getProperty("mongo.pool.connectionsPerHost")));
