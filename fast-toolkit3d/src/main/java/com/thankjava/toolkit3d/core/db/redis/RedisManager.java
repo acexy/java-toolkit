@@ -144,7 +144,7 @@ public interface RedisManager {
 
 
     /**
-     * 获取set 数据
+     * 获取 set 数据
      * <p>Function: smembers</p>
      * <p>Description: </p>
      *
@@ -167,6 +167,12 @@ public interface RedisManager {
      */
     Map<String, String> hgetall(String key);
 
+    /**
+     * 获取hash数据指定key下的指定字段值
+     * @param key
+     * @param field
+     * @return
+     */
     String hget(String key, String field);
 
     /**

@@ -13,7 +13,6 @@ import java.util.Set;
 import com.thankjava.toolkit.core.utils.SourceLoaderUtil;
 import com.thankjava.toolkit3d.core.db.redis.RedisManager;
 
-import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -123,7 +122,7 @@ class RedisManagerImpl implements RedisManager {
         Jedis jedis = null;
         try {
             jedis = getJedis();
-            return jedis.set(key, value).equals(SUCCESS_CODE_STR);
+            return SUCCESS_CODE_STR.equals(jedis.set(key, value));
         } catch (Exception e) {
             e.printStackTrace();
             return false;

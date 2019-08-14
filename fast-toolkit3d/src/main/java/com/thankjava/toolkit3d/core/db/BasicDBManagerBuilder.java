@@ -29,6 +29,10 @@ public final class BasicDBManagerBuilder {
         return (RedisManager) doBuild("com.thankjava.toolkit3d.core.db.redis.impl.RedisManagerImpl", configPath);
     }
 
+    public static RedisManager buildRedisClusterManager(String... configPath) {
+        return (RedisManager) doBuild("com.thankjava.toolkit3d.core.db.redis.impl.RedisClusterManagerImpl", configPath);
+    }
+
     /**
      * 创建MongoManager
      *
