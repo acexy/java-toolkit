@@ -6,6 +6,7 @@
         - XML模块 默认自动使用了XStream推荐的安全模块
         - 统一了项目的Charset枚举值及一些基础的枚举引用规范
         - 调整基于JDK的http请求方法，更多的请求返回类型，更优雅的使用方法 参见 ``JDKHttpTest.java``
+        - Redis新增官方集群Cluster的连接方式 参见``RedisClusterManagerTest.java``
     
     - 1.1.3
     
