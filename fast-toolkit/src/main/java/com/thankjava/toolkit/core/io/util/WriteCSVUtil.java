@@ -1,5 +1,6 @@
 package com.thankjava.toolkit.core.io.util;
 
+import com.thankjava.toolkit.bean.common.Charset;
 import com.thankjava.toolkit.core.io.FileAppendWriter;
 
 import java.io.*;
@@ -31,7 +32,7 @@ public class WriteCSVUtil {
      * @param lineSeparator 换行符 如果为空则获取当前系统环境的换行符
      * @throws FileNotFoundException
      */
-    public WriteCSVUtil(String filePath, String charset, LineSeparator lineSeparator) {
+    public WriteCSVUtil(String filePath, Charset charset, LineSeparator lineSeparator) {
         fileAppendWriter = new FileAppendWriter(filePath, charset);
         if (lineSeparator != null) {
             this.lineSeparator = lineSeparator.separator;
