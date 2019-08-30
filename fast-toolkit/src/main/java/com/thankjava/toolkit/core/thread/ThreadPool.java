@@ -28,8 +28,8 @@ public final class ThreadPool {
      */
     private static final int WAIT_RUNNABLE_MAX_NUM = 200;
 
-    protected static String DEFAULT_THREAD_GROUP_NAME = "ThreadPool-Group";
-    protected static String DEFAULT_THREAD_NAME = "Thread";
+    private static String DEFAULT_THREAD_GROUP_NAME = "toolkit.ThreadPool-Group";
+    private static String DEFAULT_THREAD_NAME = "toolkit.Thread";
 
     private static ThreadPoolExecutor threadPoolExecutor;
 
