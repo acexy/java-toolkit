@@ -1,5 +1,7 @@
 package com.thankjava.toolkit.core.bytecode;
 
+import com.thankjava.toolkit.bean.common.Charset;
+
 import javax.tools.JavaCompiler;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
@@ -20,7 +22,7 @@ public final class ByteCodeCompiler {
      * @param sourceCode
      * @return
      */
-    public static Map<String, byte[]> compile(String sourceCode) {
+    public static Map<String, byte[]> compile(String sourceCode, Charset... charset) {
 
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 
@@ -28,7 +30,7 @@ public final class ByteCodeCompiler {
         StandardJavaFileManager standardJavaFileManager = compiler.getStandardFileManager(
                 null,
                 null,
-                null
+                java.nio.charset.Charset.forName((charset == null || charset.length == 0) ? Charset.utf8.charset : charset[0].charset)
         );
 
         ByteCodeJavaFileManager customJavaFileManager = new ByteCodeJavaFileManager(sourceCode, standardJavaFileManager);
