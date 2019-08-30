@@ -5,6 +5,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -23,6 +25,7 @@ public final class ThreeDES {
 
     /**
      * 32位字符对称加密密钥
+     *
      * @param priKey
      */
     public ThreeDES(String priKey) {
@@ -31,61 +34,6 @@ public final class ThreeDES {
         }
         this.priKey = priKey;
     }
-
-    private static Cipher cipherEncryptMode;
-    private static Cipher cipherDECRYPTMode;
-
-    static {
-        try {
-            cipherEncryptMode = Cipher.getInstance("DESede/ECB/NOPADDING");
-            cipherDECRYPTMode = Cipher.getInstance("DESede/ECB/NOPADDING");
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String encrypt(String pubKey, String content) {
-        pubKey += "0000000000000000";
-        pubKey = pubKey.substring(0, 16);
-        String tempKey = diverse(priKey, pubKey);
-
-        StringBuilder stringBuilder = new StringBuilder(new String(hex(content.getBytes())));
-        stringBuilder.append("80");
-        while (stringBuilder.length() % 16 != 0) {
-            stringBuilder.append("0");
-        }
-        return encryptStr(tempKey, stringBuilder.toString());
-    }
-
-    public String decrypt(String pubKey, String decodeStr) {
-        pubKey += "0000000000000000";
-        pubKey = pubKey.substring(0, 16);
-        String tempKey = diverse(priKey, pubKey);
-        String result = deEncryptStr(tempKey, decodeStr);
-        if (result.length() % 16 == 0) {
-            return new String(unhexba(result.substring(0, result.lastIndexOf("80"))));
-        } else {
-            return "";
-        }
-    }
-
-    private static String diverse(String dkey, String random) {
-        byte[] rand = unhexba(random);
-        byte[] key = unhexba(dkey);
-        byte[] tleft = do3des(rand, key);
-        byte[] tright = do3des(not(rand), key);
-        byte[] tkey = bajoin(tleft, tright);
-        return hex(tkey);
-    }
-
-    private static String encryptStr(String key, String data) {
-        return hex(Objects.requireNonNull(do3des(unhexba(data), unhexba(key))));
-    }
-
-    private static String deEncryptStr(String key, String data) {
-        return hex(Objects.requireNonNull(do3desun(unhexba(data), unhexba(key))));
-    }
-
 
     private static final String[] byteHexTable = {
             "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B",
@@ -112,7 +60,76 @@ public final class ThreeDES {
             "FC", "FD", "FE", "FF"
     };
 
-    private static String hex(byte[] dst) {
+
+    private final static Map<byte[], Cipher> encrypt = new HashMap<>();
+    private final static Map<byte[], Cipher> decrypt = new HashMap<>();
+
+    private Cipher getCipher() {
+        try {
+            return Cipher.getInstance("DESede/ECB/NOPADDING");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 进件加密
+     *
+     * @param pubKey
+     * @param content
+     * @return
+     */
+    public String encrypt(String pubKey, String content) {
+        pubKey += "0000000000000000";
+        pubKey = pubKey.substring(0, 16);
+        String tempKey = diverse(priKey, pubKey);
+
+        StringBuilder stringBuilder = new StringBuilder(hex(content.getBytes()));
+        stringBuilder.append("80");
+        while (stringBuilder.length() % 16 != 0) {
+            stringBuilder.append("0");
+        }
+        return encryptStr(tempKey, stringBuilder.toString());
+    }
+
+    /**
+     * 进行解密
+     *
+     * @param pubKey
+     * @param cipher
+     * @return
+     */
+    public String decrypt(String pubKey, String cipher) {
+        pubKey += "0000000000000000";
+        pubKey = pubKey.substring(0, 16);
+        String tempKey = diverse(priKey, pubKey);
+        try {
+            String result = deEncryptStr(tempKey, cipher);
+            if (result.length() % 16 == 0) {
+                return new String(unhexba(result.substring(0, result.lastIndexOf("80"))));
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            // ignore
+        }
+        return null;
+    }
+
+    private String diverse(String dkey, String random) {
+        byte[] rand = unhexba(random);
+        byte[] key = unhexba(dkey);
+        byte[] tleft = do3des(rand, key);
+        byte[] tright = do3des(not(rand), key);
+        byte[] tkey = bajoin(tleft, tright);
+        return hex(tkey);
+    }
+
+
+    private String hex(byte[] dst) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < dst.length; i++) {
             sb.append(byteHexTable[dst[i] & 0xff]);
@@ -120,7 +137,7 @@ public final class ThreeDES {
         return sb.toString();
     }
 
-    private static byte h2b(byte c) {
+    private byte h2b(byte c) {
         if (c <= '9' && c >= '0') {
             return (byte) (c - '0');
         } else if (c >= 'a' && c <= 'z') {
@@ -130,7 +147,7 @@ public final class ThreeDES {
         }
     }
 
-    private static byte[] unhexba(String str) {
+    private byte[] unhexba(String str) {
         byte[] origBe = str.getBytes();
         byte[] newBe = new byte[str.length() / 2];
 
@@ -140,7 +157,7 @@ public final class ThreeDES {
         return newBe;
     }
 
-    private static byte[] bajoin(byte[] left, byte[] right) {
+    private byte[] bajoin(byte[] left, byte[] right) {
         return unhexba(hex(left) + hex(right));
     }
 
@@ -152,32 +169,47 @@ public final class ThreeDES {
         return x;
     }
 
-    private static byte[] do3des(byte[] data, byte[] key) {
+    private byte[] do3des(byte[] data, byte[] key) {
         String str = hex(key);
         String b = str + str.substring(0, 16);
         byte[] key1 = unhexba(b);
         try {
-            SecretKey deskey = new SecretKeySpec(key1, "DESede");
-            cipherEncryptMode.init(Cipher.ENCRYPT_MODE, deskey);
-            return cipherEncryptMode.doFinal(data);
+            Cipher cipher = encrypt.get(key1);
+            if (cipher == null) {
+                cipher = getCipher();
+                cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key1, "DESede"));
+                encrypt.put(key1, cipher);
+            }
+            return cipher.doFinal(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private static byte[] do3desun(byte[] data, byte[] key) {
+    private byte[] do3desun(byte[] data, byte[] key) {
         String a = hex(key);
         String b = a + a.substring(0, 16);
         byte[] key1 = unhexba(b);
         try {
-            SecretKey deskey = new SecretKeySpec(key1, "DESede");
-            cipherDECRYPTMode.init(Cipher.DECRYPT_MODE, deskey);
-            return cipherDECRYPTMode.doFinal(data);
+            Cipher cipher = decrypt.get(key1);
+            if (cipher == null) {
+                cipher = getCipher();
+                cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key1, "DESede"));
+                decrypt.put(key1, cipher);
+            }
+            return cipher.doFinal(data);
         } catch (Exception e3) {
             e3.printStackTrace();
         }
         return null;
     }
 
+    private String encryptStr(String key, String data) {
+        return hex(Objects.requireNonNull(do3des(unhexba(data), unhexba(key))));
+    }
+
+    private String deEncryptStr(String key, String data) {
+        return hex(Objects.requireNonNull(do3desun(unhexba(data), unhexba(key))));
+    }
 }
