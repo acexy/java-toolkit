@@ -86,7 +86,7 @@ public class AsyncResponse {
     }
 
     /**
-     * 已字符串信息获取返回数据
+     * 获取字符串类型的数据
      *
      * @return
      */
@@ -134,10 +134,7 @@ public class AsyncResponse {
      */
     public boolean isEmptyDataString() {
         if (exception != null) return true;
-        if (getDataString() == null || dataString.length() == 0) {
-            return true;
-        }
-        return false;
+        return getDataString() == null || dataString.length() == 0;
     }
 
     public Throwable getException() {
@@ -147,16 +144,15 @@ public class AsyncResponse {
     @Override
     public String toString() {
         if (exception != null) return "request exception: \n\t" + exception.toString();
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("httpCode: [");
-        buffer.append(String.valueOf(httpCode));
-        buffer.append("] header: [");
-        buffer.append(header == null ? "" : header.toString());
-        buffer.append("] cookies: [");
-        buffer.append(cookies == null ? "" : cookies.toString());
-        buffer.append("] dataString: [");
-        buffer.append(getDataString() == null ? "" : getDataString());
-        buffer.append("]");
-        return buffer.toString();
+        String string = "httpCode: [" +
+                httpCode +
+                "] header: [" +
+                (header == null ? "" : header.toString()) +
+                "] cookies: [" +
+                (cookies == null ? "" : cookies.toString()) +
+                "] dataString: [" +
+                (getDataString() == null ? "" : getDataString()) +
+                "]";
+        return string;
     }
 }

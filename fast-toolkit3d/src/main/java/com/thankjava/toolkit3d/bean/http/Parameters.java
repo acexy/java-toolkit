@@ -19,7 +19,7 @@ public class Parameters {
     private File file = null;
 
     /**
-     * 新增from-urlencode参数
+     * 新增 from-urlencode / GET 请求参数
      */
     public Parameters(String name, String value) {
         nameValuePairs = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Parameters {
     }
 
     /**
-     * 新增from-urlencode参数
+     * 新增 from-urlencode / GET 请求参数
      */
     public Parameters(Map<String, String> parameters) {
 
@@ -44,7 +44,7 @@ public class Parameters {
     }
 
     /**
-     * 追加 from-urlencode参数
+     * 追加 from-urlencode / GET 参数
      *
      * @param key
      * @param value
