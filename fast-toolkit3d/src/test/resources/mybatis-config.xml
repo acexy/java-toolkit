@@ -39,8 +39,8 @@
                 <property name="poolPreparedStatements" value="false"/>
                 <property name="maxOpenPreparedStatements" value="-1"/>
 
-                <!-- 对于长时间不使用的连接强制关闭 -->
-                <property name="removeAbandoned" value="true"/>
+                <!-- 自动回收超时链接 生产环境不推荐 -->
+                <property name="removeAbandoned" value="false"/>
 
                 <!-- 超过30分钟开始关闭空闲连接 -->
                 <property name="removeAbandonedTimeout" value="1800"/>
