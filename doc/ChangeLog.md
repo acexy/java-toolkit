@@ -4,6 +4,7 @@
     - 1.1.5
     
         - 修复ThreddDES模块存在线程安全的问题
+        - JDKHttp模块修复了post请求requestMethod声明不完整的问题
         
     - 1.1.4
         
