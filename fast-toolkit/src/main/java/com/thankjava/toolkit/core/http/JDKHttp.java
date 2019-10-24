@@ -3,10 +3,7 @@ package com.thankjava.toolkit.core.http;
 import com.thankjava.toolkit.bean.common.Charset;
 
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.net.*;
 import java.util.Map;
 
 
@@ -84,7 +81,7 @@ public final class JDKHttp {
         return null;
     }
 
-    private void setHttpHeaders(URLConnection urlConnection) {
+    private void setHttpHeaders(HttpURLConnection urlConnection) {
         if (headers != null && headers.size() > 0) {
             for (Map.Entry<String, String> h : headers.entrySet()) {
                 urlConnection.setRequestProperty(h.getKey(), h.getValue());
@@ -92,11 +89,11 @@ public final class JDKHttp {
         }
     }
 
-    private URLConnection getConnection() {
+    private HttpURLConnection getConnection() {
         URL url = getUrl();
         if (url == null) return null;
         try {
-            URLConnection urlConnection = url.openConnection();
+            HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
             setHttpHeaders(urlConnection);
             return urlConnection;
         } catch (IOException e) {
@@ -105,7 +102,7 @@ public final class JDKHttp {
         return null;
     }
 
-    private static InputStream execute(URLConnection urlConnection) {
+    private static InputStream execute(HttpURLConnection urlConnection) {
         try {
             urlConnection.connect();
             return urlConnection.getInputStream();
@@ -148,10 +145,14 @@ public final class JDKHttp {
         return null;
     }
 
-    private void setPostData(URLConnection urlConnection) {
-
-        urlConnection.setDoOutput(true);
+    private void setPostData(HttpURLConnection urlConnection) {
         urlConnection.setDoInput(true);
+        urlConnection.setDoOutput(true);
+        try {
+            urlConnection.setRequestMethod("POST");
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        }
 
         try {
 
@@ -183,7 +184,12 @@ public final class JDKHttp {
      * @return
      */
     public String doGetResponseString() {
-        URLConnection urlConnection = getConnection();
+        HttpURLConnection urlConnection = getConnection();
+        try {
+            urlConnection.setRequestMethod("GET");
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        }
         if (urlConnection == null) return null;
         InputStream inputStream = execute(urlConnection);
         if (inputStream == null) return null;
@@ -196,7 +202,12 @@ public final class JDKHttp {
      * @return
      */
     public byte[] doGetResponseByteArray() {
-        URLConnection urlConnection = getConnection();
+        HttpURLConnection urlConnection = getConnection();
+        try {
+            urlConnection.setRequestMethod("GET");
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        }
         if (urlConnection == null) return null;
         InputStream inputStream = execute(urlConnection);
         if (inputStream == null) return null;
@@ -208,7 +219,7 @@ public final class JDKHttp {
      * @return
      */
     public String doPostResponseString() {
-        URLConnection urlConnection = getConnection();
+        HttpURLConnection urlConnection = getConnection();
         if (urlConnection == null) return null;
         setPostData(urlConnection);
         InputStream inputStream = execute(urlConnection);
@@ -221,7 +232,7 @@ public final class JDKHttp {
      * @return
      */
     public byte[] doPostResponseByteArray() {
-        URLConnection urlConnection = getConnection();
+        HttpURLConnection urlConnection = getConnection();
         if (urlConnection == null) return null;
         setPostData(urlConnection);
         InputStream inputStream = execute(urlConnection);
