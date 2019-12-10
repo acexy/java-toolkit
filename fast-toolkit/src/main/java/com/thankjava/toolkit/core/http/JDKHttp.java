@@ -185,12 +185,12 @@ public final class JDKHttp {
      */
     public String doGetResponseString() {
         HttpURLConnection urlConnection = getConnection();
+        if (urlConnection == null) return null;
         try {
             urlConnection.setRequestMethod("GET");
         } catch (ProtocolException e) {
             e.printStackTrace();
         }
-        if (urlConnection == null) return null;
         InputStream inputStream = execute(urlConnection);
         if (inputStream == null) return null;
         return getResponseString(inputStream);
