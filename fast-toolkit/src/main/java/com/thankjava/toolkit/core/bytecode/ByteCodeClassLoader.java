@@ -11,8 +11,8 @@ public final class ByteCodeClassLoader extends ClassLoader {
     // 缓存装入的字节码所转换的Class对象
     private final Map<String, Class<?>> byteCodesClass = new ConcurrentHashMap<>();
 
-    private final static ByteCodeClassLoader instance = new ByteCodeClassLoader();
-    private final static ClassLoader parentClassLoader = instance.getClass().getClassLoader();
+    private final static ByteCodeClassLoader INSTANCE = new ByteCodeClassLoader();
+    private final static ClassLoader PARENT_CLASS_LOADER = INSTANCE.getClass().getClassLoader();
 
     private ByteCodeClassLoader() {
     }
@@ -23,7 +23,7 @@ public final class ByteCodeClassLoader extends ClassLoader {
      * @return
      */
     public static ByteCodeClassLoader getLoader() {
-        return instance;
+        return INSTANCE;
     }
 
     /**
@@ -49,7 +49,7 @@ public final class ByteCodeClassLoader extends ClassLoader {
      * @throws ClassNotFoundException
      */
     public Class<?> findClassFromParent(String name) throws ClassNotFoundException {
-        return parentClassLoader.loadClass(name);
+        return PARENT_CLASS_LOADER.loadClass(name);
     }
 
     /**

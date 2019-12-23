@@ -32,6 +32,35 @@ public final class JDKHttp {
         this.httpUrl = httpUrl;
     }
 
+    private static InputStream execute(HttpURLConnection urlConnection) {
+        try {
+            urlConnection.connect();
+            return urlConnection.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 参数Encode
+     * <p>Function: encode</p>
+     * <p>Description: </p>
+     *
+     * @param string
+     * @return
+     * @author acexy@thankjava.com
+     * @date 2016年1月12日 上午11:55:53
+     */
+    public static String urlEncode(String string, Charset... charset) {
+        try {
+            return URLEncoder.encode(string, (charset != null && charset.length > 0) ? charset[0].charset : CHARSET);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * 设置post body体 (字符串)
      *
@@ -95,7 +124,7 @@ public final class JDKHttp {
             return null;
         }
         try {
-            HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             setHttpHeaders(urlConnection);
             return urlConnection;
         } catch (IOException e) {
@@ -103,17 +132,6 @@ public final class JDKHttp {
         }
         return null;
     }
-
-    private static InputStream execute(HttpURLConnection urlConnection) {
-        try {
-            urlConnection.connect();
-            return urlConnection.getInputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
 
     private String getResponseString(InputStream inputStream) {
         BufferedReader bufferedReader;
@@ -187,6 +205,9 @@ public final class JDKHttp {
      */
     public String doGetResponseString() {
         HttpURLConnection urlConnection = getConnection();
+        if (urlConnection == null) {
+            return null;
+        }
         try {
             urlConnection.setRequestMethod("GET");
         } catch (ProtocolException e) {
@@ -226,6 +247,7 @@ public final class JDKHttp {
 
     /**
      * 发起post请求
+     *
      * @return
      */
     public String doPostResponseString() {
@@ -243,6 +265,7 @@ public final class JDKHttp {
 
     /**
      * 发起post请求
+     *
      * @return
      */
     public byte[] doPostResponseByteArray() {
@@ -256,25 +279,5 @@ public final class JDKHttp {
             return null;
         }
         return getResponseByteArray(inputStream);
-    }
-
-
-    /**
-     * 参数Encode
-     * <p>Function: encode</p>
-     * <p>Description: </p>
-     *
-     * @param string
-     * @return
-     * @author acexy@thankjava.com
-     * @date 2016年1月12日 上午11:55:53
-     */
-    public static String urlEncode(String string, Charset... charset) {
-        try {
-            return URLEncoder.encode(string, (charset != null && charset.length > 0) ? charset[0].charset : CHARSET);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

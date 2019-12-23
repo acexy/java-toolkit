@@ -20,7 +20,7 @@ import java.util.WeakHashMap;
 public class XMLBeanUtil {
 
     private static final String ENCODING = "utf-8";
-    private static final Map<Class<?>, XStream> xStreamInstance = new WeakHashMap<Class<?>, XStream>();
+    private static final Map<Class<?>, XStream> X_STREAM_INSTANCE = new WeakHashMap<Class<?>, XStream>();
     private static XStream xStream = new XStream(new DomDriver(ENCODING));
 
     static {
@@ -41,7 +41,7 @@ public class XMLBeanUtil {
      * @date 2016年8月12日 下午3:14:40
      */
     public static <T> T xml2Bean(String xmlRoot, String xml, Class<T> clazz, boolean... ignoreUnknownElements) {
-        XStream xStream = xStreamInstance.get(clazz);
+        XStream xStream = X_STREAM_INSTANCE.get(clazz);
         if (xStream == null) {
             xStream = new XStream(new DomDriver(ENCODING));
             XStream.setupDefaultSecurity(xStream);
@@ -64,7 +64,7 @@ public class XMLBeanUtil {
      * @return
      */
     public static <T> T xml2Bean(Map<String, Class<?>> classMap, String xmlStr, Class<T> clazz, boolean... ignoreUnknownElements) {
-        XStream xStream = xStreamInstance.get(clazz);
+        XStream xStream = X_STREAM_INSTANCE.get(clazz);
         if (xStream == null) {
             xStream = new XStream(new DomDriver(ENCODING));
             XStream.setupDefaultSecurity(xStream);
