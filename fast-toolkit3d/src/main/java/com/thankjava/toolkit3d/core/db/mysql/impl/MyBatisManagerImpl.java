@@ -53,7 +53,9 @@ class MyBatisManagerImpl implements MyBatisManager {
 
     @Override
     public void commit(SqlSession session) {
-        if (session != null) session.commit();
+        if (session != null) {
+            session.commit();
+        }
     }
 
     @Override

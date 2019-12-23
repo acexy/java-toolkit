@@ -2,7 +2,6 @@ package com.thankjava.toolkit.core.encrypit;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -35,7 +34,7 @@ public final class ThreeDES {
         this.priKey = priKey;
     }
 
-    private static final String[] byteHexTable = {
+    private static final String[] BYTE_HEX_TABLE = {
             "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B",
             "0C", "0D", "0E", "0F", "10", "11", "12", "13", "14", "15", "16", "17",
             "18", "19", "1A", "1B", "1C", "1D", "1E", "1F", "20", "21", "22", "23",
@@ -61,8 +60,8 @@ public final class ThreeDES {
     };
 
 
-    private final static Map<byte[], Cipher> encrypt = new HashMap<>();
-    private final static Map<byte[], Cipher> decrypt = new HashMap<>();
+    private final static Map<byte[], Cipher> ENCRYPT = new HashMap<>();
+    private final static Map<byte[], Cipher> DECRYPT = new HashMap<>();
 
     private Cipher getCipher() {
         try {
@@ -132,7 +131,7 @@ public final class ThreeDES {
     private String hex(byte[] dst) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < dst.length; i++) {
-            sb.append(byteHexTable[dst[i] & 0xff]);
+            sb.append(BYTE_HEX_TABLE[dst[i] & 0xff]);
         }
         return sb.toString();
     }
@@ -174,11 +173,11 @@ public final class ThreeDES {
         String b = str + str.substring(0, 16);
         byte[] key1 = unhexba(b);
         try {
-            Cipher cipher = encrypt.get(key1);
+            Cipher cipher = ENCRYPT.get(key1);
             if (cipher == null) {
                 cipher = getCipher();
                 cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key1, "DESede"));
-                encrypt.put(key1, cipher);
+                ENCRYPT.put(key1, cipher);
             }
             return cipher.doFinal(data);
         } catch (Exception e) {
@@ -192,11 +191,11 @@ public final class ThreeDES {
         String b = a + a.substring(0, 16);
         byte[] key1 = unhexba(b);
         try {
-            Cipher cipher = decrypt.get(key1);
+            Cipher cipher = DECRYPT.get(key1);
             if (cipher == null) {
                 cipher = getCipher();
                 cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key1, "DESede"));
-                decrypt.put(key1, cipher);
+                DECRYPT.put(key1, cipher);
             }
             return cipher.doFinal(data);
         } catch (Exception e3) {

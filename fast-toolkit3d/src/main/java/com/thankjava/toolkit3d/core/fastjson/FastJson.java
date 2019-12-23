@@ -178,7 +178,9 @@ public class FastJson {
      */
     public static String toFormatJSONString(Object object) {
 
-        if (object == null) return null;
+        if (object == null) {
+            return null;
+        }
 
         Object obj;
 

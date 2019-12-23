@@ -133,7 +133,9 @@ public class AsyncResponse {
      * @return
      */
     public boolean isEmptyDataString() {
-        if (exception != null) return true;
+        if (exception != null) {
+            return true;
+        }
         return getDataString() == null || dataString.length() == 0;
     }
 
@@ -143,7 +145,9 @@ public class AsyncResponse {
 
     @Override
     public String toString() {
-        if (exception != null) return "request exception: \n\t" + exception.toString();
+        if (exception != null) {
+            return "request exception: \n\t" + exception.toString();
+        }
         String string = "httpCode: [" +
                 httpCode +
                 "] header: [" +

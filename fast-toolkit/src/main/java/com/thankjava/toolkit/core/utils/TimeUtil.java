@@ -23,7 +23,7 @@ public final class TimeUtil {
     private TimeUtil() {
     }
 
-    private static final Map<TimeType, SimpleDateFormat> simpleDateFormatMap = new HashMap<>();
+    private static final Map<TimeType, SimpleDateFormat> SIMPLE_DATE_FORMAT_MAP = new HashMap<>();
 
 
     /**
@@ -61,10 +61,10 @@ public final class TimeUtil {
         if (timeType == null) {
             timeType = TimeType.DEFAULT;
         }
-        SimpleDateFormat sdf = simpleDateFormatMap.get(timeType);
+        SimpleDateFormat sdf = SIMPLE_DATE_FORMAT_MAP.get(timeType);
         if (sdf == null) {
             sdf = new SimpleDateFormat(timeType.getType());
-            simpleDateFormatMap.put(timeType, sdf);
+            SIMPLE_DATE_FORMAT_MAP.put(timeType, sdf);
         }
         return sdf;
     }

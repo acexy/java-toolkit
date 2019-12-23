@@ -119,10 +119,15 @@ public final class ThreadPool {
             namePrefix = DEFAULT_THREAD_GROUP_NAME + " " + poolNumber.getAndIncrement() + " ; " + DEFAULT_THREAD_NAME;
         }
 
+        @Override
         public Thread newThread(Runnable runnable) {
             Thread thread = new Thread(group, runnable, namePrefix + " " + threadNumber.getAndIncrement(), 0);
-            if (thread.isDaemon()) thread.setDaemon(false);
-            if (thread.getPriority() != Thread.NORM_PRIORITY) thread.setPriority(Thread.NORM_PRIORITY);
+            if (thread.isDaemon()) {
+                thread.setDaemon(false);
+            }
+            if (thread.getPriority() != Thread.NORM_PRIORITY) {
+                thread.setPriority(Thread.NORM_PRIORITY);
+            }
             return thread;
         }
     }

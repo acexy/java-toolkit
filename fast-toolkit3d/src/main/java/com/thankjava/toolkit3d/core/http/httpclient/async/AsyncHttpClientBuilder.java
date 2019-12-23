@@ -53,6 +53,7 @@ public class AsyncHttpClientBuilder {
             sslContext = new SSLContextBuilder().loadTrustMaterial(
                     null,
                     new TrustStrategy() {
+                        @Override
                         public boolean isTrusted(X509Certificate[] chain, String authType) {
                             return true;
                         }

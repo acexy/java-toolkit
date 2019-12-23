@@ -192,7 +192,9 @@ public final class ReflectUtil {
      */
     public static void setFiledVal(Class clazz, String fieldName, Object value) {
         Field field = getField(clazz, fieldName);
-        if (field == null) return;
+        if (field == null) {
+            return;
+        }
         field.setAccessible(true);
         try {
             field.set(null, value);

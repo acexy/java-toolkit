@@ -28,7 +28,7 @@ import java.security.SignatureException;
  */
 public final class RSA {
 
-    private static final String algorithm = "RSA";
+    private static final String ALGORITHM = "RSA";
 
     /**
      * RSA 公密钥对生成
@@ -42,7 +42,7 @@ public final class RSA {
 
         KeyPairGenerator generator = null;
         try {
-            generator = KeyPairGenerator.getInstance(algorithm);
+            generator = KeyPairGenerator.getInstance(ALGORITHM);
             generator.initialize(keySize);
 
             KeyPair keyPair = generator.generateKeyPair();

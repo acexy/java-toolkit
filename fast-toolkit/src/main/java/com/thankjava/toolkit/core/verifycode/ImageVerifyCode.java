@@ -15,7 +15,7 @@ public class ImageVerifyCode {
 
     private ImageVerifyCode(){}
 
-    private static final int defaultWidth = 200, defaultHigh = 80;
+    private static final int DEFAULT_WIDTH = 200, defaultHigh = 80;
 
     private static Random random = new Random();
 
@@ -147,10 +147,12 @@ public class ImageVerifyCode {
     }
 
     private static Color getRandColor(int fc, int bc) {
-        if (fc > 255)
+        if (fc > 255) {
             fc = 255;
-        if (bc > 255)
+        }
+        if (bc > 255) {
             bc = 255;
+        }
         int r = fc + random.nextInt(bc - fc);
         int g = fc + random.nextInt(bc - fc);
         int b = fc + random.nextInt(bc - fc);
@@ -166,7 +168,7 @@ public class ImageVerifyCode {
      * @throws IOException
      */
     public static void encode2ImgFile(int width, int high, String imgFilename, String verifyCode) throws IOException{
-        width = width < 1 ? defaultWidth : width;
+        width = width < 1 ? DEFAULT_WIDTH : width;
         high = high < 1 ? defaultHigh : high;
         File outputFile = new File(imgFilename);
         File dir = outputFile.getParentFile();
@@ -187,7 +189,7 @@ public class ImageVerifyCode {
      * @throws IOException
      */
     public static byte[] encode2ByteArray(int width, int high, String verifyCode) throws IOException {
-        width = width < 1 ? defaultWidth : width;
+        width = width < 1 ? DEFAULT_WIDTH : width;
         high = high < 1 ? defaultHigh : high;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         outputImage(width, high, byteArrayOutputStream, verifyCode);

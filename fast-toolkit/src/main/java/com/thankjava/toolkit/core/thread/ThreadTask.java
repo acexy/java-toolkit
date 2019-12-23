@@ -1,15 +1,12 @@
 package com.thankjava.toolkit.core.thread;
 
+import com.thankjava.toolkit.bean.thread.TaskEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-
-import com.thankjava.toolkit.bean.thread.TaskEntity;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ThreadTask {
 
@@ -25,7 +22,35 @@ public final class ThreadTask {
      * @param poolSize 初始化的核心线程数量
      */
     public ThreadTask(int poolSize) {
-        scheduledExecutorService = Executors.newScheduledThreadPool(poolSize);
+        scheduledExecutorService = new ScheduledThreadPoolExecutor(100, new ThreadFactory() {
+
+            private final AtomicInteger poolNumber = new AtomicInteger(1);
+            private final AtomicInteger threadNumber = new AtomicInteger(1);
+
+            SecurityManager s = System.getSecurityManager();
+            private final ThreadGroup group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+            private String namePrefix = "toolkit.Task";
+            private String DEFAULT_THREAD_GROUP_NAME = "toolkit.Task-Group";
+            private String DEFAULT_THREAD_NAME = "toolkit.Task";
+
+            @Override
+            public Thread newThread(Runnable runnable) {
+
+                namePrefix = DEFAULT_THREAD_GROUP_NAME + " " + poolNumber.getAndIncrement() + " ; " + DEFAULT_THREAD_NAME;
+
+                Thread thread = new Thread(group, runnable, namePrefix + " " + threadNumber.getAndIncrement(), 0);
+                if (thread.isDaemon()) {
+                    thread.setDaemon(false);
+                }
+
+                if (thread.getPriority() != Thread.NORM_PRIORITY) {
+                    thread.setPriority(Thread.NORM_PRIORITY);
+                }
+
+                return thread;
+            }
+
+        });
     }
 
     /**

@@ -109,6 +109,7 @@ final class ByteCodeJavaFileManager extends ForwardingJavaFileManager {
         @Override
         public OutputStream openOutputStream() {
             return new FilterOutputStream(new ByteArrayOutputStream()) {
+                @Override
                 public void close() throws IOException {
                     ByteArrayOutputStream bos = (ByteArrayOutputStream) out;
                     byteCodes.put(className, bos.toByteArray());

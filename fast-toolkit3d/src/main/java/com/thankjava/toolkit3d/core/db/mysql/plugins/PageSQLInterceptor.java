@@ -31,6 +31,7 @@ import org.apache.ibatis.session.RowBounds;
 public class PageSQLInterceptor implements Interceptor {
 
 
+    @Override
     public Object intercept(Invocation invocation) throws Throwable {
 
         if (invocation.getTarget() instanceof RoutingStatementHandler) {
@@ -40,7 +41,9 @@ public class PageSQLInterceptor implements Interceptor {
             StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
             ParameterHandler parameterHandler = statementHandler.getParameterHandler();
             Object parameter = parameterHandler.getParameterObject();
-            if (!(parameter instanceof PageEntity)) return invocation.proceed();
+            if (!(parameter instanceof PageEntity)) {
+                return invocation.proceed();
+            }
 
             BoundSql boundSql = statementHandler.getBoundSql();
             RoutingStatementHandler routingStatementHandler = (RoutingStatementHandler) invocation.getTarget();
@@ -75,10 +78,12 @@ public class PageSQLInterceptor implements Interceptor {
         return invocation.proceed();
     }
 
+    @Override
     public Object plugin(Object target) {
         return Plugin.wrap(target, this);
     }
 
+    @Override
     public void setProperties(Properties properties) {
     }
 
@@ -112,8 +117,12 @@ public class PageSQLInterceptor implements Interceptor {
             if (resultSet.next()) {
                 ((PageEntity) boundSql.getParameterObject()).setTotalCount(resultSet.getLong(1));
             }
-            if (resultSet != null) resultSet.close();
-            if (preparedStatement != null) preparedStatement.close();
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -128,9 +128,9 @@ class MongoManagerImpl implements MongoManager {
     public long count(String docName, Document docFilter) {
         MongoCollection<Document> collection = getDBCollection(docName);
         if (docFilter == null) {
-            return collection.count();
+            return collection.countDocuments();
         }
-        return collection.count(docFilter);
+        return collection.countDocuments(docFilter);
     }
 
     @Override
@@ -371,7 +371,9 @@ class MongoManagerImpl implements MongoManager {
     @Override
     public <T> void findByPage(String docName, PageEntity<T> pageEntity) {
 
-        if (docName == null || pageEntity == null) return;
+        if (docName == null || pageEntity == null) {
+            return;
+        }
         MongoCollection<Document> collection = getDBCollection(docName);
         pageEntity.setTotalCount(this.count(docName, t2Doc(pageEntity.getQueryCondition())));
         FindIterable findIterable = collection.find(t2Doc(pageEntity.getQueryCondition())).skip(pageEntity.getPageSize() * (pageEntity.getPageNumber() - 1)).limit(pageEntity.getPageSize());

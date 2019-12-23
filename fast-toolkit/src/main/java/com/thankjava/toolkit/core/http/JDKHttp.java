@@ -91,7 +91,9 @@ public final class JDKHttp {
 
     private HttpURLConnection getConnection() {
         URL url = getUrl();
-        if (url == null) return null;
+        if (url == null) {
+            return null;
+        }
         try {
             HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
             setHttpHeaders(urlConnection);
@@ -190,9 +192,13 @@ public final class JDKHttp {
         } catch (ProtocolException e) {
             e.printStackTrace();
         }
-        if (urlConnection == null) return null;
+        if (urlConnection == null) {
+            return null;
+        }
         InputStream inputStream = execute(urlConnection);
-        if (inputStream == null) return null;
+        if (inputStream == null) {
+            return null;
+        }
         return getResponseString(inputStream);
     }
 
@@ -208,9 +214,13 @@ public final class JDKHttp {
         } catch (ProtocolException e) {
             e.printStackTrace();
         }
-        if (urlConnection == null) return null;
+        if (urlConnection == null) {
+            return null;
+        }
         InputStream inputStream = execute(urlConnection);
-        if (inputStream == null) return null;
+        if (inputStream == null) {
+            return null;
+        }
         return getResponseByteArray(inputStream);
     }
 
@@ -220,10 +230,14 @@ public final class JDKHttp {
      */
     public String doPostResponseString() {
         HttpURLConnection urlConnection = getConnection();
-        if (urlConnection == null) return null;
+        if (urlConnection == null) {
+            return null;
+        }
         setPostData(urlConnection);
         InputStream inputStream = execute(urlConnection);
-        if (inputStream == null) return null;
+        if (inputStream == null) {
+            return null;
+        }
         return getResponseString(inputStream);
     }
 
@@ -233,10 +247,14 @@ public final class JDKHttp {
      */
     public byte[] doPostResponseByteArray() {
         HttpURLConnection urlConnection = getConnection();
-        if (urlConnection == null) return null;
+        if (urlConnection == null) {
+            return null;
+        }
         setPostData(urlConnection);
         InputStream inputStream = execute(urlConnection);
-        if (inputStream == null) return null;
+        if (inputStream == null) {
+            return null;
+        }
         return getResponseByteArray(inputStream);
     }
 

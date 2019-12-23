@@ -217,7 +217,9 @@ public class POIExcelBuilder {
      * @return
      */
     public POIExcelBuilder setDefaultTimeFormatType(TimeType timeType) {
-        if (timeType != null) defaultTimeFormatType = timeType;
+        if (timeType != null) {
+            defaultTimeFormatType = timeType;
+        }
         return this;
     }
 

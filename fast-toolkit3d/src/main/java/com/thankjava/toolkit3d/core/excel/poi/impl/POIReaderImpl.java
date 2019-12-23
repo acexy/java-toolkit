@@ -99,6 +99,9 @@ class POIReaderImpl implements POIReader {
                             break;
                         case INTEGER:
                             value = String.valueOf((int) cell.getNumericCellValue());
+                        default:
+                            value ="";
+                            break;
                     }
                     break;
                 case FORMULA:
@@ -111,7 +114,9 @@ class POIReaderImpl implements POIReader {
                     break;
                 default:
                     value = cell.getStringCellValue();
-                    if (value != null && autoTrim) value = value.trim();
+                    if (value != null && autoTrim) {
+                        value = value.trim();
+                    }
             }
         } else {
             // 命中用户自定义数据格式化规则
@@ -128,7 +133,12 @@ class POIReaderImpl implements POIReader {
                         break;
                     case STRING:
                         value = cell.getStringCellValue();
-                        if (value != null && autoTrim) value = value.trim();
+                        if (value != null && autoTrim) {
+                            value = value.trim();
+                        }
+                    default:
+                        value = "";
+                        break;
                 }
             } catch (Throwable e) {
                 if (!ignoreDataFormatError) {
@@ -188,10 +198,14 @@ class POIReaderImpl implements POIReader {
         }
 
         Row row = sheet.getRow(rowNumber - 1);
-        if (row == null) return defaultValue;
+        if (row == null) {
+            return defaultValue;
+        }
 
         Cell cell = row.getCell(columnNumber - 1);
-        if (cell == null) return defaultValue;
+        if (cell == null) {
+            return defaultValue;
+        }
 
         return getCellValue(rowNumber - 1, columnNumber - 1, cell);
     }
