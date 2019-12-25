@@ -22,7 +22,7 @@ public final class ThreadTask {
      * @param poolSize 初始化的核心线程数量
      */
     public ThreadTask(int poolSize) {
-        scheduledExecutorService = new ScheduledThreadPoolExecutor(100, new ThreadFactory() {
+        scheduledExecutorService = new ScheduledThreadPoolExecutor(poolSize, new ThreadFactory() {
 
             private final AtomicInteger poolNumber = new AtomicInteger(1);
             private final AtomicInteger threadNumber = new AtomicInteger(1);
@@ -168,13 +168,13 @@ public final class ThreadTask {
      * <p>Description: </p>
      *
      * @param taskId
-     * @param isInterrupt 是否要强制中断该任务（如果任务正在进行）
+     * @param isForce 是否要强制中断该任务（如果任务正在进行）
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:40:04
      */
-    public boolean removeTaskByTaskId(String taskId, boolean isInterrupt) {
+    public boolean removeTaskByTaskId(String taskId, boolean isForce) {
         ScheduledFuture<?> future = runningTask.get(taskId);
-        boolean flag = future.cancel(isInterrupt);
+        boolean flag = future.cancel(isForce);
         if (flag) {
             runningTask.remove(taskId);
         }
@@ -199,15 +199,15 @@ public final class ThreadTask {
      * <p>Function: clearAllTasks</p>
      * <p>Description: </p>
      *
-     * @param isInterrupt
+     * @param isForce 是否强制退出
      * @author acexy@thankjava.com
      * @date 2016年1月12日 下午3:33:29
      */
-    public void clearAllTasks(boolean isInterrupt) {
+    public void clearAllTasks(boolean isForce) {
         List<String> taskIds = new ArrayList<String>();
         for (Map.Entry<String, ScheduledFuture<?>> tasks : runningTask.entrySet()) {
             ScheduledFuture<?> future = runningTask.get(tasks.getKey());
-            boolean flag = future.cancel(isInterrupt);
+            boolean flag = future.cancel(isForce);
             if (flag) {
                 taskIds.add(tasks.getKey());
             }
@@ -222,12 +222,15 @@ public final class ThreadTask {
      * 停止整个任务服务
      * <p>Function: shutdown</p>
      * <p>Description: </p>
-     *
+     * @param isForce 是否强制退出
      * @author acexy@thankjava.com
      * @date 2016年1月12日 上午11:47:21
      */
-    public void shutdown() {
+    public void shutdown(boolean isForce) {
         if (scheduledExecutorService != null) {
+            if (isForce) {
+                scheduledExecutorService.shutdownNow();
+            }
             scheduledExecutorService.shutdown();
         }
     }

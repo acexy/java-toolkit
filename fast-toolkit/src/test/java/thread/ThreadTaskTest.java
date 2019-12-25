@@ -14,9 +14,19 @@ public class ThreadTaskTest {
 
 
         ThreadTask threadTask = new ThreadTask(10);
-        TaskEntity task1 = task1();
-//		threadTask.addTaskAtFixedRate(task1);
+        TaskEntity task1 = task1(threadTask);
+        threadTask.addTaskAtFixedRate(task1);
         threadTask.addTaskWithFixedDelay(task1);
+
+        threadTask.addTaskRunOnce(20, new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("run once begin");
+            }
+        });
+
+        threadTask.shutdown(false);
+
 //
 //		Thread.sleep(3000);
 //		System.out.println("线程休息3秒后 加入任务2");
@@ -85,14 +95,14 @@ public class ThreadTaskTest {
 //		});
     }
 
-    private static TaskEntity task1() {
-        return new TaskEntity(0, 1, new Runnable() {
+    private static TaskEntity task1(final ThreadTask threadTask) {
+        return new TaskEntity(5, 1, new Runnable() {
             @Override
             public void run() {
                 System.out.println("============================");
                 for (int i = 0; i < 5; i++) {
                     try {
-                        System.out.println("task 1 running " + i + " " + TimeUtil.formatDate(TimeType.DEFAULT, new Date()));
+                        System.out.println("task 1 running " + i + " TaskCount " + threadTask.getRunningTaskCount() + " " + TimeUtil.formatDate(TimeType.DEFAULT, new Date()));
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
