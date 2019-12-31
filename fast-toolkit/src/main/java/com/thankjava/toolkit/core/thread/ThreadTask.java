@@ -29,14 +29,13 @@ public final class ThreadTask {
 
             SecurityManager s = System.getSecurityManager();
             private final ThreadGroup group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
-            private String namePrefix = "toolkit.Task";
-            private String DEFAULT_THREAD_GROUP_NAME = "toolkit.Task-Group";
-            private String DEFAULT_THREAD_NAME = "toolkit.Task";
 
             @Override
             public Thread newThread(Runnable runnable) {
 
-                namePrefix = DEFAULT_THREAD_GROUP_NAME + " " + poolNumber.getAndIncrement() + " ; " + DEFAULT_THREAD_NAME;
+                String DEFAULT_THREAD_NAME = "toolkit.Task";
+                String DEFAULT_THREAD_GROUP_NAME = "toolkit.Task-Group";
+                String namePrefix = DEFAULT_THREAD_GROUP_NAME + " " + poolNumber.getAndIncrement() + " ; " + DEFAULT_THREAD_NAME;
 
                 Thread thread = new Thread(group, runnable, namePrefix + " " + threadNumber.getAndIncrement(), 0);
                 if (thread.isDaemon()) {
