@@ -19,11 +19,12 @@
     ```
 
 ---
-- 此次变更内容
-    - XML模块 默认自动使用了XStream推荐的安全模块
-    - 统一了项目的Charset枚举值及一些基础的枚举引用规范
-    - 调整基于JDK的http请求方法，更多的请求返回类型，更优雅的使用方法 参见 ``JDKHttpTest.java``
-    - Redis新增官方集群Cluster的连接方式 参见``RedisClusterManagerTest.java``
+- 1.1.5 此次变更内容
+    - 修复ThreeDES模块存在线程安全的问题
+    - JDKHttp模块修复了post请求requestMethod声明不完整的问题
+    - 优化了线程(包括定时任务)可能造成线程过量创建的问题
+    - 线程池提供了统一 new Thread() 创建管理 (代替代码中显式创建线程)
+    - 升级部分推荐依赖
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -36,7 +37,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
   </dependency>
   ```
 
@@ -44,7 +45,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
   </dependency>
   ```
   

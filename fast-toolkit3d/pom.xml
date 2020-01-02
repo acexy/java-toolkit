@@ -16,7 +16,7 @@
 
     <properties>
 
-        <com.thankjava.toolkit.version>1.1.5-SNAPSHOT</com.thankjava.toolkit.version>
+        <com.thankjava.toolkit.version>1.1.5</com.thankjava.toolkit.version>
 
         <com.alibaba.fastjson.version>1.2.60</com.alibaba.fastjson.version>
         <com.alibaba.druid.version>1.1.20</com.alibaba.druid.version>
@@ -38,7 +38,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.5-SNAPSHOT</version>
+    <version>1.1.5</version>
 
     <dependencies>
 
