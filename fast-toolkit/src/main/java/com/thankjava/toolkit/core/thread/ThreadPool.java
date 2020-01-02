@@ -30,8 +30,8 @@ public final class ThreadPool {
 
     private static String DEFAULT_THREAD_GROUP_NAME = "toolkit.ThreadPool-Group";
     private static String DEFAULT_THREAD_NAME = "toolkit.Thread";
-
-    private static ThreadPoolExecutor threadPoolExecutor;
+    private static ThreadPoolExecutor threadPoolExecutorForNewThread;
+    private final ThreadPoolExecutor threadPoolExecutor;
 
     public ThreadPool() {
         threadPoolExecutor = new ThreadPoolExecutor(
@@ -61,6 +61,29 @@ public final class ThreadPool {
                 TimeUnit.MILLISECONDS,
                 new ArrayBlockingQueue<Runnable>(waitRunnableMaxNum),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
+    }
+
+    /**
+     * 从统一的线程池中获取当个线程
+     *
+     * @param runnable
+     * @return
+     */
+    public static synchronized Thread getNewThread(Runnable runnable) {
+
+        if (threadPoolExecutorForNewThread == null) {
+
+            threadPoolExecutorForNewThread = new ThreadPoolExecutor(
+                    INIT_THREAD_NUM,
+                    MAX_THREAD_NUM,
+                    ALIVE_TIME,
+                    TimeUnit.SECONDS,
+                    new ArrayBlockingQueue<Runnable>(WAIT_RUNNABLE_MAX_NUM),
+                    new ThreadPoolExecutor.DiscardOldestPolicy());
+
+        }
+
+        return threadPoolExecutorForNewThread.getThreadFactory().newThread(runnable);
     }
 
     /**
@@ -106,7 +129,7 @@ public final class ThreadPool {
         }
     }
 
-    class CustomThreadFactory implements ThreadFactory {
+    static class CustomThreadFactory implements ThreadFactory {
 
         private final AtomicInteger poolNumber = new AtomicInteger(1);
         private final ThreadGroup group;

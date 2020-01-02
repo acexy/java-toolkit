@@ -23,8 +23,6 @@ public class ThreadUtil {
      * @date 2016年1月5日 下午2:45:12
      */
     public static void runWhenJVMExit(Runnable runnable) {
-        Thread thread = new Thread(runnable);
-        thread.setName(DEFAULT_THREAD_NAME);
-        Runtime.getRuntime().addShutdownHook(thread);
+        Runtime.getRuntime().addShutdownHook(ThreadPool.getNewThread(runnable));
     }
 }

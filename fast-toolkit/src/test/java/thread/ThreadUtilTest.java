@@ -10,7 +10,7 @@ import com.thankjava.toolkit.core.thread.ThreadUtil;
 public class ThreadUtilTest {
     public static void main(String[] args) throws InterruptedException {
 
-        Thread.sleep(100);
+        Thread.sleep(1000);
 
         ThreadUtil.runWhenJVMExit(new Runnable() {
             @Override
