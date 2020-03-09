@@ -76,7 +76,7 @@ public class FastJson {
         @SuppressWarnings("unchecked")
         Class<T> clazz = (Class<T>) t.getClass();
         T tNew = toObject(json, clazz);
-        BeanCopierUtil.append(tNew, t);
+        BeanCopierUtil.copy(tNew, t);
         return tNew;
     }
 

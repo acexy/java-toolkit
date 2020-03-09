@@ -26,7 +26,6 @@ import org.apache.ibatis.session.RowBounds;
 
 
 @Intercepts({
-        @Signature(method = "query", type = Executor.class, args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
         @Signature(method = "prepare", type = StatementHandler.class, args = {Connection.class, Integer.class})})
 public class PageSQLInterceptor implements Interceptor {
 
