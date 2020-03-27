@@ -1,12 +1,12 @@
 > ### ChangeLog
 ---
 - 1.1.x
-
     - 1.1.6 
     
         - Http Async 模块增加了主流的所有http请求方式
         - 调整部分代码结构
-
+        - 调整BeanCopierUtil属性对等复制函数
+        
     - 1.1.5
     
         - 修复ThreeDES模块存在线程安全的问题

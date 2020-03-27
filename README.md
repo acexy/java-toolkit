@@ -23,6 +23,7 @@
     
     - Http Async 模块增加了主流的所有http请求方式
     - 调整部分代码结构
+    - 调整BeanCopierUtil属性对等复制函数
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -35,7 +36,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
   </dependency>
   ```
 
@@ -43,7 +44,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
   </dependency>
   ```
   

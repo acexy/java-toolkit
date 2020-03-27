@@ -1,11 +1,11 @@
 package com.thankjava.toolkit.core.reflect;
 
+import com.thankjava.toolkit.core.reflect.copier.ValueCast;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.thankjava.toolkit.core.reflect.copier.ValueCast;
 
 /**
  * BeanCopierUtil 属性对等复制
@@ -58,29 +58,28 @@ public final class BeanCopierUtil {
     }
 
     /**
-     * 属性对等复制增加
-     * <p>Function: append</p>
-     * <p>Description: 将originObject对象中的属性复制到targetObject中,
-     * 保留targetObject中原来的属性值
+     * 属性值重赋值
+     * <p>Function: copy</p>
+     * <p>Description: 将newObject对象中的相同字段名属性值复制到originObject
      * </p>
      *
      * @param originObject
-     * @param targetObject
+     * @param newObject
      * @return
      * @author acexy@thankjava.com
      * @date 2016年12月22日 上午10:41:58
      * @version 1.0
      */
-    public static <OriginObject, TargetObject> void append(OriginObject originObject, TargetObject targetObject) {
+    public static <OriginObject, TargetObject> void copy(TargetObject newObject, OriginObject originObject) {
         if (originObject == null) {
             return;
         }
-        if (targetObject == null) {
+        if (newObject == null) {
             throw new IllegalArgumentException("targetClass can't be null");
         }
         @SuppressWarnings("unchecked")
-        Class<TargetObject> targetClass = (Class<TargetObject>) targetObject.getClass();
-        setValue(originObject, targetObject, targetClass);
+        Class<TargetObject> targetClass = (Class<TargetObject>) newObject.getClass();
+        setValue(originObject, newObject, targetClass);
 
     }
 

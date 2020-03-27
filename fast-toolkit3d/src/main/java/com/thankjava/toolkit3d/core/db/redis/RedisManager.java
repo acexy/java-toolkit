@@ -232,4 +232,6 @@ public interface RedisManager {
      * @param key
      */
     Long incr(String key);
+
+    void close();
 }

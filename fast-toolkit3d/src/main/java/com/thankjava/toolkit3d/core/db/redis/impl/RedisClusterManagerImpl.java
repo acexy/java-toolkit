@@ -359,6 +359,13 @@ class RedisClusterManagerImpl implements RedisManager {
     }
 
     @Override
+    public void close() {
+        if (jedisCluster != null) {
+            jedisCluster.close();
+        }
+    }
+
+    @Override
     public String hget(String key, String field) {
         JedisCluster jedis = null;
         try {

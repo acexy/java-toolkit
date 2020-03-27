@@ -1,29 +1,22 @@
 package com.thankjava.toolkit3d.core.db.redis.impl;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
 import com.thankjava.toolkit.core.utils.SourceLoaderUtil;
 import com.thankjava.toolkit3d.core.db.redis.RedisManager;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Pipeline;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.*;
+
 class RedisManagerImpl implements RedisManager {
 
-    private static JedisPool jedisPool = null;
-
     private static final String SUCCESS_CODE_STR = "OK";
-
+    private static JedisPool jedisPool = null;
     private static RedisManager manager = null;
 
     private static int DEFAULT_DB_INDEX = 0;
@@ -104,6 +97,7 @@ class RedisManagerImpl implements RedisManager {
                 e.printStackTrace();
             }
         }
+
         return manager;
     }
 
@@ -322,10 +316,7 @@ class RedisManagerImpl implements RedisManager {
             return null;
         } finally {
             if (pipeline != null) {
-                try {
-                    pipeline.close();
-                } catch (IOException e) {
-                }
+                pipeline.close();
             }
             returnJedis(jedis);
         }
@@ -391,6 +382,13 @@ class RedisManagerImpl implements RedisManager {
     }
 
     @Override
+    public void close() {
+        if (jedisPool != null) {
+            jedisPool.close();
+        }
+    }
+
+    @Override
     public String hget(String key, String field) {
         Jedis jedis = null;
         try {
@@ -403,5 +401,6 @@ class RedisManagerImpl implements RedisManager {
             returnJedis(jedis);
         }
     }
+
 
 }
