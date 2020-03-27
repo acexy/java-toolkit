@@ -19,12 +19,10 @@
     ```
 
 ---
-- 1.1.5 此次变更内容
-    - 修复ThreeDES模块存在线程安全的问题
-    - JDKHttp模块修复了post请求requestMethod声明不完整的问题
-    - 优化了线程(包括定时任务)可能造成线程过量创建的问题
-    - 线程池提供了统一 new Thread() 创建管理 (代替代码中显式创建线程)
-    - 升级部分推荐依赖
+- 1.1.6 此次变更内容 
+    
+    - Http Async 模块增加了主流的所有http请求方式
+    - 调整部分代码结构
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
