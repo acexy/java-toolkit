@@ -1,5 +1,5 @@
 ![license](https://img.shields.io/badge/license-Apache2.0-100000.svg)
-![version](https://img.shields.io/maven-central/v/com.thankjava.toolkit/fast-toolkit?style=plastic)
+![version](https://img.shields.io/maven-central/v/com.thankjava.toolkit/fast-toolkit)
 
 > #### 介绍
 - JDK >= 1.7 (本软件基于1.7, 第三方依赖根据其所需JDK版本而定)
