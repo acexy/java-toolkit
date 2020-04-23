@@ -58,6 +58,23 @@ public class Parameters {
         return this;
     }
 
+    public Parameters append(String text) {
+        this.text = text;
+        this.contentType = RequestContentType.TEXT_PLAIN.code;
+        return this;
+    }
+
+    public Parameters append(String text, RequestContentType contentType, Charset... contentEncoding) {
+        this.text = text;
+        this.contentType = contentType.code;
+
+        if (contentEncoding != null && contentEncoding.length > 0) {
+            this.contentEncoding = contentEncoding[0].charset;
+        }
+        return this;
+    }
+
+
     /**
      * 向post body发送普通字符串
      *

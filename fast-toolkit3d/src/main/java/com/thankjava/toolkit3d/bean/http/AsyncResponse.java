@@ -128,19 +128,34 @@ public class AsyncResponse {
     }
 
     /**
-     * 判断返回数据是否为空
+     * 获取异常信息
      *
      * @return
      */
-    public boolean isEmptyDataString() {
-        if (exception != null) {
-            return true;
-        }
-        return getDataString() == null || dataString.length() == 0;
-    }
-
     public Throwable getException() {
         return exception;
+    }
+
+    /**
+     * 是否没有异常且状态为http 200
+     *
+     * @return
+     */
+    public boolean isOK() {
+        if (!hasException() && httpCode == 200) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 是否发生异常
+     *
+     * @return
+     */
+    public boolean hasException() {
+        return exception != null;
     }
 
     @Override
@@ -148,7 +163,7 @@ public class AsyncResponse {
         if (exception != null) {
             return "request exception: \n\t" + exception.toString();
         }
-        String string = "httpCode: [" +
+        return "httpCode: [" +
                 httpCode +
                 "] header: [" +
                 (header == null ? "" : header.toString()) +
@@ -157,6 +172,5 @@ public class AsyncResponse {
                 "] dataString: [" +
                 (getDataString() == null ? "" : getDataString()) +
                 "]";
-        return string;
     }
 }
