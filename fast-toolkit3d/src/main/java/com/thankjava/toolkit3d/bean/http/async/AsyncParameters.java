@@ -148,14 +148,14 @@ public class AsyncParameters {
         return this;
     }
 
-    public AsyncParameters append(String text) {
-        this.bodyString = text;
-        this.contentType = ContentType.TEXT_PLAIN.withCharset(Charset.utf8.charset);
+    public AsyncParameters append(String json) {
+        this.bodyString = json;
+        this.contentType = ContentType.APPLICATION_JSON.withCharset(Charset.utf8.charset);
         return this;
     }
 
-    public AsyncParameters append(String text, ContentType contentType) {
-        this.bodyString = text;
+    public AsyncParameters append(String bodyString, ContentType contentType) {
+        this.bodyString = bodyString;
         this.contentType = contentType;
         return this;
     }
