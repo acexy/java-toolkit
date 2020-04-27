@@ -1,9 +1,9 @@
 package com.thankjava.toolkit3d.core.http.httpclient.async.core;
 
-import com.thankjava.toolkit3d.bean.http.async.AsyncRequest;
 import com.thankjava.toolkit3d.bean.http.async.AsyncHeaders;
 import com.thankjava.toolkit3d.bean.http.async.AsyncHttpMethod;
 import com.thankjava.toolkit3d.bean.http.async.AsyncParameters;
+import com.thankjava.toolkit3d.bean.http.async.AsyncRequest;
 import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
@@ -41,11 +41,22 @@ public class RequestBuilder {
 
         if (parameter != null) {
 
-            if (parameter.getNameValuePair() != null) {
+
+            // 如果bodyString 和valuePair 同时存在，且请求类型为entityParams时，valuePair将需要转化为uri参数
+            if (parameter.getNameValuePair() != null && parameter.getBodyString() != null) {
+                HttpRequestBase httpRequestBase = (HttpRequestBase) httpEntityEnclosingRequestBase;
                 try {
-                    httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair()));
-                } catch (UnsupportedEncodingException e) {
+                    httpRequestBase.setURI(new URIBuilder(httpRequestBase.getURI()).addParameters(parameter.getNameValuePair()).build());
+                } catch (URISyntaxException e) {
                     e.printStackTrace();
+                }
+            } else {
+                if (parameter.getNameValuePair() != null) {
+                    try {
+                        httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair()));
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
@@ -56,7 +67,9 @@ public class RequestBuilder {
                         )
                 );
 
-            } else if (parameter.getByteData() != null) {
+            }
+
+            if (parameter.getByteData() != null) {
 
                 EntityBuilder entityBuilder = EntityBuilder.create();
                 entityBuilder.setBinary(parameter.getByteData());
