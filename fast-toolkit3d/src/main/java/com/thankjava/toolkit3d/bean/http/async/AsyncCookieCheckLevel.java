@@ -1,11 +1,11 @@
-package com.thankjava.toolkit3d.bean.http;
+package com.thankjava.toolkit3d.bean.http.async;
 
 /**
  * @Author: acexy@thankjava.com
  * 2018/9/30
  * @Description: cookie校验等级
  **/
-public enum CookieCheckLevel {
+public enum AsyncCookieCheckLevel {
 
     /**
      * 与常见的 HTTP 应用保持较高兼容性的Cookie管理方案
@@ -43,7 +43,7 @@ public enum CookieCheckLevel {
 
     public String code;
 
-    CookieCheckLevel(String code) {
+    AsyncCookieCheckLevel(String code) {
         this.code = code;
     }
 

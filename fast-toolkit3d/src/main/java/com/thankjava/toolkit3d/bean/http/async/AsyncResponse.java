@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.bean.http;
+package com.thankjava.toolkit3d.bean.http.async;
 
 import com.thankjava.toolkit.bean.common.Charset;
 import org.apache.http.HttpEntity;
@@ -27,12 +27,12 @@ public class AsyncResponse {
     /**
      * 返回的头部信息
      */
-    private Headers header;
+    private AsyncHeaders header;
 
     /**
      * 返回的cookies信息
      */
-    private Cookies cookies;
+    private AsyncCookies asyncCookies;
 
     /**
      * 返回的内容信息
@@ -53,20 +53,20 @@ public class AsyncResponse {
 
     private Charset charset;
 
-    public Headers getHeader() {
+    public AsyncHeaders getHeader() {
         return header;
     }
 
-    public void setHeader(Headers header) {
+    public void setHeader(AsyncHeaders header) {
         this.header = header;
     }
 
-    public Cookies getCookies() {
-        return cookies;
+    public AsyncCookies getAsyncCookies() {
+        return asyncCookies;
     }
 
-    public void setCookies(Cookies cookies) {
-        this.cookies = cookies;
+    public void setAsyncCookies(AsyncCookies asyncCookies) {
+        this.asyncCookies = asyncCookies;
     }
 
     public int getHttpCode() {
@@ -168,7 +168,7 @@ public class AsyncResponse {
                 "] header: [" +
                 (header == null ? "" : header.toString()) +
                 "] cookies: [" +
-                (cookies == null ? "" : cookies.toString()) +
+                (asyncCookies == null ? "" : asyncCookies.toString()) +
                 "] dataString: [" +
                 (getDataString() == null ? "" : getDataString()) +
                 "]";

@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.bean.http;
+package com.thankjava.toolkit3d.bean.http.async;
 
 import com.thankjava.toolkit.bean.common.Charset;
 
@@ -12,22 +12,22 @@ public class AsyncRequest {
     /**
      * 携带的cookies信息
      */
-    private Cookies cookies;
+    private AsyncCookies asyncCookies;
 
     /**
      * 携带的头部信息
      */
-    private Headers header;
+    private AsyncHeaders header;
 
     /**
      * 携带的请求参数
      */
-    private Parameters parameter;
+    private AsyncParameters parameter;
 
     /**
      * 请求方式
      */
-    private HttpMethod httpMethod;
+    private AsyncHttpMethod asyncHttpMethod;
 
     /**
      * 请求编码 默认utf8
@@ -42,29 +42,29 @@ public class AsyncRequest {
     /**
      * http请求参数构建
      * @param url   请求地址 需携带协议头 http/https
-     * @param httpMethod    请求类型
+     * @param asyncHttpMethod    请求类型
      */
-    public AsyncRequest(String url, HttpMethod httpMethod) {
+    public AsyncRequest(String url, AsyncHttpMethod asyncHttpMethod) {
         this.url = url;
-        this.httpMethod = httpMethod;
+        this.asyncHttpMethod = asyncHttpMethod;
     }
 
-    public AsyncRequest(String url, HttpMethod httpMethod, Parameters parameter) {
+    public AsyncRequest(String url, AsyncHttpMethod asyncHttpMethod, AsyncParameters parameter) {
         this.url = url;
-        this.httpMethod = httpMethod;
+        this.asyncHttpMethod = asyncHttpMethod;
         this.parameter = parameter;
     }
 
     /**
      * http请求参数构建
      * @param url
-     * @param httpMethod
+     * @param asyncHttpMethod
      * @param parameter 请求参数 post body | get url
      * @param header 携带的 header
      */
-    public AsyncRequest(String url, HttpMethod httpMethod, Parameters parameter, Headers header) {
+    public AsyncRequest(String url, AsyncHttpMethod asyncHttpMethod, AsyncParameters parameter, AsyncHeaders header) {
         this.url = url;
-        this.httpMethod = httpMethod;
+        this.asyncHttpMethod = asyncHttpMethod;
         this.parameter = parameter;
         this.header = header;
     }
@@ -72,21 +72,21 @@ public class AsyncRequest {
     /**
      * http请求参数构建
      * @param url
-     * @param httpMethod
-     * @param cookies cooke信息
+     * @param asyncHttpMethod
+     * @param asyncCookies cooke信息
      * @param header
      */
-    public AsyncRequest(String url, HttpMethod httpMethod, Cookies cookies, Headers header) {
+    public AsyncRequest(String url, AsyncHttpMethod asyncHttpMethod, AsyncCookies asyncCookies, AsyncHeaders header) {
         this.url = url;
-        this.httpMethod = httpMethod;
-        this.cookies = cookies;
+        this.asyncHttpMethod = asyncHttpMethod;
+        this.asyncCookies = asyncCookies;
         this.header = header;
     }
 
-    public AsyncRequest(String url, HttpMethod httpMethod, Cookies cookies, Headers header, Parameters parameter) {
+    public AsyncRequest(String url, AsyncHttpMethod asyncHttpMethod, AsyncCookies asyncCookies, AsyncHeaders header, AsyncParameters parameter) {
         this.url = url;
-        this.httpMethod = httpMethod;
-        this.cookies = cookies;
+        this.asyncHttpMethod = asyncHttpMethod;
+        this.asyncCookies = asyncCookies;
         this.header = header;
         this.parameter = parameter;
     }
@@ -95,20 +95,20 @@ public class AsyncRequest {
         return url;
     }
 
-    public Cookies getCookies() {
-        return cookies;
+    public AsyncCookies getAsyncCookies() {
+        return asyncCookies;
     }
 
-    public Headers getHeader() {
+    public AsyncHeaders getHeader() {
         return header;
     }
 
-    public Parameters getParameter() {
+    public AsyncParameters getParameter() {
         return parameter;
     }
 
-    public HttpMethod getHttpMethod() {
-        return httpMethod;
+    public AsyncHttpMethod getAsyncHttpMethod() {
+        return asyncHttpMethod;
     }
 
     public Charset getReqCharset() {
@@ -129,17 +129,17 @@ public class AsyncRequest {
         return this;
     }
 
-    public AsyncRequest setCookies(Cookies cookies) {
-        this.cookies = cookies;
+    public AsyncRequest setAsyncCookies(AsyncCookies asyncCookies) {
+        this.asyncCookies = asyncCookies;
         return this;
     }
 
-    public AsyncRequest setHeader(Headers header) {
+    public AsyncRequest setHeader(AsyncHeaders header) {
         this.header = header;
         return this;
     }
 
-    public AsyncRequest setParameter(Parameters parameter) {
+    public AsyncRequest setParameter(AsyncParameters parameter) {
         this.parameter = parameter;
         return this;
     }

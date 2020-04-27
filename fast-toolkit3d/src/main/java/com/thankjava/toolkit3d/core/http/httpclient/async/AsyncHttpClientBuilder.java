@@ -1,6 +1,6 @@
 package com.thankjava.toolkit3d.core.http.httpclient.async;
 
-import com.thankjava.toolkit3d.bean.http.CookieCheckLevel;
+import com.thankjava.toolkit3d.bean.http.async.AsyncCookieCheckLevel;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
@@ -77,7 +77,7 @@ public class AsyncHttpClientBuilder {
      *
      * @return
      */
-    public AsyncHttpClientBuilder setCookiePolicyLevel(CookieCheckLevel cookiePolicyLevel) {
+    public AsyncHttpClientBuilder setCookiePolicyLevel(AsyncCookieCheckLevel cookiePolicyLevel) {
         requestConfigBuilder.setCookieSpec(cookiePolicyLevel.code);
         return this;
     }

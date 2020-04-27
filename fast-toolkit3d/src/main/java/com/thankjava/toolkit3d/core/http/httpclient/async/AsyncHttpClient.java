@@ -2,13 +2,13 @@ package com.thankjava.toolkit3d.core.http.httpclient.async;
 
 import java.io.IOException;
 
-import com.thankjava.toolkit3d.bean.http.AsyncResponse;
-import com.thankjava.toolkit3d.bean.http.AsyncResponseCallback;
+import com.thankjava.toolkit3d.bean.http.async.AsyncResponse;
+import com.thankjava.toolkit3d.bean.http.async.AsyncResponseCallback;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import com.thankjava.toolkit3d.core.http.httpclient.async.core.DoRequest;
-import com.thankjava.toolkit3d.bean.http.Cookies;
-import com.thankjava.toolkit3d.bean.http.AsyncRequest;
+import com.thankjava.toolkit3d.bean.http.async.AsyncCookies;
+import com.thankjava.toolkit3d.bean.http.async.AsyncRequest;
 
 public class AsyncHttpClient {
 
@@ -79,8 +79,8 @@ public class AsyncHttpClient {
      * @author acexy@thankjava.com
      * @date 2017年6月12日 下午3:31:00
      */
-    public Cookies getAllCookiesFromClientContext() {
-        return new Cookies(DoRequest.getSyncCookieStore().getCookies());
+    public AsyncCookies getAllCookiesFromClientContext() {
+        return new AsyncCookies(DoRequest.getSyncCookieStore().getCookies());
     }
 
     /**

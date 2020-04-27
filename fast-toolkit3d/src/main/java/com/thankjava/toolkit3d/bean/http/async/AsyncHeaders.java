@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.bean.http;
+package com.thankjava.toolkit3d.bean.http.async;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,16 +14,16 @@ import org.apache.http.message.BasicHeader;
  * @date 2016年12月13日 上午10:43:11
  * @version 1.0
  */
-public class Headers {
+public class AsyncHeaders {
 
 	private Map<String, Header> headers = null;
 
-	public Headers(String name, String value) {
+	public AsyncHeaders(String name, String value) {
 		headers = new HashMap<String, Header>();
 		headers.put(name, new BasicHeader(name, value));
 	}
 
-	public Headers(Map<String, String> headers) {
+	public AsyncHeaders(Map<String, String> headers) {
 		if (headers == null || headers.size() == 0) {
 			return;
 		}
@@ -33,7 +33,7 @@ public class Headers {
 		}
 	}
 
-	public Headers(Header[] headers) {
+	public AsyncHeaders(Header[] headers) {
 		if (headers == null || headers.length == 0) {
 			return;
 		}

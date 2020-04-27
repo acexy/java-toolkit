@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.bean.http;
+package com.thankjava.toolkit3d.bean.http.async;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.apache.http.cookie.Cookie;
 
-public class Cookies {
+public class AsyncCookies {
 
 	private Map<String, Cookie> cookies = null;
 	
-	public Cookies(List<Cookie> cookies) {
+	public AsyncCookies(List<Cookie> cookies) {
 		if(cookies == null || cookies.size() == 0){
 			return;
 		}
