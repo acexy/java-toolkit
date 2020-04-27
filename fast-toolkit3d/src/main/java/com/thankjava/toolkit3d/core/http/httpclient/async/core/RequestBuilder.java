@@ -8,12 +8,10 @@ import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
-import java.nio.charset.Charset;
 
 
 /**
@@ -45,20 +43,16 @@ public class RequestBuilder {
 
             if (parameter.getNameValuePair() != null) {
                 try {
-                    httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), asyncRequest.getReqCharset().charset));
+                    httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair()));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
             }
 
-            if (parameter.getText() != null) {
+            if (parameter.getBodyString() != null) {
                 httpEntityEnclosingRequestBase.setEntity(
-                        new StringEntity(parameter.getText(),
-                                ContentType.create(
-                                        parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                        Charset.forName(parameter.getCharset() == null ? asyncRequest.getReqCharset().charset : parameter.getCharset()
-                                        )
-                                )
+                        new StringEntity(parameter.getBodyString(),
+                                parameter.getContentType()
                         )
                 );
 
@@ -71,14 +65,10 @@ public class RequestBuilder {
                     entityBuilder.setContentEncoding(parameter.getCharset());
                 }
 
-                entityBuilder.setContentType(
-                        ContentType.create(
-                                parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                Charset.forName(parameter.getCharset() == null ? asyncRequest.getReqCharset().charset : parameter.getCharset())
-                        )
-                );
+                entityBuilder.setContentType(parameter.getContentType());
 
                 httpEntityEnclosingRequestBase.setEntity(entityBuilder.build());
+
             } else if (parameter.getFile() != null) {
 
                 EntityBuilder entityBuilder = EntityBuilder.create();
@@ -88,12 +78,8 @@ public class RequestBuilder {
                     entityBuilder.setContentEncoding(parameter.getCharset());
                 }
 
-                entityBuilder.setContentType(
-                        ContentType.create(
-                                parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                Charset.forName(parameter.getCharset() == null ? asyncRequest.getReqCharset().charset : parameter.getCharset())
-                        )
-                );
+                entityBuilder.setContentType(parameter.getContentType());
+
                 httpEntityEnclosingRequestBase.setEntity(entityBuilder.build());
             }
 

@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class AsyncParameters {
 
-    private String contentType = null;
+    private ContentType contentType = null;
     private List<NameValuePair> nameValuePairs = null;
-    private String text = null;
+    private String bodyString = null;
     private byte[] byteData = null;
     private String charset = null;
     private File file = null;
@@ -25,59 +25,56 @@ public class AsyncParameters {
     public AsyncParameters(String name, String value) {
         nameValuePairs = new ArrayList<>();
         nameValuePairs.add(new BasicNameValuePair(name, value));
-        this.contentType = ContentType.APPLICATION_FORM_URLENCODED.toString();
+        this.contentType = ContentType.APPLICATION_FORM_URLENCODED.withCharset(Charset.utf8.charset);
     }
 
     /**
      * 新增 from-urlencode / GET 请求参数
      */
-    public AsyncParameters(Map<String, String> parameters) {
+    public AsyncParameters(Map<String, String> params) {
 
-        if (parameters == null || parameters.size() == 0) {
+        if (params == null || params.size() == 0) {
             return;
         }
         nameValuePairs = new ArrayList<>();
-        for (Map.Entry<String, String> entry : parameters.entrySet()) {
+        for (Map.Entry<String, String> entry : params.entrySet()) {
             nameValuePairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
         }
-        this.contentType = ContentType.APPLICATION_FORM_URLENCODED.toString();
+        this.contentType = ContentType.APPLICATION_FORM_URLENCODED.withCharset(Charset.utf8.charset);
 
     }
 
     /**
      * 向post body发送普通字符串
      *
-     * @param text
+     * @param json
      */
-    public AsyncParameters(String text) {
-        this.text = text;
-        this.contentType = ContentType.TEXT_PLAIN.toString();
+    public AsyncParameters(String json) {
+        this.bodyString = json;
+        this.contentType = ContentType.APPLICATION_JSON.withCharset(Charset.utf8.charset);
     }
 
     /**
      * 向post body发送普通字符串
      *
-     * @param text
+     * @param bodyString
      * @param contentType
      */
-    public AsyncParameters(String text, ContentType contentType) {
-        this.text = text;
-        this.contentType = contentType.toString();
+    public AsyncParameters(String bodyString, ContentType contentType) {
+        this.bodyString = bodyString;
+        this.contentType = contentType.withCharset(Charset.utf8.charset);
     }
 
     /**
      * 向post body发送字符串数据
      *
-     * @param text
+     * @param bodyString
      * @param contentType
      * @param charset
      */
-    public AsyncParameters(String text, String contentType, Charset... charset) {
-        this.text = text;
-        this.contentType = contentType;
-        if (charset != null && charset.length > 0) {
-            this.charset = charset[0].charset;
-        }
+    public AsyncParameters(String bodyString, String contentType, Charset... charset) {
+        this.bodyString = bodyString;
+        this.contentType = ContentType.create(contentType).withCharset(charset != null && charset.length > 0 ? charset[0].charset : Charset.utf8.charset);
     }
 
 
@@ -86,14 +83,9 @@ public class AsyncParameters {
      *
      * @param byteData
      */
-    public AsyncParameters(byte[] byteData, Charset... charset) {
+    public AsyncParameters(byte[] byteData) {
         this.byteData = byteData;
-
-        if (charset != null && charset.length > 0) {
-            this.contentType = ContentType.create(ContentType.APPLICATION_OCTET_STREAM.getMimeType(), charset[0].charset).toString();
-        } else {
-            this.contentType = ContentType.create(ContentType.APPLICATION_OCTET_STREAM.getMimeType()).toString();
-        }
+        this.contentType = ContentType.create(ContentType.APPLICATION_OCTET_STREAM.getMimeType()).withCharset(Charset.utf8.charset);
 
     }
 
@@ -105,7 +97,7 @@ public class AsyncParameters {
      */
     public AsyncParameters(byte[] byteData, ContentType contentType) {
         this.byteData = byteData;
-        this.contentType = contentType.toString();
+        this.contentType = contentType.withCharset(Charset.utf8.charset);
     }
 
     /**
@@ -116,28 +108,29 @@ public class AsyncParameters {
      */
     public AsyncParameters(byte[] byteData, String contentType, Charset... charset) {
         this.byteData = byteData;
-        this.contentType = contentType;
-        if (charset != null && charset.length > 0) {
-            this.charset = charset[0].charset;
-        }
+        this.contentType = ContentType.create(contentType).withCharset(charset != null && charset.length > 0 ? charset[0].charset : Charset.utf8.charset);
+    }
+
+    /**
+     * 设置文件
+     *
+     * @param file
+     * @param contentType
+     */
+    public AsyncParameters(File file, ContentType contentType) {
+        this.file = file;
+        this.contentType = ContentType.MULTIPART_FORM_DATA.withCharset(Charset.utf8.charset);
     }
 
     /**
      * 设置文件
      * @param file
      * @param contentType
+     * @param charset
      */
-    public AsyncParameters(File file, ContentType contentType) {
-        this.file = file;
-        this.contentType = contentType.toString();
-    }
-
     public AsyncParameters(File file, String contentType, Charset... charset) {
         this.file = file;
-        this.contentType = contentType;
-        if (charset != null && charset.length > 0) {
-            this.charset = charset[0].charset;
-        }
+        this.contentType = ContentType.create(contentType).withCharset(charset != null && charset.length > 0 ? charset[0].charset : Charset.utf8.charset);
     }
 
     /**
@@ -156,14 +149,14 @@ public class AsyncParameters {
     }
 
     public AsyncParameters append(String text) {
-        this.text = text;
-        this.contentType = ContentType.TEXT_PLAIN.toString();
+        this.bodyString = text;
+        this.contentType = ContentType.TEXT_PLAIN.withCharset(Charset.utf8.charset);
         return this;
     }
 
     public AsyncParameters append(String text, ContentType contentType) {
-        this.text = text;
-        this.contentType = contentType.toString();
+        this.bodyString = text;
+        this.contentType = contentType;
         return this;
     }
 
@@ -171,11 +164,11 @@ public class AsyncParameters {
         return nameValuePairs;
     }
 
-    public String getText() {
-        return text;
+    public String getBodyString() {
+        return bodyString;
     }
 
-    public String getContentType() {
+    public ContentType getContentType() {
         return contentType;
     }
 
