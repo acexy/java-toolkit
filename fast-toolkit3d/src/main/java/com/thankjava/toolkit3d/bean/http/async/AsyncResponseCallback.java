@@ -1,4 +1,4 @@
-package com.thankjava.toolkit3d.bean.http;
+package com.thankjava.toolkit3d.bean.http.async;
 
 
 /**

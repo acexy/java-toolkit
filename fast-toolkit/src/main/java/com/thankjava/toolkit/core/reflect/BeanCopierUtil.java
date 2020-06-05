@@ -1,11 +1,14 @@
 package com.thankjava.toolkit.core.reflect;
 
+import com.thankjava.toolkit.bean.reflect.copier.OriginFieldsCache;
 import com.thankjava.toolkit.core.reflect.copier.ValueCast;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * BeanCopierUtil 属性对等复制
@@ -20,6 +23,9 @@ public final class BeanCopierUtil {
 
     private BeanCopierUtil() {
     }
+
+    private static final Map<Class<?>, Field[]> targetFieldsCache = new HashMap<>();
+    private static final Map<Class<?>, OriginFieldsCache> originFieldsCache = new HashMap<>();
 
     /**
      * 对等属性复制
@@ -48,9 +54,7 @@ public final class BeanCopierUtil {
 
         try {
             targetObject = targetClass.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
 
@@ -80,7 +84,6 @@ public final class BeanCopierUtil {
         @SuppressWarnings("unchecked")
         Class<TargetObject> targetClass = (Class<TargetObject>) newObject.getClass();
         setValue(originObject, newObject, targetClass);
-
     }
 
     /**
@@ -125,17 +128,44 @@ public final class BeanCopierUtil {
      */
     private static <OriginObject, TargetObject> TargetObject setValue(OriginObject originObject, TargetObject targetObject, Class<TargetObject> targetClass) {
 
-        Field[] targetFields = ReflectUtil.getFieldArrayIncludeSupClassExcludeUID(targetClass);
+        if (originObject == null) return null;
+        Field[] targetFields = targetFieldsCache.get(targetClass);
+        if (targetFields == null) {
+            targetFields = ReflectUtil.getFieldArrayIncludeSupClassExcludeUID(targetClass);
+            for (Field targetField : targetFields) {
+                targetField.setAccessible(true);
+            }
+            targetFieldsCache.put(targetClass, targetFields);
+        }
+
+        OriginFieldsCache originCache = originFieldsCache.get(originObject.getClass());
+        boolean useCache = true;
+        if (originCache == null) {
+            originCache = new OriginFieldsCache();
+            useCache = false;
+            originFieldsCache.put(originObject.getClass(), originCache);
+        }
 
         Field originField = null; //目标字段类型
-
         Object originValue = null; //原始对象属性值
         Object targetValue = null; //目标对象属性值
 
         //从目标对象中找原始对象的属性方式，
         for (Field targetField : targetFields) {
-
-            originField = ReflectUtil.getField(originObject.getClass(), targetField.getName());
+            if (useCache) {
+                originField = originCache.getField(targetField.getName());
+                if (originField == null) {
+                    originField = ReflectUtil.getField(originObject.getClass(), targetField.getName());
+                    if (originField != null) {
+                        originCache.addField(targetField.getName(), originField);
+                    }
+                }
+            } else {
+                originField = ReflectUtil.getField(originObject.getClass(), targetField.getName());
+                if (originField != null) {
+                    originCache.addField(targetField.getName(), originField);
+                }
+            }
 
             if (originField == null) { //目标对象有，但是原始对象中没有
                 continue;
@@ -144,9 +174,6 @@ public final class BeanCopierUtil {
             if (Modifier.isStatic(originField.getModifiers())) {
                 continue;
             }
-
-            targetField.setAccessible(true);
-            originField.setAccessible(true);
 
             originValue = ReflectUtil.getFieldVal(originObject, targetField.getName());
             if (originValue == null) { //从原始对象中获取的字段属性为null
@@ -158,11 +185,10 @@ public final class BeanCopierUtil {
             if (targetValue != null) {
                 try {
                     targetField.set(targetObject, targetValue);
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException | IllegalAccessException e) {
                     e.printStackTrace();
-                } catch (IllegalAccessException e) {//为目标属性赋值失败
-                    e.printStackTrace();
-                }
+                } //为目标属性赋值失败
+
             }
         }
 

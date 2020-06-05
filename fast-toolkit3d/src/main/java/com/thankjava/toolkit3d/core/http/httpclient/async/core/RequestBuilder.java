@@ -1,19 +1,17 @@
 package com.thankjava.toolkit3d.core.http.httpclient.async.core;
 
-import com.thankjava.toolkit3d.bean.http.AsyncRequest;
-import com.thankjava.toolkit3d.bean.http.Headers;
-import com.thankjava.toolkit3d.bean.http.HttpMethod;
-import com.thankjava.toolkit3d.bean.http.Parameters;
+import com.thankjava.toolkit3d.bean.http.async.AsyncHeaders;
+import com.thankjava.toolkit3d.bean.http.async.AsyncHttpMethod;
+import com.thankjava.toolkit3d.bean.http.async.AsyncParameters;
+import com.thankjava.toolkit3d.bean.http.async.AsyncRequest;
 import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
-import java.nio.charset.Charset;
 
 
 /**
@@ -39,61 +37,62 @@ public class RequestBuilder {
 
     private static HttpRequestBase addEntityParams(HttpEntityEnclosingRequestBase httpEntityEnclosingRequestBase, AsyncRequest asyncRequest) {
 
-        Parameters parameter = asyncRequest.getParameter();
+        AsyncParameters parameter = asyncRequest.getParameter();
 
         if (parameter != null) {
 
-            if (parameter.getNameValuePair() != null) {
+
+            // 如果bodyString 和valuePair 同时存在，且请求类型为entityParams时，valuePair将需要转化为uri参数
+            if (parameter.getNameValuePair() != null && parameter.getBodyString() != null) {
+                HttpRequestBase httpRequestBase = (HttpRequestBase) httpEntityEnclosingRequestBase;
                 try {
-                    httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), asyncRequest.getReqCharset().charset));
-                } catch (UnsupportedEncodingException e) {
+                    httpRequestBase.setURI(new URIBuilder(httpRequestBase.getURI()).addParameters(parameter.getNameValuePair()).build());
+                } catch (URISyntaxException e) {
                     e.printStackTrace();
+                }
+            } else {
+                if (parameter.getNameValuePair() != null) {
+                    try {
+                        httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair()));
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
-            if (parameter.getText() != null) {
+            if (parameter.getBodyString() != null) {
                 httpEntityEnclosingRequestBase.setEntity(
-                        new StringEntity(parameter.getText(),
-                                ContentType.create(
-                                        parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                        Charset.forName(parameter.getContentEncoding() == null ? asyncRequest.getReqCharset().charset : parameter.getContentEncoding()
-                                        )
-                                )
+                        new StringEntity(parameter.getBodyString(),
+                                parameter.getContentType()
                         )
                 );
 
-            } else if (parameter.getByteData() != null) {
+            }
+
+            if (parameter.getByteData() != null) {
 
                 EntityBuilder entityBuilder = EntityBuilder.create();
                 entityBuilder.setBinary(parameter.getByteData());
 
-                if (parameter.getContentEncoding() != null) {
-                    entityBuilder.setContentEncoding(parameter.getContentEncoding());
+                if (parameter.getCharset() != null) {
+                    entityBuilder.setContentEncoding(parameter.getCharset());
                 }
 
-                entityBuilder.setContentType(
-                        ContentType.create(
-                                parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                Charset.forName(parameter.getContentEncoding() == null ? asyncRequest.getReqCharset().charset : parameter.getContentEncoding())
-                        )
-                );
+                entityBuilder.setContentType(parameter.getContentType());
 
                 httpEntityEnclosingRequestBase.setEntity(entityBuilder.build());
+
             } else if (parameter.getFile() != null) {
 
                 EntityBuilder entityBuilder = EntityBuilder.create();
                 entityBuilder.setFile(parameter.getFile());
 
-                if (parameter.getContentEncoding() != null) {
-                    entityBuilder.setContentEncoding(parameter.getContentEncoding());
+                if (parameter.getCharset() != null) {
+                    entityBuilder.setContentEncoding(parameter.getCharset());
                 }
 
-                entityBuilder.setContentType(
-                        ContentType.create(
-                                parameter.getContentType() == null ? ContentType.DEFAULT_TEXT.getMimeType() : parameter.getContentType(),
-                                Charset.forName(parameter.getContentEncoding() == null ? asyncRequest.getReqCharset().charset : parameter.getContentEncoding())
-                        )
-                );
+                entityBuilder.setContentType(parameter.getContentType());
+
                 httpEntityEnclosingRequestBase.setEntity(entityBuilder.build());
             }
 
@@ -103,7 +102,7 @@ public class RequestBuilder {
     }
 
     private static HttpRequestBase addBaseParams(HttpRequestBase httpRequestBase, AsyncRequest asyncRequest) {
-        Parameters parameter = asyncRequest.getParameter();
+        AsyncParameters parameter = asyncRequest.getParameter();
         if (parameter != null && parameter.getNameValuePair() != null) {
             try {
                 httpRequestBase.setURI(new URIBuilder(httpRequestBase.getURI()).addParameters(parameter.getNameValuePair()).build());
@@ -116,11 +115,11 @@ public class RequestBuilder {
 
     private static HttpRequestBase getRequest(AsyncRequest asyncRequest) {
 
-        HttpMethod httpMethod = asyncRequest.getHttpMethod();
+        AsyncHttpMethod asyncHttpMethod = asyncRequest.getAsyncHttpMethod();
         HttpRequestBase requestBase;
 
         boolean useEntity = false;
-        switch (httpMethod) {
+        switch (asyncHttpMethod) {
             case get:
                 requestBase = new HttpGet(asyncRequest.getUrl());
                 break;
@@ -149,7 +148,7 @@ public class RequestBuilder {
                 return new HttpGet(asyncRequest.getUrl());
         }
 
-        Headers header = asyncRequest.getHeader();
+        AsyncHeaders header = asyncRequest.getHeader();
         if (header != null) {
             requestBase.setHeaders(header.toHeaderArray());
         }

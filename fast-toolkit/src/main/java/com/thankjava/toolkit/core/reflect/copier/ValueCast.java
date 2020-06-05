@@ -26,7 +26,6 @@ public class ValueCast {
     static Object createValueCore(Field targetField, Class<?> targetFieldType, Object targetObject, Object originValue) {
 
         switch (TypeSort.sortType(targetFieldType)) {
-
             case JDK_BASE:
                 return originValue;
             case JDK_ARRAY:

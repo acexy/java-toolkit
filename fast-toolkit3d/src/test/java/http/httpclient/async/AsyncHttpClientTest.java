@@ -1,10 +1,8 @@
 package http.httpclient.async;
 
-import com.thankjava.toolkit3d.bean.http.*;
+import com.thankjava.toolkit3d.bean.http.async.*;
 import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClient;
 import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClientBuilder;
-
-import java.io.File;
 
 public class AsyncHttpClientTest {
 
@@ -12,14 +10,14 @@ public class AsyncHttpClientTest {
 
         final AsyncHttpClient client = new AsyncHttpClientBuilder()
 //                .setWithoutSSLCheck()
-                .setCookiePolicyLevel(CookieCheckLevel.BROWSER_COMPATIBILITY)
+                .setCookiePolicyLevel(AsyncCookieCheckLevel.BROWSER_COMPATIBILITY)
                 .setTimeout(30000)
                 .create();
 
         AsyncRequest request = new AsyncRequest(
-                "https://source.thankjava.com/view/XB6ObfN",
-                HttpMethod.put
-        );
+                "http://localhost:10001",
+                AsyncHttpMethod.post
+        ).setParameter(new AsyncParameters("a","b"));
 //
         AsyncResponse response = client.syncRequestWithSession(request);
         System.out.println(response);
