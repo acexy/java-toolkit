@@ -1,6 +1,12 @@
 > ### ChangeLog
 ---
 - 1.1.x
+    - 1.1.7
+    
+        - BeanCopierUtils 增加Class -> Fields 缓存 不再每次反射 提高性能
+        - Http Async 模块调整了函数名 区分该模块的相关内容
+        - 新增Class扫描器 CustomizeClassScanner 可以一次性扫描指定package下的所有Class类类型
+        
     - 1.1.6 
     
         - Http Async 模块增加了主流的所有http请求方式

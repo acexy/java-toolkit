@@ -19,7 +19,6 @@ import com.thankjava.toolkit.core.reflect.ReflectUtil;
  */
 class TypeSort {
 	
-	
 	private static boolean isBaseJDKSimpleType(Class<?> type) {
 		if (String.class == type) {
 			return true;
