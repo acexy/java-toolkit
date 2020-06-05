@@ -19,11 +19,11 @@
     ```
 
 ---
-- 1.1.6 此次变更内容 
+- 1.1.7 此次变更内容 
     
-    - Http Async 模块增加了主流的所有http请求方式
-    - 调整部分代码结构
-    - 调整BeanCopierUtil属性对等复制函数
+    - BeanCopierUtils 增加Class -> Fields 缓存 不再每次反射 提高性能
+    - Http Async 模块调整了函数名 区分该模块的相关内容
+    - 新增Class扫描器 CustomizeClassScanner 可以一次性扫描指定package下的所有Class类类型
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -36,7 +36,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.7</version>
   </dependency>
   ```
 
@@ -44,7 +44,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.7</version>
   </dependency>
   ```
   
