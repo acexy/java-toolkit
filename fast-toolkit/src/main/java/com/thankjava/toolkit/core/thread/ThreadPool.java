@@ -39,7 +39,7 @@ public final class ThreadPool {
                 MAX_THREAD_NUM,
                 ALIVE_TIME,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<Runnable>(WAIT_RUNNABLE_MAX_NUM),
+                new ArrayBlockingQueue<>(WAIT_RUNNABLE_MAX_NUM),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
     }
 
@@ -59,7 +59,7 @@ public final class ThreadPool {
                 maxThreadNum,
                 aliveTime,
                 TimeUnit.MILLISECONDS,
-                new ArrayBlockingQueue<Runnable>(waitRunnableMaxNum),
+                new ArrayBlockingQueue<>(waitRunnableMaxNum),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
     }
 
@@ -78,7 +78,7 @@ public final class ThreadPool {
                     MAX_THREAD_NUM,
                     ALIVE_TIME,
                     TimeUnit.SECONDS,
-                    new ArrayBlockingQueue<Runnable>(WAIT_RUNNABLE_MAX_NUM),
+                    new ArrayBlockingQueue<>(WAIT_RUNNABLE_MAX_NUM),
                     new ThreadPoolExecutor.DiscardOldestPolicy());
 
         }
@@ -131,7 +131,6 @@ public final class ThreadPool {
 
     static class CustomThreadFactory implements ThreadFactory {
 
-        private final AtomicInteger poolNumber = new AtomicInteger(1);
         private final ThreadGroup group;
         private final AtomicInteger threadNumber = new AtomicInteger(1);
         private final String namePrefix;
@@ -139,6 +138,7 @@ public final class ThreadPool {
         CustomThreadFactory() {
             SecurityManager s = System.getSecurityManager();
             group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+            AtomicInteger poolNumber = new AtomicInteger(1);
             namePrefix = DEFAULT_THREAD_GROUP_NAME + " " + poolNumber.getAndIncrement() + " ; " + DEFAULT_THREAD_NAME;
         }
 

@@ -2,7 +2,7 @@
 ![version](https://img.shields.io/maven-central/v/com.thankjava.toolkit/fast-toolkit)
 
 > #### 介绍
-- JDK >= 1.7 (本软件基于1.7, 第三方依赖根据其所需JDK版本而定)
+- JDK >= 1.8 (本软件基于1.8, 第三方依赖根据其所需JDK版本而定)
 
     ```
     这是一个用于快速开发的支持依赖库，用于封装常用的功能，在不依赖大型框架体上用于进行快速开发或者测试。

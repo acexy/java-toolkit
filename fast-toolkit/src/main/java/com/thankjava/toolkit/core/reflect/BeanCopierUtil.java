@@ -147,9 +147,9 @@ public final class BeanCopierUtil {
             originFieldsCache.put(originObject.getClass(), originCache);
         }
 
-        Field originField = null; //目标字段类型
+        Field originField; //目标字段类型
         Object originValue = null; //原始对象属性值
-        Object targetValue = null; //目标对象属性值
+        Object targetValue; //目标对象属性值
 
         String fieldName;
         //从目标对象中找原始对象的属性方式，
