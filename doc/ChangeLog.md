@@ -8,6 +8,10 @@
             
 - 1.1.x
 
+    - 1.1.8
+    
+        - last support for JDK 1.7
+
     - 1.1.7
     
         - BeanCopierUtils 增加Class -> Fields 缓存 不再每次反射 提高性能
