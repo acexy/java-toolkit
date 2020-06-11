@@ -17,7 +17,7 @@ public class ImageVerifyCode {
 
     private static final int DEFAULT_WIDTH = 200, defaultHigh = 80;
 
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     private static void outputImage(int width, int high, OutputStream outputStream, String verifyCode) throws IOException {
         int verifySize = verifyCode.length();
@@ -98,11 +98,9 @@ public class ImageVerifyCode {
                     + (6.2831853071795862D * (double) phase)
                     / (double) frames);
             g.copyArea(0, i, w1, 1, (int) d, 0);
-            if (borderGap) {
-                g.setColor(color);
-                g.drawLine((int) d, i, 0, i);
-                g.drawLine((int) d + w1, i, w1, i);
-            }
+            g.setColor(color);
+            g.drawLine((int) d, i, 0, i);
+            g.drawLine((int) d + w1, i, w1, i);
         }
 
     }
@@ -118,11 +116,9 @@ public class ImageVerifyCode {
                     + (6.2831853071795862D * (double) phase)
                     / (double) frames);
             g.copyArea(i, 0, 1, h1, 0, (int) d);
-            if (borderGap) {
-                g.setColor(color);
-                g.drawLine(i, (int) d, i, 0);
-                g.drawLine(i, (int) d + h1, i, h1);
-            }
+            g.setColor(color);
+            g.drawLine(i, (int) d, i, 0);
+            g.drawLine(i, (int) d + h1, i, h1);
 
         }
 

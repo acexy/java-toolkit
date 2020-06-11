@@ -130,6 +130,7 @@ public final class BeanCopierUtil {
 
         if (originObject == null) return null;
         Field[] targetFields = targetFieldsCache.get(targetClass);
+
         if (targetFields == null) {
             targetFields = ReflectUtil.getFieldArrayIncludeSupClassExcludeUID(targetClass);
             for (Field targetField : targetFields) {
@@ -146,24 +147,26 @@ public final class BeanCopierUtil {
             originFieldsCache.put(originObject.getClass(), originCache);
         }
 
-        Field originField = null; //目标字段类型
+        Field originField; //目标字段类型
         Object originValue = null; //原始对象属性值
-        Object targetValue = null; //目标对象属性值
+        Object targetValue; //目标对象属性值
 
+        String fieldName;
         //从目标对象中找原始对象的属性方式，
         for (Field targetField : targetFields) {
+            fieldName = targetField.getName();
             if (useCache) {
-                originField = originCache.getField(targetField.getName());
+                originField = originCache.getField(fieldName);
                 if (originField == null) {
-                    originField = ReflectUtil.getField(originObject.getClass(), targetField.getName());
+                    originField = ReflectUtil.getField(originObject.getClass(), fieldName);
                     if (originField != null) {
-                        originCache.addField(targetField.getName(), originField);
+                        originCache.addField(fieldName, originField);
                     }
                 }
             } else {
-                originField = ReflectUtil.getField(originObject.getClass(), targetField.getName());
+                originField = ReflectUtil.getField(originObject.getClass(), fieldName);
                 if (originField != null) {
-                    originCache.addField(targetField.getName(), originField);
+                    originCache.addField(fieldName, originField);
                 }
             }
 
@@ -175,9 +178,13 @@ public final class BeanCopierUtil {
                 continue;
             }
 
-            originValue = ReflectUtil.getFieldVal(originObject, targetField.getName());
-            if (originValue == null) { //从原始对象中获取的字段属性为null
-                continue;
+            try {
+                originValue = originField.get(originObject);
+                if (originValue == null) { //从原始对象中获取的字段属性为null
+                    continue;
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
             }
 
             targetValue = ValueCast.cast(targetField, targetObject, originValue);
@@ -188,7 +195,6 @@ public final class BeanCopierUtil {
                 } catch (IllegalArgumentException | IllegalAccessException e) {
                     e.printStackTrace();
                 } //为目标属性赋值失败
-
             }
         }
 

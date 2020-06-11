@@ -11,11 +11,13 @@ import java.util.Map;
  **/
 public final class OriginFieldsCache {
 
-    private static final Map<String, Field> cacheFields = new HashMap<>();
+    private final Map<String, Field> cacheFields = new HashMap<>();
 
     public OriginFieldsCache addField(String fieldName, Field field) {
-        field.setAccessible(true);
-        cacheFields.put(fieldName, field);
+        if (field != null) {
+            field.setAccessible(true);
+            cacheFields.put(fieldName, field);
+        }
         return this;
     }
 

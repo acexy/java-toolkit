@@ -2,7 +2,7 @@
 ![version](https://img.shields.io/maven-central/v/com.thankjava.toolkit/fast-toolkit)
 
 > #### 介绍
-- JDK >= 1.7 (本软件基于1.7, 第三方依赖根据其所需JDK版本而定)
+- JDK >= 1.8 (本软件基于1.8, 第三方依赖根据其所需JDK版本而定)
 
     ```
     这是一个用于快速开发的支持依赖库，用于封装常用的功能，在不依赖大型框架体上用于进行快速开发或者测试。
@@ -19,11 +19,9 @@
     ```
 
 ---
-- 1.1.7 此次变更内容 
+- 2.0.0 此次变更内容 
     
-    - BeanCopierUtils 增加Class -> Fields 缓存 不再每次反射 提高性能
-    - Http Async 模块调整了函数名 区分该模块的相关内容
-    - 新增Class扫描器 CustomizeClassScanner 可以一次性扫描指定package下的所有Class类类型
+    - 调整JDK支持版本 1.7 => 1.8
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -36,7 +34,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>1.1.7</version>
+    <version>2.0.0</version>
   </dependency>
   ```
 
@@ -44,7 +42,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.7</version>
+    <version>2.0.0</version>
   </dependency>
   ```
   

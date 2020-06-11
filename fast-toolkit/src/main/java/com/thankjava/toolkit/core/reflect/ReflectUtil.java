@@ -31,7 +31,7 @@ public final class ReflectUtil {
      * @date 2014-12-16 上午11:27:07
      * @version 1.0
      */
-    public static Field getField(Class clazz, String fieldName) {
+    public static Field getField(Class<?> clazz, String fieldName) {
         if (clazz == null) {
             return null;
         }
@@ -41,7 +41,7 @@ public final class ReflectUtil {
                 field = clazz.getDeclaredField(fieldName);
                 break;
             } catch (NoSuchFieldException e) {
-                continue;//第一次进入该异常，则clazz为obj
+                //第一次进入该异常，则clazz为obj
                 //第二次进入该异常，则clazz为obj父类
                 //不考虑子类
             }
@@ -141,13 +141,7 @@ public final class ReflectUtil {
             field = getField(obj.getClass(), fieldName);
             field.setAccessible(true);//取消安全机制限制
             return field.get(obj);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-            return null;
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return null;
-        } catch (IllegalAccessException e) {
+        } catch (SecurityException | IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
             return null;
         }
@@ -174,11 +168,7 @@ public final class ReflectUtil {
             field = getField(obj.getClass(), fieldName);
             field.setAccessible(true);//取消安全机制限制
             field.set(obj, value);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (SecurityException | IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
@@ -216,15 +206,13 @@ public final class ReflectUtil {
      * @date 2014-12-18 上午9:55:54
      * @version 1.0
      */
-    public static Method getMethod(Class clazz, String methodName, Class<?>... parameterTypes) {
+    public static Method getMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
         if (clazz == null) {
             return null;
         }
         try {
             return clazz.getDeclaredMethod(methodName, parameterTypes);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
+        } catch (SecurityException | NoSuchMethodException e) {
             e.printStackTrace();
         }
         return null;
@@ -289,11 +277,7 @@ public final class ReflectUtil {
         try {
             method.setAccessible(true);
             return method.invoke(obj, parameter);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
         return null;
