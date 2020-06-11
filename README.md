@@ -19,11 +19,9 @@
     ```
 
 ---
-- 1.1.7 此次变更内容 
+- 2.0.0 此次变更内容 
     
-    - BeanCopierUtils 增加Class -> Fields 缓存 不再每次反射 提高性能
-    - Http Async 模块调整了函数名 区分该模块的相关内容
-    - 新增Class扫描器 CustomizeClassScanner 可以一次性扫描指定package下的所有Class类类型
+    - 调整JDK支持版本 1.7 => 1.8
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -36,7 +34,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>1.1.7</version>
+    <version>2.0.0</version>
   </dependency>
   ```
 
@@ -44,7 +42,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>1.1.7</version>
+    <version>2.0.0</version>
   </dependency>
   ```
   
