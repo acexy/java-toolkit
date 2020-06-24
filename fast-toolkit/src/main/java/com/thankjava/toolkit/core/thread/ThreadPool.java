@@ -39,7 +39,7 @@ public final class ThreadPool {
                 MAX_THREAD_NUM,
                 ALIVE_TIME,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(WAIT_RUNNABLE_MAX_NUM),
+                new ArrayBlockingQueue<Runnable>(WAIT_RUNNABLE_MAX_NUM),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
     }
 
@@ -59,7 +59,7 @@ public final class ThreadPool {
                 maxThreadNum,
                 aliveTime,
                 TimeUnit.MILLISECONDS,
-                new ArrayBlockingQueue<>(waitRunnableMaxNum),
+                new ArrayBlockingQueue<Runnable>(waitRunnableMaxNum),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
     }
 
@@ -72,17 +72,15 @@ public final class ThreadPool {
     public static synchronized Thread getNewThread(Runnable runnable) {
 
         if (threadPoolExecutorForNewThread == null) {
-
             threadPoolExecutorForNewThread = new ThreadPoolExecutor(
                     INIT_THREAD_NUM,
                     MAX_THREAD_NUM,
                     ALIVE_TIME,
                     TimeUnit.SECONDS,
-                    new ArrayBlockingQueue<>(WAIT_RUNNABLE_MAX_NUM),
+                    new ArrayBlockingQueue<Runnable>(WAIT_RUNNABLE_MAX_NUM),
                     new ThreadPoolExecutor.DiscardOldestPolicy());
 
         }
-
         return threadPoolExecutorForNewThread.getThreadFactory().newThread(runnable);
     }
 

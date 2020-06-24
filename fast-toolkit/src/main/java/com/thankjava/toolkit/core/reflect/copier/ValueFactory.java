@@ -36,7 +36,7 @@ class ValueFactory {
         }
         Object[] targetArray = (Object[]) Array.newInstance(proxyType, originArray.length);
         for (int i = 0; i < originArray.length; i++) {
-            targetArray[i] = ValueCast.createValueCore(targetField, proxyType, targetObject, originArray[i]);
+            targetArray[i] = ValueCast.createValue(targetField, proxyType, targetObject, originArray[i]);
         }
         return targetArray;
     }
@@ -81,6 +81,7 @@ class ValueFactory {
      * @date 2015-1-27 下午4:59:12
      */
     static Object createValueList(Field targetField, Class<?> targetFieldType, Object targetObject, Object originValue) {
+
         if (originValue == null) {
             return null;
         }
@@ -108,7 +109,7 @@ class ValueFactory {
         List<Object> targetList = new ArrayList<Object>();
 
         for (Object object : originList) {
-            targetList.add(ValueCast.createValueCore(targetField, proxyType, targetList, object));
+            targetList.add(ValueCast.createValue(targetField, proxyType, targetList, object));
         }
         return targetList;
 
@@ -136,8 +137,8 @@ class ValueFactory {
         Map<Object, Object> targetMap = new HashMap<Object, Object>();
         for (Map.Entry<?, ?> entry : originMap.entrySet()) {
             targetMap.put(
-                    ValueCast.createValueCore(targetField, keyClass, targetObject, entry.getKey()),
-                    ValueCast.createValueCore(targetField, valueClass, targetObject, entry.getValue())
+                    ValueCast.createValue(targetField, keyClass, targetObject, entry.getKey()),
+                    ValueCast.createValue(targetField, valueClass, targetObject, entry.getValue())
             );
         }
         return targetMap;

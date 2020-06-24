@@ -19,11 +19,11 @@ public class ValueCast {
      * @date 2016年1月11日 上午11:07:37
      */
     public static Object cast(Field targetField, Object targetObject, Object originValue) {
-        return createValueCore(targetField, targetField.getType(), targetObject, originValue);
+        return createValue(targetField, targetField.getType(), targetObject, originValue);
     }
 
 
-    static Object createValueCore(Field targetField, Class<?> targetFieldType, Object targetObject, Object originValue) {
+    static Object createValue(Field targetField, Class<?> targetFieldType, Object targetObject, Object originValue) {
 
         switch (TypeSort.sortType(targetFieldType)) {
             case JDK_BASE:

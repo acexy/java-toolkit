@@ -1,7 +1,9 @@
 package reflect;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.thankjava.toolkit.core.reflect.BeanCopierUtil;
 
@@ -25,17 +27,19 @@ public class BeanCopierUtilTest {
 //		Vo1 v1 = BeanCopierUtil.copy(e1, Vo1.class);
 
 
-        Entity1 entity1 = new Entity1();
-        entity1.setBol(false);
-        entity1.setStr("set in entity");
+//        Entity1 entity1 = new Entity1();
+//        entity1.setBol(false);
+//        entity1.setStr("set in entity");
+//
+//        Vo1 vo1 = new Vo1();
+//        vo1.setBol(true);
+//        vo1.setInte(12);
+//
+//        BeanCopierUtil.copy(vo1, entity1);
+//        BeanCopierUtil.copy(vo1, entity1);
+//        BeanCopierUtil.copy(vo1, entity1);
 
-        Vo1 vo1 = new Vo1();
-        vo1.setBol(true);
-        vo1.setInte(12);
-
-        BeanCopierUtil.copy(vo1, entity1);
-        BeanCopierUtil.copy(vo1, entity1);
-        BeanCopierUtil.copy(vo1, entity1);
+//        System.out.println(new LinkedHashMap<>() instanceof Map);
     }
 
 }
