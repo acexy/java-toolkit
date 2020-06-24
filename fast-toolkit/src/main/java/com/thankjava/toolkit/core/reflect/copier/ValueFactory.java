@@ -3,6 +3,7 @@ package com.thankjava.toolkit.core.reflect.copier;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 //import java.lang.reflect.Type;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -91,20 +92,16 @@ class ValueFactory {
             return null;
         }
 
-        Class<?> proxyType = originList.get(0).getClass();
+        Type type = targetField.getGenericType();
+        Object actualTypeArguments = ReflectUtil.getFieldVal(type, "actualTypeArguments");
+        Type[] actualType = (Type[]) actualTypeArguments;
+        Class<?> proxyType;
 
-//		Type type = targetField.getGenericType();
-//		Type[] types = (Type[]) ReflectUtil.getFieldVal(type, "actualTypeArguments");
-//		System.out.println(types);
-//		Class<?> proxyType = null;
-//		try {
-//			System.out.println(ReflectUtil.getFieldVal(types[0], "name").toString());
-//			proxyType = Class.forName(ReflectUtil.getFieldVal(types[0], "name").toString());
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-
+        if (actualType.length > 0) {
+            proxyType = (Class) actualType[0];
+        } else {
+            return null;
+        }
 
         List<Object> targetList = new ArrayList<Object>();
 

@@ -1,5 +1,7 @@
 package reflect;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -7,14 +9,32 @@ import java.util.Map;
 
 import com.thankjava.toolkit.core.reflect.BeanCopierUtil;
 
+import com.thankjava.toolkit.core.reflect.ReflectUtil;
 import reflect.bean.entity.Entity1;
+import reflect.bean.vo.Vo;
 import reflect.bean.vo.Vo1;
 
 public class BeanCopierUtilTest {
 
     public static void main(String[] args) throws InterruptedException {
 
+        Vo1 vo1 = new Vo1();
+        List<Vo> vos = new ArrayList<>();
+        vos.add(new Vo());
+//        vo1.setVos(vos);
 
+        Field[] fields = ReflectUtil.getFieldArrayExcludeUID(Vo1.class);
+
+        for (Field field : fields) {
+            if (field.getName().equals("vos")) {
+                Type type = field.getGenericType();
+                Object actualTypeArguments = ReflectUtil.getFieldVal(type, "actualTypeArguments");
+                Type[] actualType = (Type[]) actualTypeArguments;
+                System.out.println(actualType[0]);
+
+            }
+
+        }
 //		Entity1 e1 = new Entity1();
 //		e1.setBol(false);
 //		
