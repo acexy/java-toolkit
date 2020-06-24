@@ -1,6 +1,11 @@
 > ### ChangeLog
 ---
 - 2.0.x
+    
+    - 2.0.1
+    
+        - BeanCopierUtil 调整了识别List<?> 泛型的方式
+        - 新增ImageCommonUtil 简单JPEG图片压缩Api
 
     - 2.0.0
         
