@@ -1,15 +1,16 @@
 package com.thankjava.toolkit.core.reflect.copier;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-//import java.lang.reflect.Type;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.thankjava.toolkit.core.reflect.ReflectUtil;
+import sun.reflect.generics.reflectiveObjects.GenericArrayTypeImpl;
+import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
+import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
+import sun.reflect.generics.reflectiveObjects.WildcardTypeImpl;
 
 class ValueFactory {
 
@@ -98,7 +99,11 @@ class ValueFactory {
         Class<?> proxyType;
 
         if (actualType.length > 0) {
-            proxyType = (Class) actualType[0];
+            if (actualType[0] instanceof Class) {
+                proxyType = (Class<?>) actualType[0];
+            } else {
+               return originList;
+            }
         } else {
             return null;
         }

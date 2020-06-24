@@ -2,10 +2,7 @@ package reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.thankjava.toolkit.core.reflect.BeanCopierUtil;
 
@@ -18,35 +15,18 @@ public class BeanCopierUtilTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Vo1 vo1 = new Vo1();
-        List<Vo> vos = new ArrayList<>();
-        vos.add(new Vo());
-//        vo1.setVos(vos);
-
-        Field[] fields = ReflectUtil.getFieldArrayExcludeUID(Vo1.class);
-
-        for (Field field : fields) {
-            if (field.getName().equals("vos")) {
-                Type type = field.getGenericType();
-                Object actualTypeArguments = ReflectUtil.getFieldVal(type, "actualTypeArguments");
-                Type[] actualType = (Type[]) actualTypeArguments;
-                System.out.println(actualType[0]);
-
-            }
-
-        }
-//		Entity1 e1 = new Entity1();
-//		e1.setBol(false);
-//		
-//		List<String> listStr = new ArrayList<>();
-//		listStr.add("你好");
-//		e1.setListStr(listStr);
-//		String[] strArr = new String[]{"aa","bb","cc"};
-//		e1.setStrArr(strArr);
-//		
-//		Vo1 v1 = BeanCopierUtil.copy(e1, Vo1.class);
-
-
+//        Entity1 e1 = new Entity1();
+//        e1.setBol(false);
+//
+//        List<String> listStr = new ArrayList<>();
+//        listStr.add("你好");
+//        e1.setListStr(listStr);
+//        String[] strArr = new String[]{"aa", "bb", "cc"};
+//        e1.setStrArr(strArr);
+//
+//        Vo1 v1 = BeanCopierUtil.copy(e1, Vo1.class);
+//
+//
 //        Entity1 entity1 = new Entity1();
 //        entity1.setBol(false);
 //        entity1.setStr("set in entity");
@@ -54,10 +34,21 @@ public class BeanCopierUtilTest {
 //        Vo1 vo1 = new Vo1();
 //        vo1.setBol(true);
 //        vo1.setInte(12);
-//
+
 //        BeanCopierUtil.copy(vo1, entity1);
 //        BeanCopierUtil.copy(vo1, entity1);
 //        BeanCopierUtil.copy(vo1, entity1);
+
+        Vo1 vo1 = new Vo1();
+
+        List<Vo> vos = new ArrayList<>();
+        Vo vo = new Vo();
+        vo.setTime(new Date());
+        vos.add(vo);
+
+        vo1.setList(vos);
+
+        System.out.println(BeanCopierUtil.copy(vo1, Entity1.class).getList());
 
 //        System.out.println(new LinkedHashMap<>() instanceof Map);
     }
