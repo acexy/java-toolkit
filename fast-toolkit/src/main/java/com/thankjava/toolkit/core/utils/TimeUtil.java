@@ -23,7 +23,7 @@ public final class TimeUtil {
     private TimeUtil() {
     }
 
-    private static final Map<TimeType, SimpleDateFormat> SIMPLE_DATE_FORMAT_MAP = new HashMap<>();
+    private static final Map<String, SimpleDateFormat> SIMPLE_DATE_FORMAT_MAP = new HashMap<>();
 
 
     /**
@@ -38,7 +38,18 @@ public final class TimeUtil {
      * @date 2015年6月18日 上午9:59:42
      */
     public static Date parseDate(TimeType timeType, String date) {
-        SimpleDateFormat sdf = getDateFormat(timeType);
+        return parseDate(timeType.type, date);
+    }
+
+    /**
+     * 将date Str 转换为 Date 类型
+     *
+     * @param timeTypeString
+     * @param date
+     * @return
+     */
+    public static Date parseDate(String timeTypeString, String date) {
+        SimpleDateFormat sdf = getDateFormat(timeTypeString);
         try {
             return sdf.parse(date);
         } catch (ParseException e) {
@@ -52,19 +63,18 @@ public final class TimeUtil {
      * <p>Function: getDateFormat</p>
      * <p>Description: </p>
      *
-     * @param timeType
      * @return
      * @author acexy@thankjava.com
      * @date 2015年6月18日 上午10:00:31
      */
-    public static SimpleDateFormat getDateFormat(TimeType timeType) {
-        if (timeType == null) {
-            timeType = TimeType.DEFAULT;
+    public static SimpleDateFormat getDateFormat(String timeTypeString) {
+        if (timeTypeString == null) {
+            timeTypeString = TimeType.DEFAULT.type;
         }
-        SimpleDateFormat sdf = SIMPLE_DATE_FORMAT_MAP.get(timeType);
+        SimpleDateFormat sdf = SIMPLE_DATE_FORMAT_MAP.get(timeTypeString);
         if (sdf == null) {
-            sdf = new SimpleDateFormat(timeType.getType());
-            SIMPLE_DATE_FORMAT_MAP.put(timeType, sdf);
+            sdf = new SimpleDateFormat(timeTypeString);
+            SIMPLE_DATE_FORMAT_MAP.put(timeTypeString, sdf);
         }
         return sdf;
     }
@@ -81,7 +91,17 @@ public final class TimeUtil {
      * @date 2015年6月18日 上午10:01:09
      */
     public static String formatDate(TimeType timeType, Date date) {
-        return getDateFormat(timeType).format(date);
+        return formatDate(timeType.type, date);
+    }
+
+    /**
+     * 格式化日期
+     * @param timeTypeString
+     * @param date
+     * @return
+     */
+    public static String formatDate(String timeTypeString, Date date) {
+        return getDateFormat(timeTypeString).format(date);
     }
 
     /**

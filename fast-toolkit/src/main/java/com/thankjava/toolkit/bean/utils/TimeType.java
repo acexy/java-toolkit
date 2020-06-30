@@ -19,11 +19,8 @@ public enum TimeType {
 
     public String type;
 
-    private TimeType(String type) {
+    TimeType(String type) {
         this.type = type;
     }
 
-    public String getType() {
-        return type;
-    }
 }
