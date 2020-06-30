@@ -6,6 +6,7 @@
     
         - BeanCopierUtil 调整了识别List<?> 泛型的方式
         - 新增ImageCommonUtil 简单JPEG图片压缩Api
+        - TimeUtil 支持自定义日期格式
 
     - 2.0.0
         

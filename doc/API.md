@@ -51,18 +51,28 @@
     参考 ThreadPoolTask ThreadTaskTest
     ```
     
-- 图片验证码生成
+- 简单图片验证码生成
 
     ```
     参考ImageVerifyCodeTest
     ```
+  
+- 基础图片处理工具
+
+    - 简单jpg质量压缩
+    
+        ```
+        参考ImageCommonUtilTest
+        ```
     
 - 动态Java源代码执行&字节码编译器&字节码加载器 [了解更多](https://www.thankjava.com/java/ad45a9286d234105ad9165a7f43626b7)
     
     ```
     参考 ByteCodeClassLoaderTest ByteCodeCompilerTest ByteCodeInvokeTest
     ```
-    
+- 新增class指定包路径类扫描器
+
+    ```参考CustomizeClassScannerTest```
 ---
 
 > #### fast-toolkit3d
