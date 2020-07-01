@@ -192,7 +192,6 @@ public class FastJson {
 
         return JSON.toJSONString(obj,
                 SerializerFeature.PrettyFormat,
-                SerializerFeature.WriteMapNullValue,
                 SerializerFeature.WriteDateUseDateFormat);
     }
 
