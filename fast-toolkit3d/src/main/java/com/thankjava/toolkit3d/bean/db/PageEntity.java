@@ -11,47 +11,31 @@ import java.util.List;
  **/
 public class PageEntity<T> implements Serializable {
 
-    private PageEntity() {
-    }
 
-    /**
-     * 创建分页对象
-     *
-     * @param tClass         返回数据的javaBean class 类型指定
-     * @param queryCondition
-     * @return
-     */
-    public static PageEntity newPageEntity(Class<?> tClass, Object queryCondition) {
-        PageEntity pageEntity = new PageEntity();
-        pageEntity.queryCondition = queryCondition;
-        pageEntity.tClass = tClass;
-        return pageEntity;
-    }
-
-    public PageEntity setPageSize(int pageSize) {
+    public PageEntity<T> setPageSize(int pageSize) {
         this.pageSize = pageSize;
         return this;
     }
 
 
-    public PageEntity setPageNumber(int pageNumber) {
+    public PageEntity<T> setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
         return this;
     }
 
-    public PageEntity setTotalCount(long totalCount) {
+    public PageEntity<T> setTotalCount(long totalCount) {
         this.totalCount = totalCount;
         this.pageCount = totalCount % this.pageSize == 0 ? totalCount / this.pageSize : totalCount / this.pageSize + 1;
         this.hasNext = this.totalCount > this.pageSize * this.pageNumber;
         return this;
     }
 
-    public PageEntity addSort(Sort sort) {
+    public PageEntity<T> addSort(Sort sort) {
         this.sorts.add(sort);
         return this;
     }
 
-    public PageEntity setList(ArrayList<T> list) {
+    public PageEntity<T> setList(ArrayList<T> list) {
         this.list = list;
         return this;
     }
@@ -61,11 +45,11 @@ public class PageEntity<T> implements Serializable {
     private long totalCount = 0;
     private long pageCount = 0;
     private Boolean hasNext = false;
-    private Object queryCondition;
-    private Class<T> tClass;
+
+    private Object condition;
     private List<Sort> sorts = new ArrayList<>();
 
-    private List<T> list = new ArrayList<>();
+    private List<T> list;
 
     public int getPageSize() {
         return pageSize;
@@ -79,14 +63,6 @@ public class PageEntity<T> implements Serializable {
         return totalCount;
     }
 
-    public Object getQueryCondition() {
-        return queryCondition;
-    }
-
-    public List<T> getList() {
-        return list;
-    }
-
     public Boolean getHasNext() {
         return hasNext;
     }
@@ -95,11 +71,23 @@ public class PageEntity<T> implements Serializable {
         return sorts;
     }
 
-    public Class<T> getTClass() {
-        return tClass;
-    }
-
     public long getPageCount() {
         return pageCount;
+    }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
+    public Object getCondition() {
+        return condition;
+    }
+
+    public void setCondition(Object condition) {
+        this.condition = condition;
     }
 }

@@ -8,6 +8,7 @@
         - 新增ImageCommonUtil 简单JPEG图片压缩Api
         - TimeUtil 支持自定义日期格式
         - 取消了fastjson格式化输出的null节点展示
+        - mysql的推荐驱动又5.x -> 8.x
 
     - 2.0.0
         

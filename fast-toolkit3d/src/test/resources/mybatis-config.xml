@@ -2,8 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-<!--    <properties resource="jdbc.properties"/>-->
-    <properties url="file:/Users/acexy/Development/config/acexy/jdbc.properties"/>
+    <properties resource="jdbc.properties"/>
+<!--    <properties url="file:./jdbc.properties"/>-->
 
     <typeAliases>
         <typeAlias alias="Test" type="db.mysql.po.Test"/>
