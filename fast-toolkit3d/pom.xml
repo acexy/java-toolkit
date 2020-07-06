@@ -21,7 +21,7 @@
         <com.alibaba.fastjson.version>1.2.60</com.alibaba.fastjson.version>
         <com.alibaba.druid.version>1.1.20</com.alibaba.druid.version>
         <org.mybatis.version>3.4.6</org.mybatis.version>
-        <mysql.version>5.1.38</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <redis.clients.version>3.2.0</redis.clients.version>
         <org.mongodb.version>3.8.2</org.mongodb.version>
         <com.thoughtworks.xstream.version>1.4.11.1</com.thoughtworks.xstream.version>
