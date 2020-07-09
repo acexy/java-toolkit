@@ -5,23 +5,21 @@
 - JDK >= 1.8 (本软件基于1.8, 第三方依赖根据其所需JDK版本而定)
 
     ```
-    这是一个用于快速开发的支持依赖库，用于封装常用的功能，在不依赖大型框架体上用于进行快速开发或者测试。
-    
-    分为toolkit&toolkit3d两个子依赖包：
-    
-      toolkit 完全基于jdk提供函数
+    这是一个用于快速开发的支持依赖库，用于封装常用的功能，在不依赖大型框架体上用于进行快速开发或者测试
       
-      toolkit3d封装了常用的其他工具api函数，提供更加简洁的api使用函数
+    toolkit 完全基于jdk提供函数
       
-      toolkit3d依赖toolkit，版本号要对应使用
-      
-    所有toolkit3d的第三方依赖均被声明为provided，你不必担心主工程依赖它后自动依赖所有jar，只需引入已使用的相关依赖。
+    toolkit3d封装了常用的其他工具函数，提供更加简洁的api函数
     ```
 
 ---
-- 2.0.0 此次变更内容 
+- 2.0.1 此次变更内容 
     
-    - 调整JDK支持版本 1.7 => 1.8
+    - BeanCopierUtil 调整了识别List<?> 泛型的方式
+    - 新增ImageCommonUtil 简单JPEG图片压缩Api
+    - TimeUtil 支持自定义日期格式
+    - 取消了FastJson默认格式化美化输出时展示null节点
+    - mysql的推荐驱动由 5.x -> 8.x
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -34,7 +32,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
   </dependency>
   ```
 
@@ -42,7 +40,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
   </dependency>
   ```
   
