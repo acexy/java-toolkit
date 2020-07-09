@@ -38,12 +38,11 @@ public class MyBatisManagerTest {
 //        }
 
 
-//        System.out.println(FastJson.toJSONString(mapper.select(new Test("0a2a7e26-1a60-44cb-a848-181fd2049ca9"))));
-
-        PageEntity<Test> pageEntity = PageEntity.newPageEntity(Test.class, null);
+        PageEntity<Test> pageEntity = PageEntity.newPageEntity(Test.class,null);
         pageEntity.addSort(new Sort("id", SortType.desc));
         pageEntity.setPageSize(2);
-        mapper.selectByPage(pageEntity);
+
+        pageEntity.setList(mapper.selectByPage(pageEntity));
         System.out.println(FastJson.toJSONString(pageEntity));
 
 

@@ -1,14 +1,16 @@
 package com.thankjava.toolkit.core.reflect.copier;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-//import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.thankjava.toolkit.core.reflect.ReflectUtil;
+import sun.reflect.generics.reflectiveObjects.GenericArrayTypeImpl;
+import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
+import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
+import sun.reflect.generics.reflectiveObjects.WildcardTypeImpl;
 
 class ValueFactory {
 
@@ -36,7 +38,7 @@ class ValueFactory {
         }
         Object[] targetArray = (Object[]) Array.newInstance(proxyType, originArray.length);
         for (int i = 0; i < originArray.length; i++) {
-            targetArray[i] = ValueCast.createValueCore(targetField, proxyType, targetObject, originArray[i]);
+            targetArray[i] = ValueCast.createValue(targetField, proxyType, targetObject, originArray[i]);
         }
         return targetArray;
     }
@@ -81,6 +83,7 @@ class ValueFactory {
      * @date 2015-1-27 下午4:59:12
      */
     static Object createValueList(Field targetField, Class<?> targetFieldType, Object targetObject, Object originValue) {
+
         if (originValue == null) {
             return null;
         }
@@ -90,25 +93,25 @@ class ValueFactory {
             return null;
         }
 
-        Class<?> proxyType = originList.get(0).getClass();
+        Type type = targetField.getGenericType();
+        Object actualTypeArguments = ReflectUtil.getFieldVal(type, "actualTypeArguments");
+        Type[] actualType = (Type[]) actualTypeArguments;
+        Class<?> proxyType;
 
-//		Type type = targetField.getGenericType();
-//		Type[] types = (Type[]) ReflectUtil.getFieldVal(type, "actualTypeArguments");
-//		System.out.println(types);
-//		Class<?> proxyType = null;
-//		try {
-//			System.out.println(ReflectUtil.getFieldVal(types[0], "name").toString());
-//			proxyType = Class.forName(ReflectUtil.getFieldVal(types[0], "name").toString());
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-
+        if (actualType.length > 0) {
+            if (actualType[0] instanceof Class) {
+                proxyType = (Class<?>) actualType[0];
+            } else {
+               return originList;
+            }
+        } else {
+            return null;
+        }
 
         List<Object> targetList = new ArrayList<Object>();
 
         for (Object object : originList) {
-            targetList.add(ValueCast.createValueCore(targetField, proxyType, targetList, object));
+            targetList.add(ValueCast.createValue(targetField, proxyType, targetList, object));
         }
         return targetList;
 
@@ -136,8 +139,8 @@ class ValueFactory {
         Map<Object, Object> targetMap = new HashMap<Object, Object>();
         for (Map.Entry<?, ?> entry : originMap.entrySet()) {
             targetMap.put(
-                    ValueCast.createValueCore(targetField, keyClass, targetObject, entry.getKey()),
-                    ValueCast.createValueCore(targetField, valueClass, targetObject, entry.getValue())
+                    ValueCast.createValue(targetField, keyClass, targetObject, entry.getKey()),
+                    ValueCast.createValue(targetField, valueClass, targetObject, entry.getValue())
             );
         }
         return targetMap;

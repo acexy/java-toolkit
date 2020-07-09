@@ -1,4 +1,4 @@
-package com.thankjava.toolkit.core.verifycode;
+package com.thankjava.toolkit.core.io.util;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -11,9 +11,9 @@ import java.util.Random;
 /**
  * 简易图片验证码
  */
-public class ImageVerifyCode {
+public class ImageVerifyCodeUtil {
 
-    private ImageVerifyCode(){}
+    private ImageVerifyCodeUtil(){}
 
     private static final int DEFAULT_WIDTH = 200, defaultHigh = 80;
 

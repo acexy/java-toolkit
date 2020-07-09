@@ -21,5 +21,6 @@ public class TimeUtilTest {
 //        System.out.println(new Date().getTime());
 
         System.out.println(TimeUtil.formatDate(TimeType.DEFAULT, dateNow));
+        System.out.println(TimeUtil.formatDate("yyyyMM", dateNow));
     }
 }

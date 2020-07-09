@@ -9,7 +9,7 @@ public class Entity1 {
 	private Integer inte;
 	private List<String> listStr;
 	private String[] strArr;
-	
+	private List<Entity> list;
 	
 	public String getStr() {
 		return str;
@@ -41,6 +41,12 @@ public class Entity1 {
 	public void setStrArr(String[] strArr) {
 		this.strArr = strArr;
 	}
-	
-	
+
+	public List<Entity> getList() {
+		return list;
+	}
+
+	public void setList(List<Entity> list) {
+		this.list = list;
+	}
 }
