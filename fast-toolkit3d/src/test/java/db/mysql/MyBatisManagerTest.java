@@ -38,7 +38,7 @@ public class MyBatisManagerTest {
 //        }
 
 
-        PageEntity<Test> pageEntity = new PageEntity<>();
+        PageEntity<Test> pageEntity = PageEntity.newPageEntity(Test.class,null);
         pageEntity.addSort(new Sort("id", SortType.desc));
         pageEntity.setPageSize(2);
 

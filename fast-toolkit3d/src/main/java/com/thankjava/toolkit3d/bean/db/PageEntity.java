@@ -51,7 +51,7 @@ public class PageEntity<T> implements Serializable {
         return this;
     }
 
-    public PageEntity setList(ArrayList<T> list) {
+    public PageEntity setList(List<T> list) {
         this.list = list;
         return this;
     }
@@ -65,7 +65,7 @@ public class PageEntity<T> implements Serializable {
     private Class<T> tClass;
     private List<Sort> sorts = new ArrayList<>();
 
-    private List<T> list = new ArrayList<>();
+    private List<T> list;
 
     public int getPageSize() {
         return pageSize;
