@@ -2,6 +2,7 @@ package com.thankjava.toolkit3d.core.http.httpclient.async;
 
 import com.thankjava.toolkit3d.bean.http.async.AsyncCookieCheckLevel;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
@@ -59,15 +60,12 @@ public class AsyncHttpClientBuilder {
                         }
                     }
             ).build();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        } catch (KeyStoreException e) {
+        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
             e.printStackTrace();
         }
 
         httpAsyncClientBuilder.setSSLContext(sslContext);
+        httpAsyncClientBuilder.setSSLHostnameVerifier(new NoopHostnameVerifier());
 
         return this;
     }

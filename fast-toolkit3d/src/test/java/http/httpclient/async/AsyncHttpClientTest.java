@@ -1,26 +1,23 @@
 package http.httpclient.async;
 
+import com.thankjava.toolkit.core.thread.ThreadPool;
 import com.thankjava.toolkit3d.bean.http.async.*;
 import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClient;
 import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClientBuilder;
+
+import java.util.UUID;
 
 public class AsyncHttpClientTest {
 
     public static void main(String[] args) throws InterruptedException {
 
         final AsyncHttpClient client = new AsyncHttpClientBuilder()
-//                .setWithoutSSLCheck()
+                .setWithoutSSLCheck()
                 .setCookiePolicyLevel(AsyncCookieCheckLevel.BROWSER_COMPATIBILITY)
                 .setTimeout(30000)
                 .create();
 
-        AsyncRequest request = new AsyncRequest(
-                "http://localhost:10001",
-                AsyncHttpMethod.post
-        ).setParameter(new AsyncParameters("a","b"));
-//
-        AsyncResponse response = client.syncRequestWithSession(request);
-        System.out.println(response);
+
 //        FileIO.write2File("./a.png", response.getDataByteArray());
 //        System.out.println(response.getDataByteArray());
 
