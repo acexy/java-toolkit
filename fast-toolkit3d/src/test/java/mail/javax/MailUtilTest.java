@@ -13,7 +13,7 @@ public class MailUtilTest {
 	public static void main(String[] args) throws MessagingException, UnsupportedEncodingException {
 
 		MailContent mailContent = new MailContent(
-				MailService.ALIYUN, //选择发送邮件的供应商服务 --> 可以通过另外一个构造函数手动指定
+				MailService.ALBABA_ALIYUN, //选择发送邮件的供应商服务 --> 可以通过另外一个构造函数手动指定
 				"acexy@thankjava.com",//对方收件人邮箱
 				"****@***.**",//发件人(自己)邮箱
 				"******",//发件人密码
