@@ -7,6 +7,7 @@ import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Objects;
 
 import com.thankjava.toolkit.bean.encrypit.RSAEncryptAlgorithm;
 import com.thankjava.toolkit.bean.encrypit.RSAKey;
@@ -69,9 +70,7 @@ public class RSAWithBase64 {
             KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM);
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(Base64Util.decode(privateKeyStr));
             return keyFactory.generatePrivate(keySpec);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             e.printStackTrace();
         }
         return null;
@@ -92,9 +91,7 @@ public class RSAWithBase64 {
             KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM);
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64Util.decode(publicKeyStr));
             return keyFactory.generatePublic(keySpec);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             e.printStackTrace();
         }
         return null;
@@ -132,9 +129,9 @@ public class RSAWithBase64 {
      */
     public static String decrypt(String base64Cipher, String priKey, RSAEncryptAlgorithm... rsaEncryptAlgorithm) {
         if (rsaEncryptAlgorithm != null && rsaEncryptAlgorithm.length > 0) {
-            return new String(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey), rsaEncryptAlgorithm[0]));
+            return new String(Objects.requireNonNull(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey), rsaEncryptAlgorithm[0])));
         }
-        return new String(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey), DEFAULT_ENCRYPT_ALGORITHM));
+        return new String(Objects.requireNonNull(RSA.decrypt(Base64Util.decode(base64Cipher), decryptPrivateKey(priKey), DEFAULT_ENCRYPT_ALGORITHM)));
     }
 
     /**
@@ -147,7 +144,6 @@ public class RSAWithBase64 {
     public static String sign(String content, String priKey, RSASignAlgorithm... rsaSignAlgorithm) {
         if (rsaSignAlgorithm != null && rsaSignAlgorithm.length > 0) {
             return Base64Util.encode2String(RSA.sign(content.getBytes(), decryptPrivateKey(priKey), rsaSignAlgorithm[0]));
-
         }
         return Base64Util.encode2String(RSA.sign(content.getBytes(), decryptPrivateKey(priKey), DEFAULT_SIGN_ALGORITHM));
     }

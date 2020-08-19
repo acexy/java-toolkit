@@ -58,7 +58,6 @@ public final class ReflectUtil {
      * @return
      * @author acexy@thankjava.com
      * @date 2014-12-16 上午11:27:44
-     * @version 1.0
      */
     public static Field[] getFieldArrayIncludeSupClassExcludeUID(Class<?> clazz) {
         Field[] currField = clazz.getDeclaredFields();

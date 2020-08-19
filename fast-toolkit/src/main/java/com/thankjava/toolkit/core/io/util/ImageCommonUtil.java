@@ -27,7 +27,7 @@ public class ImageCommonUtil {
     public static byte[] simpleCompressJPEG(String picPath, float quality) throws IOException {
 
         BufferedImage image = ImageIO.read(new FileInputStream(new File(picPath)));
-        Iterator iterator = ImageIO.getImageWritersByFormatName(SUPPORT_TYPE);
+        Iterator<ImageWriter> iterator = ImageIO.getImageWritersByFormatName(SUPPORT_TYPE);
         ImageWriter imageWriter = (ImageWriter) iterator.next();
 
         ImageWriteParam imageWriteParam = imageWriter.getDefaultWriteParam();
