@@ -13,13 +13,9 @@
     ```
 
 ---
-- 2.0.1 此次变更内容 
+- 2.0.2 此次变更内容 
     
-    - BeanCopierUtil 调整了识别List<?> 泛型的方式
-    - 新增ImageCommonUtil 简单JPEG图片压缩Api
-    - TimeUtil 支持自定义日期格式
-    - 取消了FastJson默认格式化美化输出时展示null节点
-    - mysql的推荐驱动由 5.x -> 8.x
+    - Http Async 增强证书忽略检查
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -32,7 +28,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>2.0.1</version>
+    <version>2.0.2</version>
   </dependency>
   ```
 
@@ -40,7 +36,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>2.0.1</version>
+    <version>2.0.2</version>
   </dependency>
   ```
   
