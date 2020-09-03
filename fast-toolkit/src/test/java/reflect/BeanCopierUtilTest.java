@@ -27,28 +27,30 @@ public class BeanCopierUtilTest {
 //        Vo1 v1 = BeanCopierUtil.copy(e1, Vo1.class);
 //
 //
-//        Entity1 entity1 = new Entity1();
-//        entity1.setBol(false);
-//        entity1.setStr("set in entity");
-//
-//        Vo1 vo1 = new Vo1();
-//        vo1.setBol(true);
-//        vo1.setInte(12);
-
-//        BeanCopierUtil.copy(vo1, entity1);
-//        BeanCopierUtil.copy(vo1, entity1);
-//        BeanCopierUtil.copy(vo1, entity1);
+        Entity1 entity1 = new Entity1();
+        entity1.setBol(false);
+        entity1.setInte(12);
+        entity1.setStr("set in entity");
 
         Vo1 vo1 = new Vo1();
+        vo1.setBol(true);
+        vo1.setInte(13);
 
-        List<Vo> vos = new ArrayList<>();
-        Vo vo = new Vo();
-        vo.setTime(new Date());
-        vos.add(vo);
+        System.out.println(BeanCopierUtil.copy(entity1, vo1).getInte());;
 
-        vo1.setList(vos);
+        System.out.println(entity1.getInte());
+        System.out.println(vo1.getInte());
 
-        System.out.println(BeanCopierUtil.copy(vo1, Entity1.class).getList());
+//        Vo1 vo1 = new Vo1();
+//
+//        List<Vo> vos = new ArrayList<>();
+//        Vo vo = new Vo();
+//        vo.setTime(new Date());
+//        vos.add(vo);
+//
+//        vo1.setList(vos);
+//
+//        System.out.println(BeanCopierUtil.copy(vo1, Entity1.class).getList());
 
 //        System.out.println(new LinkedHashMap<>() instanceof Map);
     }

@@ -64,26 +64,26 @@ public final class BeanCopierUtil {
     /**
      * 属性值重赋值
      * <p>Function: copy</p>
-     * <p>Description: 将newObject对象中的相同字段名属性值复制到originObject
+     * <p>Description: 将newObject对象中的相同字段名属性值复制到targetObject
      * </p>
      *
-     * @param originObject
      * @param newObject
+     * @param targetObject
      * @return
      * @author acexy@thankjava.com
      * @date 2016年12月22日 上午10:41:58
      * @version 1.0
      */
-    public static <OriginObject, TargetObject> void copy(TargetObject newObject, OriginObject originObject) {
-        if (originObject == null) {
-            return;
-        }
+    public static <OriginObject, TargetObject> TargetObject copy(TargetObject targetObject, OriginObject newObject) {
         if (newObject == null) {
+            return null;
+        }
+        if (targetObject == null) {
             throw new IllegalArgumentException("targetClass can't be null");
         }
         @SuppressWarnings("unchecked")
-        Class<TargetObject> targetClass = (Class<TargetObject>) newObject.getClass();
-        setValue(originObject, newObject, targetClass);
+        Class<TargetObject> targetClass = (Class<TargetObject>) targetObject.getClass();
+        return setValue(newObject, targetObject, targetClass);
     }
 
     /**
@@ -188,6 +188,7 @@ public final class BeanCopierUtil {
             }
 
             targetValue = ValueCast.cast(targetField, targetObject, originValue);
+            System.out.println(targetValue);
 
             if (targetValue != null) {
                 try {
