@@ -36,7 +36,7 @@ public class BeanCopierUtilTest {
         vo1.setBol(true);
         vo1.setInte(13);
 
-        System.out.println(BeanCopierUtil.copy(entity1, vo1).getInte());;
+        BeanCopierUtil.copy(entity1, vo1);
 
         System.out.println(entity1.getInte());
         System.out.println(vo1.getInte());
