@@ -12,6 +12,7 @@ import org.apache.http.entity.StringEntity;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 
 
 /**
@@ -41,19 +42,18 @@ public class RequestBuilder {
 
         if (parameter != null) {
 
-
             // 如果bodyString 和valuePair 同时存在，且请求类型为entityParams时，valuePair将需要转化为uri参数
             if (parameter.getNameValuePair() != null && parameter.getBodyString() != null) {
                 HttpRequestBase httpRequestBase = (HttpRequestBase) httpEntityEnclosingRequestBase;
                 try {
-                    httpRequestBase.setURI(new URIBuilder(httpRequestBase.getURI()).addParameters(parameter.getNameValuePair()).build());
+                    httpRequestBase.setURI(new URIBuilder(httpRequestBase.getURI()).setCharset(StandardCharsets.UTF_8).addParameters(parameter.getNameValuePair()).build());
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
             } else {
                 if (parameter.getNameValuePair() != null) {
                     try {
-                        httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair()));
+                        httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), "UTF-8"));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }

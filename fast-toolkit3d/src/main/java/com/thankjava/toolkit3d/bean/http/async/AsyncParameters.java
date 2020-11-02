@@ -124,6 +124,7 @@ public class AsyncParameters {
 
     /**
      * 设置文件
+     *
      * @param file
      * @param contentType
      * @param charset
@@ -148,13 +149,24 @@ public class AsyncParameters {
         return this;
     }
 
-    public AsyncParameters append(String json) {
+    public AsyncParameters append(Map<String, String> values) {
+        if (nameValuePairs == null) {
+            nameValuePairs = new ArrayList<NameValuePair>();
+        }
+
+        for (Map.Entry<String, String> value : values.entrySet()) {
+            nameValuePairs.add(new BasicNameValuePair(value.getKey(), value.getValue()));
+        }
+        return this;
+    }
+
+    public AsyncParameters setJsonBodyString(String json) {
         this.bodyString = json;
         this.contentType = ContentType.APPLICATION_JSON.withCharset(Charset.utf8.charset);
         return this;
     }
 
-    public AsyncParameters append(String bodyString, ContentType contentType) {
+    public AsyncParameters setBodyString(String bodyString, ContentType contentType) {
         this.bodyString = bodyString;
         this.contentType = contentType;
         return this;
