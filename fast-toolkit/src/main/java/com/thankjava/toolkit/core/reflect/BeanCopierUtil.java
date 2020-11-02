@@ -21,11 +21,10 @@ import java.util.Map;
  */
 public final class BeanCopierUtil {
 
-    private BeanCopierUtil() {
-    }
-
     private static final Map<Class<?>, Field[]> targetFieldsCache = new HashMap<>();
     private static final Map<Class<?>, OriginFieldsCache> originFieldsCache = new HashMap<>();
+    private BeanCopierUtil() {
+    }
 
     /**
      * 对等属性复制
@@ -64,26 +63,26 @@ public final class BeanCopierUtil {
     /**
      * 属性值重赋值
      * <p>Function: copy</p>
-     * <p>Description: 将newObject对象中的相同字段名属性值复制到originObject
+     * <p>Description: 将originObject对象中的相同字段名属性值复制到targetObject
      * </p>
      *
-     * @param originObject
-     * @param newObject
+     * @param originObject 用于赋值的对象
+     * @param targetObject 被重新赋值的目标对象
      * @return
      * @author acexy@thankjava.com
      * @date 2016年12月22日 上午10:41:58
      * @version 1.0
      */
-    public static <OriginObject, TargetObject> void copy(TargetObject newObject, OriginObject originObject) {
+    public static <OriginObject, TargetObject> void copy(TargetObject targetObject, OriginObject originObject) {
         if (originObject == null) {
             return;
         }
-        if (newObject == null) {
+        if (targetObject == null) {
             throw new IllegalArgumentException("targetClass can't be null");
         }
         @SuppressWarnings("unchecked")
-        Class<TargetObject> targetClass = (Class<TargetObject>) newObject.getClass();
-        setValue(originObject, newObject, targetClass);
+        Class<TargetObject> targetClass = (Class<TargetObject>) targetObject.getClass();
+        setValue(originObject, targetObject, targetClass);
     }
 
     /**

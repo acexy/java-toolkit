@@ -8,10 +8,17 @@ import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 
 /**
@@ -41,19 +48,18 @@ public class RequestBuilder {
 
         if (parameter != null) {
 
-
             // 如果bodyString 和valuePair 同时存在，且请求类型为entityParams时，valuePair将需要转化为uri参数
             if (parameter.getNameValuePair() != null && parameter.getBodyString() != null) {
                 HttpRequestBase httpRequestBase = (HttpRequestBase) httpEntityEnclosingRequestBase;
                 try {
-                    httpRequestBase.setURI(new URIBuilder(httpRequestBase.getURI()).addParameters(parameter.getNameValuePair()).build());
+                    httpRequestBase.setURI(new URIBuilder(httpRequestBase.getURI()).setCharset(StandardCharsets.UTF_8).addParameters(parameter.getNameValuePair()).build());
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
             } else {
                 if (parameter.getNameValuePair() != null) {
                     try {
-                        httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair()));
+                        httpEntityEnclosingRequestBase.setEntity(new UrlEncodedFormEntity(parameter.getNameValuePair(), "UTF-8"));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
@@ -90,11 +96,25 @@ public class RequestBuilder {
                 if (parameter.getCharset() != null) {
                     entityBuilder.setContentEncoding(parameter.getCharset());
                 }
-
                 entityBuilder.setContentType(parameter.getContentType());
-
                 httpEntityEnclosingRequestBase.setEntity(entityBuilder.build());
+
+            } else if (parameter.getMultipartFile() != null || parameter.getMultipartTextBody() != null) {
+                MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
+                if (parameter.getMultipartFile() != null && !parameter.getMultipartFile().isEmpty()) {
+                    for (Map.Entry<String, File> value : parameter.getMultipartFile().entrySet()) {
+                        multipartEntityBuilder.addPart(value.getKey(), new FileBody(value.getValue(), ContentType.create(URLConnection.guessContentTypeFromName(value.getValue().getName())), value.getKey()));
+                    }
+                }
+
+                if (parameter.getMultipartTextBody() != null && !parameter.getMultipartTextBody().isEmpty()) {
+                    for (Map.Entry<String, String> value : parameter.getMultipartTextBody().entrySet()) {
+                        multipartEntityBuilder.addTextBody(value.getKey(), value.getValue());
+                    }
+                }
+                httpEntityEnclosingRequestBase.setEntity(multipartEntityBuilder.build());
             }
+
 
         }
 
