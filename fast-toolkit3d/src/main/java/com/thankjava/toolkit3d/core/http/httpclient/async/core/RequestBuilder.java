@@ -8,11 +8,17 @@ import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
+import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 
 /**
@@ -90,11 +96,25 @@ public class RequestBuilder {
                 if (parameter.getCharset() != null) {
                     entityBuilder.setContentEncoding(parameter.getCharset());
                 }
-
                 entityBuilder.setContentType(parameter.getContentType());
-
                 httpEntityEnclosingRequestBase.setEntity(entityBuilder.build());
+
+            } else if (parameter.getMultipartFile() != null || parameter.getMultipartTextBody() != null) {
+                MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
+                if (parameter.getMultipartFile() != null && !parameter.getMultipartFile().isEmpty()) {
+                    for (Map.Entry<String, File> value : parameter.getMultipartFile().entrySet()) {
+                        multipartEntityBuilder.addPart(value.getKey(), new FileBody(value.getValue(), ContentType.create(URLConnection.guessContentTypeFromName(value.getValue().getName())), value.getKey()));
+                    }
+                }
+
+                if (parameter.getMultipartTextBody() != null && !parameter.getMultipartTextBody().isEmpty()) {
+                    for (Map.Entry<String, String> value : parameter.getMultipartTextBody().entrySet()) {
+                        multipartEntityBuilder.addTextBody(value.getKey(), value.getValue());
+                    }
+                }
+                httpEntityEnclosingRequestBase.setEntity(multipartEntityBuilder.build());
             }
+
 
         }
 

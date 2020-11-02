@@ -2,6 +2,11 @@
 ---
 - 2.0.x
 
+    - 2.0.3
+    
+        - Http Async 支持Multipart
+        - Http Async Post 支持自动URLEncode
+
     - 2.0.2
     
         - Http Async 增强证书忽略检查
