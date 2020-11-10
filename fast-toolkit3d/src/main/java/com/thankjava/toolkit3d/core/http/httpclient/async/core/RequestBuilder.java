@@ -10,6 +10,7 @@ import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
@@ -112,6 +114,8 @@ public class RequestBuilder {
                         multipartEntityBuilder.addTextBody(value.getKey(), value.getValue());
                     }
                 }
+                multipartEntityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+                multipartEntityBuilder.setCharset(StandardCharsets.UTF_8);
                 httpEntityEnclosingRequestBase.setEntity(multipartEntityBuilder.build());
             }
 
