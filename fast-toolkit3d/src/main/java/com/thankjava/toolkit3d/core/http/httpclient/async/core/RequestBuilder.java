@@ -101,24 +101,7 @@ public class RequestBuilder {
                 entityBuilder.setContentType(parameter.getContentType());
                 httpEntityEnclosingRequestBase.setEntity(entityBuilder.build());
 
-            } else if (parameter.getMultipartFile() != null || parameter.getMultipartTextBody() != null) {
-                MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
-                if (parameter.getMultipartFile() != null && !parameter.getMultipartFile().isEmpty()) {
-                    for (Map.Entry<String, File> value : parameter.getMultipartFile().entrySet()) {
-                        multipartEntityBuilder.addPart(value.getKey(), new FileBody(value.getValue(), ContentType.create(URLConnection.guessContentTypeFromName(value.getValue().getName())), value.getKey()));
-                    }
-                }
-
-                if (parameter.getMultipartTextBody() != null && !parameter.getMultipartTextBody().isEmpty()) {
-                    for (Map.Entry<String, String> value : parameter.getMultipartTextBody().entrySet()) {
-                        multipartEntityBuilder.addTextBody(value.getKey(), value.getValue());
-                    }
-                }
-                multipartEntityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-                multipartEntityBuilder.setCharset(StandardCharsets.UTF_8);
-                httpEntityEnclosingRequestBase.setEntity(multipartEntityBuilder.build());
             }
-
 
         }
 

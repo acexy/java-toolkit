@@ -18,13 +18,6 @@ public class AsyncParameters {
     private byte[] byteData = null;
     private String charset = null;
     private File file = null;
-    private Map<String, File> multipartFile;
-    private Map<String, String> multipartTextBody;
-
-    public AsyncParameters(Map<String, File> multipartFile, Map<String, String> multipartTextBody) {
-        this.multipartFile = multipartFile;
-        this.multipartTextBody = multipartTextBody;
-    }
 
     /**
      * 新增 from-urlencode / GET 请求参数
@@ -203,11 +196,4 @@ public class AsyncParameters {
         return file;
     }
 
-    public Map<String, File> getMultipartFile() {
-        return multipartFile;
-    }
-
-    public Map<String, String> getMultipartTextBody() {
-        return multipartTextBody;
-    }
 }

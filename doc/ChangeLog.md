@@ -2,6 +2,10 @@
 ---
 - 2.0.x
 
+    - 2.0.4
+        
+        - 移除对Multipart的支持
+
     - 2.0.3
     
         - Http Async 支持Multipart
