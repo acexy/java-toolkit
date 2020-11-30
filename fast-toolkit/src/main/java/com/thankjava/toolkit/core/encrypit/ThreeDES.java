@@ -34,6 +34,10 @@ public final class ThreeDES {
         this.priKey = priKey;
     }
 
+    public ThreeDES() {
+        this.priKey = "00000000000000000000000000000000";
+    }
+
     private static final String[] BYTE_HEX_TABLE = {
             "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B",
             "0C", "0D", "0E", "0F", "10", "11", "12", "13", "14", "15", "16", "17",
@@ -65,7 +69,7 @@ public final class ThreeDES {
 
     private Cipher getCipher() {
         try {
-            return Cipher.getInstance("DESede/ECB/NOPADDING");
+            return Cipher.getInstance("DESEDE/ECB/NOPADDING");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
@@ -98,15 +102,15 @@ public final class ThreeDES {
      * 进行解密
      *
      * @param pubKey
-     * @param cipher
+     * @param content
      * @return
      */
-    public String decrypt(String pubKey, String cipher) {
+    public String decrypt(String pubKey, String content) {
         pubKey += "0000000000000000";
         pubKey = pubKey.substring(0, 16);
         String tempKey = diverse(priKey, pubKey);
         try {
-            String result = deEncryptStr(tempKey, cipher);
+            String result = deEncryptStr(tempKey, content);
             if (result.length() % 16 == 0) {
                 return new String(unhexba(result.substring(0, result.lastIndexOf("80"))));
             } else {
@@ -176,7 +180,7 @@ public final class ThreeDES {
             Cipher cipher = ENCRYPT.get(key1);
             if (cipher == null) {
                 cipher = getCipher();
-                cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key1, "DESede"));
+                cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key1, "DESEDE"));
                 ENCRYPT.put(key1, cipher);
             }
             return cipher.doFinal(data);
@@ -194,7 +198,7 @@ public final class ThreeDES {
             Cipher cipher = DECRYPT.get(key1);
             if (cipher == null) {
                 cipher = getCipher();
-                cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key1, "DESede"));
+                cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key1, "DESEDE"));
                 DECRYPT.put(key1, cipher);
             }
             return cipher.doFinal(data);
