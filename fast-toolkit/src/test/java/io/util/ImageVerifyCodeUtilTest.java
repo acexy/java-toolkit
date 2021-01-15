@@ -11,9 +11,8 @@ public class ImageVerifyCodeUtilTest {
 
     public static void main(String[] args) throws IOException {
 
-        ImageVerifyCodeUtil.encode2ImgFile(120, 40, "f:/code.jpg", "2w34");
+//        ImageVerifyCodeUtil.encode2ImgFile(120, 40, "f:/code.jpg", "2w34");
 
-//        byte[] bytes = ImageVerifyCode.encodeImage(200,80,"1q2w3e");
 //        ImageIO.write(ImageIO.read(new ByteArrayInputStream(bytes)),"png",new File("f:/b.jpg"));
     }
 
