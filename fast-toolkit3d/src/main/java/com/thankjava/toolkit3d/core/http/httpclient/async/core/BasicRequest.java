@@ -17,17 +17,17 @@ class BasicRequest {
 	/**
 	 * 请求上下文
 	 */
-	protected static HttpClientContext syncHttpClientContext = HttpClientContext.create();
+	protected HttpClientContext syncHttpClientContext = HttpClientContext.create();
 
 	/**
 	 * 请求的CookieStore
 	 */
-	protected static CookieStore syncCookieStore = new BasicCookieStore();
-	
-	static {
+	protected CookieStore syncCookieStore = new BasicCookieStore();
+
+	BasicRequest() {
 		syncHttpClientContext.setCookieStore(syncCookieStore);
 	}
-	
+
 	/**
 	 * 获取请求的CookieStore
 	* <p>Function: getSyncCookieStore</p>
@@ -36,7 +36,7 @@ class BasicRequest {
 	* @date 2016年12月15日 下午6:00:02
 	* @return
 	 */
-	public static CookieStore getSyncCookieStore(){
-		return BasicRequest.syncCookieStore;
+	public CookieStore getSyncCookieStore(){
+		return syncCookieStore;
 	}
 }

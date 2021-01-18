@@ -16,8 +16,8 @@ import java.security.cert.X509Certificate;
 
 public class AsyncHttpClientBuilder {
 
-    private HttpAsyncClientBuilder httpAsyncClientBuilder;
-    private RequestConfig.Builder requestConfigBuilder;
+    private final HttpAsyncClientBuilder httpAsyncClientBuilder;
+    private final RequestConfig.Builder requestConfigBuilder;
 
     /**
      * 设置需要创建自定义 AsyncHttpClient 实例

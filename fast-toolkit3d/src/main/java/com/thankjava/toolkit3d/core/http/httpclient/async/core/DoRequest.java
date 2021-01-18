@@ -15,15 +15,10 @@ import com.thankjava.toolkit3d.bean.http.async.AsyncResponse;
 
 public class DoRequest extends BasicRequest {
 
-    private static DoRequest doRequest = new DoRequest();
-    private static CloseableHttpAsyncClient closeableHttpAsyncClient;
+    private final CloseableHttpAsyncClient closeableHttpAsyncClient;
 
-    private DoRequest() {
-    }
-
-    public static DoRequest getInterface(CloseableHttpAsyncClient closeableHttpAsyncClient) {
-        DoRequest.closeableHttpAsyncClient = closeableHttpAsyncClient;
-        return doRequest;
+    public DoRequest(CloseableHttpAsyncClient closeableHttpAsyncClient) {
+        this.closeableHttpAsyncClient = closeableHttpAsyncClient;
     }
 
     public AsyncResponse doRequest(final AsyncRequest asyncRequest, boolean withSession, final AsyncResponseCallback callback) {

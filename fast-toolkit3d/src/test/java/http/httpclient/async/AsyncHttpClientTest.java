@@ -1,11 +1,8 @@
 package http.httpclient.async;
 
-import com.thankjava.toolkit.core.thread.ThreadPool;
 import com.thankjava.toolkit3d.bean.http.async.*;
 import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClient;
 import com.thankjava.toolkit3d.core.http.httpclient.async.AsyncHttpClientBuilder;
-
-import java.util.UUID;
 
 public class AsyncHttpClientTest {
 
@@ -17,20 +14,43 @@ public class AsyncHttpClientTest {
                 .setTimeout(30000)
                 .create();
 
+        final AsyncHttpClient clientOther = new AsyncHttpClientBuilder()
+                .setWithoutSSLCheck()
+                .setCookiePolicyLevel(AsyncCookieCheckLevel.BROWSER_COMPATIBILITY)
+                .setTimeout(50000)
+                .create();
+
+
 
 //        FileIO.write2File("./a.png", response.getDataByteArray());
 //        System.out.println(response.getDataByteArray());
 
 
-//        AsyncRequest request = new AsyncRequest(
-//                "http://localhost:8001",
-//                HttpMethod.post,
-//                new Parameters(
-//                        new File("F:\\Download\\ChromeStandaloneSetup64.exe"),
-////                        FileIO.read2ByteArray("F:\\Temp\\io.utf-8")
-//                        RequestContentType.TEXT_PLAIN
-//                )
-//        );
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                AsyncRequest request = new AsyncRequest(
+                        "http://localhost:8080",
+                        AsyncHttpMethod.put,
+                        new AsyncParameters("ddfadfasdfasd")
+                );
+                AsyncResponse resp = client.syncRequestWithoutSession(request);
+                System.out.println(resp.getException());
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                AsyncRequest request = new AsyncRequest(
+                        "http://localhost:8080",
+                        AsyncHttpMethod.put,
+                        new AsyncParameters("ddfadfasdfasd")
+                );
+                AsyncResponse resp = clientOther.syncRequestWithoutSession(request);
+                System.out.println(resp.getException());
+            }
+        }).start();
+
 
 //        client.asyncRequestWithoutSession(request, new AsyncResponseCallback() {
 //            @Override

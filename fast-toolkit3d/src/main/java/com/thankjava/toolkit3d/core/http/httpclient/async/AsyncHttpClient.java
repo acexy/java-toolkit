@@ -1,28 +1,28 @@
 package com.thankjava.toolkit3d.core.http.httpclient.async;
 
-import java.io.IOException;
-
-import com.thankjava.toolkit3d.bean.http.async.AsyncResponse;
-import com.thankjava.toolkit3d.bean.http.async.AsyncResponseCallback;
-import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import com.thankjava.toolkit3d.core.http.httpclient.async.core.DoRequest;
 import com.thankjava.toolkit3d.bean.http.async.AsyncCookies;
 import com.thankjava.toolkit3d.bean.http.async.AsyncRequest;
+import com.thankjava.toolkit3d.bean.http.async.AsyncResponse;
+import com.thankjava.toolkit3d.bean.http.async.AsyncResponseCallback;
+import com.thankjava.toolkit3d.core.http.httpclient.async.core.DoRequest;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
+
+import java.io.IOException;
 
 public class AsyncHttpClient {
 
     /**
      * 同步请求的处理
      */
-    private static DoRequest doRequest;
+    private final DoRequest doRequest;
 
-    private static CloseableHttpAsyncClient closeableHttpAsyncClient;
+    private final CloseableHttpAsyncClient closeableHttpAsyncClient;
 
     AsyncHttpClient(CloseableHttpAsyncClient closeableHttpAsyncClient) {
-        AsyncHttpClient.closeableHttpAsyncClient = closeableHttpAsyncClient;
+        this.closeableHttpAsyncClient = closeableHttpAsyncClient;
         closeableHttpAsyncClient.start();
-        doRequest = DoRequest.getInterface(closeableHttpAsyncClient);
+        doRequest = new DoRequest(closeableHttpAsyncClient);
     }
 
     /**
@@ -80,7 +80,7 @@ public class AsyncHttpClient {
      * @date 2017年6月12日 下午3:31:00
      */
     public AsyncCookies getAllCookiesFromClientContext() {
-        return new AsyncCookies(DoRequest.getSyncCookieStore().getCookies());
+        return new AsyncCookies(doRequest.getSyncCookieStore().getCookies());
     }
 
     /**
