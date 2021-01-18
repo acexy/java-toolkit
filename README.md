@@ -13,9 +13,10 @@
     ```
 
 ---
-- 2.0.2 此次变更内容 
-    
-    - Http Async 增强证书忽略检查
+- 2.0.4 此次变更内容 
+  
+  - 移除对Multipart的支持
+  - 修复一个Async Http无法创建多个实例的问题
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -28,7 +29,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>2.0.2</version>
+    <version>2.0.4</version>
   </dependency>
   ```
 
@@ -36,7 +37,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>2.0.2</version>
+    <version>2.0.4</version>
   </dependency>
   ```
   
