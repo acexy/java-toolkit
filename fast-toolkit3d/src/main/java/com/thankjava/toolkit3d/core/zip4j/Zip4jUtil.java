@@ -1,16 +1,15 @@
 package com.thankjava.toolkit3d.core.zip4j;
 
+import net.lingala.zip4j.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.model.ZipParameters;
+import net.lingala.zip4j.model.enums.CompressionLevel;
+import net.lingala.zip4j.model.enums.CompressionMethod;
+import net.lingala.zip4j.model.enums.EncryptionMethod;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import com.thankjava.toolkit3d.bean.zip4j.ZipLevel;
-import com.thankjava.toolkit3d.bean.zip4j.ZipType;
-
-import net.lingala.zip4j.core.ZipFile;
-import net.lingala.zip4j.exception.ZipException;
-import net.lingala.zip4j.model.ZipParameters;
-import net.lingala.zip4j.util.Zip4jConstants;
 
 /**
  * 依赖于 maven[net.lingala.zip4j:zip4j]
@@ -30,9 +29,9 @@ public class Zip4jUtil {
      * <p>Function: unzip</p>
      * <p>Description: </p>
      *
-     * @param zipFilePath    压缩文件位置
-     * @param folderPath 解压文件夹位置
-     * @param pwd            解压密码(如果有)
+     * @param zipFilePath 压缩文件位置
+     * @param folderPath  解压文件夹位置
+     * @param pwd         解压密码(如果有)
      * @return
      * @author acexy@thankjava.com
      * @date 2016年8月12日 下午4:08:54
@@ -59,7 +58,7 @@ public class Zip4jUtil {
                     return false;
                 }
 
-                zipFile.setPassword(pwd[0]);
+                zipFile.setPassword(pwd[0].toCharArray());
             }
         } catch (ZipException e) {
             e.printStackTrace();
@@ -90,6 +89,16 @@ public class Zip4jUtil {
     }
 
     /**
+     * 使用默认设置压缩文件
+     * @param srcPath
+     * @param zipFilePath
+     * @return
+     */
+    public static boolean zipDefault(String srcPath, String zipFilePath) {
+        return zip(srcPath, zipFilePath, CompressionMethod.DEFLATE, CompressionLevel.FAST);
+    }
+
+    /**
      * 压缩资源
      * <p>Function: zip</p>
      * <p>Description: </p>
@@ -103,7 +112,7 @@ public class Zip4jUtil {
      * @author acexy@thankjava.com
      * @date 2016年8月16日 下午1:50:18
      */
-    public static boolean zip(String srcPath, String zipFilePath, ZipType zipType, ZipLevel zipLevel, String... pwd) {
+    public static boolean zip(String srcPath, String zipFilePath, CompressionMethod zipType, CompressionLevel zipLevel, String... pwd) {
         File srcFile = new File(srcPath);
         boolean isSrcDirectory = true;
         if (srcFile.isDirectory()) {//压缩文件夹
@@ -116,7 +125,6 @@ public class Zip4jUtil {
             //压缩文件
             isSrcDirectory = false;
         }
-
 
         //检查目标路径 生成压缩后的位置 判断目标生成的压缩文件路径
         File file = new File(zipFilePath);
@@ -146,25 +154,27 @@ public class Zip4jUtil {
             zipPath = file.getPath() + File.separator + srcFile.getName() + SUFFIX;
         }
 
+        ZipFile zipFile = null;
 
         ZipParameters zipParameters = new ZipParameters();
 
         //设置压缩方式
-        zipParameters.setCompressionMethod(zipType.getCode());
+        zipParameters.setCompressionMethod(zipType);
         //设置压缩等级
-        zipParameters.setCompressionLevel(zipLevel.getCode());
+        zipParameters.setCompressionLevel(zipLevel);
 
         if (pwd != null && pwd.length > 0) {
             zipParameters.setEncryptFiles(true);
-            zipParameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_STANDARD); // 加密方式
-            zipParameters.setPassword(pwd[0]);
+            zipParameters.setEncryptionMethod(EncryptionMethod.ZIP_STANDARD); // 加密方式
         } else {
             zipParameters.setEncryptFiles(false);
         }
 
-        ZipFile zipFile = null;
         try {
             zipFile = new ZipFile(zipPath);
+            if (pwd != null && pwd.length > 0) {
+                zipFile.setPassword(pwd[0].toCharArray());
+            }
             if (isSrcDirectory) {
                 File[] files = srcFile.listFiles();
                 if (files == null || files.length == 0) {

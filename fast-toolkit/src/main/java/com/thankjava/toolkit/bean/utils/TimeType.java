@@ -15,6 +15,7 @@ public enum TimeType {
     HHmmss("HHmmss"),
 
     yyyy1MM1dd1HH1mm("yyyy/MM/dd/HH/mm"),
+    yyyy2MM2dd("yyyy-MM-dd"),
     ;
 
     public String type;

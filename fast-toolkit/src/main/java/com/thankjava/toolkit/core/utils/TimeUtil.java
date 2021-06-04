@@ -20,11 +20,10 @@ import java.util.Map;
  */
 public final class TimeUtil {
 
-    private TimeUtil() {
-    }
-
     private static final Map<String, SimpleDateFormat> SIMPLE_DATE_FORMAT_MAP = new HashMap<>();
 
+    private TimeUtil() {
+    }
 
     /**
      * 将date Str 转换为 Date 类型
@@ -96,6 +95,7 @@ public final class TimeUtil {
 
     /**
      * 格式化日期
+     *
      * @param timeTypeString
      * @param date
      * @return
@@ -127,4 +127,5 @@ public final class TimeUtil {
 
         return ca.getTime();
     }
+
 }
