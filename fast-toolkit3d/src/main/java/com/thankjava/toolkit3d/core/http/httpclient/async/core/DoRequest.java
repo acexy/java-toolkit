@@ -24,49 +24,38 @@ public class DoRequest extends BasicRequest {
     public AsyncResponse doRequest(final AsyncRequest asyncRequest, boolean withSession, final AsyncResponseCallback callback) {
 
         Future<HttpResponse> future;
-
         HttpClientContext requestCtx;
-
         if (withSession) {
             requestCtx = syncHttpClientContext;
         } else {
             requestCtx = HttpClientContext.create();
         }
-
         addCookies(asyncRequest, requestCtx);
-
-
         final HttpRequestBase request = RequestBuilder.builderRequest(asyncRequest);
         final HttpClientContext ctx = requestCtx;
-
+//        do request
         future = closeableHttpAsyncClient.execute(request, requestCtx, callback != null ? new FutureCallback<HttpResponse>() {
-
             @Override
             public void completed(HttpResponse httpResponse) {
                 callback.completed(ResponseBuilder.builder(httpResponse, asyncRequest.getResCharset(), ctx));
             }
-
             @Override
             public void failed(Exception e) {
                 callback.failed(e);
             }
-
             @Override
             public void cancelled() {
                 callback.cancelled();
             }
-
         } : null);
-
+//        process response
         if (callback == null) {
-
             try {
                 return ResponseBuilder.builder(future.get(), asyncRequest.getResCharset(), requestCtx);
             } catch (Throwable e) {
                 return new AsyncResponse(e);
             }
         }
-
         return null;
     }
 

@@ -24,6 +24,8 @@ public class AsyncHttpClientBuilder {
      */
     public AsyncHttpClientBuilder() {
         httpAsyncClientBuilder = HttpAsyncClients.custom();
+        httpAsyncClientBuilder.setMaxConnTotal(1000);
+        httpAsyncClientBuilder.setMaxConnPerRoute(100);
         requestConfigBuilder = RequestConfig.custom();
     }
 
@@ -38,7 +40,10 @@ public class AsyncHttpClientBuilder {
      * @date 2016年12月12日 下午3:45:57
      */
     public static AsyncHttpClient createDefault() {
-        return new AsyncHttpClient(HttpAsyncClients.createDefault());
+        HttpAsyncClientBuilder defaultHttpAsyncClientBuilder = HttpAsyncClientBuilder.create();
+        defaultHttpAsyncClientBuilder.setMaxConnTotal(1000);
+        defaultHttpAsyncClientBuilder.setMaxConnPerRoute(100);
+        return new AsyncHttpClient(defaultHttpAsyncClientBuilder.build());
     }
 
     /**
@@ -53,12 +58,7 @@ public class AsyncHttpClientBuilder {
         try {
             sslContext = new SSLContextBuilder().loadTrustMaterial(
                     null,
-                    new TrustStrategy() {
-                        @Override
-                        public boolean isTrusted(X509Certificate[] chain, String authType) {
-                            return true;
-                        }
-                    }
+                    (TrustStrategy) (chain, authType) -> true
             ).build();
         } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
             e.printStackTrace();
@@ -103,6 +103,13 @@ public class AsyncHttpClientBuilder {
         requestConfigBuilder.setConnectionRequestTimeout(timeout);
         return this;
     }
+
+    public AsyncHttpClientBuilder setConnTotal(int connTotal, int perRoute) {
+        httpAsyncClientBuilder.setMaxConnTotal(connTotal);
+        httpAsyncClientBuilder.setMaxConnPerRoute(perRoute);
+        return this;
+    }
+
 
     /**
      * 按照设置创建AsyncHttpClient 实例
