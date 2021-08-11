@@ -15,7 +15,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -89,7 +88,7 @@ class POIReaderImpl implements POIReader {
         FormatCellValueType formatCellValueType = getCellValueType(rowIndex, columnIndex, cell);
 
         if (formatCellValueType == null) {
-            switch (cell.getCellTypeEnum()) {
+            switch (cell.getCellType()) {
                 case BOOLEAN:
                     return String.valueOf(cell.getBooleanCellValue());
                 case NUMERIC:

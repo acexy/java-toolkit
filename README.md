@@ -13,10 +13,11 @@
     ```
 
 ---
-- 2.0.4 此次变更内容 
-  
-  - 移除对Multipart的支持
-  - 修复一个Async Http无法创建多个实例的问题
+- 2.0.5 此次变更内容 
+
+  - 调整默认Async Http默认工作连接数
+  - Zip4J升级最新API
+  - 升级依赖推荐版本
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -29,7 +30,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>2.0.4</version>
+    <version>2.0.5</version>
   </dependency>
   ```
 
@@ -37,7 +38,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>2.0.4</version>
+    <version>2.0.5</version>
   </dependency>
   ```
   
