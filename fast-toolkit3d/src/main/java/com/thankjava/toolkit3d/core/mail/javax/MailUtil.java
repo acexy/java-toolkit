@@ -76,9 +76,7 @@ public final class MailUtil {
         // 设置邮件消息的发送者
         mailMessage.setFrom(from);
         // 创建邮件的接收者地址，并设置到邮件消息中
-        Address to = new InternetAddress(mailContent.getToAddress());
-        // Message.RecipientType.TO属性表示接收者的类型为TO
-        mailMessage.setRecipient(Message.RecipientType.TO, to);
+        mailMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailContent.getToAddress()));
         // 设置邮件消息的主题
         mailMessage.setSubject(mailContent.getSubject());
         // 设置邮件消息发送的时间

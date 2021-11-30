@@ -13,11 +13,9 @@
     ```
 
 ---
-- 2.0.5 此次变更内容 
+- 2.0.6 此次变更内容 
 
-  - 调整默认Async Http默认工作连接数
-  - Zip4J升级最新API
-  - 升级依赖推荐版本
+  - 邮件支持多发用户
     
 - [ChangeLog](https://github.com/lazy-koala/java-toolkit/blob/master/doc/ChangeLog.md)
 
@@ -30,7 +28,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit</groupId>
     <artifactId>fast-toolkit</artifactId>
-    <version>2.0.5</version>
+    <version>2.0.6</version>
   </dependency>
   ```
 
@@ -38,7 +36,7 @@
   <dependency>
     <groupId>com.thankjava.toolkit3d</groupId>
     <artifactId>fast-toolkit3d</artifactId>
-    <version>2.0.5</version>
+    <version>2.0.6</version>
   </dependency>
   ```
   
