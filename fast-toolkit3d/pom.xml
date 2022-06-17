@@ -16,7 +16,7 @@
 
     <properties>
         <com.thankjava.toolkit.version>2.0.6</com.thankjava.toolkit.version>
-        <com.alibaba.fastjson.version>1.2.76</com.alibaba.fastjson.version>
+        <com.alibaba.fastjson.version>1.2.83</com.alibaba.fastjson.version>
         <com.alibaba.druid.version>1.2.6</com.alibaba.druid.version>
         <org.mybatis.version>3.5.7</org.mybatis.version>
         <mysql.version>8.0.25</mysql.version>
