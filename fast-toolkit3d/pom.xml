@@ -31,7 +31,7 @@
         <zip4j.version>2.9.1</zip4j.version>
         <httpasyncclient.version>4.1.4</httpasyncclient.version>
         <httpmime.version>4.5.13</httpmime.version>
-        <poi.version>5.0.0</poi.version>
+        <poi.version>5.4.0</poi.version>
 
     </properties>
 
